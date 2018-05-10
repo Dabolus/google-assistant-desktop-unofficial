@@ -1,0 +1,72 @@
+{
+  "name": "google-assistant-desktop",
+  "productName": "Google Assistant Desktop",
+  "version": "0.0.1",
+  "description": "Google Assistant desktop client",
+  "main": "main.js",
+  "author": {
+    "name": "Giorgio Garasto (Dabolus)",
+    "email": "mail@dabolus.io",
+    "url": "https://dabolus.io"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "refresh-gens": "bash generate_assistant_gens.sh",
+    "postinstall": "electron-builder install-app-deps",
+    "serve:webpack": "webpack --watch --config ./webpack/dev.config.js",
+    "serve:electron": "electron --dev build",
+    "serve": "run-p serve:webpack serve:electron",
+    "build": "webpack --config ./webpack/prod.config.js"
+  },
+  "dependencies": {
+    "@polymer/app-layout": "^3.0.0-pre.19",
+    "@polymer/app-route": "^3.0.0-pre.19",
+    "@polymer/iron-pages": "^3.0.0-pre.19",
+    "@polymer/iron-selector": "^3.0.0-pre.19",
+    "@polymer/lit-element": "^0.5.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.19",
+    "caniuse-lite": "^1.0.30000839",
+    "google-protobuf": "^3.5.0",
+    "lit-html": "^0.10.0",
+    "mkdirp": "^0.5.1",
+    "universal-analytics": "^0.4.16",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.46",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.46",
+    "@babel/plugin-syntax-import-meta": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.0.0-beta.2",
+    "browser-sync": "^2.24.4",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "cssnano": "^3.10.0",
+    "del": "^3.0.0",
+    "electron": "^2.0.0",
+    "electron-builder": "^20.11.1",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "grpc": "^1.11.3",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.3",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-safe-parser": "^3.0.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.1",
+    "to-string-loader": "^1.1.5",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.3",
+    "webpack-merge": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=8.9.3"
+  }
+}

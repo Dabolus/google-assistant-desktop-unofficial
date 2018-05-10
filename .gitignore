@@ -1,0 +1,8 @@
+.idea/
+.vscode/
+node_modules/
+src/vendor/googleapis/
+src/vendor/gens/
+dev/
+dist/
+**/*.log

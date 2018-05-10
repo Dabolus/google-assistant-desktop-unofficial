@@ -1,0 +1,35 @@
+{
+  "extends": "eslint-config-google",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "max-len": ["error", 120],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }],
+    "curly": ["error", "all"],
+    "comma-dangle": ["error", "always-multiline"],
+    "no-undef": "error",
+    "require-jsdoc": ["error", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": false,
+        "ClassDeclaration": true,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }]
+  }
+}

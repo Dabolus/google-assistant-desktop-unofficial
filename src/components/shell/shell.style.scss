@@ -1,0 +1,143 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+}
+
+:host, :host([theme=light]) {
+  --primary-color: #4285f4;
+  --accent-color: #ea4335;
+  --background-color: var(--paper-grey-50);
+  --background-image: none;
+  --drawer-color: var(--paper-grey-100);
+  --card-color: white;
+  --primary-text-color: rgba(0, 0, 0, .87);
+  --secondary-text-color: rgba(0, 0, 0, .54);
+  --disabled-text-color: rgba(0, 0, 0, .38);
+  --success-color: #00d500;
+  --error-color: #d50000;
+  --divider-color: rgba(0, 0, 0, .12);
+}
+
+#background {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--background-color) var(--background-image) repeat;
+}
+
+app-toolbar {
+  color: var(--primary-text-color);
+}
+
+app-header {
+  color: white;
+  background-color: var(--primary-color);
+
+  paper-icon-button {
+    --paper-icon-button-ink-color: white;
+  }
+}
+
+/* app-drawer {
+  --app-drawer-content-container: {
+    background-color: var(--drawer-color);
+  }
+} */
+
+.flex {
+  flex: 1;
+}
+
+#drawer app-toolbar {
+  color: var(--primary-text-color);
+}
+
+app-header app-toolbar {
+  color: white;
+}
+
+paper-listbox {
+  cursor: pointer;
+  background-color: var(--card-color);
+  color: var(--secondary-text-color);
+
+  & > paper-item {
+    &[focused] {
+      background-color: var(--card-color);
+      color: var(--primary-text-color);
+    }
+    &:hover {
+      background-color: var(--divider-color);
+    }
+  }
+}
+
+.drawer-list {
+  margin: 0 20px;
+
+  a {
+    padding: 0 16px;
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    line-height: 40px;
+
+    &.iron-selected {
+      color: var(--primary-text-color);
+      font-weight: bold;
+    }
+  }
+}
+
+iron-selector > a {
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--divider-color);
+  }
+
+  & > .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 32px;
+  }
+
+  & > .icon, & > span {
+    align-self: center;
+  }
+}
+
+.align-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 !important;
+  padding: 5px !important;
+}
+
+::selection {
+  background-color: var(--divider-color);
+}
+
+:host {
+  display: block;
+}
+
+app-drawer-layout:not([narrow]) [drawer-toggle] {
+  display: none;
+}
+
+app-header {
+  color: #fff;
+  background-color: var(--primary-color);
+
+  paper-icon-button {
+    --paper-icon-button-ink-color: #fff;
+  }
+}
