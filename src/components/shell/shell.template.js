@@ -1,48 +1,45 @@
-import {html} from 'lit-html/lib/lit-extended';
+import { html } from 'lit-html/lib/lit-extended';
+import { store } from '../../store';
+import { updateDrawerState } from '../../actions/shell';
+import { menuIcon } from '../icons';
 
 import style from './shell.style';
 
-export default (shell, props) => html`
+export default (shell, { appTitle, _page, _drawerOpened, _snackbarOpened, _offline }) => html`
   ${html([`<style>${style}</style>`])}
-  <div id="background"></div>
-  <app-location
-      route="${props.route}"
-      url-space-regex="^${props.rootPath}">
-  </app-location>
-  
-  <app-route
-      route="${props.route}"
-      pattern="${props.rootPath}:page"
-      data="${props.routeData}"
-      tail="${props.subroute}">
-  </app-route>
-  
-  <app-drawer-layout fullbleed>
-    <!-- Drawer content -->
-    <app-drawer id="drawer" slot="drawer" persistent opened="${props.drawerOpened}">
-      <app-toolbar>Menu</app-toolbar>
-      <iron-selector selected="${props.page}" attr-for-selected="name" class="drawer-list" role="navigation">
-        <a name="chat" href="${props.rootPath}chat">Chat</a>
-        <a name="view2" href="${props.rootPath}view2">View Two</a>
-        <a name="view3" href="${props.rootPath}view3">View Three</a>
-      </iron-selector>
-    </app-drawer>
-  
-    <!-- Main content -->
-    <app-header-layout has-scrolling-region>
-      <app-header slot="header" condenses reveals effects="waterfall">
-        <app-toolbar>
-          <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-          <div main-title>Google Assistant Desktop</div>
-        </app-toolbar>
-      </app-header>
-  
-      <iron-pages
-          selected="${props.page}"
-          attr-for-selected="name"
-          fallback-selection="chat"
-          role="main">
-        <gad-chat name="chat"></gad-chat>
-      </iron-pages>
-    </app-header-layout>
-  </app-drawer-layout>`;
+  <!-- Header -->
+  <app-header condenses reveals effects="waterfall">
+    <app-toolbar class="toolbar-top">
+      <button class="menu-btn" title="Menu" on-click="${_ => store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
+      <div main-title>${appTitle}</div>
+    </app-toolbar>
+
+    <!-- This gets hidden on a small screen-->
+    <nav class="toolbar-list">
+      <a selected?="${_page === 'view1'}" href="/view1">View One</a>
+      <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
+      <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+    </nav>
+  </app-header>
+
+  <!-- Drawer content -->
+  <app-drawer opened="${_drawerOpened}"
+      on-opened-changed="${e => store.dispatch(updateDrawerState(e.target.opened))}">
+    <nav class="drawer-list">
+      <a selected?="${_page === 'view1'}" href="/view1">View One</a>
+      <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
+      <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+    </nav>
+  </app-drawer>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <my-view1 class="page" active?="${_page === 'view1'}"></my-view1>
+    <my-view2 class="page" active?="${_page === 'view2'}"></my-view2>
+    <my-view3 class="page" active?="${_page === 'view3'}"></my-view3>
+    <my-view404 class="page" active?="${_page === 'view404'}"></my-view404>
+  </main>
+
+  <footer></footer>
+
+  <snack-bar active?="${_snackbarOpened}">You are now ${_offline ? 'offline' : 'online'}.</snack-bar>`;

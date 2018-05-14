@@ -1,143 +1,133 @@
 :host {
+  --app-drawer-width: 256px;
   display: block;
-  overflow-x: hidden;
+
+  --app-primary-color: #E91E63;
+  --app-secondary-color: #293237;
+  --app-dark-text-color: var(--app-secondary-color);
+  --app-light-text-color: white;
+  --app-section-even-color: #f7f7f7;
+  --app-section-odd-color: white;
+
+  --app-header-background-color: white;
+  --app-header-text-color: var(--app-dark-text-color);
+  --app-header-selected-color: var(--app-primary-color);
+
+  --app-drawer-background-color: var(--app-secondary-color);
+  --app-drawer-text-color: var(--app-light-text-color);
+  --app-drawer-selected-color: #78909C;
 }
 
-:host, :host([theme=light]) {
-  --primary-color: #4285f4;
-  --accent-color: #ea4335;
-  --background-color: var(--paper-grey-50);
-  --background-image: none;
-  --drawer-color: var(--paper-grey-100);
-  --card-color: white;
-  --primary-text-color: rgba(0, 0, 0, .87);
-  --secondary-text-color: rgba(0, 0, 0, .54);
-  --disabled-text-color: rgba(0, 0, 0, .38);
-  --success-color: #00d500;
-  --error-color: #d50000;
-  --divider-color: rgba(0, 0, 0, .12);
-}
-
-#background {
-  z-index: -1;
+app-header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--background-color) var(--background-image) repeat;
+  width: 100%;
+  text-align: center;
+  background-color: var(--app-header-background-color);
+  color: var(--app-header-text-color);
+  border-bottom: 1px solid #eee;
 }
 
-app-toolbar {
-  color: var(--primary-text-color);
+.toolbar-top {
+  background-color: var(--app-header-background-color);
 }
 
-app-header {
-  color: white;
-  background-color: var(--primary-color);
-
-  paper-icon-button {
-    --paper-icon-button-ink-color: white;
-  }
+[main-title] {
+  font-family: 'Pacifico';
+  text-transform: lowercase;
+  font-size: 30px;
+  /* In the narrow layout, the toolbar is offset by the width of the
+  drawer button, and the text looks not centered. Add a padding to
+  match that button */
+  padding-right: 44px;
 }
 
-/* app-drawer {
-  --app-drawer-content-container: {
-    background-color: var(--drawer-color);
-  }
-} */
-
-.flex {
-  flex: 1;
-}
-
-#drawer app-toolbar {
-  color: var(--primary-text-color);
-}
-
-app-header app-toolbar {
-  color: white;
-}
-
-paper-listbox {
-  cursor: pointer;
-  background-color: var(--card-color);
-  color: var(--secondary-text-color);
-
-  & > paper-item {
-    &[focused] {
-      background-color: var(--card-color);
-      color: var(--primary-text-color);
-    }
-    &:hover {
-      background-color: var(--divider-color);
-    }
-  }
-}
-
-.drawer-list {
-  margin: 0 20px;
-
-  a {
-    padding: 0 16px;
-    text-decoration: none;
-    color: var(--secondary-text-color);
-    line-height: 40px;
-
-    &.iron-selected {
-      color: var(--primary-text-color);
-      font-weight: bold;
-    }
-  }
-}
-
-iron-selector > a {
-  height: 48px;
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--divider-color);
-  }
-
-  & > .icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 32px;
-  }
-
-  & > .icon, & > span {
-    align-self: center;
-  }
-}
-
-.align-right {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin: 0 !important;
-  padding: 5px !important;
-}
-
-::selection {
-  background-color: var(--divider-color);
-}
-
-:host {
-  display: block;
-}
-
-app-drawer-layout:not([narrow]) [drawer-toggle] {
+.toolbar-list {
   display: none;
 }
 
-app-header {
-  color: #fff;
-  background-color: var(--primary-color);
+.toolbar-list > a {
+  display: inline-block;
+  color: var(--app-header-text-color);
+  text-decoration: none;
+  line-height: 30px;
+  padding: 4px 24px;
+}
 
-  paper-icon-button {
-    --paper-icon-button-ink-color: #fff;
+.toolbar-list > a[selected] {
+  color: var(--app-header-selected-color);
+  border-bottom: 4px solid var(--app-header-selected-color);
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  fill: var(--app-header-text-color);
+  cursor: pointer;
+  height: 44px;
+  width: 44px;
+}
+
+.drawer-list {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background: var(--app-drawer-background-color);
+  position: relative;
+}
+
+.drawer-list > a {
+  display: block;
+  text-decoration: none;
+  color: var(--app-drawer-text-color);
+  line-height: 40px;
+  padding: 0 24px;
+}
+
+.drawer-list > a[selected] {
+  color: var(--app-drawer-selected-color);
+}
+
+.main-content {
+  padding-top: 64px;
+  min-height: 100vh;
+}
+
+.page {
+  display: none;
+}
+
+.page[active] {
+  display: block;
+}
+
+footer {
+  padding: 24px;
+  background: var(--app-drawer-background-color);
+  color: var(--app-drawer-text-color);
+  text-align: center;
+}
+
+/* Wide layout: when the viewport width is bigger than 460px, layout
+changes to a wide layout. */
+@media (min-width: 460px) {
+  .toolbar-list {
+    display: block;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .main-content {
+    padding-top: 107px;
+  }
+
+  /* The drawer button isn't shown in the wide layout, so we don't
+  need to offset the title */
+  [main-title] {
+    padding-right: 0px;
   }
 }

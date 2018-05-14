@@ -1,6 +1,6 @@
-import {app} from 'electron';
+import { app } from 'electron';
 
-import {createShortcuts, updateShortcuts, removeShortcuts} from './shortcut-manager';
+import { createShortcuts, updateShortcuts, removeShortcuts } from './shortcut-manager';
 
 const handleStartupEvent = () => {
   if (process.platform !== 'win32') {

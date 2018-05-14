@@ -1,3 +1,4 @@
+/** */
 class WindowManager {
   constructor() {
     this.windows = {};

@@ -16,6 +16,9 @@
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-syntax-import-meta"
+    "babel-plugin-transform-object-rest-spread",
+    "@babel/plugin-syntax-import-meta",
+    "@babel/plugin-proposal-async-generator-functions",
+    "@babel/plugin-syntax-async-generators"
   ]
 }

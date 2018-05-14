@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
-const {resolve} = require('path');
-const {app} = require('electron');
+const { resolve } = require('path');
+const { app } = require('electron');
 
 /**
  * A class that allows to easily access to the application data,

@@ -1,6 +1,6 @@
-import {app, BrowserWindow} from 'electron';
-import {resolve} from 'path';
-import {format as formatUrl} from 'url';
+import { app, BrowserWindow } from 'electron';
+import { resolve } from 'path';
+import { format as formatUrl } from 'url';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 

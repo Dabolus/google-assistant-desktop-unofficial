@@ -1,82 +1,75 @@
-import {LitElement} from '@polymer/lit-element';
+import { LocalizedLitElement } from '@dabolus/localized-lit-element';
+
 import '@polymer/app-layout/app-drawer/app-drawer';
-import '@polymer/app-layout/app-drawer-layout/app-drawer-layout';
 import '@polymer/app-layout/app-header/app-header';
-import '@polymer/app-layout/app-header-layout/app-header-layout';
-import '@polymer/app-layout/app-scroll-effects/app-scroll-effects';
+import '@polymer/app-layout/app-scroll-effects/effects/waterfall';
 import '@polymer/app-layout/app-toolbar/app-toolbar';
-import '@polymer/app-route/app-location';
-import '@polymer/app-route/app-route';
-import '@polymer/iron-pages/iron-pages';
-import '@polymer/iron-selector/iron-selector';
-import '@polymer/paper-icon-button/paper-icon-button';
-// import settingsStorage from '../../utils/settings-storage';
+import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings';
+
+// import './snack-bar';
+
+import { connect } from 'pwa-helpers/connect-mixin';
+import { installRouter } from 'pwa-helpers/router';
+import { installOfflineWatcher } from 'pwa-helpers/network';
+import { installMediaQueryWatcher } from 'pwa-helpers/media-query';
+import { updateMetadata } from 'pwa-helpers/metadata';
+
+import { store } from '../../store';
+import { navigate, updateOffline, updateLayout } from '../../actions/shell';
 
 import template from './shell.template';
 
 /**
- * Google Assistant Desktop shell
+ * The shell of the Google Assistant Desktop,
  */
-class GADShell extends LitElement {
+class GADShell extends connect(store)(LocalizedLitElement) {
   static get is() {
     return 'gad-shell';
-  }
-
-  static get properties() {
-    return {
-      drawerOpened: {
-        type: Boolean,
-        value: () => {
-          return true;
-          // const lsValue = localStorage.getItem('drawerOpened');
-          // return typeof lsValue === 'boolean' ? lsValue : true;
-        },
-      },
-      page: {
-        type: String,
-        reflectToAttribute: true,
-        observer: '_pageChanged',
-      },
-      routeData: Object,
-      subroute: Object,
-      // This shouldn't be necessary, but the Analyzer isn't picking up
-      // Polymer.Element#rootPath
-      rootPath: String,
-    };
   }
 
   _render(props) {
     return template(this, props);
   }
 
-  ready() {
-    super.ready();
-    /* settingsStorage.getItem('drawerToggled')
-      .then((val) => this._toggleDrawer(val)); */
+
+  static get properties() {
+    return {
+      appTitle: String,
+      _page: String,
+      _drawerOpened: Boolean,
+      _snackbarOpened: Boolean,
+      _offline: Boolean,
+    };
   }
 
-  static get observers() {
-    return [
-      '_routePageChanged(routeData.page)',
-    ];
+  constructor() {
+    super();
+    setPassiveTouchGestures(true);
   }
 
-  _routePageChanged(page) {
-    // If no page was found in the route data, page will be an empty string.
-    // Default to 'chat' in that case.
-    this.page = page || 'chat';
+  _firstRendered() {
+    installRouter((location) => store.dispatch(navigate(window.decodeURIComponent(location.pathname))));
+    installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
+    installMediaQueryWatcher(`(min-width: 460px)`,
+      (matches) => store.dispatch(updateLayout(matches)));
   }
 
-  _pageChanged(page) {
-    // Load page import on demand. Show 404 page if fails
-    import(
-      /* webpackMode: "lazy" */
-      `../${page}/${page}.component`
-    ).catch(() => this._showPage404());
+  _didRender(properties, changeList) {
+    if ('_page' in changeList) {
+      const pageTitle = properties.appTitle + ' - ' + changeList._page;
+      updateMetadata({
+        title: pageTitle,
+        description: pageTitle,
+        // This object also takes an image property, that points to an img src.
+      });
+    }
   }
 
-  _showPage404() {
-    this.page = 'view404';
+  _stateChanged(state) {
+    this._page = state.app.page;
+    this._offline = state.app.offline;
+    this._snackbarOpened = state.app.snackbarOpened;
+    this._drawerOpened = state.app.drawerOpened;
   }
 }
 
