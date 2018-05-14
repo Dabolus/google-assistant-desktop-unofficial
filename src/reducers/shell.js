@@ -1,5 +1,5 @@
 import {
-  UPDATE_PAGE, UPDATE_OFFLINE, OPEN_SNACKBAR, CLOSE_SNACKBAR, UPDATE_DRAWER_STATE,
+  UPDATE_PAGE, UPDATE_OFFLINE, UPDATE_DRAWER_STATE,
 } from '../actions/shell';
 
 const shell = (state = { drawerOpened: false }, action) => {
@@ -18,16 +18,6 @@ const shell = (state = { drawerOpened: false }, action) => {
       return {
         ...state,
         drawerOpened: action.opened,
-      };
-    case OPEN_SNACKBAR:
-      return {
-        ...state,
-        snackbarOpened: true,
-      };
-    case CLOSE_SNACKBAR:
-      return {
-        ...state,
-        snackbarOpened: false,
       };
     default:
       return state;
