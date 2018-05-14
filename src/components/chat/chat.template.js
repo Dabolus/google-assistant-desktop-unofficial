@@ -10,7 +10,7 @@ export default (chat, { appTitle, _page, _drawerOpened, _snackbarOpened, _offlin
   <!-- Header -->
   <app-header condenses reveals effects="waterfall">
     <app-toolbar class="toolbar-top">
-      <button class="menu-btn" title="Menu" on-click="${_ => store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
+      <button class="menu-btn" title="Menu" on-click="${() => store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
       <div main-title>${appTitle}</div>
     </app-toolbar>
 
@@ -23,8 +23,7 @@ export default (chat, { appTitle, _page, _drawerOpened, _snackbarOpened, _offlin
   </app-header>
 
   <!-- Drawer content -->
-  <app-drawer opened="${_drawerOpened}"
-      on-opened-changed="${e => store.dispatch(updateDrawerState(e.target.opened))}">
+  <app-drawer opened="${_drawerOpened}" on-opened-changed="${e => store.dispatch(updateDrawerState(e.target.opened))}">
     <nav class="drawer-list">
       <a selected?="${_page === 'view1'}" href="/view1">View One</a>
       <a selected?="${_page === 'view2'}" href="/view2">View Two</a>

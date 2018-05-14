@@ -1,4 +1,4 @@
-const {resolve} = require('path');
+const { resolve } = require('path');
 const browserSync = require('browser-sync');
 
 browserSync({

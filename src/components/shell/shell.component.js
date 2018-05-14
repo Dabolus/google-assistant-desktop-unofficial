@@ -66,10 +66,10 @@ class GADShell extends connect(store)(LocalizedLitElement) {
   }
 
   _stateChanged(state) {
-    this._page = state.app.page;
-    this._offline = state.app.offline;
-    this._snackbarOpened = state.app.snackbarOpened;
-    this._drawerOpened = state.app.drawerOpened;
+    this._page = state.shell.page;
+    this._offline = state.shell.offline;
+    this._snackbarOpened = state.shell.snackbarOpened;
+    this._drawerOpened = state.shell.drawerOpened;
   }
 }
 
