@@ -66,16 +66,14 @@ app-header {
 
 .main-content {
   padding-top: 64px;
-
-  &, & > * {
-    min-height: calc(100vh - 64px);
-  }
+  min-height: calc(100vh - 64px);
 }
 
 .page {
+  min-height: calc(100vh - 64px);
   display: none;
-}
 
-.page[active] {
-  display: block;
+  &[active] {
+    display: block;
+  }
 }

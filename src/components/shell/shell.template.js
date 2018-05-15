@@ -9,13 +9,13 @@ import '@polymer/app-layout/app-toolbar/app-toolbar';
 
 import style from './shell.style';
 
-export default ({ localize }, { _page, _drawerOpened, _offline }) => html`
+export default (shell, { _page, _headerTitleKey, _headerTitleExtraKey, _drawerOpened, _offline }) => html`
   ${html([`<style>${style}</style>`])}
   <!-- Header -->
   ${_page !== 'wizard' && html`
     <app-header class$="${_page === 'chat' ? '' : 'light'}" condenses reveals effects="waterfall">
       <app-toolbar>
-        <div main-title>google_logo Assistant <sup class="thin">Desktop</sup></div>
+        <div main-title>${shell.localize(_headerTitleKey)} <sup class="thin">${shell.localize(_headerTitleExtraKey)}</sup></div>
         <button class="menu-btn" title="Menu" on-click="${() => store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
       </app-toolbar>
     </app-header>`}

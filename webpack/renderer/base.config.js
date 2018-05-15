@@ -46,6 +46,10 @@ module.exports = {
         from: resolve(__dirname, '../../src/static'),
         to: './static',
       },
+      {
+        from: resolve(__dirname, '../../src/locales'),
+        to: './locales',
+      },
     ]),
   ],
 };

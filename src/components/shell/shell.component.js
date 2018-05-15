@@ -28,12 +28,16 @@ class GADShell extends connect(store)(LocalizedLitElement) {
       _page: String,
       _drawerOpened: Boolean,
       _offline: Boolean,
+      _headerTitleKey: String,
+      _headerTitleExtraKey: String,
     };
   }
 
   constructor() {
     super();
     setPassiveTouchGestures(true);
+    this.globalLocale = window.navigator.language.substr(0, 2);
+    this.loadResourceForLocale(`/locales/shell/${this.globalLocale}.ftl`, this.globalLocale);
   }
 
   _firstRendered() {
@@ -44,6 +48,8 @@ class GADShell extends connect(store)(LocalizedLitElement) {
   _stateChanged(state) {
     this._page = state.shell.page;
     this._offline = state.shell.offline;
+    this._headerTitleKey = state.shell.titleKey;
+    this._headerTitleExtraKey = state.shell.titleExtraKey;
     this._drawerOpened = state.shell.drawerOpened;
   }
 }

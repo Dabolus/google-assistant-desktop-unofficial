@@ -1,5 +1,7 @@
 export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
+export const UPDATE_HEADER_TITLE_KEY = 'UPDATE_HEADER_TITLE_KEY';
+export const UPDATE_HEADER_TITLE_EXTRA_KEY = 'UPDATE_HEADER_TITLE_EXTRA_KEY';
 export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 
 export const navigate = (path) => (dispatch) => {
@@ -9,6 +11,9 @@ export const navigate = (path) => (dispatch) => {
   // Any other info you might want to extract from the path (like page type),
   // you can do here
   dispatch(loadPage(page));
+
+  dispatch(updateHeaderTitleKey(page));
+  dispatch(updateHeaderTitleExtraKey(page));
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
   dispatch(updateDrawerState(false));
@@ -35,12 +40,20 @@ const loadPage = (page) => async (dispatch) => {
   dispatch(updatePage(page));
 };
 
-const updatePage = (page) => {
-  return {
-    type: UPDATE_PAGE,
-    page,
-  };
-};
+const updateHeaderTitleKey = (page) => ({
+  type: UPDATE_HEADER_TITLE_KEY,
+  titleKey: `${page}-title`,
+});
+
+const updateHeaderTitleExtraKey = (page) => ({
+  type: UPDATE_HEADER_TITLE_EXTRA_KEY,
+  titleExtraKey: `${page}-title-extra`,
+});
+
+const updatePage = (page) => ({
+  type: UPDATE_PAGE,
+  page,
+});
 
 export const updateOffline = (offline) => (dispatch, getState) => {
   // Show the snbar, unless this is the first load of the page.
