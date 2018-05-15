@@ -2,7 +2,7 @@ import { LocalizedLitElement } from '@dabolus/localized-lit-element';
 
 import { connect } from 'pwa-helpers/connect-mixin';
 
-import { store } from '../../store';
+import { store } from '~/store';
 
 import template from './chat.template';
 
@@ -18,7 +18,6 @@ class GADChat extends connect(store)(LocalizedLitElement) {
   _render(props) {
     return template(this, props);
   }
-
 
   static get properties() {
     return {

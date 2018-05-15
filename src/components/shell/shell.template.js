@@ -1,7 +1,7 @@
 import { html } from 'lit-html/lib/lit-extended';
-import { store } from '../../store';
-import { updateDrawerState } from '../../actions/shell';
-import { menu as menuIcon } from '../icons';
+import { store } from '~/store';
+import { updateDrawerState } from '~/actions/shell';
+import { menu as menuIcon } from '~/components/icons';
 
 import '@polymer/app-layout/app-header/app-header';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall';

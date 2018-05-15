@@ -22,19 +22,19 @@ export const navigate = (path) => (dispatch) => {
 const loadPage = (page) => async (dispatch) => {
   switch (page) {
     case 'chat':
-      await import('../components/chat/chat.component');
+      await import('~/components/chat/chat.component');
       // Put code here that you want it to run every time when
       // navigate to view1 page and my-view1.js is loaded
       break;
     /* case 'view2':
-      await import('../components/my-view2.js');
+      await import('~/components/my-view2.js');
       break;
     case 'view3':
-      await import('../components/my-view3.js');
+      await import('~/components/my-view3.js');
       break;
     default:
       page = 'view404';
-      await import('../components/my-view404.js');*/
+      await import('~/components/my-view404.js');*/
   }
 
   dispatch(updatePage(page));

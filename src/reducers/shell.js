@@ -1,6 +1,6 @@
 import {
   UPDATE_PAGE, UPDATE_OFFLINE, UPDATE_HEADER_TITLE_KEY, UPDATE_HEADER_TITLE_EXTRA_KEY, UPDATE_DRAWER_STATE,
-} from '../actions/shell';
+} from '~/actions/shell';
 
 const shell = (state = { drawerOpened: false }, action) => {
   switch (action.type) {

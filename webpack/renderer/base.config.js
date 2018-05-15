@@ -20,6 +20,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.css', '.scss', '.sass', '.html'],
+    alias: {
+      '~': resolve(__dirname, '../../src'),
+    },
   },
   module: {
     rules: [

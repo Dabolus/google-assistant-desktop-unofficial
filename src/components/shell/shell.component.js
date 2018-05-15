@@ -3,10 +3,10 @@ import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings';
 
 import { connect } from 'pwa-helpers/connect-mixin';
 import { installOfflineWatcher } from 'pwa-helpers/network';
-import { installRouter } from '../../utils/router';
+import { installRouter } from '~/utils/router';
 
-import { store } from '../../store';
-import { navigate, updateOffline } from '../../actions/shell';
+import { store } from '~/store';
+import { navigate, updateOffline } from '~/actions/shell';
 import { updateMetadata } from 'pwa-helpers/metadata';
 
 import template from './shell.template';
