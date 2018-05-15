@@ -7,6 +7,7 @@ import { installRouter } from '../../utils/router';
 
 import { store } from '../../store';
 import { navigate, updateOffline } from '../../actions/shell';
+import { updateMetadata } from 'pwa-helpers/metadata';
 
 import template from './shell.template';
 
@@ -37,7 +38,14 @@ class GADShell extends connect(store)(LocalizedLitElement) {
     super();
     setPassiveTouchGestures(true);
     this.globalLocale = window.navigator.language.substr(0, 2);
-    this.loadResourceForLocale(`/locales/shell/${this.globalLocale}.ftl`, this.globalLocale);
+    this.loadResourceForLocale(`/locales/shell/${this.globalLocale}.ftl`, this.globalLocale)
+      .then(() => {
+        const localizedTitle = this.localize('app-full-name');
+        updateMetadata({
+          title: localizedTitle,
+          description: localizedTitle,
+        });
+      });
   }
 
   _firstRendered() {
