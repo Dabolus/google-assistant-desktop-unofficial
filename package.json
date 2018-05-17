@@ -17,7 +17,9 @@
     "serve:webpack": "webpack --watch --config ./webpack/dev.config.js",
     "serve:electron": "wait-on http-get://localhost:9000/ && electron dev",
     "serve": "run-p serve:webpack serve:electron",
-    "build": "webpack --config ./webpack/prod.config.js"
+    "build": "webpack --config ./webpack/prod.config.js",
+    "build:win": "yarn run build && electron-builder build --windows",
+    "serve:dist": "electron dist"
   },
   "dependencies": {
     "@dabolus/localized-lit-element": "^0.2.1",
@@ -50,7 +52,7 @@
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
     "electron": "^2.0.0",
-    "electron-builder": "^20.11.1",
+    "electron-builder": "^20.13.4",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "grpc": "^1.11.3",
@@ -65,6 +67,7 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "to-string-loader": "^1.1.5",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "wait-on": "^2.1.0",
     "webpack": "^4.7.0",
     "webpack-cli": "^2.1.3",

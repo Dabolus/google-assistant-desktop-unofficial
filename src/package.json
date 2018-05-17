@@ -1,0 +1,14 @@
+{
+  "name": "google-assistant-desktop",
+  "productName": "Google Assistant Desktop",
+  "version": "0.0.1",
+  "description": "Google Assistant desktop client",
+  "main": "main.js",
+  "author": {
+    "name": "Giorgio Garasto (Dabolus)",
+    "email": "mail@dabolus.app",
+    "url": "https://dabolus.app"
+  },
+  "license": "MIT",
+  "private": true
+}

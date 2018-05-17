@@ -1,14 +1,10 @@
 const { resolve } = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   target: 'electron-main',
   entry: {
     main: resolve(__dirname, '../../src/main'),
-  },
-  output: {
-    filename: '[name].js',
-    chunkFilename: '[id].js',
-    path: resolve(__dirname, '../../dev'),
   },
   resolve: {
     extensions: ['.js'],
@@ -16,4 +12,20 @@ module.exports = {
       '~': resolve(__dirname, '../../src'),
     },
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: resolve(__dirname, '../../src/package.json'),
+        to: '.',
+      },
+      {
+        from: resolve(__dirname, '../../src/static'),
+        to: './static',
+      },
+      {
+        from: resolve(__dirname, '../../src/locales'),
+        to: './locales',
+      },
+    ]),
+  ],
 };

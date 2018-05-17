@@ -38,7 +38,7 @@ class GADShell extends connect(store)(LocalizedLitElement) {
     super();
     setPassiveTouchGestures(true);
     this.globalLocale = window.navigator.language.substr(0, 2);
-    this.loadResourceForLocale(`/locales/shell/${this.globalLocale}.ftl`, this.globalLocale)
+    this.loadResourceForLocale(`locales/shell/${this.globalLocale}.ftl`, this.globalLocale)
       .then(() => {
         const localizedTitle = this.localize('app-full-name');
         updateMetadata({

@@ -1,8 +1,11 @@
 import { app, BrowserWindow } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
+import { readFileSync } from 'fs';
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const packageJson = JSON.parse(readFileSync('./package.json').toString());
+
+const isDevelopment = packageJson.env !== 'production';
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow;
