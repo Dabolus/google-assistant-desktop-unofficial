@@ -23,3 +23,10 @@ declare module 'terser-webpack-plugin' {
     constructor(config?: TerserPluginConfiguration);
   }
 }
+
+declare module '*.styles' {
+  import { TemplateResult } from 'lit-html';
+
+  const content: TemplateResult;
+  export default content;
+}

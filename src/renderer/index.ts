@@ -1,2 +1,1 @@
-import './scripts/main';
-import './styles/main';
+import './components/shell/shell.component';
