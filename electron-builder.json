@@ -2,7 +2,8 @@
   "appId": "app.dabolus.google-assistant-desktop-unofficial",
   "productName": "Google Assistant Desktop (Unofficial)",
   "files": [
-    "**/*.{js,html,css}"
+    "**/*.{js,html,css}",
+    "assets/**/*"
   ],
   "dmg": {
     "contents": [
