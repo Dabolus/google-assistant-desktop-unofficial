@@ -9,6 +9,42 @@ import { smart as smartMerge } from 'webpack-merge';
 import baseConfig from './base.config';
 
 const config: Configuration = smartMerge(baseConfig, {
+  entry: resolve(__dirname, '../src/renderer/components/shell/shell.component'),
+  module: {
+    rules: [
+      {
+        test: /\.s?[ac]ss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'to-lit-html-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-preset-env')(),
+                require('autoprefixer')(),
+              ],
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: ['./node_modules'],
+            },
+          },
+        ],
+      },
+    ],
+  },
   plugins: [
     /* new CopyPlugin([
       // Assets
