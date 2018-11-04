@@ -1,8 +1,11 @@
 import { navigate } from '@actions/app';
+import '@components/bottom-bar/bottom-bar.component';
+import '@components/chat/chat.component';
 import '@components/top-bar/top-bar.component';
 import { html, LitElement, property, PropertyValues } from '@polymer/lit-element';
 import { RootState, store } from '@store';
 import { connect, installRouter, updateMetadata } from 'pwa-helpers';
+import styles from './shell.styles';
 
 class Shell extends connect(store)(LitElement) {
   @property({type: String})
@@ -17,7 +20,10 @@ class Shell extends connect(store)(LitElement) {
 
   protected render() {
     return html`
+      ${styles}
       <gad-top-bar role="heading"></gad-top-bar>
+      <gad-chat></gad-chat>
+      <gad-bottom-bar></gad-bottom-bar>
     `;
   }
 
