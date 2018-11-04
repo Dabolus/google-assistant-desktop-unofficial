@@ -19,7 +19,7 @@ class TopBar extends connect(store)(LitElement) {
     return html`
       ${sharedStyles}
       ${styles}
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Google_Assistant_logo.svg">
+      <img src="assets/google-assistant-logo.svg">
       <div class="heading">
         google_logo
         <span class="ad">Assistant Desktop</span>
