@@ -38,7 +38,10 @@ const config: Configuration = smartMerge(baseConfig, {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: ['./node_modules'],
+              includePaths: [
+                'node_modules',
+                'src/renderer/styles',
+              ],
             },
           },
         ],
