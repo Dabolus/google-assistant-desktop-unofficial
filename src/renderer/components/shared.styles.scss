@@ -1,3 +1,5 @@
+@import 'theme';
+
 :host {
   &, &::before, &::after {
     box-sizing: border-box;
@@ -19,4 +21,14 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+}
+
+input {
+  font-family: 'Roboto';
+  font-size: 1rem;
+  caret-color: $gad-accent-color;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, .12);
+  }
 }
