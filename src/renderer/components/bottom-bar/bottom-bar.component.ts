@@ -11,6 +11,8 @@ class BottomBar extends connect(store)(LitElement) {
     return html`
       ${sharedStyles}
       ${styles}
+      <input type="text" placeholder="Type a message" autofocus>
+      <img src="assets/google-mic.svg">
     `;
   }
 
