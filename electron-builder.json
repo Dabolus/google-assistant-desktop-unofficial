@@ -1,0 +1,36 @@
+{
+  "appId": "app.dabolus.google-assistant-desktop-unofficial",
+  "productName": "Google Assistant Desktop (Unofficial)",
+  "files": [
+    "**/*.{js,html,css}"
+  ],
+  "dmg": {
+    "contents": [
+      {
+        "x": 130,
+        "y": 220
+      },
+      {
+        "x": 410,
+        "y": 220,
+        "type": "link",
+        "path": "/Applications"
+      }
+    ]
+  },
+  "win": {
+    "target": [
+      "nsis",
+      "msi"
+    ]
+  },
+  "linux": {
+    "target": [
+      "deb",
+      "rpm",
+      "snap",
+      "AppImage"
+    ],
+    "category": "Development"
+  }
+}
