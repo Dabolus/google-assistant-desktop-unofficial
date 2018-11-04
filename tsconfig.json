@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "rootDir": ".",
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -14,10 +15,16 @@
       "esnext"
     ],
     "target": "es5",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@components/*": ["renderer/components/*"],
+      "@actions/*": ["renderer/actions/*"],
+      "@reducers/*": ["renderer/reducers/*"],
+      "@store": ["renderer/store"]
+    }
   },
   "include": [
-    "typings/**/*.d.ts",
+    "typings.d.ts",
     "src/**/*.ts"
   ]
 }
