@@ -22,14 +22,20 @@
 
 img {
   height: 65%;
-  margin-right: 16px;
+  padding: 8px;
+  margin-right: 8px;
 }
 
 .heading {
   font-family: 'Product Sans';
+  font-size: 1.2rem;
 
   > span {
-    font-size: .75rem;
+    opacity: .54;
+  }
+
+  > .unofficial {
+    font-size: .9rem;
     font-weight: 100;
   }
 }
