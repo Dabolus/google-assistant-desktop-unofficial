@@ -4,22 +4,36 @@
   position: relative;
   display: flex;
   width: 100%;
-  height: 64px;
+  height: 4rem;
   background: $gad-background-color;
   align-items: center;
-  padding: 16px;
   border-top: 1px solid $gad-divider-color;
   border-bottom: 1px solid $gad-divider-color;
 }
 
 input {
+  padding: 1rem 0 1rem 1rem;
+  display: block;
   border: none;
   outline: none;
   flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
 }
 
-img {
-  height: 65%;
-  padding: 8px;
+div {
+  display: block;
+  padding: .6rem;
+  margin: .65rem;
   flex: 0 0 auto;
+  width: 2.7rem;
+  height: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > img {
+    height: 100%;
+    width: auto;
+  }
 }
