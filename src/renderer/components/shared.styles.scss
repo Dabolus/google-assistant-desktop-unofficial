@@ -5,15 +5,15 @@
     box-sizing: border-box;
     font-feature-settings: 'liga', 'slig';
     -webkit-font-smoothing: antialiased;
-    font-family: 'Google Sans Display';
+    font-family: $gad-display-font;
   }
 }
 
 .material-icons-extended {
-  font-family: 'Material Icons Extended';
+  font-family: $gad-icon-font;
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -24,11 +24,11 @@
 }
 
 input {
-  font-family: 'Roboto';
+  font-family: $gad-text-font;
   font-size: 1rem;
   caret-color: $gad-accent-color;
 
   &::placeholder {
-    color: rgba(0, 0, 0, .12);
+    color: $gad-divider-color;
   }
 }
