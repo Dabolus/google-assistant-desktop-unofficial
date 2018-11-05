@@ -12,7 +12,7 @@ const config: Configuration = {
       '@reducers': resolve(__dirname, '../src/renderer/reducers/'),
       '@store$': resolve(__dirname, '../src/renderer/store.ts'),
     },
-    extensions: ['.ts', '.js', '.scss', '.css', '.ejs'],
+    extensions: ['.ts', '.js', '.scss', '.css', '.ejs', '.json'],
   },
   module: {
     rules: [
@@ -42,6 +42,7 @@ const config: Configuration = {
               ['@babel/proposal-class-properties', {
                 loose: true,
               }],
+              '@babel/syntax-dynamic-import',
             ],
           },
         },
