@@ -1,4 +1,4 @@
-import { UPDATE_PAGE } from '@actions/app';
+import { AppActionType } from '@actions/app';
 import { RootAction } from '@store';
 import { Reducer } from 'redux';
 
@@ -12,7 +12,7 @@ const INITIAL_STATE: AppState = {
 
 export const app: Reducer<AppState, RootAction> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UPDATE_PAGE:
+    case AppActionType.UPDATE_PAGE:
       return {
         ...state,
         page: action.page,

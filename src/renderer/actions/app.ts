@@ -1,13 +1,12 @@
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '../store.js';
-export const UPDATE_PAGE = 'UPDATE_PAGE';
-export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
-export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
-export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
-export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
-export interface AppActionUpdatePage extends Action<'UPDATE_PAGE'> {
+export enum AppActionType {
+  UPDATE_PAGE = 'UPDATE_PAGE',
+}
+
+export interface AppActionUpdatePage extends Action<AppActionType.UPDATE_PAGE> {
   page: string;
 }
 export type AppAction = AppActionUpdatePage;
@@ -28,6 +27,6 @@ const loadPage: ActionCreator<ThunkResult> = (page: string) => (dispatch) => {
 const updatePage: ActionCreator<AppActionUpdatePage> = (page: string) => {
   return {
     page,
-    type: UPDATE_PAGE,
+    type: AppActionType.UPDATE_PAGE,
   };
 };
