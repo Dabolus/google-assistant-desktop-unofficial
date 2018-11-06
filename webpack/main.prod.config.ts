@@ -4,12 +4,10 @@ import { resolve } from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
-import baseConfig from './base.config';
+import mainBaseConfig from './main.base.config';
 
-const config: Configuration = smartMerge(baseConfig, {
+const config: Configuration = smartMerge(mainBaseConfig, {
   mode: 'production',
-  target: 'electron-main',
-  entry: resolve(__dirname, '../src/main/index'),
   output: {
     filename: 'main.js',
     path: resolve(__dirname, '../app'),

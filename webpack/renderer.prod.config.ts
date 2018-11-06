@@ -10,7 +10,6 @@ import rendererBaseConfig from './renderer.base.config';
 
 const config: Configuration = smartMerge(rendererBaseConfig, {
   mode: 'production',
-  target: 'electron-renderer',
   output: {
     filename: 'renderer.js',
     path: resolve(__dirname, '../app'),

@@ -7,7 +7,6 @@ import rendererBaseConfig from './renderer.base.config';
 
 const config: Configuration = smartMerge(rendererBaseConfig, {
   mode: 'development',
-  target: 'electron-renderer',
   devtool: 'eval-source-map',
   output: {
     filename: 'renderer.js',
