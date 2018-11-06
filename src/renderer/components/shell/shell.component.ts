@@ -7,7 +7,7 @@ import { RootState, store } from '@store';
 import { connect, installRouter, updateMetadata } from 'pwa-helpers';
 import styles from './shell.styles';
 
-class Shell extends connect(store)(LitElement) {
+export class Shell extends connect(store)(LitElement) {
   @property({type: String})
   public appTitle = '';
 

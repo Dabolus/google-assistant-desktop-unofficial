@@ -5,7 +5,7 @@ import { RootState, store } from '@store';
 import { connect } from 'pwa-helpers';
 import styles from './top-bar.styles';
 
-class TopBar extends connect(store)(LitElement) {
+export class TopBar extends connect(store)(LitElement) {
   @property({type: Boolean})
   private _menuOpened = false;
 

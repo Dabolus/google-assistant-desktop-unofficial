@@ -4,7 +4,7 @@ import { RootState, store } from '@store';
 import { connect } from 'pwa-helpers';
 import styles from './bottom-bar.styles';
 
-class BottomBar extends connect(store)(LitElement) {
+export class BottomBar extends connect(store)(LitElement) {
   public stateChanged(state: RootState) {}
 
   protected render() {
