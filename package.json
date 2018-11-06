@@ -18,6 +18,7 @@
     "lint": "tslint -p .",
     "format": "tslint -p . --fix",
     "postinstall": "electron-builder install-app-deps",
+    "test": "cross-env NODE_ENV=test jest --projects jest/main.config.js jest/renderer.config.js",
     "test:main": "cross-env NODE_ENV=test jest -c jest/main.config.js",
     "test:renderer": "cross-env NODE_ENV=test jest -c jest/renderer.config.js"
   },
