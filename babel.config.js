@@ -2,8 +2,10 @@ module.exports = {
   presets: [
     ['@babel/env', {
       loose: true,
-      modules: false,
       useBuiltIns: 'usage',
+      ...process.env.NODE_ENV === 'test' ? {} : {
+        modules: false,
+      },
     }],
     '@babel/typescript',
   ],
