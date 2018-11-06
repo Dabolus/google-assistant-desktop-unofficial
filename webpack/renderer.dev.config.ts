@@ -3,9 +3,9 @@ import HtmlPlugin from 'html-webpack-plugin';
 import { resolve } from 'path';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
-import baseConfig from './renderer.base.config';
+import rendererBaseConfig from './renderer.base.config';
 
-const config: Configuration = smartMerge(baseConfig, {
+const config: Configuration = smartMerge(rendererBaseConfig, {
   mode: 'development',
   target: 'electron-renderer',
   devtool: 'eval-source-map',
