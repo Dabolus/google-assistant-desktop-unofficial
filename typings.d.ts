@@ -24,6 +24,21 @@ declare module 'terser-webpack-plugin' {
   }
 }
 
+declare module 'electron-devtools-installer' {
+  export const EMBER_INSPECTOR: any;
+  export const REACT_DEVELOPER_TOOLS: any;
+  export const BACKBONE_DEBUGGER: any;
+  export const JQUERY_DEBUGGER: any;
+  export const ANGULARJS_BATARANG: any;
+  export const VUEJS_DEVTOOLS: any;
+  export const REDUX_DEVTOOLS: any;
+  export const REACT_PERF: any;
+  export const CYCLEJS_DEVTOOL: any;
+  export const MOBX_DEVTOOLS: any;
+  export const APOLLO_DEVELOPER_TOOLS: any;
+  export default function (devTool: any): Promise<any>;
+}
+
 declare module '*.styles' {
   import { TemplateResult } from 'lit-html';
 

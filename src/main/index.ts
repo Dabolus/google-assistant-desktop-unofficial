@@ -11,7 +11,14 @@ function createMainWindow() {
   const window = new BrowserWindow();
 
   if (isDevelopment) {
-    window.webContents.openDevTools();
+    import('electron-devtools-installer')
+      .then(({
+        default: installExtension,
+        REDUX_DEVTOOLS,
+      }) => installExtension(REDUX_DEVTOOLS))
+      .then(() => {
+        window.webContents.openDevTools();
+      });
   }
 
   if (isDevelopment) {

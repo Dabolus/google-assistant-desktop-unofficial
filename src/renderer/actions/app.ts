@@ -4,12 +4,18 @@ import { RootState } from '../store.js';
 
 export enum AppActionType {
   UPDATE_PAGE = 'UPDATE_PAGE',
+  UPDATE_MENU_STATE = 'UPDATE_MENU_STATE',
 }
 
 export interface AppActionUpdatePage extends Action<AppActionType.UPDATE_PAGE> {
   page: string;
 }
-export type AppAction = AppActionUpdatePage;
+
+export interface AppActionUpdateMenuState extends Action<AppActionType.UPDATE_MENU_STATE> {
+  opened: boolean;
+}
+
+export type AppAction = AppActionUpdatePage | AppActionUpdateMenuState;
 
 type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
 
@@ -28,5 +34,12 @@ const updatePage: ActionCreator<AppActionUpdatePage> = (page: string) => {
   return {
     page,
     type: AppActionType.UPDATE_PAGE,
+  };
+};
+
+export const updateMenuState: ActionCreator<AppActionUpdateMenuState> = (opened: boolean) => {
+  return {
+    opened,
+    type: AppActionType.UPDATE_MENU_STATE,
   };
 };
