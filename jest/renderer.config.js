@@ -1,4 +1,5 @@
 module.exports = {
+  rootDir: '..',
   testEnvironment: '@skatejs/ssr/jest',
   transform: {
     '.+\\.[tj]s$': 'babel-jest',
@@ -13,8 +14,8 @@ module.exports = {
     '@reducers/(.*)': '<rootDir>/src/renderer/reducers/$1',
     '@store': '<rootDir>/src/renderer/store',
   },
-  moduleFileExtensions: ['ts', 'js', 'scss', 'css', 'ejs', 'json'],
+  moduleFileExtensions: ['ts', 'js', 'scss', 'sass', 'css', 'ejs', 'html'],
   testMatch: [
-    '<rootDir>/src/**/*.spec.ts',
+    '<rootDir>/src/renderer/**/*.spec.ts',
   ],
 };
