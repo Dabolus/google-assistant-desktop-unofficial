@@ -9,7 +9,17 @@ import { smart as smartMerge } from 'webpack-merge';
 import baseConfig from './base.config';
 
 const config: Configuration = smartMerge(baseConfig, {
+  target: 'electron-renderer',
   entry: resolve(__dirname, '../src/renderer/components/shell/shell.component'),
+  resolve: {
+    alias: {
+      '@components': resolve(__dirname, '../src/renderer/components/'),
+      '@actions': resolve(__dirname, '../src/renderer/actions/'),
+      '@reducers': resolve(__dirname, '../src/renderer/reducers/'),
+      '@store$': resolve(__dirname, '../src/renderer/store.ts'),
+    },
+    extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
+  },
   module: {
     rules: [
       {
