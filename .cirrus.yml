@@ -12,7 +12,7 @@ task:
   windows_container:
     image: cirrusci/windowsservercore:2016
   yarn_install_script:
-    - powershell -Command "Invoke-WebRequest https://yarnpkg.com/latest.msi -OutFile $env:TEMP\yarn.msi"
+    - powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://yarnpkg.com/latest.msi -OutFile $env:TEMP\yarn.msi"
     - msiexec /i "$TEMP\yarn.msi" /quiet
   install_script: yarn
   lint_script: yarn lint
