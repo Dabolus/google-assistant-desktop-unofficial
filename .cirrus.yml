@@ -1,0 +1,34 @@
+task:
+  name: Linux
+  container:
+    image: node:10-alpine
+  install_script: yarn
+  lint_script: yarn lint
+  test_script: yarn test
+  build_script: yarn build
+
+task:
+  name: Windows
+  windows_container:
+    image: cirrusci/windowsservercore:2016
+  yarn_install_script:
+    - powershell -Command "Invoke-WebRequest https://yarnpkg.com/latest.msi -OutFile $env:TEMP\yarn.msi"
+    - msiexec /i "$TEMP\yarn.msi" /quiet
+  install_script: yarn
+  lint_script: yarn lint
+  test_script: yarn test
+  build_script: yarn build
+
+task:
+  name: macOS
+  osx_instance:
+    image: mojave-base
+  env:
+    HOMEBREW_NO_AUTO_UPDATE: 1
+  yarn_install_script:
+    - brew install yarn
+    - brew link --force yarn
+  install_script: yarn
+  lint_script: yarn lint
+  test_script: yarn test
+  build_script: yarn build
