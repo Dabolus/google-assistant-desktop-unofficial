@@ -1,26 +1,49 @@
+# global default
+container:
+  image: node:10-alpine
+
 task:
-  name: Linux
-  container:
-    image: node:10-alpine
-  install_script: yarn
+  name: Lint
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
   lint_script: yarn lint
-  test_script: yarn test
+
+task:
+  name: Test
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  lint_script: yarn test
+
+task:
+  name: Linux build
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
   build_script: yarn build
 
 task:
-  name: Windows
+  name: Windows build
   windows_container:
     image: cirrusci/windowsservercore:2016
+  depends_on:
+    - Lint
+    - Test
   yarn_install_script:
-    - powershell -Command "Invoke-WebRequest https://yarnpkg.com/latest.msi -OutFile $env:TEMP\yarn.msi"
-    - msiexec /i "$TEMP\yarn.msi" /quiet
-  install_script: yarn
-  lint_script: yarn lint
-  test_script: yarn test
+    - powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://yarnpkg.com/latest.msi -OutFile $env:TEMP\yarn.msi"
+    - msiexec /i "%TEMP%\yarn.msi" /quiet
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: type yarn.lock
+    populate_script: yarn install
   build_script: yarn build
 
 task:
-  name: macOS
+  name: macOS build
   osx_instance:
     image: mojave-base
   env:
@@ -28,7 +51,21 @@ task:
   yarn_install_script:
     - brew install yarn
     - brew link --force yarn
-  install_script: yarn
-  lint_script: yarn lint
-  test_script: yarn test
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
   build_script: yarn build
+
+task:
+  name: Publish
+  depends_on:
+    - Linux build
+    - Windows build
+    - macOS build
+  only_if: $BRANCH == "master"
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  publish_script: echo "Publish!"

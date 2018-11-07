@@ -29,8 +29,6 @@ export class TopBar extends connect(store)(LitElement) {
     `;
   }
 
-  protected updated(changedProps: PropertyValues) {}
-
   private _menuButtonClicked() {
     store.dispatch(updateMenuState(!this._menuOpened));
   }

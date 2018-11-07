@@ -5,8 +5,6 @@ import { connect } from 'pwa-helpers';
 import styles from './bottom-bar.styles';
 
 export class BottomBar extends connect(store)(LitElement) {
-  public stateChanged(state: RootState) {}
-
   protected render() {
     return html`
       ${sharedStyles}
@@ -17,8 +15,6 @@ export class BottomBar extends connect(store)(LitElement) {
       </div>
     `;
   }
-
-  protected updated(changedProps: PropertyValues) {}
 }
 
 window.customElements.define('gad-bottom-bar', BottomBar);
