@@ -21,7 +21,7 @@ task:
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
   codeclimate_before_test_script:
-    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - wget -c https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -O cc-test-reporter
     - chmod +x ./cc-test-reporter
     - ./cc-test-reporter before-build
   test_script: yarn test
