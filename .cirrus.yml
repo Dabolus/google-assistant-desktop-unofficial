@@ -12,11 +12,20 @@ task:
 
 task:
   name: Test
+  env:
+    CC_TEST_REPORTER_ID: ENCRYPTED[c24ecdbc2beed1837ff7c8f0b571e5bb29eaa542012c6839844fb6f17ebbd46532bb1ea4b20c9580ecc2ef995b6275d1]
+    GIT_COMMIT_SHA: $CIRRUS_CHANGE_IN_REPO
+    GIT_BRANCH: $CIRRUS_BRANCH
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
-  lint_script: yarn test
+  codeclimate_before_test_script:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter before-build
+  test_script: yarn test
+  codeclimate_after_test_script: ./cc-test-reporter after-build --exit-code $?
 
 task:
   name: Linux build
