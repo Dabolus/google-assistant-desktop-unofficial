@@ -21,6 +21,7 @@ task:
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
   codeclimate_before_test_script:
+    - apk add --no-cache git openssh
     - wget -c https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -O cc-test-reporter
     - chmod +x ./cc-test-reporter
     - ./cc-test-reporter before-build
