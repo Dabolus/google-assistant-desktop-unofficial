@@ -1,16 +1,43 @@
-@import 'theme';
-
 :host, * {
+  --gad-primary-color: #fff;
+  --gad-accent-color: #1a73e8;
+  --gad-background-color: #fff;
+  --gad-card-color: #fff;
+  --gad-primary-opacity: .87;
+  --gad-secondary-opacity: .6;
+  --gad-disabled-opacity: .38;
+  --gad-divider-opacity: .12;
+  --gad-backdrop-opacity: .54;
+  --gad-primary-text-color: rgba(0, 0, 0, var(--gad-primary-opacity));
+  --gad-secondary-text-color: rgba(0, 0, 0, var(--gad-secondary-opacity));
+  --gad-disabled-text-color: rgba(0, 0, 0, var(--gad-disabled-opacity));
+  --gad-divider-color: rgba(0, 0, 0, var(--gad-divider-opacity));
+  --gad-backdrop-color: rgba(0, 0, 0, var(--gad-backdrop-opacity));
+  --gad-text-on-accent-color: #fff;
+  --gad-error-text-color: #b00020;
+  --gad-text-font: 'Roboto';
+  --gad-display-font: 'Google Sans Display';
+  --gad-logo-font: 'Product Sans';
+  --gad-icon-font: 'Material Icons Extended';
+  --gad-border-radius-sm: .25rem;
+  --gad-border-radius-lg: .5rem;
+
+  // Needed by Material Design Components
+  --mdc-theme-primary: var(--gad-primary-color);
+  --mdc-theme-secondary: var(--gad-accent-color);
+  --mdc-theme-surface: var(--gad-card-color);
+  --mdc-theme-background: var(--gad-background-color);
+
+
   &, &::before, &::after {
     box-sizing: border-box;
     font-feature-settings: 'liga', 'slig';
     -webkit-font-smoothing: antialiased;
-    font-family: $gad-display-font;
   }
 }
 
 .material-icons-extended {
-  font-family: $gad-icon-font;
+  font-family: var(--gad-icon-font);
   font-weight: normal;
   font-style: normal;
   font-size: 1.5rem;
@@ -24,11 +51,25 @@
 }
 
 input {
-  font-family: $gad-text-font;
+  font-family: var(--gad-text-font);
   font-size: 1rem;
-  caret-color: $gad-accent-color;
+  caret-color: var(--gad-accent-color);
 
   &::placeholder {
-    color: $gad-divider-color;
+    color: var(--gad-divider-color);
   }
+}
+
+h2 {
+  font-family: var(--gad-display-font);
+  color: var(--gad-primary-text-color);
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin: 1.5rem 0 1rem 0;
+  padding: 0;
+}
+
+mwc-button {
+  text-transform: none;
+  font-family: var(--gad-display-font);
 }

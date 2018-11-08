@@ -7,18 +7,17 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow: BrowserWindow | null;
 
+async function configureDevTools(window: BrowserWindow) {
+  const { default: installExtension, REDUX_DEVTOOLS } = await import('electron-devtools-installer');
+  await installExtension(REDUX_DEVTOOLS);
+  window.webContents.openDevTools();
+}
+
 function createMainWindow() {
   const window = new BrowserWindow();
 
   if (isDevelopment) {
-    import('electron-devtools-installer')
-      .then(({
-        default: installExtension,
-        REDUX_DEVTOOLS,
-      }) => installExtension(REDUX_DEVTOOLS))
-      .then(() => {
-        window.webContents.openDevTools();
-      });
+    configureDevTools(window);
   }
 
   if (isDevelopment) {
@@ -33,13 +32,6 @@ function createMainWindow() {
 
   window.on('closed', () => {
     mainWindow = null;
-  });
-
-  window.webContents.on('devtools-opened', () => {
-    window.focus();
-    setImmediate(() => {
-      window.focus();
-    });
   });
 
   return window;
