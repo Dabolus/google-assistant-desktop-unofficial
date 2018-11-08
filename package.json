@@ -7,7 +7,7 @@
   "license": "Unlicense",
   "private": true,
   "scripts": {
-    "start": "run-p start:electron start:main start:renderer",
+    "start": "cross-env ELECTRON_DISABLE_SECURITY_WARNINGS=1 run-p start:electron start:main start:renderer",
     "start:electron": "wait-on http://localhost:8080 && cp package.json node_modules/.build && electron node_modules/.build",
     "start:main": "webpack -w --config webpack/main.dev.config.ts",
     "start:renderer": "webpack-dev-server --config webpack/renderer.dev.config.ts --hot --color --compress --overlay",
