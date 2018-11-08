@@ -1,6 +1,7 @@
 button {
   border: none;
   outline: none;
+  cursor: pointer;
   font-family: var(--gad-display-font);
   background: var(--gad-accent-color);
   color: var(--gad-text-on-accent-color);
@@ -9,4 +10,10 @@ button {
   letter-spacing: .015625rem;
   height: 2.25rem;
   padding: 0 1rem;
+}
+
+:host([disabled]) button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: var(--gad-disabled-opacity);
 }
