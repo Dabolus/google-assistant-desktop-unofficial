@@ -50,7 +50,8 @@
   direction: ltr;
 }
 
-input {
+input, textarea {
+  resize: none;
   font-family: var(--gad-text-font);
   font-size: 1rem;
   caret-color: var(--gad-accent-color);
@@ -69,7 +70,27 @@ h2 {
   padding: 0;
 }
 
+h4 {
+  font-family: var(--gad-display-font);
+  color: var(--gad-primary-text-color);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: .75rem 0 .5rem 0;
+}
+
 mwc-button {
   text-transform: none;
   font-family: var(--gad-display-font);
+}
+
+a {
+  &, &:visited {
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--gad-accent-color);
+  }
+
+  &:hover, &:active, &:focus {
+    text-decoration: underline;
+  }
 }
