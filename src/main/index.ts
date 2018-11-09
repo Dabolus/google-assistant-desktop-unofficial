@@ -14,7 +14,11 @@ async function configureDevTools(window: BrowserWindow) {
 }
 
 function createMainWindow() {
-  const window = new BrowserWindow();
+  const window = new BrowserWindow({
+    center: true,
+    minWidth: 360,
+    minHeight: 540,
+  });
 
   if (isDevelopment) {
     configureDevTools(window);
