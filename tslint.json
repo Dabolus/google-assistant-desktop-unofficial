@@ -12,10 +12,14 @@
       "single"
     ],
     "array-type": [true, "array-simple"],
-    "ban": [true,
-      {"name": "Array", "message": "tsstyle#array-constructor"}
+    "ban": [
+      true, {
+        "name": "Array",
+        "message": "tsstyle#array-constructor"
+      }
     ],
-    "ban-types": [true,
+    "ban-types": [
+      true,
       ["Object", "Use {} instead."],
       ["String", "Use 'string' instead."],
       ["Number", "Use 'number' instead."],
