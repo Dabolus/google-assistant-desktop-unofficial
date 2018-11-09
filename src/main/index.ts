@@ -21,11 +21,8 @@ function createMainWindow() {
   });
 
   if (isDevelopment) {
-    configureDevTools(window);
-  }
-
-  if (isDevelopment) {
     window.loadURL(`http://localhost:8080`);
+    configureDevTools(window);
   } else {
     window.loadURL(formatUrl({
       pathname: resolve(__dirname, 'index.html'),
