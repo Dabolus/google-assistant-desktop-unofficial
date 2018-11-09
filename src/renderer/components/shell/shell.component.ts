@@ -8,10 +8,10 @@ import { connect, installRouter, updateMetadata } from 'pwa-helpers';
 import styles from './shell.styles';
 
 export class Shell extends connect(store)(LitElement) {
-  @property({type: String})
-  public appTitle = '';
+  public static properties = {
+    _page: { type: String },
+  };
 
-  @property({type: String})
   private _page = '';
 
   public stateChanged(state: RootState) {
@@ -29,16 +29,6 @@ export class Shell extends connect(store)(LitElement) {
 
   protected firstUpdated() {
     installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
-  }
-
-  protected updated(changedProps: PropertyValues) {
-    if (changedProps.has('_page')) {
-      const pageTitle = this.appTitle + ' - ' + this._page;
-      updateMetadata({
-        description: pageTitle,
-        title: pageTitle,
-      });
-    }
   }
 }
 
