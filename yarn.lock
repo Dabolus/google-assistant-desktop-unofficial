@@ -9025,10 +9025,10 @@ to-fast-properties@^2.0.0:
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
 
-to-lit-html-loader@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/to-lit-html-loader/-/to-lit-html-loader-0.0.4.tgz#e31ac3be3d5f33dc50ac126378d92491ac2585cb"
-  integrity sha512-/fI4YFpP7Y+Q2EjkjvS+Ag5HkyOtPK4LyTgW0/1APFwehg7x/pId9EOcAZtdWCqZ1Lb0zs3py9mMYG0Q/iO7vA==
+to-lit-html-loader@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/to-lit-html-loader/-/to-lit-html-loader-0.1.0.tgz#1d8954c3d7498ac38446bd9f26345e63f1dbf1b1"
+  integrity sha512-vIbZovW9E/LO8RAXty3Wq3mPaxTBKCJzBuKHcLWUzT95Gw8TZRv772lcY1bQkt3ul8QD3DTBsUHx+tife9lTiw==
   dependencies:
     loader-utils "^1.1.0"
 
