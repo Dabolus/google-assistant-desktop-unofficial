@@ -14,9 +14,6 @@ module.exports = {
       corejs: 2,
       sourceType: 'unambiguous',
     }],
-    ['@babel/proposal-decorators', {
-      legacy: true,
-    }],
     ['@babel/proposal-class-properties', {
       loose: true,
     }],
