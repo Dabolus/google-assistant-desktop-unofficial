@@ -55,6 +55,10 @@ input, textarea {
   font-family: var(--gad-text-font);
   font-size: 1rem;
   caret-color: var(--gad-accent-color);
+  border-radius: var(--gad-border-radius-sm);
+  padding: .5rem;
+  outline: none;
+  border: 1px solid var(--gad-disabled-text-color);
 
   &::placeholder {
     color: var(--gad-divider-color);
