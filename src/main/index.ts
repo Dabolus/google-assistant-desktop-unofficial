@@ -14,14 +14,15 @@ async function configureDevTools(window: BrowserWindow) {
 }
 
 function createMainWindow() {
-  const window = new BrowserWindow();
-
-  if (isDevelopment) {
-    configureDevTools(window);
-  }
+  const window = new BrowserWindow({
+    center: true,
+    minWidth: 360,
+    minHeight: 540,
+  });
 
   if (isDevelopment) {
     window.loadURL(`http://localhost:8080`);
+    configureDevTools(window);
   } else {
     window.loadURL(formatUrl({
       pathname: resolve(__dirname, 'index.html'),

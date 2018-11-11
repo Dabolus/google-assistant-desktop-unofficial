@@ -6,7 +6,10 @@ import { connect } from 'pwa-helpers';
 import styles from './top-bar.styles';
 
 export class TopBar extends connect(store)(LitElement) {
-  @property({type: Boolean})
+  public static properties = {
+    _menuOpened: { type: Boolean },
+  };
+
   private _menuOpened = false;
 
   public stateChanged(state: RootState) {

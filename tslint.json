@@ -2,18 +2,24 @@
   "extends": "tslint:recommended",
   "rules": {
     "max-line-length": [
-      true,
-      100
+      true, {
+        "limit": 100,
+        "ignore-pattern": "^import |^export {(.*?)}|class [a-zA-Z]+ implements |//|/\\*"
+      }
     ],
     "quotemark": [
       true,
       "single"
     ],
     "array-type": [true, "array-simple"],
-    "ban": [true,
-      {"name": "Array", "message": "tsstyle#array-constructor"}
+    "ban": [
+      true, {
+        "name": "Array",
+        "message": "tsstyle#array-constructor"
+      }
     ],
-    "ban-types": [true,
+    "ban-types": [
+      true,
       ["Object", "Use {} instead."],
       ["String", "Use 'string' instead."],
       ["Number", "Use 'number' instead."],
