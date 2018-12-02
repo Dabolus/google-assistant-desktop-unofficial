@@ -28,7 +28,8 @@ export type RootAction = AppAction;
 // Sets up a Chrome extension for time travel debugging.
 // See https://github.com/zalmoxisus/redux-devtools-extension for more information.
 const devCompose: <Ext0, Ext1, StateExt0, StateExt1>(
-  f1: StoreEnhancer<Ext0, StateExt0>, f2: StoreEnhancer<Ext1, StateExt1>,
+  f1: StoreEnhancer<Ext0, StateExt0>,
+  f2: StoreEnhancer<Ext1, StateExt1>,
 ) => StoreEnhancer<Ext0 & Ext1, StateExt0 & StateExt1> =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

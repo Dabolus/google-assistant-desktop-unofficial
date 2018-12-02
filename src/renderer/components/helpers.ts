@@ -14,7 +14,7 @@ export function property(options?: PropertyDeclaration<any>):
       ...elementDescriptor,
       key,
       finisher(clazz: typeof LitElement) {
-          clazz.createProperty(name, options);
+        clazz.createProperty(name, options);
       },
     };
   };
