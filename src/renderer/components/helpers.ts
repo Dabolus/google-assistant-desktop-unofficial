@@ -1,4 +1,4 @@
-import { Constructor, LitElement, PropertyDeclaration } from '@polymer/lit-element';
+import { LitElement, PropertyDeclaration } from '@polymer/lit-element';
 
 // A property decorator that works with Babel.
 // See https://github.com/Polymer/lit-element/issues/205
