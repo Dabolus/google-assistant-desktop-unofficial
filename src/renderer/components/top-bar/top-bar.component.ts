@@ -1,15 +1,14 @@
 import { updateMenuState } from '@actions/app';
+import { customElement, property } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
-import { html, LitElement, property, PropertyValues } from '@polymer/lit-element';
+import { html, LitElement } from '@polymer/lit-element';
 import { RootState, store } from '@store';
 import { connect } from 'pwa-helpers';
 import styles from './top-bar.styles';
 
+@customElement('gad-top-bar')
 export class TopBar extends connect(store)(LitElement) {
-  public static properties = {
-    _menuOpened: { type: Boolean },
-  };
-
+  @property({ type: Boolean })
   private _menuOpened = false;
 
   public stateChanged(state: RootState) {
@@ -37,4 +36,8 @@ export class TopBar extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('gad-top-bar', TopBar);
+declare global {
+  interface HTMLElementTagNameMap {
+      'gad-top-bar': TopBar;
+  }
+}

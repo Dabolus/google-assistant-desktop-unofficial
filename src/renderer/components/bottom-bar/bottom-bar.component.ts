@@ -1,9 +1,11 @@
+import { customElement } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
-import { html, LitElement, property, PropertyValues } from '@polymer/lit-element';
-import { RootState, store } from '@store';
+import { html, LitElement } from '@polymer/lit-element';
+import { store } from '@store';
 import { connect } from 'pwa-helpers';
 import styles from './bottom-bar.styles';
 
+@customElement('gad-bottom-bar')
 export class BottomBar extends connect(store)(LitElement) {
   protected render() {
     return html`
@@ -17,4 +19,8 @@ export class BottomBar extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('gad-bottom-bar', BottomBar);
+declare global {
+  interface HTMLElementTagNameMap {
+    'gad-bottom-bar': BottomBar;
+  }
+}

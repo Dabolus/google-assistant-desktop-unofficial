@@ -1,8 +1,10 @@
+import { customElement } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
 import '@material/mwc-ripple';
 import { html, LitElement } from '@polymer/lit-element';
 import styles from './button.styles';
 
+@customElement('gad-button')
 export class Button extends LitElement {
   protected render() {
     return html`
@@ -16,4 +18,8 @@ export class Button extends LitElement {
   }
 }
 
-window.customElements.define('gad-button', Button);
+declare global {
+  interface HTMLElementTagNameMap {
+    'gad-button': Button;
+  }
+}

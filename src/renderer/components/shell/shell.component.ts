@@ -1,17 +1,16 @@
 import { navigate } from '@actions/app';
 import '@components/bottom-bar/bottom-bar.component';
 import '@components/chat/chat.component';
+import { customElement, property } from '@components/helpers';
 import '@components/top-bar/top-bar.component';
-import { html, LitElement, property, PropertyValues } from '@polymer/lit-element';
+import { html, LitElement } from '@polymer/lit-element';
 import { RootState, store } from '@store';
-import { connect, installRouter, updateMetadata } from 'pwa-helpers';
+import { connect, installRouter } from 'pwa-helpers';
 import styles from './shell.styles';
 
+@customElement('gad-shell')
 export class Shell extends connect(store)(LitElement) {
-  public static properties = {
-    _page: { type: String },
-  };
-
+  @property({ type: String })
   private _page = '';
 
   public stateChanged(state: RootState) {
@@ -32,4 +31,8 @@ export class Shell extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('gad-shell', Shell);
+declare global {
+  interface HTMLElementTagNameMap {
+      'gad-shell': Shell;
+  }
+}

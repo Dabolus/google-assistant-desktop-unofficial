@@ -1,9 +1,11 @@
+import { customElement } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
-import { html, LitElement, PropertyValues } from '@polymer/lit-element';
-import { RootState, store } from '@store';
+import { html, LitElement } from '@polymer/lit-element';
+import { store } from '@store';
 import { connect } from 'pwa-helpers';
 import styles from './chat.styles';
 
+@customElement('gad-chat')
 export class Chat extends connect(store)(LitElement) {
   protected render() {
     return html`
@@ -13,4 +15,8 @@ export class Chat extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('gad-chat', Chat);
+declare global {
+  interface HTMLElementTagNameMap {
+    'gad-chat': Chat;
+  }
+}
