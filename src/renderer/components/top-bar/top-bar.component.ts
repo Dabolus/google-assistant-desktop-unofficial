@@ -38,6 +38,6 @@ export class TopBar extends connect(store)(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-      'gad-top-bar': TopBar;
+    'gad-top-bar': TopBar;
   }
 }

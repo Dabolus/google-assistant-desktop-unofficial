@@ -33,6 +33,6 @@ export class Shell extends connect(store)(LitElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-      'gad-shell': Shell;
+    'gad-shell': Shell;
   }
 }
