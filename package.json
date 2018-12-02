@@ -54,6 +54,7 @@
     "autoprefixer": "^9.3.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "babel-plugin-template-html-minifier": "^2.1.2",
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
