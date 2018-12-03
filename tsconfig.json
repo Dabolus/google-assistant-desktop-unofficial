@@ -18,9 +18,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@components/*": ["renderer/components/*"],
-      "@actions/*": ["renderer/actions/*"],
-      "@reducers/*": ["renderer/reducers/*"],
-      "@store": ["renderer/store"]
+      "@store/*": ["store/*"]
     }
   },
   "include": [

@@ -14,9 +14,7 @@ const config: Configuration = smartMerge(baseConfig, {
   resolve: {
     alias: {
       '@components': resolve(__dirname, '../src/renderer/components/'),
-      '@actions': resolve(__dirname, '../src/renderer/actions/'),
-      '@reducers': resolve(__dirname, '../src/renderer/reducers/'),
-      '@store$': resolve(__dirname, '../src/renderer/store.ts'),
+      '@store': resolve(__dirname, '../src/store/'),
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
   },
