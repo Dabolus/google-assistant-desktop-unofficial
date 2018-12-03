@@ -6,14 +6,14 @@ import {
   triggerAlias,
 } from 'electron-redux';
 import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
-import promise from 'redux-promise';
+import promiseMiddleware from 'redux-promise-middleware';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
 import { StoreConfig } from './store.model';
 
 const getMiddlewares = (scope: 'main' | 'renderer'): Middleware[] => {
   const baseMiddlewares = [
-    promise,
+    promiseMiddleware(),
   ];
   return scope === 'main' ? [
     triggerAlias,
