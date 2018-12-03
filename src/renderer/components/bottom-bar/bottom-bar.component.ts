@@ -1,7 +1,7 @@
 import { customElement } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
 import { html, LitElement } from '@polymer/lit-element';
-import { store } from '@store';
+import { store } from '@renderer-store';
 import { connect } from 'pwa-helpers';
 import styles from './bottom-bar.styles';
 

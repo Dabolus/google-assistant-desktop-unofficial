@@ -1,10 +1,11 @@
-import { navigate } from '@actions/app';
 import '@components/bottom-bar/bottom-bar.component';
 import '@components/chat/chat.component';
 import { customElement, property } from '@components/helpers';
 import '@components/top-bar/top-bar.component';
 import { html, LitElement } from '@polymer/lit-element';
-import { RootState, store } from '@store';
+import { store } from '@renderer-store';
+import { navigate } from '@shared/store/app/app.actions';
+import { RootState } from '@shared/store/root/root.model';
 import { connect, installRouter } from 'pwa-helpers';
 import styles from './shell.styles';
 

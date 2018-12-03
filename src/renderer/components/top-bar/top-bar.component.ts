@@ -1,8 +1,9 @@
-import { updateMenuState } from '@actions/app';
 import { customElement, property } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
 import { html, LitElement } from '@polymer/lit-element';
-import { RootState, store } from '@store';
+import { store } from '@renderer-store';
+import { updateMenuState } from '@shared/store/app/app.actions';
+import { RootState } from '@shared/store/root/root.model';
 import { connect } from 'pwa-helpers';
 import styles from './top-bar.styles';
 
