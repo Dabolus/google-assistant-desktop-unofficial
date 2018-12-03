@@ -7,7 +7,9 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/',
   ],
-  moduleNameMapper: {},
+  moduleNameMapper: {
+    '@shared/(.*)': '<rootDir>/src/shared/$1',
+  },
   moduleFileExtensions: ['ts', 'js', 'json'],
   testMatch: [
     '<rootDir>/src/main/**/*.spec.ts',
