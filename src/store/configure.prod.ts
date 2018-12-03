@@ -6,7 +6,6 @@ import {
   triggerAlias,
 } from 'electron-redux';
 import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
-import { createLogger } from 'redux-logger';
 import promise from 'redux-promise';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
