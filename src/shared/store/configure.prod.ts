@@ -31,7 +31,7 @@ const replayAction = (scope: 'main' | 'renderer', store: Store<RootState>): Stor
 
 export const configure = (
   scope: 'main' | 'renderer',
-  initialState: StoreConfig,
+  { initialState }: StoreConfig,
 ): Store<RootState> => {
   const middlewares = getMiddlewares(scope);
   const enhancer = compose(applyMiddleware(...middlewares));
