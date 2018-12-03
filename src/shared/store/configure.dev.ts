@@ -21,7 +21,7 @@ declare global {
 
 // Sets up a Chrome extension for time travel debugging.
 // See https://github.com/zalmoxisus/redux-devtools-extension for more information.
-const devCompose: typeof compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const devCompose: typeof compose = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enableReducerHotReload = (store: Store<RootState>) => {
   if (module.hot) {
