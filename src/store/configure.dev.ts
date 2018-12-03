@@ -5,12 +5,23 @@ import {
   replayActionRenderer,
   triggerAlias,
 } from 'electron-redux';
-import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+import { applyMiddleware, compose, createStore, Middleware, Store, StoreEnhancer } from 'redux';
 import { createLogger } from 'redux-logger';
 import promise from 'redux-promise';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
 import { StoreConfig } from './store.model';
+
+declare global {
+  interface Window {
+    process?: any;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
+// Sets up a Chrome extension for time travel debugging.
+// See https://github.com/zalmoxisus/redux-devtools-extension for more information.
+const devCompose: typeof compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enableReducerHotReload = (store: Store<RootState>) => {
   if (module.hot) {
