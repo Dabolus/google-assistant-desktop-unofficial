@@ -58,7 +58,7 @@ export const configure = (
   initialState: StoreConfig,
 ): Store<RootState> => {
   const middlewares = getMiddlewares(scope);
-  const enhancer = compose(applyMiddleware(...middlewares));
+  const enhancer = devCompose(applyMiddleware(...middlewares));
 
   const store = createStore(rootReducer, initialState, enhancer);
 
