@@ -1,4 +1,4 @@
-import { AppState } from '@store/app/app.model';
+import { AppState } from '../app/app.model';
 
 export interface RootState {
   app: AppState;

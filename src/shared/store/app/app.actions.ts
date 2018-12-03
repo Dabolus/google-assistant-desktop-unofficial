@@ -1,5 +1,5 @@
-import { FluxStandardAction } from '@store/store.model';
 import { ActionCreator } from 'redux';
+import { FluxStandardAction } from '../store.model';
 
 // Action types
 export enum AppActionType {

@@ -5,7 +5,7 @@ import {
   replayActionRenderer,
   triggerAlias,
 } from 'electron-redux';
-import { applyMiddleware, compose, createStore, Middleware, Store, StoreEnhancer } from 'redux';
+import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
 import { createLogger } from 'redux-logger';
 import promise from 'redux-promise';
 import { RootState } from './root/root.model';
