@@ -8,6 +8,9 @@ const config: Configuration = smartMerge(baseConfig, {
   target: 'electron-main',
   entry: resolve(__dirname, '../src/main/index'),
   resolve: {
+    alias: {
+      '@main-store$': resolve(__dirname, '../src/main/store.ts'),
+    },
     extensions: ['.json'],
   },
 });

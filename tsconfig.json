@@ -17,8 +17,10 @@
     "target": "es5",
     "resolveJsonModule": true,
     "paths": {
+      "@main-store": ["main/store"],
+      "@renderer-store": ["renderer/store"],
       "@components/*": ["renderer/components/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
     }
   },
   "include": [

@@ -8,6 +8,7 @@ module.exports = {
     '/node_modules/',
   ],
   moduleNameMapper: {
+    '@main-store': '<rootDir>/src/main/store',
     '@shared/(.*)': '<rootDir>/src/shared/$1',
   },
   moduleFileExtensions: ['ts', 'js', 'json'],
