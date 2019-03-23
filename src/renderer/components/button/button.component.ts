@@ -1,7 +1,6 @@
-import { customElement } from '@components/helpers';
 import sharedStyles from '@components/shared.styles';
 import '@material/mwc-ripple';
-import { html, LitElement } from '@polymer/lit-element';
+import { customElement, html, LitElement } from 'lit-element';
 import styles from './button.styles';
 
 @customElement('gad-button')

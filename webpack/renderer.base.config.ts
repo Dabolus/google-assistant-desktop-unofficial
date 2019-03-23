@@ -13,13 +13,19 @@ const config: Configuration = smartMerge(baseConfig, {
   entry: resolve(__dirname, '../src/renderer/components/shell/shell.component'),
   resolve: {
     alias: {
+      '@renderer-store$': resolve(__dirname, '../src/renderer/store.ts'),
       '@components': resolve(__dirname, '../src/renderer/components/'),
-      '@actions': resolve(__dirname, '../src/renderer/actions/'),
-      '@reducers': resolve(__dirname, '../src/renderer/reducers/'),
-      '@store$': resolve(__dirname, '../src/renderer/store.ts'),
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
   },
+  externals: [
+    (_, req, cb: any) => {
+      if (/^@gadu\//gi.test(req)) {
+        return cb(null, `commonjs ${req}`);
+      }
+      cb();
+    },
+  ],
   module: {
     rules: [
       {

@@ -39,6 +39,8 @@ declare module 'electron-devtools-installer' {
   export default function (devTool: any): Promise<any>;
 }
 
+declare module 'electron-redux';
+
 declare module '*.styles' {
   import { TemplateResult } from 'lit-html';
 
