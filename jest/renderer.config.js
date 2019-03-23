@@ -5,7 +5,7 @@ module.exports = {
     '.+\\.[tj]s$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    '/node_modules\\/(?!(@polymer|lit-html|pwa-helpers)).*/',
+    '/node_modules\\/(?!(@polymer|lit-html|lit-element|pwa-helpers)).*/',
   ],
   moduleNameMapper: {
     '.+\\.styles': '<rootDir>/src/renderer/__mocks__/styles.mock.ts',

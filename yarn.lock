@@ -748,13 +748,6 @@
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-"@polymer/lit-element@^0.6.4":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.6.5.tgz#c614b9638a0809883ba52bf43fca5b6ed51b7aa8"
-  integrity sha512-KVjuU/5Ugp6PFob6YEe1/B4GCKjqhEy9Tj954shL6d3DohT2sNAmbX9QfbXvcZ8RhbVELK6dzbN3i2BRA3mOKg==
-  dependencies:
-    lit-html "^1.0.0-rc.1"
-
 "@skatejs/ssr@^0.19.9":
   version "0.19.11"
   resolved "https://registry.yarnpkg.com/@skatejs/ssr/-/ssr-0.19.11.tgz#7655f9917de04a2e0c81d734b0e2081a26f8f5ea"
@@ -5644,7 +5637,7 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lit-element@^2.0.0-rc.2:
+lit-element@^2.0.0-rc.2, lit-element@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.1.0.tgz#85bc3f1da0227f4b13de8a1be978229b9fa327e9"
   integrity sha512-0z/KHm1xZweivfOVRr8AKR06+D3k02u15m9s4jkuRdnGe5wfmEwePzrQQBsSZNILdnfJvfo3TJOeGhBCVZaPbw==
@@ -5656,7 +5649,7 @@ lit-html@^0.14.0:
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.14.0.tgz#d6830e8f55fb923b0f5824decf7da082a1d22997"
   integrity sha512-+xqUPzzJGEDqb0F5DOnMXvL0jxpkKebAMlXycKZxFtzlmD+qePEmYrEUPF9XVXcc5eYBzYXTCOUcjSCod4YvgQ==
 
-lit-html@^1.0.0, lit-html@^1.0.0-rc.1, lit-html@^1.0.0-rc.2:
+lit-html@^1.0.0, lit-html@^1.0.0-rc.2:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.0.0.tgz#3dc3781a8ca68a9b5c2ff2a61e263662b9b2267b"
   integrity sha512-oeWlpLmBW3gFl7979Wol2LKITpmKTUFNn7PnFbh6YNynF61W74l6x5WhwItAwPRSATpexaX1egNnRzlN4GOtfQ==
@@ -7962,10 +7955,10 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
-redux-promise-middleware@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/redux-promise-middleware/-/redux-promise-middleware-5.1.1.tgz#37689339a58a33d1fda675ed1ba2053a2d196b8d"
-  integrity sha512-YC1tiheU28Hgmtu5HHMLiuveLgjL1aCJWsSnwquMiZBcj5i/J9qVLt6vgOnb0Gz37y4deJ/rjiNt7l6Dh+Z8lA==
+redux-promise-middleware@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/redux-promise-middleware/-/redux-promise-middleware-6.1.0.tgz#ecdb22488cdd673c1a3f0d278d82b48d92ca5d06"
+  integrity sha512-C62Ku3TgMwxFh5r3h1/iD+XPdsoizyHLT74dTkqhJ8c0LCbEVl1z9fm8zKitAjI16e6w6+h3mxf6wHdonaYXfQ==
 
 redux@^3.4.0, redux@^3.6.0:
   version "3.7.2"

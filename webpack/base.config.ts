@@ -12,7 +12,7 @@ const config: Configuration = {
     rules: [
       {
         test: /\.[tj]s$/,
-        exclude: /node_modules\/(?!(pwa-helpers|@polymer)\/).*/,
+        exclude: /node_modules\/(?!(@polymer|lit-html|lit-element|pwa-helpers)\/).*/,
         use: {
           loader: 'babel-loader',
           options: {
