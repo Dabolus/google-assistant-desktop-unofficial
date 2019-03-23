@@ -2,6 +2,7 @@
 import { resolve } from 'path';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
+import nodeExternals from 'webpack-node-externals';
 import baseConfig from './base.config';
 
 const config: Configuration = smartMerge(baseConfig, {
@@ -13,6 +14,7 @@ const config: Configuration = smartMerge(baseConfig, {
     },
     extensions: ['.json'],
   },
+  externals: [nodeExternals()],
 });
 
 export default config;

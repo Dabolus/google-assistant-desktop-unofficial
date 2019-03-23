@@ -19,8 +19,7 @@
     "paths": {
       "@main-store": ["main/store"],
       "@renderer-store": ["renderer/store"],
-      "@components/*": ["renderer/components/*"],
-      "@shared/*": ["shared/*"],
+      "@components/*": ["renderer/components/*"]
     }
   },
   "include": [

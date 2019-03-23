@@ -18,6 +18,14 @@ const config: Configuration = smartMerge(baseConfig, {
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
   },
+  externals: [
+    (_, req, cb: any) => {
+      if (/^@gadu\//gi.test(req)) {
+        return cb(null, `commonjs ${req}`);
+      }
+      cb();
+    },
+  ],
   module: {
     rules: [
       {

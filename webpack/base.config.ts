@@ -6,9 +6,6 @@ const config: Configuration = {
   cache: true,
   context: resolve(__dirname, '..'),
   resolve: {
-    alias: {
-      '@shared': resolve(__dirname, '../src/shared/'),
-    },
     extensions: ['.ts', '.js'],
   },
   module: {

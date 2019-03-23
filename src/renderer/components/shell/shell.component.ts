@@ -2,10 +2,10 @@ import '@components/bottom-bar/bottom-bar.component';
 import '@components/chat/chat.component';
 import { customElement, property } from '@components/helpers';
 import '@components/top-bar/top-bar.component';
+import { navigate } from '@gadu/store/lib/app/app.actions';
+import { RootState } from '@gadu/store/lib/root/root.model';
 import { html, LitElement } from '@polymer/lit-element';
 import { store } from '@renderer-store';
-import { navigate } from '@shared/store/app/app.actions';
-import { RootState } from '@shared/store/root/root.model';
 import { connect, installRouter } from 'pwa-helpers';
 import styles from './shell.styles';
 
