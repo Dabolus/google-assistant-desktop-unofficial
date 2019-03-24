@@ -1,37 +1,29 @@
-import sharedStyles from '@components/shared.styles';
 import { updateMenuState } from '@gadu/store/lib/app/app.actions';
 import { RootState } from '@gadu/store/lib/root/root.model';
 import { store } from '@renderer-store';
-import { customElement, html, LitElement, property } from 'lit-element';
+import { customElement, LitElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
+
+import sharedStyles from '@components/shared.styles';
 import styles from './top-bar.styles';
+import template from './top-bar.template';
 
 @customElement('gad-top-bar')
 export class TopBar extends connect(store)(LitElement) {
+  public static styles = [sharedStyles, styles];
+
   @property({ type: Boolean })
-  private _menuOpened = false;
+  protected _menuOpened = false;
 
   public stateChanged(state: RootState) {
     this._menuOpened = state.app.menuOpened;
   }
 
   protected render() {
-    return html`
-      ${sharedStyles}
-      ${styles}
-      <img src="assets/google-assistant-logo.svg">
-      <div class="heading">
-        google_logo
-        <span class="ad">Assistant Desktop</span>
-        <span class="unofficial">Unofficial</span>
-      </div>
-      <div class="spacer"></div>
-      <div class="material-icons-extended" @click="${this._menuButtonClicked}">more_vert</div>
-      <div class="menu" role="menu" ?hidden="${!this._menuOpened}">The menu!</div>
-    `;
+    return template.call(this);
   }
 
-  private _menuButtonClicked() {
+  protected _menuButtonClicked() {
     store.dispatch(updateMenuState(!this._menuOpened));
   }
 }

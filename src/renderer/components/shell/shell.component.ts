@@ -4,26 +4,25 @@ import '@components/top-bar/top-bar.component';
 import { navigate } from '@gadu/store/lib/app/app.actions';
 import { RootState } from '@gadu/store/lib/root/root.model';
 import { store } from '@renderer-store';
-import { customElement, html, LitElement, property } from 'lit-element';
+import { customElement, LitElement, property } from 'lit-element';
 import { connect, installRouter } from 'pwa-helpers';
+
 import styles from './shell.styles';
+import template from './shell.template';
 
 @customElement('gad-shell')
 export class Shell extends connect(store)(LitElement) {
+  public static styles = styles;
+
   @property({ type: String })
-  private _page = '';
+  protected _page = '';
 
   public stateChanged(state: RootState) {
     this._page = state.app.page;
   }
 
   protected render() {
-    return html`
-      ${styles}
-      <gad-top-bar role="heading"></gad-top-bar>
-      <gad-chat></gad-chat>
-      <gad-bottom-bar></gad-bottom-bar>
-    `;
+    return template.call(this);
   }
 
   protected firstUpdated() {

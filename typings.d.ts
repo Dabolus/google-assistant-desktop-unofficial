@@ -42,8 +42,8 @@ declare module 'electron-devtools-installer' {
 declare module 'electron-redux';
 
 declare module '*.styles' {
-  import { TemplateResult } from 'lit-html';
+  import { CSSResult } from 'lit-element';
 
-  const content: TemplateResult;
+  const content: CSSResult;
   export default content;
 }

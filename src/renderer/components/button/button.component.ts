@@ -1,19 +1,16 @@
-import sharedStyles from '@components/shared.styles';
 import '@material/mwc-ripple';
-import { customElement, html, LitElement } from 'lit-element';
+import { customElement, LitElement } from 'lit-element';
+
+import sharedStyles from '@components/shared.styles';
 import styles from './button.styles';
+import template from './button.template';
 
 @customElement('gad-button')
 export class Button extends LitElement {
+  public static styles = [sharedStyles, styles];
+
   protected render() {
-    return html`
-      ${sharedStyles}
-      ${styles}
-      <button>
-        <mwc-ripple primary></mwc-ripple>
-        <slot></slot>
-      </button>
-    `;
+    return template.call(this);
   }
 }
 
