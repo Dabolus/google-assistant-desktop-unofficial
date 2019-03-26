@@ -21,22 +21,14 @@
 }
 
 img {
-  height: 65%;
-  margin: 0 16px 0 8px;
+  height: 80%;
+  margin: .275rem .5rem 0 .5rem;
 }
 
 .heading {
   font-family: var(--gad-logo-font);
-  font-size: 1.2rem;
-
-  > span {
-    color: var(--gad-secondary-text-color);
-  }
-
-  > .unofficial {
-    font-size: .9rem;
-    font-weight: 100;
-  }
+  font-size: 1.375rem;
+  color: var(--gad-secondary-text-color);
 }
 
 .spacer {
