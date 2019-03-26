@@ -13,7 +13,7 @@ const config: Configuration = smartMerge(baseConfig, {
   entry: resolve(__dirname, '../src/renderer/components/shell/shell.component'),
   resolve: {
     alias: {
-      '@renderer-store$': resolve(__dirname, '../src/renderer/store.ts'),
+      '@store': resolve(__dirname, '../src/renderer/store/'),
       '@components': resolve(__dirname, '../src/renderer/components/'),
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],

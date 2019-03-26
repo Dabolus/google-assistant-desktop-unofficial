@@ -1,4 +1,4 @@
-import { store } from '@renderer-store';
+import { store } from '@store/index';
 import { customElement, LitElement } from 'lit-element';
 import { connect } from 'pwa-helpers';
 

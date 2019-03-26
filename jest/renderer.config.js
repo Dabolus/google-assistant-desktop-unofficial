@@ -9,7 +9,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '.+\\.styles': '<rootDir>/src/renderer/__mocks__/styles.mock.ts',
-    '@renderer-store': '<rootDir>/src/renderer/store',
+    '@store/(.*)': '<rootDir>/src/renderer/store/$1',
   },
   moduleFileExtensions: ['ts', 'js', 'scss', 'sass', 'css', 'ejs', 'html'],
   testMatch: [

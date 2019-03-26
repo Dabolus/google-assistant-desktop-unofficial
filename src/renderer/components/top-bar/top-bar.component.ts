@@ -1,6 +1,6 @@
-import { updateMenuState } from '@gadu/store/lib/app/app.actions';
-import { RootState } from '@gadu/store/lib/root/root.model';
-import { store } from '@renderer-store';
+import { updateMenuState } from '@store/app/app.actions';
+import { store } from '@store/index';
+import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
 
