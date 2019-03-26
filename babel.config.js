@@ -3,6 +3,7 @@ module.exports = {
     ['@babel/env', {
       loose: true,
       useBuiltIns: 'usage',
+      corejs: 2,
       ...process.env.NODE_ENV === 'test' ? {} : {
         modules: false,
       },
