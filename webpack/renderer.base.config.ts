@@ -33,7 +33,7 @@ const config: Configuration = smartMerge(baseConfig, {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'to-lit-html-loader',
+            loader: resolve(__dirname, 'loaders/to-lit-css-loader.ts'),
           },
           {
             loader: 'css-loader',

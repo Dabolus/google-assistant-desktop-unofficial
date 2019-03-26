@@ -9279,13 +9279,6 @@ to-fast-properties@^2.0.0:
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
 
-to-lit-html-loader@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/to-lit-html-loader/-/to-lit-html-loader-0.1.1.tgz#b79573c589c776a305ae7c3ddc071e527469a24b"
-  integrity sha512-watXKr9+asiHSxjgZh/FdizDNxFg6HOH4Hzp1EJCs75fcRWRaHFzuc1ZbIR2peKiBbgzl3Oei/c1pKsq2CujDQ==
-  dependencies:
-    loader-utils "^1.1.0"
-
 to-object-path@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/to-object-path/-/to-object-path-0.3.0.tgz#297588b7b0e7e0ac08e04e672f85c1f4999e17af"
