@@ -1,4 +1,3 @@
-import '@material/mwc-ripple';
 import { customElement, LitElement } from 'lit-element';
 
 import sharedStyles from '@components/shared.styles';
