@@ -1,11 +1,20 @@
 import { html } from 'lit-element';
 import { BottomBar } from './bottom-bar.component';
 
+import '@material/mwc-ripple';
+
 export default function template(this: BottomBar) {
   return html`
-    <input type="text" placeholder="Type a message" autofocus>
-    <div>
-      <img src="assets/google-mic.svg">
-    </div>
+    <input
+      type="text"
+      placeholder="Type a message"
+      autofocus
+      @input="${this._inputModified}"
+      @keydown="${this._inputKeyDown}"
+      value="${this._text}">
+    <button>
+      <img src="assets/${this._text ? 'send' : 'google-mic'}.svg">
+      <mwc-ripple></mwc-ripple>
+    </button>
   `;
 }

@@ -19,7 +19,11 @@ input {
   height: 100%;
 }
 
-div {
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
   display: block;
   padding: .6rem;
   margin: .65rem;
@@ -31,7 +35,7 @@ div {
   justify-content: center;
 
   > img {
+    width: 100%;
     height: 100%;
-    width: auto;
   }
 }
