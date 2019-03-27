@@ -6,6 +6,9 @@ const initialState: RootState = {
     page: '',
     menuOpened: false,
   },
+  chat: {
+    text: '',
+  },
 };
 
 export const store = configure({ initialState });
