@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { ChatAction, ChatActionType } from './chat.actions';
 import { ChatState } from './chat.model';
 
-const initialState: ChatState = {
+export const initialState: ChatState = {
   text: '',
 };
 

@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { AppAction, AppActionType } from './app.actions';
 import { AppState } from './app.model';
 
-const initialState: AppState = {
+export const initialState: AppState = {
   page: '',
   menuOpened: false,
 };

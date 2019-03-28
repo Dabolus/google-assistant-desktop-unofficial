@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { WizardAction, WizardActionType } from './wizard.actions';
 import { WizardState } from './wizard.model';
 
-const initialState: WizardState = {
+export const initialState: WizardState = {
   step: 0,
 };
 
