@@ -9,6 +9,9 @@ const initialState: RootState = {
   chat: {
     text: '',
   },
+  wizard: {
+    step: 0,
+  },
 };
 
 export const store = configure({ initialState });
