@@ -1,4 +1,3 @@
-import { ActionCreator } from 'redux';
 import { FluxStandardAction } from '../store.model';
 
 // Action types
@@ -25,7 +24,7 @@ export interface AppActionUpdateMenuState extends
 export type AppAction = AppActionUpdatePage | AppActionUpdateMenuState;
 
 // Actions
-export const navigate: ActionCreator<AppActionUpdatePage> = (path: string) => {
+export const navigate = (path: string): AppActionUpdatePage => {
   const page = path === '/' ? 'home' : path.slice(1);
   return {
     type: AppActionType.UPDATE_PAGE,
@@ -35,7 +34,7 @@ export const navigate: ActionCreator<AppActionUpdatePage> = (path: string) => {
   };
 };
 
-export const updateMenuState: ActionCreator<AppActionUpdateMenuState> = (opened: boolean) => ({
+export const updateMenuState = (opened: boolean): AppActionUpdateMenuState => ({
   type: AppActionType.UPDATE_MENU_STATE,
   payload: {
     opened,

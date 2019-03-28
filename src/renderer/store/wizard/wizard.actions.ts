@@ -1,4 +1,3 @@
-import { ActionCreator } from 'redux';
 import { FluxStandardAction } from '../store.model';
 
 // Action types
@@ -17,7 +16,7 @@ export interface WizardActionUpdateStep extends
 export type WizardAction = WizardActionUpdateStep;
 
 // Actions
-export const updateStep: ActionCreator<WizardActionUpdateStep> = (step: number) => ({
+export const updateStep = (step: number): WizardActionUpdateStep => ({
   type: WizardActionType.UPDATE_STEP,
   payload: {
     step,

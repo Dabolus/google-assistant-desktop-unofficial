@@ -1,4 +1,3 @@
-import { ActionCreator } from 'redux';
 import { FluxStandardAction } from '../store.model';
 
 // Action types
@@ -17,7 +16,7 @@ export interface ChatActionUpdateInput extends
 export type ChatAction = ChatActionUpdateInput;
 
 // Actions
-export const updateInput: ActionCreator<ChatActionUpdateInput> = (text: string) => ({
+export const updateInput = (text: string): ChatActionUpdateInput => ({
   type: ChatActionType.UPDATE_INPUT,
   payload: {
     text,
