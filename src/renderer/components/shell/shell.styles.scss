@@ -18,3 +18,12 @@ gad-bottom-bar {
   flex: 0 0 auto;
   z-index: 1;
 }
+
+gad-wizard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
