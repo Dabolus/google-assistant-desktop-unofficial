@@ -1,3 +1,4 @@
+import { updateClientId, updateClientSecret } from '@store/auth/auth.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { updateStep } from '@store/wizard/wizard.actions';
@@ -15,6 +16,12 @@ export class Wizard extends connect(store)(LitElement) {
   @property({ type: Number })
   protected _currentStep = 0;
 
+  @property({ type: String })
+  protected _clientId = '';
+
+  @property({ type: String })
+  protected _clientSecret = '';
+
   public stateChanged({ wizard }: RootState) {
     this._currentStep = wizard.step;
   }
@@ -25,6 +32,14 @@ export class Wizard extends connect(store)(LitElement) {
 
   protected _nextButtonClicked() {
     store.dispatch(updateStep(this._currentStep + 1));
+  }
+
+  protected _clientIdModified() {
+    store.dispatch(updateClientId(this._clientId));
+  }
+
+  protected _clientSecretModified() {
+    store.dispatch(updateClientSecret(this._clientSecret));
   }
 }
 

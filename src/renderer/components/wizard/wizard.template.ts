@@ -100,12 +100,21 @@ export default function template(this: Wizard) {
             You should now see a dialog with a Client ID and Secret; just copy/paste them down
             here:
           </p>
-          <input type="text" placeholder="Client ID">
-          <input type="text" placeholder="Client Secret">
+          <input
+            type="text"
+            placeholder="Client ID"
+            @input="${this._clientIdModified}"
+            value="${this._clientId}">
+          <input
+            type="text"
+            placeholder="Client Secret"
+            @input="${this._clientSecretModified}"
+            value="${this._clientSecret}">
         </div>
       </section>
       <div class="actions">
-        <gad-button @click="${this._currentStep >= 3 ? console.log : this._nextButtonClicked}">
+        <gad-button
+          @click="${this._currentStep >= 3 ? console.log : this._nextButtonClicked}">
           ${this._currentStep >= 3 ? 'Get started' : 'Next'}
         </gad-button>
       </div>
