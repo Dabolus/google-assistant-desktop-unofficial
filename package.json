@@ -1,7 +1,7 @@
 {
-  "name": "webpack-electron-boilerplate",
+  "name": "google-assistant-desktop-unofficial",
   "version": "1.0.0",
-  "description": "Getting started with Electron & Webpack - the easy way.",
+  "description": "A desktop version for the Google Assistant (UNOFFICIAL)",
   "main": "main.js",
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
