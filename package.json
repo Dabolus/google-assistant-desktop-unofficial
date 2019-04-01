@@ -4,7 +4,7 @@
   "description": "Getting started with Electron & Webpack - the easy way.",
   "main": "main.js",
   "author": "Giorgio Garasto <giorgio@garasto.it>",
-  "license": "Unlicense",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "cross-env ELECTRON_DISABLE_SECURITY_WARNINGS=1 run-p start:electron start:main start:renderer",
