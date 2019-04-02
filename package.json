@@ -1,5 +1,6 @@
 {
   "name": "google-assistant-desktop-unofficial",
+  "productName": "Google Assistant Desktop",
   "version": "1.0.0",
   "description": "A desktop version for the Google Assistant (UNOFFICIAL)",
   "main": "main.js",
