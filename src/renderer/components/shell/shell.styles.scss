@@ -4,10 +4,26 @@
   width: 100%;
   height: 100%;
 
+  // Needed by Material Design Components
+  --mdc-theme-primary: var(--gad-primary-color);
+  --mdc-theme-secondary: var(--gad-accent-color);
+  --mdc-theme-surface: var(--gad-card-color);
+  --mdc-theme-background: var(--gad-background-color);
+
+  // Constants
+  --gad-text-font: 'Roboto';
+  --gad-display-font: 'Google Sans Display';
+  --gad-logo-font: 'Product Sans';
+  --gad-icon-font: 'Material Icons Extended';
+  --gad-border-radius-sm: .25rem;
+  --gad-border-radius-lg: .5rem;
+
+  // Variables (different for each theme)
   --gad-primary-color: #fff;
   --gad-accent-color: #1a73e8;
-  --gad-background-color: #fff;
+  --gad-background-color: #fafafa;
   --gad-card-color: #fff;
+  --gad-bars-color: #fff;
   --gad-primary-opacity: .87;
   --gad-secondary-opacity: .6;
   --gad-disabled-opacity: .38;
@@ -20,18 +36,26 @@
   --gad-backdrop-color: rgba(0, 0, 0, var(--gad-backdrop-opacity));
   --gad-text-on-accent-color: #fff;
   --gad-error-text-color: #b00020;
-  --gad-text-font: 'Roboto';
-  --gad-display-font: 'Google Sans Display';
-  --gad-logo-font: 'Product Sans';
-  --gad-icon-font: 'Material Icons Extended';
-  --gad-border-radius-sm: .25rem;
-  --gad-border-radius-lg: .5rem;
+}
 
-  // Needed by Material Design Components
-  --mdc-theme-primary: var(--gad-primary-color);
-  --mdc-theme-secondary: var(--gad-accent-color);
-  --mdc-theme-surface: var(--gad-card-color);
-  --mdc-theme-background: var(--gad-background-color);
+:host([theme=dark]) {
+  --gad-primary-color: #000;
+  --gad-accent-color: #1a73e8;
+  --gad-background-color: #303030;
+  --gad-card-color: #424242;
+  --gad-bars-color: #212121;
+  --gad-primary-opacity: 1;
+  --gad-secondary-opacity: .7;
+  --gad-disabled-opacity: .5;
+  --gad-divider-opacity: .12;
+  --gad-backdrop-opacity: .54;
+  --gad-primary-text-color: rgba(255, 255, 255, var(--gad-primary-opacity));
+  --gad-secondary-text-color: rgba(255, 255, 255, var(--gad-secondary-opacity));
+  --gad-disabled-text-color: rgba(255, 255, 255, var(--gad-disabled-opacity));
+  --gad-divider-color: rgba(255, 255, 255, var(--gad-divider-opacity));
+  --gad-backdrop-color: rgba(0, 0, 0, var(--gad-backdrop-opacity));
+  --gad-text-on-accent-color: #fff;
+  --gad-error-text-color: #b00020;
 }
 
 gad-top-bar {
