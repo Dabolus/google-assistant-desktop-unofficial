@@ -8,6 +8,7 @@
 
 .material-icons-extended {
   font-family: var(--gad-icon-font);
+  color: var(--gad-secondary-text-color);
   font-weight: normal;
   font-style: normal;
   font-size: 1.5rem;
@@ -26,13 +27,20 @@ input, textarea {
   font-size: 1rem;
   caret-color: var(--gad-accent-color);
   border-radius: var(--gad-border-radius-sm);
+  background: var(--gad-background-color);
+  color: var(--gad-secondary-text-color);
   padding: .5rem;
   outline: none;
-  border: 1px solid var(--gad-disabled-text-color);
+  border: 1px solid var(--gad-divider-color);
 
   &::placeholder {
-    color: var(--gad-divider-color);
+    color: var(--gad-disabled-text-color);
   }
+}
+
+p {
+  font-family: var(--gad-text-font);
+  color: var(--gad-secondary-text-color);
 }
 
 h2 {
