@@ -1,8 +1,9 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+import { applyMiddleware, compose, createStore, Store } from 'redux';
 import { createLogger } from 'redux-logger';
-import promiseMiddleware from 'redux-promise-middleware';
+import createSagaMiddleware from 'redux-saga';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
+import { rootSagas } from './root/root.sagas';
 import { StoreConfig } from './store.model';
 
 declare global {
@@ -19,16 +20,20 @@ const devCompose: typeof compose = window && window.__REDUX_DEVTOOLS_EXTENSION_C
 export const configure = (
   { initialState }: StoreConfig,
 ): Store<RootState> => {
-  const middlewares: Middleware[] = [
-    promiseMiddleware,
-    createLogger({
-      level: 'info',
-      collapsed: true,
-    }),
-  ];
-  const enhancer = devCompose(applyMiddleware(...middlewares));
-
+  const sagaMiddleware = createSagaMiddleware();
+  const enhancer = devCompose(
+    applyMiddleware(
+      sagaMiddleware,
+      createLogger({
+        level: 'info',
+        collapsed: true,
+      }),
+    ),
+  );
   const store = createStore(rootReducer, initialState, enhancer);
+
+  // TODO: remove this useless explicit cast as soon as TypeScript gets fixed
+  sagaMiddleware.run(...(rootSagas as [any]));
 
   if (module.hot) {
     module.hot.accept('./root/root.reducer', () => store.replaceReducer(rootReducer));
