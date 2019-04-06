@@ -22,7 +22,9 @@ export class Wizard extends connect(store)(LitElement) {
   @property({ type: String })
   protected _clientSecret = '';
 
-  public stateChanged({ wizard }: RootState) {
+  public stateChanged({ auth, wizard }: RootState) {
+    this._clientId = auth.clientId;
+    this._clientSecret = auth.clientSecret;
     this._currentStep = wizard.step;
   }
 
@@ -34,12 +36,14 @@ export class Wizard extends connect(store)(LitElement) {
     store.dispatch(updateStep(this._currentStep + 1));
   }
 
-  protected _clientIdModified() {
-    store.dispatch(updateClientId(this._clientId));
+  protected _clientIdModified(e: KeyboardEvent) {
+    const { value } = e.target as HTMLInputElement;
+    store.dispatch(updateClientId(value));
   }
 
-  protected _clientSecretModified() {
-    store.dispatch(updateClientSecret(this._clientSecret));
+  protected _clientSecretModified(e: KeyboardEvent) {
+    const { value } = e.target as HTMLInputElement;
+    store.dispatch(updateClientSecret(value));
   }
 }
 

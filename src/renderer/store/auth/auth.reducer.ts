@@ -15,12 +15,12 @@ export const authReducer: Reducer<AuthState, AuthAction> = (
     case AuthActionType.UPDATE_CLIENT_ID:
       return {
         ...state,
-        text: action.payload.clientId,
+        clientId: action.payload.clientId,
       };
     case AuthActionType.UPDATE_CLIENT_SECRET:
       return {
         ...state,
-        text: action.payload.clientSecret,
+        clientSecret: action.payload.clientSecret,
       };
     default:
       return state;
