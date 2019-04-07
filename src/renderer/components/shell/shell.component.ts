@@ -1,3 +1,5 @@
+import 'core-js/es7/reflect';
+
 import { navigate } from '@store/app/app.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
