@@ -6,6 +6,7 @@ import { resolve } from 'path';
 import ScriptExtHtmlPlugin from 'script-ext-html-webpack-plugin';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
+import nodeExternals from 'webpack-node-externals';
 import baseConfig from './base.config';
 
 const config: Configuration = smartMerge(baseConfig, {
@@ -15,16 +16,17 @@ const config: Configuration = smartMerge(baseConfig, {
     alias: {
       '@store': resolve(__dirname, '../src/renderer/store/'),
       '@components': resolve(__dirname, '../src/renderer/components/'),
+      '@services': resolve(__dirname, '../src/renderer/services/'),
+      '@helpers': resolve(__dirname, '../src/renderer/helpers/'),
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
   },
   externals: [
-    (_, req, cb: any) => {
-      if (/^@gadu\//gi.test(req)) {
-        return cb(null, `commonjs ${req}`);
-      }
-      cb();
-    },
+    nodeExternals({
+      modulesFromFile: {
+        include: ['dependencies'],
+      },
+    }),
   ],
   module: {
     rules: [
