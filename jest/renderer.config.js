@@ -10,6 +10,9 @@ module.exports = {
   moduleNameMapper: {
     '.+\\.styles': '<rootDir>/src/renderer/__mocks__/styles.mock.ts',
     '@store/(.*)': '<rootDir>/src/renderer/store/$1',
+    '@components/(.*)': '<rootDir>/src/renderer/components/$1',
+    '@services/(.*)': '<rootDir>/src/renderer/services/$1',
+    '@helpers/(.*)': '<rootDir>/src/renderer/helpers/$1',
   },
   moduleFileExtensions: ['ts', 'js', 'scss', 'sass', 'css', 'ejs', 'html'],
   testMatch: [

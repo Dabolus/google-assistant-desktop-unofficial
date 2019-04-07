@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "esnext"
+    ],
+    "paths": {}
+  },
+  "include": [
+    "../../typings.d.ts",
+    "**/*.ts"
+  ]
+}
