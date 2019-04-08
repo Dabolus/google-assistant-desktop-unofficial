@@ -5,7 +5,10 @@
     "lib": [
       "esnext"
     ],
-    "paths": {}
+    "paths": {
+      "@services/*": ["services/*"],
+      "@helpers/*": ["helpers/*"]
+    }
   },
   "include": [
     "../../typings.d.ts",

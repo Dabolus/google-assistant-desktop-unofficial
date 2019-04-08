@@ -10,6 +10,10 @@ const config: Configuration = smartMerge(baseConfig, {
   target: 'electron-main',
   entry: resolve(__dirname, '../src/main/index'),
   resolve: {
+    alias: {
+      '@services': resolve(__dirname, '../src/renderer/services/'),
+      '@helpers': resolve(__dirname, '../src/renderer/helpers/'),
+    },
     extensions: ['.json'],
   },
   externals: [nodeExternals()],
