@@ -11,8 +11,8 @@ const config: Configuration = smartMerge(baseConfig, {
   entry: resolve(__dirname, '../src/main/index'),
   resolve: {
     alias: {
-      '@services': resolve(__dirname, '../src/renderer/services/'),
-      '@helpers': resolve(__dirname, '../src/renderer/helpers/'),
+      '@services': resolve(__dirname, '../src/main/services/'),
+      '@helpers': resolve(__dirname, '../src/main/helpers/'),
     },
     extensions: ['.json'],
   },
