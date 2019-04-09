@@ -103,19 +103,25 @@ export default function template(this: Wizard) {
           <input
             type="text"
             placeholder="Client ID"
+            pattern="^\\d{12}-[\\da-z]{32}\\.apps\\.googleusercontent\\.com$"
             @input="${this._clientIdModified}"
             value="${this._clientId}">
           <input
             type="text"
             placeholder="Client Secret"
+            pattern="^[\\w-]{24}$"
             @input="${this._clientSecretModified}"
             value="${this._clientSecret}">
         </div>
       </section>
       <div class="actions">
         <gad-button
-          @click="${this._currentStep >= 3 ? console.log : this._nextButtonClicked}">
-          ${this._currentStep >= 3 ? 'Get started' : 'Next'}
+          @click="${this._currentStep === 3
+            ? this._authorizeButtonClicked
+            : this._nextButtonClicked}"
+          ?disabled="${this._currentStep === 3 &&
+            (!this._clientIdValid || !this._clientSecretValid)}">
+          ${this._currentStep >= 3 ? 'Authorize' : 'Next'}
         </gad-button>
       </div>
     </div>

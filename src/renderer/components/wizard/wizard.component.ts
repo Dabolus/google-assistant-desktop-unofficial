@@ -22,6 +22,12 @@ export class Wizard extends connect(store)(LitElement) {
   @property({ type: String })
   protected _clientSecret = '';
 
+  @property({ type: Boolean })
+  protected _clientIdValid = false;
+
+  @property({ type: Boolean })
+  protected _clientSecretValid = false;
+
   public stateChanged({ auth, wizard }: RootState) {
     this._clientId = auth.clientId;
     this._clientSecret = auth.clientSecret;
@@ -36,13 +42,22 @@ export class Wizard extends connect(store)(LitElement) {
     store.dispatch(updateStep(this._currentStep + 1));
   }
 
+  protected _authorizeButtonClicked() {
+    if (this._currentStep === 3 &&
+      (!this._clientIdValid || !this._clientSecretValid)) {
+      return;
+    }
+  }
+
   protected _clientIdModified(e: KeyboardEvent) {
-    const { value } = e.target as HTMLInputElement;
+    const { validity: { valid }, value } = e.target as HTMLInputElement;
+    this._clientIdValid = valid && !!value;
     store.dispatch(updateClientId(value));
   }
 
   protected _clientSecretModified(e: KeyboardEvent) {
-    const { value } = e.target as HTMLInputElement;
+    const { validity: { valid }, value } = e.target as HTMLInputElement;
+    this._clientSecretValid = valid && !!value;
     store.dispatch(updateClientSecret(value));
   }
 }
