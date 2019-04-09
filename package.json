@@ -26,6 +26,7 @@
   "dependencies": {
     "@babel/runtime-corejs2": "^7.4.2",
     "core-js": "^2.6.5",
+    "electron-store": "^3.1.0",
     "google-auth-library": "^3.1.2",
     "typedi": "^0.8.0"
   },
@@ -63,7 +64,6 @@
     "electron": "^4.1.1",
     "electron-builder": "^20.39.0",
     "electron-devtools-installer": "^2.2.4",
-    "electron-store": "^3.0.0",
     "html-webpack-plugin": "^4.0.0-beta.5",
     "jest": "^24.5.0",
     "lit-element": "^2.1.0",
