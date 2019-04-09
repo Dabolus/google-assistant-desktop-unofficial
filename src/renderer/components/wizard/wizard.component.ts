@@ -43,8 +43,7 @@ export class Wizard extends connect(store)(LitElement) {
   }
 
   protected _authorizeButtonClicked() {
-    if (this._currentStep === 3 &&
-      (!this._clientIdValid || !this._clientSecretValid)) {
+    if (!this._clientIdValid || !this._clientSecretValid) {
       return;
     }
   }
