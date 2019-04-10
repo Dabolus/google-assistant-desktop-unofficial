@@ -3,7 +3,7 @@ import { AppAction, AppActionType } from './app.actions';
 import { AppState } from './app.model';
 
 export const initialState: AppState = {
-  page: '',
+  page: 'chat',
   menuOpened: false,
 };
 

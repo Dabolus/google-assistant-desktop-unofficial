@@ -4,7 +4,7 @@ import { navigate } from '@store/app/app.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
-import { connect, installRouter } from 'pwa-helpers';
+import { connect } from 'pwa-helpers';
 
 import styles from './shell.styles';
 import template from './shell.template';
@@ -14,18 +14,19 @@ export class Shell extends connect(store)(LitElement) {
   public static styles = styles;
 
   @property({ type: String })
-  protected _page = '';
+  protected _page = 'chat';
 
-  public stateChanged(state: RootState) {
-    this._page = state.app.page;
+  constructor() {
+    super();
+    store.dispatch(navigate('wizard'));
+  }
+
+  public stateChanged({ app }: RootState) {
+    this._page = app.page;
   }
 
   protected render() {
     return template.call(this);
-  }
-
-  protected firstUpdated() {
-    installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
   }
 }
 

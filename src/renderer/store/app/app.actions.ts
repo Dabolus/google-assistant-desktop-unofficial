@@ -24,8 +24,7 @@ export interface AppActionUpdateMenuState extends
 export type AppAction = AppActionUpdatePage | AppActionUpdateMenuState;
 
 // Actions
-export const navigate = (path: string): AppActionUpdatePage => {
-  const page = path === '/' ? 'home' : path.slice(1);
+export const navigate = (page: string): AppActionUpdatePage => {
   return {
     type: AppActionType.UPDATE_PAGE,
     payload: {
