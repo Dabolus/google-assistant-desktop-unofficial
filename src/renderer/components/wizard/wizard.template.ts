@@ -8,8 +8,8 @@ export default function template(this: Wizard) {
     <div class="backdrop"></div>
     <div class="modal">
       <section id="page-0" ?active="${this._currentStep === 0}">
-        <img src="assets/intro-header.webp">
-        <div>
+        <div class="intro-header"></div>
+        <div class="intro-content">
           <h2>Hi!</h2>
           <p>
             Welcome to your brand new Google Assistant.
