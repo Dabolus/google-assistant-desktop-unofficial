@@ -38,12 +38,6 @@ const config: Configuration = smartMerge(baseConfig, {
             loader: resolve(__dirname, 'loaders/to-lit-css-loader.ts'),
           },
           {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-            },
-          },
-          {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
