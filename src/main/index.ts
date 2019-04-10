@@ -1,20 +1,21 @@
-import { app, BrowserWindow } from 'electron';
+import { BrowserWindowWithEvents } from '@helpers/events.helper';
+import { app } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
-let mainWindow: BrowserWindow | null;
+let mainWindow: BrowserWindowWithEvents | null;
 
-async function configureDevTools(window: BrowserWindow) {
+async function configureDevTools(window: BrowserWindowWithEvents) {
   const { default: installExtension, REDUX_DEVTOOLS } = await import('electron-devtools-installer');
   await installExtension(REDUX_DEVTOOLS);
   window.webContents.openDevTools();
 }
 
 function createMainWindow() {
-  const window = new BrowserWindow({
+  const window = new BrowserWindowWithEvents({
     center: true,
     minWidth: 360,
     minHeight: 540,
@@ -53,7 +54,7 @@ app.on('activate', () => {
   }
 });
 
-// create main BrowserWindow when electron is ready
+// create main BrowserWindowWithEvents when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
 });
