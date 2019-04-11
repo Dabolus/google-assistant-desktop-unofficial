@@ -10,7 +10,8 @@
       "@store/*": ["store/*"],
       "@components/*": ["components/*"],
       "@services/*": ["services/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@locales/*": ["locales/*"]
     }
   },
   "include": [

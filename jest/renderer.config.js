@@ -13,6 +13,7 @@ module.exports = {
     '@components/(.*)': '<rootDir>/src/renderer/components/$1',
     '@services/(.*)': '<rootDir>/src/renderer/services/$1',
     '@helpers/(.*)': '<rootDir>/src/renderer/helpers/$1',
+    '@locales/(.*)': '<rootDir>/src/renderer/locales/$1',
   },
   moduleFileExtensions: ['ts', 'js', 'scss', 'sass', 'css', 'ejs', 'html'],
   testMatch: [
