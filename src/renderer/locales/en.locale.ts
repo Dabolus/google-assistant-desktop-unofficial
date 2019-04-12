@@ -1,4 +1,6 @@
-export default {
+import { LocaleData } from './model';
+
+const en: LocaleData = {
   topBar: {
     assistant: 'Assistant',
   },
@@ -100,3 +102,5 @@ export default {
     },
   },
 };
+
+export default en;
