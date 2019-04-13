@@ -2,7 +2,9 @@ import { LocaleData } from './model';
 
 const en: LocaleData = {
   topBar: {
-    assistant: 'Assistant',
+    assistant:
+      '<img src="assets/google-logo.svg">' +
+      '<div class="heading">Assistant</div>',
   },
   chat: {},
   bottomBar: {
@@ -19,12 +21,13 @@ const en: LocaleData = {
         introduction: {
           title: 'Introduction',
           text:
-            'This text will give you some information on the Google Assistant Desktop (from now ' +
-            'on referred as "the software"), the developers that are behind it (from now on ' +
-            'referred as "the authors"), the technologies and the responsibilities involved ' +
-            'into its usage and how they can and will affect you. Please, be sure to read this ' +
-            'text carefully, as pressing the <em>Next</em> button will be considered as a ' +
-            'confirmation that you have read and acknowledged it in its entirety.',
+            'This text will give you some information on the Google Assistant Desktop ' +
+            '(hereinafter referred to as "the software"), the developers that are behind ' +
+            'it (hereinafter referred to as "the authors"), the technologies and the ' +
+            'responsibilities involved into its usage and how they can and will affect you. ' +
+            'Please, be sure to read this text carefully, as pressing the <em>Next</em> ' +
+            'button will be considered as a confirmation that you have read and ' +
+            'acknowledged it in its entirety.',
         },
         software: {
           title: 'The software',
