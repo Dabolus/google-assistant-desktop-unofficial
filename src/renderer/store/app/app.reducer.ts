@@ -6,6 +6,7 @@ export const initialState: AppState = {
   page: 'chat',
   menuOpened: false,
   locale: Locale.EN,
+  localeData: null,
 };
 
 export const appReducer: Reducer<AppState, AppAction> = (
@@ -22,6 +23,11 @@ export const appReducer: Reducer<AppState, AppAction> = (
       return {
         ...state,
         menuOpened: action.payload.opened,
+      };
+    case AppActionType.UPDATE_LOCALE_RESOLVED:
+      return {
+        ...state,
+        localeData: action.payload.localeData,
       };
     default:
       return state;
