@@ -35,5 +35,6 @@ module.exports = {
       loose: true,
     }],
     '@babel/syntax-dynamic-import',
+    '@babel/proposal-optional-chaining',
   ],
 };
