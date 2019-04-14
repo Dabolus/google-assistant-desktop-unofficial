@@ -1,6 +1,9 @@
 import 'core-js/es7/reflect';
 
-import { navigate } from '@store/app/app.actions';
+import { container } from '@helpers/di.helper';
+import { L10n, L10nService } from '@services/l10n.service';
+import { navigate, requestLocaleUpdate } from '@store/app/app.actions';
+import { Locale } from '@store/app/app.model';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
@@ -18,6 +21,9 @@ export class Shell extends connect(store)(LitElement) {
 
   constructor() {
     super();
+    const userLocale = navigator.language.slice(0, 2);
+    const locale = L10nService.supportedLocales.find((l) => l === userLocale) || Locale.EN;
+    store.dispatch(requestLocaleUpdate(locale));
     store.dispatch(navigate('wizard'));
   }
 
