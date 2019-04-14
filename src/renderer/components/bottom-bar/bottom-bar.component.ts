@@ -1,3 +1,4 @@
+import { LocaleData } from '@locales/model';
 import { updateInput } from '@store/chat/chat.actions';
 import { store } from '@store/index';
 import { customElement, LitElement, property } from 'lit-element';
@@ -15,8 +16,12 @@ export class BottomBar extends connect(store)(LitElement) {
   @property({ type: String })
   protected _text = '';
 
-  public stateChanged({ chat }: RootState) {
+  @property({ type: String })
+  protected _localeData: LocaleData = null;
+
+  public stateChanged({ app, chat }: RootState) {
     this._text = chat.text;
+    this._localeData = app.localeData;
   }
 
   protected render() {

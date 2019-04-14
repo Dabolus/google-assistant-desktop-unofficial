@@ -7,7 +7,7 @@ export default function template(this: BottomBar) {
   return html`
     <input
       type="text"
-      placeholder="Type a message"
+      placeholder="${this._localeData?.bottomBar?.placeholder}"
       autofocus
       @input="${this._inputModified}"
       @keydown="${this._inputKeyDown}"
