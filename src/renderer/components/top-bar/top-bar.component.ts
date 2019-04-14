@@ -1,3 +1,4 @@
+import { LocaleData } from '@locales/model';
 import { updateMenuState } from '@store/app/app.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
@@ -15,8 +16,12 @@ export class TopBar extends connect(store)(LitElement) {
   @property({ type: Boolean })
   protected _menuOpened = false;
 
-  public stateChanged(state: RootState) {
-    this._menuOpened = state.app.menuOpened;
+  @property({ type: String })
+  protected _localeData: LocaleData = null;
+
+  public stateChanged({ app }: RootState) {
+    this._menuOpened = app.menuOpened;
+    this._localeData = app.localeData;
   }
 
   protected render() {
