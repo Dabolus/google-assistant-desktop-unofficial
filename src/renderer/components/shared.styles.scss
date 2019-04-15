@@ -38,6 +38,20 @@ input, textarea {
   }
 }
 
+select {
+  font-family: var(--gad-text-font);
+  font-size: 1rem;
+  border-radius: var(--gad-border-radius-sm);
+  background: var(--gad-background-color);
+  color: var(--gad-secondary-text-color);
+  outline: none;
+  border: 1px solid var(--gad-divider-color);
+  
+  > option {
+    padding: .5rem;
+  }
+}
+
 p {
   font-family: var(--gad-text-font);
   color: var(--gad-secondary-text-color);
