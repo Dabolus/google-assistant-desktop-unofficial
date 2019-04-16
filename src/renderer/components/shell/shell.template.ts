@@ -11,6 +11,6 @@ export default function template(this: Shell) {
     <gad-top-bar role="heading"></gad-top-bar>
     <gad-chat></gad-chat>
     <gad-bottom-bar></gad-bottom-bar>
-    <gad-wizard></gad-wizard>
+    <gad-wizard ?shown="${this._page === 'wizard'}"></gad-wizard>
   `;
 }
