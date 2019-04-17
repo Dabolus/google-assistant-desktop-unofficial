@@ -16,10 +16,6 @@ function* handleLocaleUpdate({
   }
 }
 
-function* updateLocale() {
-  yield takeLatest(AppActionType.UPDATE_LOCALE_REQUESTED, handleLocaleUpdate);
-}
-
 export const appSagas = [
-  updateLocale,
+  takeLatest(AppActionType.UPDATE_LOCALE_REQUESTED, handleLocaleUpdate),
 ];

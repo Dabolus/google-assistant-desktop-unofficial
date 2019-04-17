@@ -13,10 +13,6 @@ function* handleUserAuthentication({
   yield put(resolveAuthentication());
 }
 
-function* authenticate() {
-  yield takeLatest(AuthActionType.AUTHENTICATE_REQUESTED, handleUserAuthentication);
-}
-
 export const authSagas = [
-  authenticate,
+  takeLatest(AuthActionType.AUTHENTICATE_REQUESTED, handleUserAuthentication),
 ];

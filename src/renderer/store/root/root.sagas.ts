@@ -1,7 +1,10 @@
+import { all } from 'redux-saga/effects';
 import { appSagas } from '../app/app.sagas';
 import { authSagas } from '../auth/auth.sagas';
 
-export const rootSagas = [
-  ...appSagas,
-  ...authSagas,
-];
+export function* rootSaga() {
+  yield all([
+    ...appSagas,
+    ...authSagas,
+  ]);
+}

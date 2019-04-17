@@ -3,7 +3,7 @@ import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
-import { rootSagas } from './root/root.sagas';
+import { rootSaga } from './root/root.sagas';
 import { StoreConfig } from './store.model';
 
 declare global {
@@ -32,8 +32,7 @@ export const configure = (
   );
   const store = createStore(rootReducer, initialState, enhancer);
 
-  // TODO: remove this useless explicit cast as soon as TypeScript gets fixed
-  sagaMiddleware.run(...(rootSagas as [any]));
+  sagaMiddleware.run(rootSaga);
 
   if (module.hot) {
     module.hot.accept('./root/root.reducer', () => store.replaceReducer(rootReducer));
