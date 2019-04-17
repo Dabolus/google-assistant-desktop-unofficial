@@ -36,7 +36,7 @@ export default function template(this: Wizard) {
           <h2>${this._localeData?.wizard?.steps?.[2]?.title}</h2>
           <p>${this._localeData?.wizard?.steps?.[2]?.text}</p>
           <select size="5" @change="${this._localeChanged}">
-            <option value="EN" selected>English</option>
+            <option value="EN" ?selected=${this._locale === 'EN'}>English</option>
           </select>
         </div>
       </section>

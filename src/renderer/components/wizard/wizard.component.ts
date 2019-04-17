@@ -41,6 +41,7 @@ export class Wizard extends connect(store)(LitElement) {
     this._clientId = auth.clientId;
     this._clientSecret = auth.clientSecret;
     this._currentStep = wizard.step;
+    this._locale = app.locale;
     this._localeData = app.localeData;
   }
 
@@ -72,9 +73,8 @@ export class Wizard extends connect(store)(LitElement) {
   }
 
   protected _localeChanged(e: Event) {
-    const { selectedOptions } = e.target as HTMLSelectElement;
-    // For some reason, destructuring doesn't work with HTMLCollectionOf
-    const { value }: any = selectedOptions[0];
+    // For some reason, destructuring doesn't work with HTMLCollectionOf, so we need to cast to any
+    const { selectedOptions: [{ value }] }: any = e.target as HTMLSelectElement;
     store.dispatch(requestLocaleUpdate(value));
   }
 }
