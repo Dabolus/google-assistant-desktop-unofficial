@@ -7,6 +7,7 @@ export enum AuthActionType {
   AUTHENTICATE_REQUESTED = 'AUTHENTICATE_REQUESTED',
   AUTHENTICATE_RESOLVED = 'AUTHENTICATE_RESOLVED',
   AUTHENTICATE_REJECTED = 'AUTHENTICATE_REJECTED',
+  CLEAR_AUTH_ERRORS = 'CLEAR_AUTH_ERRORS',
 }
 
 // Action interfaces
@@ -36,9 +37,22 @@ export interface AuthActionAuthenticateResolved extends
   FluxStandardAction<AuthActionType.AUTHENTICATE_RESOLVED> {}
 
 export interface AuthActionAuthenticateRejected extends
-  FluxStandardAction<AuthActionType.AUTHENTICATE_REJECTED> {}
+  FluxStandardAction<AuthActionType.AUTHENTICATE_REJECTED> {
+  payload: {
+    error: Error;
+  };
+}
 
-export type AuthAction = AuthActionUpdateClientId | AuthActionUpdateClientSecret;
+export interface AuthActionClearAuthErrors extends
+  FluxStandardAction<AuthActionType.CLEAR_AUTH_ERRORS> {}
+
+export type AuthAction =
+  | AuthActionUpdateClientId
+  | AuthActionUpdateClientSecret
+  | AuthActionAuthenticateRequested
+  | AuthActionAuthenticateResolved
+  | AuthActionAuthenticateRejected
+  | AuthActionClearAuthErrors;
 
 // Actions
 export const updateClientId = (clientId: string): AuthActionUpdateClientId => ({
@@ -70,6 +84,13 @@ export const resolveAuthentication = (): AuthActionAuthenticateResolved => ({
   type: AuthActionType.AUTHENTICATE_RESOLVED,
 });
 
-export const rejectAuthentication = (): AuthActionAuthenticateRejected => ({
+export const rejectAuthentication = (error: Error): AuthActionAuthenticateRejected => ({
   type: AuthActionType.AUTHENTICATE_REJECTED,
+  payload: {
+    error,
+  },
+});
+
+export const clearAuthErrors = (): AuthActionClearAuthErrors => ({
+  type: AuthActionType.CLEAR_AUTH_ERRORS,
 });
