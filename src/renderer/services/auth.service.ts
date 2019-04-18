@@ -4,7 +4,7 @@ import { Event, ipcRenderer } from 'electron';
 export interface Auth {
   getClientId(): string;
   getClientSecret(): string;
-  authenticate(clientId: string, clientSecret: string): Promise<string>;
+  authenticate(clientId?: string, clientSecret?: string): Promise<string>;
 }
 
 @injectable()
@@ -17,7 +17,7 @@ export class AuthService implements Auth {
     return 'clientSecret'; // TODO
   }
 
-  public authenticate(clientId: string, clientSecret: string): Promise<string> {
+  public authenticate(clientId?: string, clientSecret?: string): Promise<string> {
     return new Promise((resolve, reject) => {
       ipcRenderer.once('auth.resolveAuthentication', (_: Event, data: any) => {
         resolve(data);

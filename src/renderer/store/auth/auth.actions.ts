@@ -27,8 +27,8 @@ export interface AuthActionUpdateClientSecret extends
 export interface AuthActionAuthenticateRequested extends
   FluxStandardAction<AuthActionType.AUTHENTICATE_REQUESTED> {
   payload: {
-    clientId: string;
-    clientSecret: string;
+    clientId?: string;
+    clientSecret?: string;
   };
 }
 
@@ -56,8 +56,8 @@ export const updateClientSecret = (clientSecret: string): AuthActionUpdateClient
 });
 
 export const requestAuthentication = (
-  clientId: string,
-  clientSecret: string,
+  clientId?: string,
+  clientSecret?: string,
 ): AuthActionAuthenticateRequested => ({
   type: AuthActionType.AUTHENTICATE_REQUESTED,
   payload: {
