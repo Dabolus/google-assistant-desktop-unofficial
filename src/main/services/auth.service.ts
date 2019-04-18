@@ -1,13 +1,15 @@
 import { container, injectable } from '@helpers/di.helper';
 import { BrowserWindow } from 'electron';
-import { OAuth2Client } from 'google-auth-library';
+import { JWTInput, OAuth2Client } from 'google-auth-library';
 import http from 'http';
+import { Assistant } from 'nodejs-assistant';
 import { parse as parseQuerystring } from 'querystring';
 import { parse as parseUrl } from 'url';
 import { Store, StoreService } from './store.service';
 
 export interface Auth {
-  getAuthenticatedClient(clientId: string, clientSecret: string): Promise<OAuth2Client>;
+  getCredentials(clientId?: string, clientSecret?: string): Promise<JWTInput>;
+  authenticateClient(clientId: string, clientSecret: string): Promise<string>;
 }
 
 @injectable()
@@ -15,11 +17,30 @@ export class AuthService implements Auth {
   private _client: OAuth2Client;
   private _storeService: Store = container.get(StoreService);
 
-  public getAuthenticatedClient(clientId: string, clientSecret: string): Promise<OAuth2Client> {
+  public async getCredentials(clientId?: string, clientSecret?: string): Promise<JWTInput> {
+    const cachedCredentials = this._storeService.getCredentials();
+    if (cachedCredentials) {
+      return cachedCredentials;
+    }
+    const code = await this.authenticateClient(
+      clientId || this._storeService.getClientId(),
+      clientSecret || this._storeService.getClientSecret(),
+    );
+    const { tokens: { refresh_token } } = await this._client.getToken(code);
+    const credentials = {
+      type: 'authorized_user',
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token,
+    };
+    this._storeService.setCredentials(credentials);
+    return credentials;
+  }
+
+  public authenticateClient(clientId: string, clientSecret: string): Promise<string> {
     return new Promise(async (resolve, reject) => {
-      if (this._client) {
-        await this._refreshClientTokenIfNeeded();
-        return resolve(this._client);
+      if (!clientId || !clientSecret) {
+        return reject(`Missing client id or client secret`);
       }
 
       // create an oAuth client to authorize the API calls.
@@ -28,14 +49,6 @@ export class AuthService implements Auth {
         clientSecret,
         'http://localhost:45515',
       );
-
-      const cachedCredentials = this._storeService.getCredentials();
-      if (cachedCredentials) {
-        oAuth2Client.setCredentials(cachedCredentials);
-        this._client = oAuth2Client;
-        await this._refreshClientTokenIfNeeded();
-        return resolve(this._client);
-      }
 
       let window: BrowserWindow;
 
@@ -47,7 +60,7 @@ export class AuthService implements Auth {
 
       // Open an http server to accept the oauth callback.
       const server = http
-        .createServer(async ({ url }, res) => {
+        .createServer(({ url }, res) => {
           // acquire the code from the querystring, and close the web server.
           const { query } = parseUrl(url);
           const { code } = parseQuerystring(query);
@@ -55,13 +68,8 @@ export class AuthService implements Auth {
           server.close();
           window.destroy();
 
-          // Now that we have the code, use that to acquire tokens.
-          const { tokens } = await oAuth2Client.getToken(code as string);
-          // Make sure to set the credentials on the OAuth2 client.
-          this._storeService.setCredentials(tokens);
-          oAuth2Client.setCredentials(tokens);
           this._client = oAuth2Client;
-          resolve(oAuth2Client);
+          resolve(code as string);
         })
         .listen(45515, () => {
           // open the browser to the authorize url to start the workflow
@@ -79,22 +87,5 @@ export class AuthService implements Auth {
           window.loadURL(authorizeUrl);
         });
     });
-  }
-
-  private async _refreshClientTokenIfNeeded(): Promise<void> {
-    if (!this._isClientTokenExpiring()) {
-      return;
-    }
-    const { credentials } = await this._client.refreshAccessToken();
-    this._storeService.setCredentials(credentials);
-    this._client.setCredentials(credentials);
-    return;
-  }
-
-  private _isClientTokenExpiring(): boolean {
-    const expiryDate = this._client.credentials.expiry_date;
-    return expiryDate ? expiryDate <=
-        ((new Date()).getTime() + this._client.eagerRefreshThresholdMillis) :
-        false;
   }
 }

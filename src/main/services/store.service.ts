@@ -1,14 +1,14 @@
 import { injectable } from '@helpers/di.helper';
 import ElectronStore from 'electron-store';
-import { Credentials } from 'google-auth-library';
+import { JWTInput } from 'google-auth-library';
 
 export interface Store {
   getClientId(): string;
   setClientId(clientId: string): void;
   getClientSecret(): string;
   setClientSecret(clientSecret: string): void;
-  getCredentials(): Credentials;
-  setCredentials(credentials: Credentials): void;
+  getCredentials(): JWTInput;
+  setCredentials(credentials: JWTInput): void;
 }
 
 @injectable()
@@ -49,7 +49,7 @@ export class StoreService implements Store {
     return this._store.get('credentials');
   }
 
-  public setCredentials(credentials: Credentials) {
+  public setCredentials(credentials: JWTInput) {
     return this._store.set('credentials', credentials);
   }
 }
