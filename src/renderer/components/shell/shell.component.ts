@@ -1,4 +1,4 @@
-import 'core-js/es7/reflect';
+import 'core-js/proposals/reflect-metadata';
 
 import { L10nService } from '@services/l10n.service';
 import { navigate, requestLocaleUpdate } from '@store/app/app.actions';
