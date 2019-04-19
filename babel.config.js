@@ -3,7 +3,7 @@ module.exports = {
     ['@babel/env', {
       loose: true,
       useBuiltIns: 'usage',
-      corejs: 2,
+      corejs: 3,
       ...process.env.NODE_ENV === 'test' ? {} : {
         modules: false,
       },
@@ -25,7 +25,7 @@ module.exports = {
       },
     }],
     ['@babel/transform-runtime', {
-      corejs: 2,
+      corejs: 3,
       sourceType: 'unambiguous',
     }],
     ['@babel/proposal-decorators', {
