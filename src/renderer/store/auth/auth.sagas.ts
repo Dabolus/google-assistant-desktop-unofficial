@@ -1,16 +1,19 @@
 import { container } from '@helpers/di.helper';
 import { Auth, AuthService } from '@services/auth.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { AuthActionAuthenticateRequested, AuthActionType, resolveAuthentication } from './auth.actions';
+import { AuthActionAuthenticateRequested, AuthActionType, rejectAuthentication, resolveAuthentication } from './auth.actions';
 
 const authService: Auth = container.get(AuthService);
 
 function* handleUserAuthentication({
   payload: { clientId, clientSecret },
 }: AuthActionAuthenticateRequested) {
-  const req = yield call(authService.authenticate, clientId, clientSecret);
-  console.log('req', req);
-  yield put(resolveAuthentication());
+  try {
+    yield call(authService.authenticate, clientId, clientSecret);
+    yield put(resolveAuthentication());
+  } catch (e) {
+    yield put(rejectAuthentication(e));
+  }
 }
 
 export const authSagas = [
