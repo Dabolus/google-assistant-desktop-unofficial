@@ -3,7 +3,7 @@ import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
-import { rootSaga } from './root/root.sagas';
+import { rootSaga } from './root/root.saga';
 import { StoreConfig } from './store.model';
 
 declare global {
