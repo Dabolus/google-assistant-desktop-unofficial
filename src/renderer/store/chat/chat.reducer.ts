@@ -4,6 +4,7 @@ import { ChatState } from './chat.model';
 
 export const initialState: ChatState = {
   text: '',
+  chatError: null,
 };
 
 export const chatReducer: Reducer<ChatState, ChatAction> = (
@@ -15,6 +16,11 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
       return {
         ...state,
         text: action.payload.text,
+      };
+    case ChatActionType.SEND_MESSAGE_REJECTED:
+      return {
+        ...state,
+        chatError: action.payload.error,
       };
     default:
       return state;
