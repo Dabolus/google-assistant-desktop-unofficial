@@ -15,5 +15,9 @@
     ],
     "target": "es5",
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "typings.d.ts",
+    "src/**/*.ts"
+  ]
 }
