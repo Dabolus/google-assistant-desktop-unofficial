@@ -29,7 +29,7 @@ export class BottomBar extends connect(store)(LitElement) {
   }
 
   protected _inputModified(e: KeyboardEvent) {
-    const [{ value }] = e.composedPath() as [HTMLInputElement];
+    const { value } = e.target as HTMLInputElement;
     store.dispatch(updateInput(value));
   }
 
