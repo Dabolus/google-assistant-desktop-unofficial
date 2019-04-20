@@ -1,5 +1,5 @@
 import { LocaleData } from '@locales/model';
-import { updateInput } from '@store/chat/chat.actions';
+import { requestMessageSend, updateInput } from '@store/chat/chat.actions';
 import { store } from '@store/index';
 import { customElement, LitElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
@@ -42,7 +42,7 @@ export class BottomBar extends connect(store)(LitElement) {
   }
 
   protected _textSubmitted() {
-    // TODO
+    store.dispatch(requestMessageSend(this._text));
   }
 }
 
