@@ -1,10 +1,11 @@
 import { Reducer } from 'redux';
 import { ChatAction, ChatActionType } from './chat.actions';
-import { ChatState } from './chat.model';
+import { ChatState, MessageType } from './chat.model';
 
 export const initialState: ChatState = {
   text: '',
-  chatError: null,
+  error: null,
+  history: [],
 };
 
 export const chatReducer: Reducer<ChatState, ChatAction> = (
@@ -20,7 +21,15 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
     case ChatActionType.SEND_MESSAGE_REJECTED:
       return {
         ...state,
-        chatError: action.payload.error,
+        error: action.payload.error,
+      };
+    case ChatActionType.RECEIVE_MESSAGE:
+      return {
+        ...state,
+        history: [...state.history.slice(-50), {
+          type: MessageType.IN,
+          content: action.payload.text,
+        }],
       };
     default:
       return state;
