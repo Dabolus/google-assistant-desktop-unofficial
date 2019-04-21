@@ -4,8 +4,10 @@ import { L10nService } from '@services/l10n.service';
 import { navigate, requestLocaleUpdate } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
 import { clearAuthErrors, requestAuthentication } from '@store/auth/auth.actions';
+import { receiveMessage } from '@store/chat/chat.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
+import { ipcRenderer } from 'electron';
 import { customElement, LitElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
 
@@ -25,6 +27,11 @@ export class Shell extends connect(store)(LitElement) {
     const locale = L10nService.supportedLocales.find((l) => l === userLocale) || Locale.EN;
     store.dispatch(requestAuthentication());
     store.dispatch(requestLocaleUpdate(locale));
+
+    // Event listeners
+    ipcRenderer.on('chat.receiveMessage', (_: Event, text: string) => {
+      store.dispatch(receiveMessage(text));
+    });
   }
 
   public stateChanged({ app, auth }: RootState) {
