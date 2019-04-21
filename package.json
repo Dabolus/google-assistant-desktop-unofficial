@@ -26,8 +26,10 @@
   "dependencies": {
     "@babel/runtime-corejs3": "^7.4.3",
     "core-js": "^3.0.1",
+    "electron": "^4.1.4",
     "electron-store": "^3.2.0",
     "google-auth-library": "^3.1.2",
+    "nodejs-assistant": "^0.6.1",
     "typedi": "^0.8.0"
   },
   "devDependencies": {
@@ -61,7 +63,6 @@
     "copy-webpack-plugin": "^5.0.2",
     "cross-env": "^5.2.0",
     "ejs": "^2.6.1",
-    "electron": "^4.1.4",
     "electron-builder": "^20.39.0",
     "electron-devtools-installer": "^2.2.4",
     "html-webpack-plugin": "^4.0.0-beta.5",
