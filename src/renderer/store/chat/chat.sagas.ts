@@ -10,7 +10,7 @@ function* handleMessageSend({
 }: ChatActionSendMessageRequested) {
   try {
     yield call(chatService.sendMessage, text);
-    yield put(resolveMessageSend());
+    yield put(resolveMessageSend(text));
   } catch (e) {
     yield put(rejectMessageSend(e));
   }
