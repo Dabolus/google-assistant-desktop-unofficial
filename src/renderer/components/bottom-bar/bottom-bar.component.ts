@@ -1,7 +1,7 @@
 import { LocaleData } from '@locales/model';
 import { requestMessageSend, updateInput } from '@store/chat/chat.actions';
 import { store } from '@store/index';
-import { customElement, LitElement, property } from 'lit-element';
+import { customElement, LitElement, property, query } from 'lit-element';
 import { connect } from 'pwa-helpers';
 
 import sharedStyles from '@components/shared.styles';
@@ -19,8 +19,16 @@ export class BottomBar extends connect(store)(LitElement) {
   @property({ type: String })
   protected _localeData: LocaleData = null;
 
+  @query('input')
+  private _inputRef: HTMLInputElement;
+
   public stateChanged({ app, chat }: RootState) {
-    this._text = chat.text;
+    if (this._text !== chat.text) {
+      this._text = chat.text;
+      if (this._inputRef) {
+        this._inputRef.value = this._text;
+      }
+    }
     this._localeData = app.localeData;
   }
 
