@@ -18,6 +18,15 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
         ...state,
         text: action.payload.text,
       };
+    case ChatActionType.SEND_MESSAGE_RESOLVED:
+      return {
+        ...state,
+        text: '',
+        history: [...state.history.slice(-50), {
+          type: MessageType.OUT,
+          content: action.payload.text,
+        }],
+      };
     case ChatActionType.SEND_MESSAGE_REJECTED:
       return {
         ...state,
