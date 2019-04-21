@@ -96,6 +96,6 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "browserslist": [
-    "chrome >= 66"
+    "chrome >= 69"
   ]
 }
