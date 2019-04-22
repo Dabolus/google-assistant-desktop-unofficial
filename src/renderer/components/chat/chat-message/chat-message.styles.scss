@@ -1,0 +1,15 @@
+:host {
+  border-radius: var(--gad-border-radius-lg);
+  padding: .4rem .7rem;
+  font-family: var(--gad-display-font);
+}
+
+:host([type=IN]) {
+  border: 1px solid var(--gad-divider-color);
+  color: var(--gad-primary-text-color);
+}
+
+:host([type=OUT]) {
+  background: var(--gad-divider-color);
+  color: var(--gad-secondary-text-color);
+}

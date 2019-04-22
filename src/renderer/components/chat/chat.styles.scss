@@ -1,3 +1,19 @@
 :host {
   background: var(--gad-background-color);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+gad-chat-message {
+  margin-top: 1rem;
+
+  &[type=IN] {
+    align-self: flex-start;
+  }
+
+  &[type=OUT] {
+    align-self: flex-end;
+  }
 }
