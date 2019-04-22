@@ -1,5 +1,4 @@
 import { applyMiddleware, compose, createStore, Store } from 'redux';
-import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
@@ -22,13 +21,7 @@ export const configure = (
 ): Store<RootState> => {
   const sagaMiddleware = createSagaMiddleware();
   const enhancer = devCompose(
-    applyMiddleware(
-      sagaMiddleware,
-      createLogger({
-        level: 'info',
-        collapsed: true,
-      }),
-    ),
+    applyMiddleware(sagaMiddleware),
   );
   const store = createStore(rootReducer, initialState, enhancer);
 
