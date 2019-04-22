@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   background: var(--gad-card-color);
-  border-radius: var(--gad-border-radius-lg);
+  border-radius: var(--gad-border-radius-md);
   z-index: 1;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 
@@ -66,7 +66,7 @@
     width: 100%;
     height: 18.125rem;
     background: var(--gad-background-color) url(assets/intro-header.webp) center / cover;
-    border-radius: var(--gad-border-radius-lg) var(--gad-border-radius-lg) 0 0;
+    border-radius: var(--gad-border-radius-md) var(--gad-border-radius-md) 0 0;
   }
 
   > div.intro-content {
