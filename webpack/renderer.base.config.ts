@@ -28,7 +28,6 @@ const config: Configuration = smartMerge(baseConfig, {
         include: ['dependencies'],
       },
     }),
-    /^electron$/,
   ],
   module: {
     rules: [
