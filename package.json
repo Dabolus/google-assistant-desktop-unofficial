@@ -13,7 +13,7 @@
     "start:main": "webpack -w --config webpack/main.dev.config.ts",
     "start:renderer": "webpack-dev-server --config webpack/renderer.dev.config.ts --hot --color --compress --overlay",
     "build": "run-p build:main build:renderer && yarn build:electron",
-    "build:electron": "cp package.json app && cd app && electron-builder --config ../electron-builder.json",
+    "build:electron": "cp package.json app && cd app && ts-node ../scripts/build",
     "build:main": "webpack --config webpack/main.prod.config.ts",
     "build:renderer": "webpack --config webpack/renderer.prod.config.ts",
     "lint": "tslint -p .",
