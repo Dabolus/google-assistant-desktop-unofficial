@@ -1,7 +1,7 @@
 import 'core-js/proposals/reflect-metadata';
 
 import { L10nService } from '@services/l10n.service';
-import { navigate, requestLocaleUpdate } from '@store/app/app.actions';
+import { navigate, requestLocaleUpdate, setTheme } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
 import { clearAuthErrors, requestAuthentication } from '@store/auth/auth.actions';
 import { receiveMessage } from '@store/chat/chat.actions';
@@ -30,7 +30,7 @@ export class Shell extends connect(store)(LitElement) {
 
     // Event listeners
     ipcRenderer.on('app.setTheme', (_: Event, theme: string) => {
-      this.setAttribute('theme', theme);
+      store.dispatch(setTheme(theme));
     });
     ipcRenderer.on('chat.receiveMessage', (_: Event, text: string) => {
       store.dispatch(receiveMessage(text));
@@ -39,6 +39,7 @@ export class Shell extends connect(store)(LitElement) {
 
   public stateChanged({ app, auth }: RootState) {
     this._page = app.page;
+    this.setAttribute('theme', app.theme);
     if (auth.authError) {
       store.dispatch(clearAuthErrors());
       store.dispatch(navigate('wizard'));

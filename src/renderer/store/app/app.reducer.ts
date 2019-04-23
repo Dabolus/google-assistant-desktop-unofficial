@@ -7,6 +7,7 @@ export const initialState: AppState = {
   menuOpened: false,
   locale: Locale.EN,
   localeData: null,
+  theme: 'light',
 };
 
 export const appReducer: Reducer<AppState, AppAction> = (
@@ -28,6 +29,11 @@ export const appReducer: Reducer<AppState, AppAction> = (
       return {
         ...state,
         localeData: action.payload.localeData,
+      };
+    case AppActionType.SET_THEME:
+      return {
+        ...state,
+        theme: action.payload.theme,
       };
     default:
       return state;

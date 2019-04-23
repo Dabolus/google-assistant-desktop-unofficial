@@ -10,4 +10,5 @@ export interface AppState {
   menuOpened: boolean;
   locale: Locale;
   localeData: LocaleData;
+  theme: string;
 }

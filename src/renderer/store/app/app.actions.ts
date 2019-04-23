@@ -10,6 +10,8 @@ export enum AppActionType {
   UPDATE_LOCALE_REQUESTED = 'UPDATE_LOCALE_REQUESTED',
   UPDATE_LOCALE_RESOLVED = 'UPDATE_LOCALE_RESOLVED',
   UPDATE_LOCALE_REJECTED = 'UPDATE_LOCALE_REJECTED',
+
+  SET_THEME = 'SET_THEME',
 }
 
 // Action interfaces
@@ -48,12 +50,20 @@ export interface AppActionUpdateLocaleRejected extends
   };
 }
 
+export interface AppActionSetTheme extends
+  FluxStandardAction<AppActionType.SET_THEME> {
+  payload: {
+    theme: string;
+  };
+}
+
 export type AppAction =
   | AppActionUpdatePage
   | AppActionUpdateMenuState
   | AppActionUpdateLocaleRequested
   | AppActionUpdateLocaleResolved
-  | AppActionUpdateLocaleRejected;
+  | AppActionUpdateLocaleRejected
+  | AppActionSetTheme;
 
 // Actions
 export const navigate = (page: string): AppActionUpdatePage => {
@@ -90,5 +100,12 @@ export const rejectLocaleUpdate = (error: Error): AppActionUpdateLocaleRejected 
   type: AppActionType.UPDATE_LOCALE_REJECTED,
   payload: {
     error,
+  },
+});
+
+export const setTheme = (theme: string): AppActionSetTheme => ({
+  type: AppActionType.SET_THEME,
+  payload: {
+    theme,
   },
 });
