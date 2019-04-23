@@ -8,6 +8,7 @@
 
 gad-chat-message {
   margin-top: 1rem;
+  max-width: 85vw;
 
   &[type=IN] {
     align-self: flex-start;
