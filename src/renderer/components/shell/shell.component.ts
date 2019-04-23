@@ -29,6 +29,9 @@ export class Shell extends connect(store)(LitElement) {
     store.dispatch(requestLocaleUpdate(locale));
 
     // Event listeners
+    ipcRenderer.on('app.setTheme', (_: Event, theme: string) => {
+      this.setAttribute('theme', theme);
+    });
     ipcRenderer.on('chat.receiveMessage', (_: Event, text: string) => {
       store.dispatch(receiveMessage(text));
     });

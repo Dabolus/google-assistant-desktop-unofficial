@@ -1,5 +1,5 @@
 import { Auth, AuthService } from '@services/auth.service';
-import { BrowserWindow, BrowserWindowConstructorOptions, Event, ipcMain } from 'electron';
+import { BrowserWindow, BrowserWindowConstructorOptions, Event, ipcMain, systemPreferences } from 'electron';
 import { Assistant } from 'nodejs-assistant';
 import { container } from './di.helper';
 
@@ -9,6 +9,9 @@ export class BrowserWindowWithEvents extends BrowserWindow {
 
   constructor(options?: BrowserWindowConstructorOptions) {
     super(options);
+
+    systemPreferences.subscribeNotification('AppleInterfaceThemeChangedNotification', () =>
+      this.webContents.send('app.setTheme', systemPreferences.isDarkMode() ? 'dark' : 'light'));
 
     ipcMain
       .on('auth.requestAuthentication', async (_: Event, {

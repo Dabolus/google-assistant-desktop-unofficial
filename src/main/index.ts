@@ -1,5 +1,5 @@
 import { BrowserWindowWithEvents } from '@helpers/events.helper';
-import { app } from 'electron';
+import { app, systemPreferences } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
 
@@ -35,6 +35,14 @@ function createMainWindow() {
   window.on('closed', () => {
     mainWindow = null;
   });
+
+  // Set app theme based on system wide theme
+  window.webContents.once('dom-ready', () =>
+    window.webContents.send(
+      'app.setTheme',
+      systemPreferences.isDarkMode() ? 'dark' : 'light',
+    ),
+  );
 
   return window;
 }
