@@ -66,3 +66,12 @@ app.on('activate', () => {
 app.on('ready', () => {
   mainWindow = createMainWindow();
 });
+
+if (isDevelopment) {
+  import('electron-watch')
+    .then(({ default: watch }) => watch(
+      resolve(__dirname, '../../src/main'),
+      'start:electron',
+      resolve(__dirname, '../../'),
+    ));
+}

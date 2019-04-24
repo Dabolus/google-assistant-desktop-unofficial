@@ -1,4 +1,5 @@
 declare module 'webpack-node-externals';
+declare module 'electron-watch';
 
 declare module 'script-ext-html-webpack-plugin' {
   import { Plugin } from 'webpack';
