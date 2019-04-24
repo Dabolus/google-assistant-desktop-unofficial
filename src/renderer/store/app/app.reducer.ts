@@ -4,7 +4,6 @@ import { AppState, Locale } from './app.model';
 
 export const initialState: AppState = {
   page: 'chat',
-  menuOpened: false,
   locale: Locale.EN,
   localeData: null,
   theme: 'light',
@@ -19,11 +18,6 @@ export const appReducer: Reducer<AppState, AppAction> = (
       return {
         ...state,
         page: action.payload.page,
-      };
-    case AppActionType.UPDATE_MENU_STATE:
-      return {
-        ...state,
-        menuOpened: action.payload.opened,
       };
     case AppActionType.UPDATE_LOCALE_RESOLVED:
       return {

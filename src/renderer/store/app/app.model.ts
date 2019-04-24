@@ -7,7 +7,6 @@ export enum Locale {
 
 export interface AppState {
   page: string;
-  menuOpened: boolean;
   locale: Locale;
   localeData: LocaleData;
   theme: string;

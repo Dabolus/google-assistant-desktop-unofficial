@@ -5,7 +5,6 @@ import { Locale } from './app.model';
 // Action types
 export enum AppActionType {
   UPDATE_PAGE = 'UPDATE_PAGE',
-  UPDATE_MENU_STATE = 'UPDATE_MENU_STATE',
 
   UPDATE_LOCALE_REQUESTED = 'UPDATE_LOCALE_REQUESTED',
   UPDATE_LOCALE_RESOLVED = 'UPDATE_LOCALE_RESOLVED',
@@ -19,13 +18,6 @@ export interface AppActionUpdatePage extends
   FluxStandardAction<AppActionType.UPDATE_PAGE> {
   payload: {
     page: string;
-  };
-}
-
-export interface AppActionUpdateMenuState extends
-  FluxStandardAction<AppActionType.UPDATE_MENU_STATE> {
-  payload: {
-    opened: boolean;
   };
 }
 
@@ -59,7 +51,6 @@ export interface AppActionSetTheme extends
 
 export type AppAction =
   | AppActionUpdatePage
-  | AppActionUpdateMenuState
   | AppActionUpdateLocaleRequested
   | AppActionUpdateLocaleResolved
   | AppActionUpdateLocaleRejected
@@ -74,13 +65,6 @@ export const navigate = (page: string): AppActionUpdatePage => {
     },
   };
 };
-
-export const updateMenuState = (opened: boolean): AppActionUpdateMenuState => ({
-  type: AppActionType.UPDATE_MENU_STATE,
-  payload: {
-    opened,
-  },
-});
 
 export const requestLocaleUpdate = (locale: Locale): AppActionUpdateLocaleRequested => ({
   type: AppActionType.UPDATE_LOCALE_REQUESTED,
