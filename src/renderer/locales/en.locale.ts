@@ -5,6 +5,13 @@ const en: LocaleData = {
     assistant:
       '<img src="assets/google-logo.svg">' +
       '<div class="heading">Assistant</div>',
+    settings: '<div class="heading">Settings</div>',
+  },
+  settings: {
+    logout: {
+      option: 'Logout',
+      description: 'Disconnect from Google Assistant',
+    },
   },
   chat: {},
   bottomBar: {

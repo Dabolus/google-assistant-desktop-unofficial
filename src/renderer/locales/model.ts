@@ -1,6 +1,13 @@
 export interface LocaleData {
   topBar: {
     assistant: string;
+    settings: string;
+  };
+  settings: {
+    [key: string]: {
+      option: string;
+      description: string;
+    };
   };
   chat: {};
   bottomBar: {
