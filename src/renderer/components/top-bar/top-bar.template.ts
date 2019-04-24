@@ -4,9 +4,16 @@ import { TopBar } from './top-bar.component';
 
 export default function template(this: TopBar) {
   return html`
-    <div class="logo">${unsafeHTML(this._localeData?.topBar?.assistant)}</div>
+    <div class="title">${unsafeHTML(
+      this._page === 'settings'
+      ? this._localeData?.topBar?.settings
+      : this._localeData?.topBar?.assistant,
+    )}</div>
     <div class="spacer"></div>
-    <div class="material-icons-extended" @click="${this._menuButtonClicked}">more_vert</div>
-    <div class="menu" role="menu" ?hidden="${!this._menuOpened}">The menu!</div>
+    <div
+      class="material-icons-extended"
+      @click="${this._page === 'settings' ? this._backButtonClicked : this._settingsButtonClicked}">
+      ${this._page === 'settings' ? 'chevron_right' : 'settings'}
+    </div>
   `;
 }

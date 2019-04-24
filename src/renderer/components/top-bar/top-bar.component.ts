@@ -1,5 +1,5 @@
 import { LocaleData } from '@locales/model';
-import { updateMenuState } from '@store/app/app.actions';
+import { navigate } from '@store/app/app.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
@@ -13,14 +13,14 @@ import template from './top-bar.template';
 export class TopBar extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
-  @property({ type: Boolean })
-  protected _menuOpened = false;
+  @property({ type: String })
+  protected _page = 'chat';
 
   @property({ type: String })
   protected _localeData: LocaleData = null;
 
   public stateChanged({ app }: RootState) {
-    this._menuOpened = app.menuOpened;
+    this._page = app.page;
     this._localeData = app.localeData;
   }
 
@@ -28,8 +28,12 @@ export class TopBar extends connect(store)(LitElement) {
     return template.call(this);
   }
 
-  protected _menuButtonClicked() {
-    store.dispatch(updateMenuState(!this._menuOpened));
+  protected _backButtonClicked() {
+    store.dispatch(navigate('chat'));
+  }
+
+  protected _settingsButtonClicked() {
+    store.dispatch(navigate('settings'));
   }
 }
 
