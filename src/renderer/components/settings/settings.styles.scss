@@ -1,0 +1,36 @@
+:host {
+  background: var(--gad-background-color);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    cursor: pointer;
+    display: flex;
+    background: var(--gad-background-color);
+
+    > .material-icons-extended {
+      padding: 1.25rem;
+      color: var(--gad-secondary-text-color);
+    }
+
+    > .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      > .option {
+        color: var(--gad-primary-text-color);
+      }
+
+      > .description {
+        color: var(--gad-secondary-text-color);
+      }
+    }
+  }
+}
