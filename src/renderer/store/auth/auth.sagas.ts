@@ -16,6 +16,16 @@ function* handleUserAuthentication({
   }
 }
 
+function* handleUserLogout() {
+  try {
+    yield call(authService.logout);
+    yield put(resolveAuthentication());
+  } catch (e) {
+    yield put(rejectAuthentication(e));
+  }
+}
+
 export const authSagas = [
   takeLatest(AuthActionType.AUTHENTICATE_REQUESTED, handleUserAuthentication),
+  takeLatest(AuthActionType.LOGOUT_REQUESTED, handleUserLogout),
 ];
