@@ -5,7 +5,7 @@ import { AuthState } from './auth.model';
 export const initialState: AuthState = {
   clientId: '',
   clientSecret: '',
-  authError: null,
+  error: null,
 };
 
 export const authReducer: Reducer<AuthState, AuthAction> = (
@@ -26,12 +26,23 @@ export const authReducer: Reducer<AuthState, AuthAction> = (
     case AuthActionType.AUTHENTICATE_REJECTED:
       return {
         ...state,
-        authError: action.payload.error,
+        error: action.payload.error,
       };
     case AuthActionType.CLEAR_AUTH_ERRORS:
       return {
         ...state,
-        authError: null,
+        error: null,
+      };
+    case AuthActionType.LOGOUT_RESOLVED:
+      return {
+        ...state,
+        clientId: '',
+        clientSecret: '',
+      };
+    case AuthActionType.LOGOUT_REJECTED:
+      return {
+        ...state,
+        error: action.payload.error,
       };
     default:
       return state;
