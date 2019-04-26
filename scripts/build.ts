@@ -19,7 +19,7 @@ const getConfig = (platform: string): CliOptions => {
         config: {
           ...baseConfig,
           win: {
-            target: ['nsis', 'msi'],
+            target: 'nsis',
           },
         },
       };
@@ -45,7 +45,7 @@ const getConfig = (platform: string): CliOptions => {
           ...baseConfig,
           mac: {
             category: 'public.app-category.utilities',
-            target: 'default',
+            target: 'dmg',
             darkModeSupport: true,
           },
           dmg: {
