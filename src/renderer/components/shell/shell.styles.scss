@@ -73,6 +73,10 @@ gad-bottom-bar {
   z-index: 1;
 }
 
+gad-settings {
+  flex: 1 1 auto;
+}
+
 gad-wizard {
   position: fixed;
   top: 0;
