@@ -13,7 +13,8 @@ export interface Store {
 
 @injectable()
 export class StoreService implements Store {
-  private _store = new ElectronStore({
+  // TODO: write store interface
+  private _store = new ElectronStore<any>({
     // NOTE: we encrypt the store to make the JSON file unreadable.
     // Of course the user can still find the encryption key in the
     // source code and use it to decrypt the store, but at least
