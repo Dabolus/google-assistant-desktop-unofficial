@@ -9,6 +9,7 @@ export interface Store {
   setClientSecret(clientSecret: string): void;
   getCredentials(): JWTInput;
   setCredentials(credentials: JWTInput): void;
+  clearAuthData(): void;
 }
 
 @injectable()
@@ -52,5 +53,12 @@ export class StoreService implements Store {
 
   public setCredentials(credentials: JWTInput) {
     return this._store.set('credentials', credentials);
+  }
+
+  public clearAuthData() {
+    this._store.delete('clientId');
+    this._store.delete('clientSecret');
+    this._store.delete('credentials');
+    return;
   }
 }
