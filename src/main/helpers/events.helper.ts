@@ -1,10 +1,12 @@
 import { Auth, AuthService } from '@services/auth.service';
+import { Store, StoreService } from '@services/store.service';
 import { BrowserWindow, BrowserWindowConstructorOptions, Event, ipcMain, systemPreferences } from 'electron';
 import { Assistant } from 'nodejs-assistant';
 import { container } from './di.helper';
 
 export class BrowserWindowWithEvents extends BrowserWindow {
   private _authService: Auth = container.get(AuthService);
+  private _storeService: Store = container.get(StoreService);
   private _assistant: Assistant;
 
   constructor(options?: BrowserWindowConstructorOptions) {
@@ -24,6 +26,14 @@ export class BrowserWindowWithEvents extends BrowserWindow {
           this.webContents.send('auth.resolveAuthentication');
         } catch (e) {
           this.webContents.send('auth.rejectAuthentication', e);
+        }
+      })
+      .on('auth.requestLogout', () => {
+        try {
+          this._storeService.clearAuthData();
+          this.webContents.send('auth.resolveLogout');
+        } catch (e) {
+          this.webContents.send('auth.rejectLogout', e);
         }
       })
       .on('chat.requestSendMessage', async (_: Event, text: string) => {
