@@ -1,4 +1,5 @@
 import { LocaleData } from '@locales/model';
+import { requestLogout } from '@store/auth/auth.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
@@ -32,7 +33,7 @@ export class Settings extends connect(store)(LitElement) {
     return () => {
       switch (option) {
         case 'logout':
-          console.log('Logout!');
+          return store.dispatch(requestLogout());
       }
     };
   }
