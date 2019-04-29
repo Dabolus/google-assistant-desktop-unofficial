@@ -1,7 +1,14 @@
 import { container } from '@helpers/di.helper';
 import { Auth, AuthService } from '@services/auth.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { AuthActionAuthenticateRequested, AuthActionType, rejectAuthentication, resolveAuthentication } from './auth.actions';
+import {
+  AuthActionAuthenticateRequested,
+  AuthActionType,
+  rejectAuthentication,
+  rejectLogout,
+  resolveAuthentication,
+  resolveLogout,
+} from './auth.actions';
 
 const authService: Auth = container.get(AuthService);
 
@@ -19,9 +26,9 @@ function* handleUserAuthentication({
 function* handleUserLogout() {
   try {
     yield call(authService.logout);
-    yield put(resolveAuthentication());
+    yield put(resolveLogout());
   } catch (e) {
-    yield put(rejectAuthentication(e));
+    yield put(rejectLogout(e));
   }
 }
 
