@@ -49,7 +49,7 @@ export const connect =
         this.stateChanged(newState, this._oldState);
         this._oldState = newState;
       });
-      this.stateChanged(this._oldState, this._oldState);
+      this.stateChanged(this._oldState);
     }
 
     public disconnectedCallback() {
@@ -63,5 +63,5 @@ export const connect =
     /**
      * The `stateChanged(newState, oldState)` method will be called when the state is updated.
      */
-    public stateChanged(newState: S, oldState: S) {} // tslint:disable-line:no-empty
+    public stateChanged(newState: S, oldState?: S) {} // tslint:disable-line:no-empty
   };
