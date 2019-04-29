@@ -4,6 +4,9 @@ import { Configuration } from 'webpack';
 
 const config: Configuration = {
   cache: true,
+  output: {
+    libraryTarget: 'commonjs2',
+  },
   context: resolve(__dirname, '..'),
   resolve: {
     extensions: ['.ts', '.js'],
