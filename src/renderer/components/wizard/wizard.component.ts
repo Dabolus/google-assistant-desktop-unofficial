@@ -1,3 +1,4 @@
+import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
 import { requestLocaleUpdate } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
@@ -6,7 +7,6 @@ import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { updateStep } from '@store/wizard/wizard.actions';
 import { customElement, LitElement, property } from 'lit-element';
-import { connect } from 'pwa-helpers';
 
 import sharedStyles from '@components/shared.styles';
 import styles from './wizard.styles';

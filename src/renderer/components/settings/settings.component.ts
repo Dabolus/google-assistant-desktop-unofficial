@@ -1,9 +1,9 @@
+import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
 import { requestLogout } from '@store/auth/auth.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
-import { connect } from 'pwa-helpers';
 
 import sharedStyles from '@components/shared.styles';
 import styles from './settings.styles';

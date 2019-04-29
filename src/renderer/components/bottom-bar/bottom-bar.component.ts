@@ -1,8 +1,8 @@
+import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
 import { requestMessageSend, updateInput } from '@store/chat/chat.actions';
 import { store } from '@store/index';
 import { customElement, LitElement, property, query } from 'lit-element';
-import { connect } from 'pwa-helpers';
 
 import sharedStyles from '@components/shared.styles';
 import { RootState } from '@store/root/root.model';

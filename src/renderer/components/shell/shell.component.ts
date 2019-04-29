@@ -1,5 +1,6 @@
 import 'core-js/proposals/reflect-metadata';
 
+import { connect } from '@components/helpers';
 import { L10nService } from '@services/l10n.service';
 import { navigate, requestLocaleUpdate, setTheme } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
@@ -9,7 +10,6 @@ import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { ipcRenderer } from 'electron';
 import { customElement, LitElement, property } from 'lit-element';
-import { connect } from 'pwa-helpers';
 
 import styles from './shell.styles';
 import template from './shell.template';
