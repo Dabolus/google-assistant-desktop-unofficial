@@ -1,5 +1,5 @@
 import { BrowserWindowWithEvents } from '@helpers/events.helper';
-import { app, systemPreferences } from 'electron';
+import { app, Menu, shell, systemPreferences } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
 
@@ -14,12 +14,55 @@ async function configureDevTools(window: BrowserWindowWithEvents) {
   window.webContents.openDevTools();
 }
 
+function createMenu() {
+  const menu = Menu.buildFromTemplate([
+    { role: 'appMenu' },
+    { role: 'fileMenu' },
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        { role: 'delete' },
+        { role: 'selectAll' },
+      ],
+    },
+    {
+      label: 'View',
+      submenu: [
+        { role: 'resetzoom' },
+        { role: 'zoomin' },
+        { role: 'zoomout' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' },
+      ],
+    },
+    { role: 'windowMenu' },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Contribute',
+          click: () => shell.openExternal('https://github.com/Dabolus/google-assistant-desktop-unofficial'),
+        },
+      ],
+    },
+  ]);
+
+  Menu.setApplicationMenu(menu);
+}
+
 function createMainWindow() {
   const window = new BrowserWindowWithEvents({
     center: true,
     minWidth: 360,
     minHeight: 540,
   });
+  createMenu();
 
   if (isDevelopment) {
     window.loadURL(`http://localhost:8080`);
