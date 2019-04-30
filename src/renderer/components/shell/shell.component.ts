@@ -40,6 +40,12 @@ export class Shell extends connect(store)(LitElement) {
   public stateChanged({ app, auth }: RootState) {
     this._page = app.page;
     this.setAttribute('theme', app.theme);
+    if (auth.authenticated && this._page === 'wizard') {
+      store.dispatch(navigate('chat'));
+    }
+    if (!auth.authenticated && this._page !== 'wizard') {
+      store.dispatch(navigate('wizard'));
+    }
     if (auth.error) {
       store.dispatch(clearAuthErrors());
       store.dispatch(navigate('wizard'));
