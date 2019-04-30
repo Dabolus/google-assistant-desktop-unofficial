@@ -14,9 +14,22 @@ async function configureDevTools(window: BrowserWindowWithEvents) {
   window.webContents.openDevTools();
 }
 
-function createMenu() {
+function createMenu(window: BrowserWindowWithEvents) {
   const menu = Menu.buildFromTemplate([
-    { role: 'appMenu' },
+    ...(process.platform === 'darwin' ? [{
+      label: app.getName(),
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        { role: 'services' },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideothers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' },
+      ],
+    }] as any : []),
     { role: 'fileMenu' },
     {
       label: 'Edit',
@@ -43,6 +56,15 @@ function createMenu() {
     },
     { role: 'windowMenu' },
     {
+      label: 'User',
+      submenu: [
+        {
+          label: 'Logout',
+          click: () => window.webContents.send('auth.requestLogout'),
+        },
+      ],
+    },
+    {
       role: 'help',
       submenu: [
         {
@@ -62,7 +84,7 @@ function createMainWindow() {
     minWidth: 360,
     minHeight: 540,
   });
-  createMenu();
+  createMenu(window);
 
   if (isDevelopment) {
     window.loadURL(`http://localhost:8080`);
