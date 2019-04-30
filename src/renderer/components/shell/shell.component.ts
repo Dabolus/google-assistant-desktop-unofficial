@@ -4,7 +4,7 @@ import { connect } from '@components/helpers';
 import { L10nService } from '@services/l10n.service';
 import { navigate, requestLocaleUpdate, setTheme } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
-import { clearAuthErrors, requestAuthentication } from '@store/auth/auth.actions';
+import { clearAuthErrors, requestAuthentication, requestLogout } from '@store/auth/auth.actions';
 import { receiveMessage } from '@store/chat/chat.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
@@ -27,14 +27,7 @@ export class Shell extends connect(store)(LitElement) {
     const locale = L10nService.supportedLocales.find((l) => l === userLocale) || Locale.EN;
     store.dispatch(requestAuthentication());
     store.dispatch(requestLocaleUpdate(locale));
-
-    // Event listeners
-    ipcRenderer.on('app.setTheme', (_: Event, theme: string) => {
-      store.dispatch(setTheme(theme));
-    });
-    ipcRenderer.on('chat.receiveMessage', (_: Event, text: string) => {
-      store.dispatch(receiveMessage(text));
-    });
+    this._setupEventListeners();
   }
 
   public stateChanged({ app, auth }: RootState) {
@@ -54,6 +47,18 @@ export class Shell extends connect(store)(LitElement) {
 
   protected render() {
     return template.call(this);
+  }
+
+  private _setupEventListeners() {
+    ipcRenderer.on('app.setTheme', (_: Event, theme: string) => {
+      store.dispatch(setTheme(theme));
+    });
+    ipcRenderer.on('chat.receiveMessage', (_: Event, text: string) => {
+      store.dispatch(receiveMessage(text));
+    });
+    ipcRenderer.on('auth.requestLogout', () => {
+      store.dispatch(requestLogout());
+    });
   }
 }
 
