@@ -12,8 +12,10 @@ export class BrowserWindowWithEvents extends BrowserWindow {
   constructor(options?: BrowserWindowConstructorOptions) {
     super(options);
 
-    systemPreferences.subscribeNotification('AppleInterfaceThemeChangedNotification', () =>
-      this.webContents.send('app.setTheme', systemPreferences.isDarkMode() ? 'dark' : 'light'));
+    if (process.platform === 'darwin') {
+      systemPreferences.subscribeNotification('AppleInterfaceThemeChangedNotification', () =>
+        this.webContents.send('app.setTheme', systemPreferences.isDarkMode() ? 'dark' : 'light'));
+    }
 
     ipcMain
       .on('auth.requestAuthentication', async (_: Event, {
