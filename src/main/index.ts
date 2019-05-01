@@ -106,7 +106,7 @@ function createMainWindow() {
     }));
   }
 
-  window.on('closed', () => {
+  window.once('closed', () => {
     mainWindow = null;
   });
 

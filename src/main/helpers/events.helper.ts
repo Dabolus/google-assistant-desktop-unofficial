@@ -51,5 +51,11 @@ export class BrowserWindowWithEvents extends BrowserWindow {
         }
         this.webContents.send('chat.rejectSendMessage', new Error('Unable to send message'));
       });
+
+    this.once('closed', () => {
+      ipcMain.removeAllListeners('auth.requestAuthentication');
+      ipcMain.removeAllListeners('auth.requestLogout');
+      ipcMain.removeAllListeners('chat.requestSendMessage');
+    });
   }
 }
