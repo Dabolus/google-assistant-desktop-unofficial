@@ -1,4 +1,16 @@
 :host {
+  display: flex;
+  flex-direction: column;
+}
+
+.pic {
+  width: var(--gad-border-radius-lg);
+  height: var(--gad-border-radius-lg);
+  object-fit: cover;
+  margin: calc(var(--gad-border-radius-lg) / 2) calc(var(--gad-border-radius-lg) / 8);
+}
+
+.bubble {
   position: relative;
   border-radius: var(--gad-border-radius-lg);
   padding: .4rem .7rem;
@@ -15,35 +27,52 @@
 }
 
 :host([type=IN]) {
-  border: 1px solid var(--gad-divider-color);
-  border-top-left-radius: 0;
-  background: var(--gad-background-color);
-  color: var(--gad-primary-text-color);
+  align-items: flex-start;
 
-  &::before {
-    left: -1px;
-    border-color: transparent transparent var(--gad-divider-color) var(--gad-divider-color);
+  > .pic {
+    float: left;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: calc((var(--gad-border-radius-lg) * -.5) + 1.5px);
-    left: 0;
-    border: calc((var(--gad-border-radius-lg) / 4) - 1px) solid;
-    border-color: transparent transparent var(--gad-background-color) var(--gad-background-color);
+  > .bubble {
+    border: 1px solid var(--gad-divider-color);
+    border-top-left-radius: 0;
+    background: var(--gad-background-color);
+    color: var(--gad-primary-text-color);
+  
+    &::before {
+      left: -1px;
+      border-color: transparent transparent var(--gad-divider-color) var(--gad-divider-color);
+    }
+  
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: calc((var(--gad-border-radius-lg) * -.5) + 1.5px);
+      left: 0;
+      border: calc((var(--gad-border-radius-lg) / 4) - 1px) solid;
+      border-color: transparent transparent var(--gad-background-color) var(--gad-background-color);
+    }
   }
 }
 
 :host([type=OUT]) {
-  border-top-right-radius: 0;
-  background: var(--gad-divider-color);
-  color: var(--gad-secondary-text-color);
+  align-items: flex-end;
 
-  &::before {
-    right: 0;
-    border-color: transparent var(--gad-divider-color) var(--gad-divider-color) transparent;
+  > .pic {
+    float: right;
+    border-radius: 50%;
+  }
+
+  > .bubble {
+    border-top-right-radius: 0;
+    background: var(--gad-divider-color);
+    color: var(--gad-secondary-text-color);
+
+    &::before {
+      right: 0;
+      border-color: transparent var(--gad-divider-color) var(--gad-divider-color) transparent;
+    }
   }
 }
