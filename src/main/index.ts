@@ -93,14 +93,14 @@ function createMainWindow() {
   createMenu(window);
 
   if (isDevelopment) {
-    window.loadURL(`http://localhost:8080#${systemPreferences.isDarkMode() ? 'dark' : 'light'}`);
+    window.loadURL(`http://localhost:8080#${systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light'}`);
     configureDevTools(window);
   } else {
     window.loadURL(formatUrl({
       pathname: resolve(__dirname, 'index.html'),
       protocol: 'file',
       slashes: true,
-      hash: systemPreferences.isDarkMode() ? 'dark' : 'light',
+      hash: systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light',
     }));
   }
 
@@ -112,7 +112,7 @@ function createMainWindow() {
   window.webContents.once('dom-ready', () =>
     window.webContents.send(
       'app.setTheme',
-      systemPreferences.isDarkMode() ? 'dark' : 'light',
+      systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light',
     ),
   );
 
