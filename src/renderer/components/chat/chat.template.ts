@@ -7,10 +7,12 @@ import './chat-message/chat-message.component';
 
 export default function template(this: Chat) {
   return html`
-    ${repeat(this._history, (message) => html`
-      <gad-chat-message type="${message.type}">
-        ${unsafeHTML(message.text.replace('\n', '<br>'))}
-      </gad-chat-message>
-    `)}
+    <div>
+      ${repeat(this._history, (message) => html`
+        <gad-chat-message type="${message.type}">
+          ${unsafeHTML(message.text.replace('\n', '<br>'))}
+        </gad-chat-message>
+      `)}
+    </div>
   `;
 }
