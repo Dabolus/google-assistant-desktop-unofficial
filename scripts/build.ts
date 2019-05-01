@@ -48,20 +48,6 @@ const getConfig = (platform: string): CliOptions => {
             target: 'dmg',
             darkModeSupport: true,
           },
-          dmg: {
-            contents: [
-              {
-                x: 130,
-                y: 220,
-              },
-              {
-                x: 410,
-                y: 220,
-                type: 'link',
-                path: '/Applications',
-              },
-            ],
-          },
         },
       };
     default:
