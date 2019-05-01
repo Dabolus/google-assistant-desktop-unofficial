@@ -10,10 +10,11 @@ export default function template(this: TopBar) {
       : this._localeData?.topBar?.assistant,
     )}</div>
     <div class="spacer"></div>
-    <div
+    <button
       class="material-icons-extended"
       @click="${this._page === 'settings' ? this._backButtonClicked : this._settingsButtonClicked}">
       ${this._page === 'settings' ? 'chevron_right' : 'settings'}
-    </div>
+      <mwc-ripple></mwc-ripple>
+    </button>
   `;
 }
