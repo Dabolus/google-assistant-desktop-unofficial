@@ -5,11 +5,7 @@ import { AuthState } from './auth.model';
 export const initialState: AuthState = {
   clientId: '',
   clientSecret: '',
-  // We make the user authenticated by default to avoid flashing the wizard
-  // at each app opening. Of course, as soon as we detect that the user isn't
-  // actually authenticated, this value will be set to false and the wizard
-  // will be shown.
-  authenticated: true,
+  authenticated: false,
   error: null,
 };
 
