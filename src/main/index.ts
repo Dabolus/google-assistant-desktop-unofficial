@@ -1,9 +1,11 @@
+import { container } from '@helpers/di.helper';
 import { BrowserWindowWithEvents } from '@helpers/events.helper';
+import { Environment, EnvironmentService } from '@services/environment.service';
 import { app, Menu, shell, systemPreferences } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const environmentService: Environment = container.get(EnvironmentService);
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow: BrowserWindowWithEvents | null;
@@ -16,7 +18,7 @@ async function configureDevTools(window: BrowserWindowWithEvents) {
 
 function createMenu(window: BrowserWindowWithEvents) {
   const menu = Menu.buildFromTemplate([
-    ...(process.platform === 'darwin' ? [{
+    ...(environmentService.mac ? [{
       label: app.getName(),
       submenu: [
         { role: 'about' },
@@ -47,7 +49,7 @@ function createMenu(window: BrowserWindowWithEvents) {
     {
       label: 'View',
       submenu: [
-        ...isDevelopment ? [
+        ...environmentService.development ? [
           { role: 'reload' },
           { role: 'forcereload' },
           { role: 'toggledevtools' },
@@ -92,7 +94,7 @@ function createMainWindow() {
   });
   createMenu(window);
 
-  if (isDevelopment) {
+  if (environmentService.development) {
     window.loadURL(`http://localhost:8080#${systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light'}`);
     configureDevTools(window);
   } else {
@@ -122,7 +124,7 @@ function createMainWindow() {
 // quit application when all windows are closed
 app.on('window-all-closed', () => {
   // on macOS it is common for applications to stay open until the user explicitly quits
-  if (process.platform !== 'darwin') {
+  if (!environmentService.mac) {
     app.quit();
   }
 });
@@ -139,7 +141,7 @@ app.on('ready', () => {
   mainWindow = createMainWindow();
 });
 
-if (isDevelopment) {
+if (environmentService.development) {
   import('electron-watch')
     .then(({ default: watch }) => watch(
       resolve(__dirname, '../../src/main'),

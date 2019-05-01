@@ -1,4 +1,5 @@
 import { Auth, AuthService } from '@services/auth.service';
+import { Environment, EnvironmentService } from '@services/environment.service';
 import { Store, StoreService } from '@services/store.service';
 import { BrowserWindow, BrowserWindowConstructorOptions, Event, ipcMain, systemPreferences } from 'electron';
 import { Assistant } from 'nodejs-assistant';
@@ -6,13 +7,14 @@ import { container } from './di.helper';
 
 export class BrowserWindowWithEvents extends BrowserWindow {
   private _authService: Auth = container.get(AuthService);
+  private _environmentService: Environment = container.get(EnvironmentService);
   private _storeService: Store = container.get(StoreService);
   private _assistant: Assistant;
 
   constructor(options?: BrowserWindowConstructorOptions) {
     super(options);
 
-    if (process.platform === 'darwin') {
+    if (this._environmentService.mac) {
       systemPreferences.subscribeNotification('AppleInterfaceThemeChangedNotification', () =>
         this.webContents.send('app.setTheme', systemPreferences.isDarkMode() ? 'dark' : 'light'));
     }
