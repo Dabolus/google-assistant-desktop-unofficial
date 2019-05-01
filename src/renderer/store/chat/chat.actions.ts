@@ -1,3 +1,4 @@
+import { AssistantResponse } from 'nodejs-assistant';
 import { FluxStandardAction } from '../store.model';
 
 // Action types
@@ -43,9 +44,7 @@ export interface ChatActionSendMessageRejected extends
 export interface ChatActionReceiveMessage extends
   FluxStandardAction<ChatActionType.RECEIVE_MESSAGE> {
   payload: {
-    // Note: we will start by supporting text only
-    // conversations, rich conversations will come later on.
-    text: string;
+    content: AssistantResponse;
   };
 }
 
@@ -85,9 +84,9 @@ export const rejectMessageSend = (error: Error): ChatActionSendMessageRejected =
   },
 });
 
-export const receiveMessage = (text: string): ChatActionReceiveMessage => ({
+export const receiveMessage = (content: AssistantResponse): ChatActionReceiveMessage => ({
   type: ChatActionType.RECEIVE_MESSAGE,
   payload: {
-    text,
+    content,
   },
 });

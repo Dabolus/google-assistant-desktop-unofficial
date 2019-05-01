@@ -5,7 +5,8 @@ export enum MessageType {
 
 export interface Message {
   type: MessageType;
-  content: string;
+  text: string;
+  timestamp: Date;
 }
 
 export interface ChatState {

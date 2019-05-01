@@ -24,7 +24,8 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
         text: '',
         history: [...state.history.slice(-50), {
           type: MessageType.OUT,
-          content: action.payload.text,
+          text: action.payload.text,
+          timestamp: new Date(),
         }],
       };
     case ChatActionType.SEND_MESSAGE_REJECTED:
@@ -33,13 +34,15 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
         error: action.payload.error,
       };
     case ChatActionType.RECEIVE_MESSAGE:
-      return {
+      // TODO: handle other infos received from the Assistant (e.g. audio)
+      return action.payload.content.text ? {
         ...state,
         history: [...state.history.slice(-50), {
           type: MessageType.IN,
-          content: action.payload.text,
+          text: action.payload.content.text,
+          timestamp: new Date(),
         }],
-      };
+      } : state;
     default:
       return state;
   }
