@@ -10,7 +10,7 @@ export default function template(this: Chat) {
     <div>
       ${repeat(this._history, (message) => html`
         <gad-chat-message type="${message.type}">
-          ${unsafeHTML(message.text.replace(/\n/g, '<br>'))}
+          ${unsafeHTML(message.text.replace(/\s+---.+/s, '').replace(/\n/g, '<br>'))}
         </gad-chat-message>
       `)}
     </div>
