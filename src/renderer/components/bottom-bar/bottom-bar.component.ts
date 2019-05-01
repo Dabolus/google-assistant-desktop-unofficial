@@ -50,6 +50,9 @@ export class BottomBar extends connect(store)(LitElement) {
   }
 
   protected _textSubmitted() {
+    if (!this._text) {
+      return;
+    }
     store.dispatch(requestMessageSend(this._text));
   }
 }
