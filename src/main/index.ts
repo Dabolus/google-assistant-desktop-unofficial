@@ -93,13 +93,14 @@ function createMainWindow() {
   createMenu(window);
 
   if (isDevelopment) {
-    window.loadURL(`http://localhost:8080`);
+    window.loadURL(`http://localhost:8080#${systemPreferences.isDarkMode() ? 'dark' : 'light'}`);
     configureDevTools(window);
   } else {
     window.loadURL(formatUrl({
       pathname: resolve(__dirname, 'index.html'),
       protocol: 'file',
       slashes: true,
+      hash: systemPreferences.isDarkMode() ? 'dark' : 'light',
     }));
   }
 

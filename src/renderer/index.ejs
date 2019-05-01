@@ -9,13 +9,24 @@
         height: 100%;
         padding: 0;
         margin: 0;
-        background: #fff;
+        background: #959595;
         font-size: 16px;
         font-family: 'Roboto';
+      }
+      html.light, html.light body {
+        background: #fafafa;
+      }
+      html.dark, html.dark body {
+        background: #303030;
       }
     </style>
   </head>
   <body>
     <gad-shell></gad-shell>
+    <script>
+      const theme = location.hash.slice(1);
+      document.documentElement.className = theme;
+      document.querySelector('gad-shell').setAttribute('theme', theme);
+    </script>
   </body>
 </html>

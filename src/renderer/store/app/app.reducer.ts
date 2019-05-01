@@ -6,7 +6,7 @@ export const initialState: AppState = {
   page: 'chat',
   locale: Locale.EN,
   localeData: null,
-  theme: 'light',
+  theme: location.hash.slice(1),
 };
 
 export const appReducer: Reducer<AppState, AppAction> = (
