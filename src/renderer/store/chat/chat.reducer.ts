@@ -25,7 +25,7 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
         history: [...state.history.slice(-50), {
           type: MessageType.OUT,
           text: action.payload.text,
-          timestamp: new Date(),
+          timestamp: Date.now(),
         }],
       };
     case ChatActionType.SEND_MESSAGE_REJECTED:
@@ -40,7 +40,7 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
         history: [...state.history.slice(-50), {
           type: MessageType.IN,
           text: action.payload.content.text,
-          timestamp: new Date(),
+          timestamp: Date.now(),
         }],
       } : state;
     default:
