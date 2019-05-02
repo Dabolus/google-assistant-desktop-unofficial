@@ -10,7 +10,10 @@ export class ChatMessage extends LitElement {
   public static styles = [sharedStyles, styles];
 
   @property({ type: String })
-  public type: MessageType;
+  public type: MessageType = MessageType.OUT;
+
+  @property({ type: Boolean })
+  public contiguous: boolean = false;
 
   protected render() {
     return template.call(this);
