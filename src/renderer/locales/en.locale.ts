@@ -8,6 +8,10 @@ const en: LocaleData = {
     settings: '<div class="heading">Settings</div>',
   },
   settings: {
+    metrics: {
+      option: 'Metrics',
+      description: 'Check out API calls latency and failures',
+    },
     logout: {
       option: 'Logout',
       description: 'Disconnect from Google Assistant',

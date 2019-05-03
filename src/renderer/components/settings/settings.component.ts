@@ -1,5 +1,6 @@
 import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
+import { requestModalOpening } from '@store/app/app.actions';
 import { requestLogout } from '@store/auth/auth.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
@@ -23,6 +24,10 @@ export class Settings extends connect(store)(LitElement) {
       external?: boolean;
     };
   } = {
+    metrics: {
+      icon: 'finance',
+      external: true,
+    },
     logout: {
       icon: 'logout',
     },
@@ -39,6 +44,10 @@ export class Settings extends connect(store)(LitElement) {
   protected _optionClicked(option: string) {
     return () => {
       switch (option) {
+        case 'metrics':
+          return store.dispatch(
+            requestModalOpening('https://console.cloud.google.com/apis/api/embeddedassistant.googleapis.com/metrics'),
+          );
         case 'logout':
           return store.dispatch(requestLogout());
       }
