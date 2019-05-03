@@ -11,6 +11,10 @@ export enum AppActionType {
   UPDATE_LOCALE_REJECTED = 'UPDATE_LOCALE_REJECTED',
 
   SET_THEME = 'SET_THEME',
+
+  OPEN_MODAL_REQUESTED = 'OPEN_MODAL_REQUESTED',
+  OPEN_MODAL_RESOLVED = 'OPEN_MODAL_RESOLVED',
+  OPEN_MODAL_REJECTED = 'OPEN_MODAL_REJECTED',
 }
 
 // Action interfaces
@@ -49,12 +53,36 @@ export interface AppActionSetTheme extends
   };
 }
 
+export interface AppActionOpenModalRequested extends
+  FluxStandardAction<AppActionType.OPEN_MODAL_REQUESTED> {
+  payload: {
+    ref: string;
+  };
+}
+
+export interface AppActionOpenModalResolved extends
+  FluxStandardAction<AppActionType.OPEN_MODAL_RESOLVED> {
+  payload: {
+    result: any;
+  };
+}
+
+export interface AppActionOpenModalRejected extends
+  FluxStandardAction<AppActionType.OPEN_MODAL_REJECTED> {
+  payload: {
+    error: Error;
+  };
+}
+
 export type AppAction =
   | AppActionUpdatePage
   | AppActionUpdateLocaleRequested
   | AppActionUpdateLocaleResolved
   | AppActionUpdateLocaleRejected
-  | AppActionSetTheme;
+  | AppActionSetTheme
+  | AppActionOpenModalRequested
+  | AppActionOpenModalResolved
+  | AppActionOpenModalRejected;
 
 // Actions
 export const navigate = (page: string): AppActionUpdatePage => {
@@ -91,5 +119,26 @@ export const setTheme = (theme: string): AppActionSetTheme => ({
   type: AppActionType.SET_THEME,
   payload: {
     theme,
+  },
+});
+
+export const requestModalOpening = (ref: string): AppActionOpenModalRequested => ({
+  type: AppActionType.OPEN_MODAL_REQUESTED,
+  payload: {
+    ref,
+  },
+});
+
+export const resolveModalOpening = (result: any): AppActionOpenModalResolved => ({
+  type: AppActionType.OPEN_MODAL_RESOLVED,
+  payload: {
+    result,
+  },
+});
+
+export const rejectModalOpening = (error: Error): AppActionOpenModalRejected => ({
+  type: AppActionType.OPEN_MODAL_REJECTED,
+  payload: {
+    error,
   },
 });
