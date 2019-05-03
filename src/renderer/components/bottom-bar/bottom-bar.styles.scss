@@ -3,7 +3,7 @@
   display: flex;
   width: 100%;
   height: 4rem;
-  background: var(--gad-background-color);
+  background: var(--gad-bars-color);
   align-items: center;
   border-top: 1px solid var(--gad-divider-color);
   border-bottom: 1px solid var(--gad-divider-color);
@@ -17,9 +17,15 @@ input {
   flex: 1 1 auto;
   width: 100%;
   height: 100%;
+  background: none;
 }
 
-div {
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
   display: block;
   padding: .6rem;
   margin: .65rem;
@@ -31,7 +37,7 @@ div {
   justify-content: center;
 
   > img {
+    width: 100%;
     height: 100%;
-    width: auto;
   }
 }

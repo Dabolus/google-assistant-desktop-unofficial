@@ -1,3 +1,6 @@
+declare module 'webpack-node-externals';
+declare module 'electron-watch';
+
 declare module 'script-ext-html-webpack-plugin' {
   import { Plugin } from 'webpack';
 
@@ -39,9 +42,11 @@ declare module 'electron-devtools-installer' {
   export default function (devTool: any): Promise<any>;
 }
 
-declare module '*.styles' {
-  import { TemplateResult } from 'lit-html';
+declare module 'electron-redux';
 
-  const content: TemplateResult;
+declare module '*.styles' {
+  import { CSSResult } from 'lit-element';
+
+  const content: CSSResult;
   export default content;
 }

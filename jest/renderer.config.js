@@ -5,14 +5,15 @@ module.exports = {
     '.+\\.[tj]s$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    '/node_modules\\/(?!(@polymer|lit-html|pwa-helpers)).*/',
+    '/node_modules\\/(?!(@polymer|lit-html|lit-element|pwa-helpers)).*/',
   ],
   moduleNameMapper: {
     '.+\\.styles': '<rootDir>/src/renderer/__mocks__/styles.mock.ts',
+    '@store/(.*)': '<rootDir>/src/renderer/store/$1',
     '@components/(.*)': '<rootDir>/src/renderer/components/$1',
-    '@actions/(.*)': '<rootDir>/src/renderer/actions/$1',
-    '@reducers/(.*)': '<rootDir>/src/renderer/reducers/$1',
-    '@store': '<rootDir>/src/renderer/store',
+    '@services/(.*)': '<rootDir>/src/renderer/services/$1',
+    '@helpers/(.*)': '<rootDir>/src/renderer/helpers/$1',
+    '@locales/(.*)': '<rootDir>/src/renderer/locales/$1',
   },
   moduleFileExtensions: ['ts', 'js', 'scss', 'sass', 'css', 'ejs', 'html'],
   testMatch: [

@@ -4,6 +4,9 @@ import { Configuration } from 'webpack';
 
 const config: Configuration = {
   cache: true,
+  output: {
+    libraryTarget: 'commonjs2',
+  },
   context: resolve(__dirname, '..'),
   resolve: {
     extensions: ['.ts', '.js'],
@@ -12,7 +15,7 @@ const config: Configuration = {
     rules: [
       {
         test: /\.[tj]s$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!(@polymer|lit-html|lit-element|pwa-helpers)\/).*/,
         use: {
           loader: 'babel-loader',
           options: {

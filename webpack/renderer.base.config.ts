@@ -6,6 +6,7 @@ import { resolve } from 'path';
 import ScriptExtHtmlPlugin from 'script-ext-html-webpack-plugin';
 import { Configuration } from 'webpack';
 import { smart as smartMerge } from 'webpack-merge';
+import nodeExternals from 'webpack-node-externals';
 import baseConfig from './base.config';
 
 const config: Configuration = smartMerge(baseConfig, {
@@ -13,13 +14,21 @@ const config: Configuration = smartMerge(baseConfig, {
   entry: resolve(__dirname, '../src/renderer/components/shell/shell.component'),
   resolve: {
     alias: {
+      '@store': resolve(__dirname, '../src/renderer/store/'),
       '@components': resolve(__dirname, '../src/renderer/components/'),
-      '@actions': resolve(__dirname, '../src/renderer/actions/'),
-      '@reducers': resolve(__dirname, '../src/renderer/reducers/'),
-      '@store$': resolve(__dirname, '../src/renderer/store.ts'),
+      '@services': resolve(__dirname, '../src/renderer/services/'),
+      '@helpers': resolve(__dirname, '../src/renderer/helpers/'),
+      '@locales': resolve(__dirname, '../src/renderer/locales/'),
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
   },
+  externals: [
+    nodeExternals({
+      modulesFromFile: {
+        include: ['dependencies'],
+      },
+    }),
+  ],
   module: {
     rules: [
       {
@@ -27,13 +36,7 @@ const config: Configuration = smartMerge(baseConfig, {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'to-lit-html-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-            },
+            loader: resolve(__dirname, 'loaders/to-lit-css-loader.ts'),
           },
           {
             loader: 'postcss-loader',

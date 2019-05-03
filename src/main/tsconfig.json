@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "esnext"
+    ],
+    "paths": {
+      "@services/*": ["services/*"],
+      "@helpers/*": ["helpers/*"]
+    }
+  },
+  "include": [
+    "../../typings.d.ts",
+    "**/*.ts"
+  ]
+}

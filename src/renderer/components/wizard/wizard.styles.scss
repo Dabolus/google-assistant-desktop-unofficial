@@ -1,0 +1,140 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--gad-backdrop-color);
+}
+
+.modal {
+  width: 95%;
+  max-width: 36.25rem;
+  height: 100%;
+  max-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--gad-card-color);
+  border-radius: var(--gad-border-radius-md);
+  z-index: 1;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+
+  > section {
+    width: 100%;
+    height: 23.75rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+    flex: 1 1 auto;
+
+    > div {
+      padding: .75rem 2rem;
+      text-align: justify;
+
+      > h2 {
+        text-align: center;
+      }
+    }
+
+    &[active] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  > .actions {
+    flex: 0 0 auto;
+    margin: 2rem 0;
+    text-align: center;
+  }  
+}
+
+#step-0 {
+  justify-content: flex-start;
+
+  > div.intro-header {
+    width: 100%;
+    height: 18.125rem;
+    background: var(--gad-background-color) url(assets/intro-header.webp) center / cover;
+    border-radius: var(--gad-border-radius-md) var(--gad-border-radius-md) 0 0;
+  }
+
+  > div.intro-content {
+    text-align: center;
+    padding: 1.5rem 2rem .75rem 2rem;
+
+    > h2 {
+      margin-top: 0;
+    }
+
+    > p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#step-1 {
+  > div {
+    width: 100%;
+    height: 100%;
+
+    > div {
+      width: 100%;
+      height: 18.75rem;
+      overflow-y: auto;
+      padding: 1rem;
+      background: var(--gad-background-color);
+      border: 1px solid var(--gad-divider-color);
+      border-radius: var(--gad-border-radius-sm);
+
+      > p {
+        margin: 0;
+      }
+    }
+  }
+
+  .google-logo {
+    font-family: 'Product Sans';
+  }
+
+  .assistant-logo, .google-mic {
+    font-family: 'Material Icons Extended';
+  }
+}
+
+#step-2 {
+  > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+
+    > select {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+
+    > p {
+      margin-top: 0;
+    }
+  }
+}
+
+#step-4 {
+  > div {
+    > input {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+}

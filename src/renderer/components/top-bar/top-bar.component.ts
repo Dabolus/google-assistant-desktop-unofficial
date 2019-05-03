@@ -1,40 +1,44 @@
-import { updateMenuState } from '@actions/app';
+import { connect } from '@components/helpers';
+import { LocaleData } from '@locales/model';
+import { navigate } from '@store/app/app.actions';
+import { store } from '@store/index';
+import { RootState } from '@store/root/root.model';
+import { customElement, LitElement, property } from 'lit-element';
+
 import sharedStyles from '@components/shared.styles';
-import { html, LitElement, property, PropertyValues } from '@polymer/lit-element';
-import { RootState, store } from '@store';
-import { connect } from 'pwa-helpers';
 import styles from './top-bar.styles';
+import template from './top-bar.template';
 
+@customElement('gad-top-bar')
 export class TopBar extends connect(store)(LitElement) {
-  public static properties = {
-    _menuOpened: { type: Boolean },
-  };
+  public static styles = [sharedStyles, styles];
 
-  private _menuOpened = false;
+  @property({ type: String })
+  protected _page = 'chat';
 
-  public stateChanged(state: RootState) {
-    this._menuOpened = state.app.menuOpened;
+  @property({ type: String })
+  protected _localeData: LocaleData = null;
+
+  public stateChanged({ app }: RootState) {
+    this._page = app.page;
+    this._localeData = app.localeData;
   }
 
   protected render() {
-    return html`
-      ${sharedStyles}
-      ${styles}
-      <img src="assets/google-assistant-logo.svg">
-      <div class="heading">
-        google_logo
-        <span class="ad">Assistant Desktop</span>
-        <span class="unofficial">Unofficial</span>
-      </div>
-      <div class="spacer"></div>
-      <div class="material-icons-extended" @click="${this._menuButtonClicked}">more_vert</div>
-      <div class="menu" role="menu" ?hidden="${!this._menuOpened}">The menu!</div>
-    `;
+    return template.call(this);
   }
 
-  private _menuButtonClicked() {
-    store.dispatch(updateMenuState(!this._menuOpened));
+  protected _backButtonClicked() {
+    store.dispatch(navigate('chat'));
+  }
+
+  protected _settingsButtonClicked() {
+    store.dispatch(navigate('settings'));
   }
 }
 
-window.customElements.define('gad-top-bar', TopBar);
+declare global {
+  interface HTMLElementTagNameMap {
+    'gad-top-bar': TopBar;
+  }
+}
