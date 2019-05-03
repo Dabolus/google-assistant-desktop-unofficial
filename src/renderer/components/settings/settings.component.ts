@@ -17,8 +17,15 @@ export class Settings extends connect(store)(LitElement) {
   protected _localeData: LocaleData = null;
 
   @property({ type: Object })
-  protected _optionsMap = {
-    logout: 'logout',
+  protected _optionsMap: {
+    [key: string]: {
+      icon: string;
+      external?: boolean;
+    };
+  } = {
+    logout: {
+      icon: 'logout',
+    },
   };
 
   public stateChanged({ app }: RootState) {
