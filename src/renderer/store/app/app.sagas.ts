@@ -1,9 +1,19 @@
 import { container } from '@helpers/di.helper';
 import { L10n, L10nService } from '@services/l10n.service';
+import { Modals, ModalsService } from '@services/modals.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { AppActionType, AppActionUpdateLocaleRequested, rejectLocaleUpdate, resolveLocaleUpdate } from './app.actions';
+import {
+  AppActionOpenModalRequested,
+  AppActionType,
+  AppActionUpdateLocaleRequested,
+  rejectLocaleUpdate,
+  rejectModalOpening,
+  resolveLocaleUpdate,
+  resolveModalOpening,
+} from './app.actions';
 
 const l10nService: L10n = container.get(L10nService);
+const modalsService: Modals = container.get(ModalsService);
 
 function* handleLocaleUpdate({
   payload: { locale },
@@ -16,6 +26,18 @@ function* handleLocaleUpdate({
   }
 }
 
+function* handleModalOpening({
+  payload: { ref },
+}: AppActionOpenModalRequested) {
+  try {
+    const result = yield call(modalsService.open, ref);
+    yield put(resolveModalOpening(result));
+  } catch (e) {
+    yield put(rejectModalOpening(e));
+  }
+}
+
 export const appSagas = [
   takeLatest(AppActionType.UPDATE_LOCALE_REQUESTED, handleLocaleUpdate),
+  takeLatest(AppActionType.OPEN_MODAL_REQUESTED, handleModalOpening),
 ];
