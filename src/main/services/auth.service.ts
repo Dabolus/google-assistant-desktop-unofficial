@@ -2,9 +2,9 @@ import { container, injectable } from '@helpers/di.helper';
 import { BrowserWindow } from 'electron';
 import { JWTInput, OAuth2Client } from 'google-auth-library';
 import http from 'http';
-import { Assistant } from 'nodejs-assistant';
 import { parse as parseQuerystring } from 'querystring';
 import { parse as parseUrl } from 'url';
+import { Modals, ModalsService } from './modals.service';
 import { Store, StoreService } from './store.service';
 
 export interface Auth {
@@ -15,6 +15,7 @@ export interface Auth {
 @injectable()
 export class AuthService implements Auth {
   private _client: OAuth2Client;
+  private _modalsService: Modals = container.get(ModalsService);
   private _storeService: Store = container.get(StoreService);
 
   public async getCredentials(clientId?: string, clientSecret?: string): Promise<JWTInput> {
@@ -73,18 +74,10 @@ export class AuthService implements Auth {
         })
         .listen(45515, () => {
           // open the browser to the authorize url to start the workflow
-          window = new BrowserWindow({
-            alwaysOnTop: true,
-            center: true,
+          window = this._modalsService.openUrl(authorizeUrl, {
             closable: false,
             frame: false,
-            maximizable: false,
-            minimizable: false,
-            modal: true,
-            movable: false,
-            resizable: false,
           });
-          window.loadURL(authorizeUrl);
         });
     });
   }
