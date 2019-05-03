@@ -6,6 +6,8 @@
   "main": "main.js",
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
+  "repository": "Dabolus/google-assistant-desktop-unofficial",
+  "homepage": "https://github.com/Dabolus/google-assistant-desktop-unofficial",
   "private": true,
   "scripts": {
     "start": "cross-env ELECTRON_DISABLE_SECURITY_WARNINGS=1 run-p start:electron start:main start:renderer",
