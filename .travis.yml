@@ -1,0 +1,14 @@
+language: node_js
+
+os:
+- windows
+- linux
+- osx
+
+branches:
+  only: master
+
+cache: yarn
+
+script:
+- yarn build
