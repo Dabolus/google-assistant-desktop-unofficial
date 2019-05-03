@@ -1,5 +1,6 @@
 import { Auth, AuthService } from '@services/auth.service';
 import { Environment, EnvironmentService } from '@services/environment.service';
+import { Modals, ModalsService } from '@services/modals.service';
 import { Store, StoreService } from '@services/store.service';
 import { BrowserWindow, BrowserWindowConstructorOptions, Event, ipcMain, systemPreferences } from 'electron';
 import { Assistant } from 'nodejs-assistant';
@@ -8,6 +9,7 @@ import { container } from './di.helper';
 export class BrowserWindowWithEvents extends BrowserWindow {
   private _authService: Auth = container.get(AuthService);
   private _environmentService: Environment = container.get(EnvironmentService);
+  private _modalsService: Modals = container.get(ModalsService);
   private _storeService: Store = container.get(StoreService);
   private _assistant: Assistant;
 
@@ -50,6 +52,14 @@ export class BrowserWindowWithEvents extends BrowserWindow {
           return;
         }
         this.webContents.send('chat.rejectSendMessage', new Error('Unable to send message'));
+      })
+      .on('app.requestModalOpening', (_: Event, ref: string) => {
+        try {
+          const modal = this._modalsService.open(ref);
+          modal.once('closed', () => this.webContents.send('app.resolveModalOpening'));
+        } catch (e) {
+          this.webContents.send('app.rejectModalOpening', e);
+        }
       });
 
     this.once('closed', () => {
