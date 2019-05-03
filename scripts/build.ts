@@ -29,6 +29,7 @@ const getConfig = (platform: string): CliOptions => {
         config: {
           ...baseConfig,
           linux: {
+            category: 'Utility',
             target: [
               'deb',
               'rpm',
