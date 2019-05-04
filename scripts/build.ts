@@ -46,7 +46,10 @@ const getConfig = (platform: string): CliOptions => {
           ...baseConfig,
           mac: {
             category: 'public.app-category.utilities',
-            target: 'dmg',
+            target: [
+              'dmg',
+              'zip',
+            ],
             darkModeSupport: true,
           },
         },
