@@ -24,6 +24,10 @@ export class Settings extends connect(store)(LitElement) {
       external?: boolean;
     };
   } = {
+    donate: {
+      icon: 'credit_card',
+      external: true,
+    },
     metrics: {
       icon: 'finance',
       external: true,
@@ -44,6 +48,10 @@ export class Settings extends connect(store)(LitElement) {
   protected _optionClicked(option: string) {
     return () => {
       switch (option) {
+        case 'donate':
+          return store.dispatch(
+            requestModalOpening('https://www.paypal.me/GiorgioGarasto'),
+          );
         case 'metrics':
           return store.dispatch(
             requestModalOpening('https://console.cloud.google.com/apis/api/embeddedassistant.googleapis.com/metrics'),

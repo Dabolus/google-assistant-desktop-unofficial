@@ -1,4 +1,8 @@
 export interface LocaleDataSettings {
+  donate: {
+    option: string;
+    description: string;
+  };
   metrics: {
     option: string;
     description: string;
