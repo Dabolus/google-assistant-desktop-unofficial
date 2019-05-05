@@ -18,7 +18,10 @@ const config: Configuration = smartMerge(mainBaseConfig, {
       new TerserPlugin({
         cache: true,
         parallel: true,
-        extractComments: true,
+        extractComments: 'all',
+        compress: {
+          drop_console: true,
+        },
       }),
     ],
   },

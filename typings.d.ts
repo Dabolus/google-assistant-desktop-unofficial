@@ -19,7 +19,14 @@ declare module 'terser-webpack-plugin' {
   export interface TerserPluginConfiguration {
     cache?: boolean;
     parallel?: boolean;
-    extractComments?: boolean;
+    extractComments?: boolean | 'all' | 'some' | RegExp | ((node: Node, comment: any) => boolean) | {
+      condition: RegExp;
+      filename(file: string): string;
+      banner(licenseFile: string): string;
+    };
+    compress?: {
+      drop_console?: boolean;
+    };
   }
 
   export default class TerserPlugin extends Plugin {
