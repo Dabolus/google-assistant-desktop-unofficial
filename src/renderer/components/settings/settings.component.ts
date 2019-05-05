@@ -1,5 +1,5 @@
 import { connect } from '@components/helpers';
-import { LocaleData } from '@locales/model';
+import { LocaleData, LocaleDataSettings } from '@locales/model';
 import { requestModalOpening } from '@store/app/app.actions';
 import { requestLogout } from '@store/auth/auth.actions';
 import { store } from '@store/index';
@@ -19,7 +19,7 @@ export class Settings extends connect(store)(LitElement) {
 
   @property({ type: Object })
   protected _optionsMap: {
-    [key: string]: {
+    [key in keyof LocaleDataSettings]: {
       icon: string;
       external?: boolean;
     };

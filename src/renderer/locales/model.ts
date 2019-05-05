@@ -1,14 +1,20 @@
+export interface LocaleDataSettings {
+  metrics: {
+    option: string;
+    description: string;
+  };
+  logout: {
+    option: string;
+    description: string;
+  };
+}
+
 export interface LocaleData {
   topBar: {
     assistant: string;
     settings: string;
   };
-  settings: {
-    [key: string]: {
-      option: string;
-      description: string;
-    };
-  };
+  settings: LocaleDataSettings;
   chat: {};
   bottomBar: {
     placeholder: string;
