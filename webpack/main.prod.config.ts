@@ -19,8 +19,10 @@ const config: Configuration = smartMerge(mainBaseConfig, {
         cache: true,
         parallel: true,
         extractComments: 'all',
-        compress: {
-          drop_console: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
         },
       }),
     ],

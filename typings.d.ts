@@ -24,8 +24,10 @@ declare module 'terser-webpack-plugin' {
       filename(file: string): string;
       banner(licenseFile: string): string;
     };
-    compress?: {
-      drop_console?: boolean;
+    terserOptions?: {
+      compress?: {
+        drop_console?: boolean;
+      };
     };
   }
 

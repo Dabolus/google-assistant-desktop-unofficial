@@ -21,8 +21,10 @@ const config: Configuration = smartMerge(rendererBaseConfig, {
         cache: true,
         parallel: true,
         extractComments: 'all',
-        compress: {
-          drop_console: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
         },
       }),
       new OptimizeCssAssetsPlugin(),
