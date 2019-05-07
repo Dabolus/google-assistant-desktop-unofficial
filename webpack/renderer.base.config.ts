@@ -24,6 +24,7 @@ const config: Configuration = smartMerge(baseConfig, {
   },
   externals: [
     nodeExternals({
+      importType: 'commonjs2',
       modulesFromFile: {
         include: ['dependencies'],
       },
