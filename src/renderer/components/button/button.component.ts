@@ -8,12 +8,10 @@ import template from './button.template';
 export class Button extends LitElement {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: Boolean })
   protected disabled: boolean;
-
-  protected render() {
-    return template.call(this);
-  }
 }
 
 declare global {

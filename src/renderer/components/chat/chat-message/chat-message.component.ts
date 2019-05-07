@@ -15,9 +15,7 @@ export class ChatMessage extends LitElement {
   @property({ type: Boolean })
   public contiguous: boolean = false;
 
-  protected render() {
-    return template.call(this);
-  }
+  protected render = template;
 }
 
 declare global {

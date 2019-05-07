@@ -14,6 +14,8 @@ import template from './settings.template';
 export class Settings extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: String })
   protected _localeData: LocaleData = null;
 
@@ -39,10 +41,6 @@ export class Settings extends connect(store)(LitElement) {
 
   public stateChanged({ app }: RootState) {
     this._localeData = app.localeData;
-  }
-
-  protected render() {
-    return template.call(this);
   }
 
   protected _optionClicked(option: string) {

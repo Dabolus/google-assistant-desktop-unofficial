@@ -13,6 +13,8 @@ import template from './bottom-bar.template';
 export class BottomBar extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: String })
   protected _text = '';
 
@@ -30,10 +32,6 @@ export class BottomBar extends connect(store)(LitElement) {
       }
     }
     this._localeData = app.localeData;
-  }
-
-  protected render() {
-    return template.call(this);
   }
 
   protected _inputModified(e: KeyboardEvent) {

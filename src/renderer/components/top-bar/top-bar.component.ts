@@ -13,6 +13,8 @@ import template from './top-bar.template';
 export class TopBar extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: String })
   protected _page = 'chat';
 
@@ -22,10 +24,6 @@ export class TopBar extends connect(store)(LitElement) {
   public stateChanged({ app }: RootState) {
     this._page = app.page;
     this._localeData = app.localeData;
-  }
-
-  protected render() {
-    return template.call(this);
   }
 
   protected _backButtonClicked() {

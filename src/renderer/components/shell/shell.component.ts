@@ -18,6 +18,8 @@ import template from './shell.template';
 export class Shell extends connect(store)(LitElement) {
   public static styles = styles;
 
+  protected render = template;
+
   @property({ type: String })
   protected _page = 'chat';
 
@@ -43,10 +45,6 @@ export class Shell extends connect(store)(LitElement) {
       store.dispatch(clearAuthErrors());
       store.dispatch(navigate('wizard'));
     }
-  }
-
-  protected render() {
-    return template.call(this);
   }
 
   private _setupEventListeners() {
