@@ -1,6 +1,8 @@
 // tslint:disable:no-console
 
 import { build, CliOptions, Configuration, Platform } from 'electron-builder';
+import { copy } from 'fs-extra';
+import { resolve } from 'path';
 
 const getConfig = (platform: string): CliOptions => {
   const baseConfig: Configuration = {
@@ -61,7 +63,15 @@ const getConfig = (platform: string): CliOptions => {
 
 const [, , p = process.platform] = process.argv;
 
-build(getConfig(p))
+// Make sure we are in the app directory
+process.chdir(resolve(__dirname, '../app'));
+
+Promise
+  .all([
+    copy('../package.json', './package.json'),
+    copy('../src/resources', './build'),
+  ])
+  .then(() => build(getConfig(p)))
   .then(() => {
     console.log('Build successful');
     process.exit(0);
