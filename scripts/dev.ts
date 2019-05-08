@@ -23,7 +23,7 @@ waitOn({ resources: ['http://localhost:8080'] })
   .then(() => copy('./package.json', './node_modules/.build/package.json'))
   .then(() => {
     const child = spawn(
-      'npx',
+      process.platform === 'win32' ? 'npx.cmd' : 'npx',
       ['electron', 'node_modules/.build'],
       {
         detached: true,
