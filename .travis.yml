@@ -3,6 +3,11 @@ language: node_js
 node_js:
   - lts/*
 
+os:
+  - windows
+  - linux
+  - osx
+
 branches:
   only: master
 
@@ -11,16 +16,8 @@ cache: yarn
 jobs:
   include:
     - stage: Cache dependencies
-      os:
-        - windows
-        - linux
-        - osx
       script: true
     - stage: Build
-      os:
-        - windows
-        - linux
-        - osx
       script: |
         - yarn build
         - if [ -n "$TRAVIS_TAG" ]; then echo upload; fi
