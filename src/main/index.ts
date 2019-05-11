@@ -91,6 +91,9 @@ function createMainWindow() {
     center: true,
     minWidth: 360,
     minHeight: 540,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
   createMenu(window);
 

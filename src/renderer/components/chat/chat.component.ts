@@ -12,15 +12,13 @@ import template from './chat.template';
 export class Chat extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: Array })
   protected _history: Message[] = [];
 
   public stateChanged({ chat }: RootState) {
     this._history = chat.history;
-  }
-
-  protected render() {
-    return template.call(this);
   }
 }
 

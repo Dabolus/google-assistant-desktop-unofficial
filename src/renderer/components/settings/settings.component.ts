@@ -1,5 +1,5 @@
 import { connect } from '@components/helpers';
-import { LocaleData } from '@locales/model';
+import { LocaleData, LocaleDataSettings } from '@locales/model';
 import { requestModalOpening } from '@store/app/app.actions';
 import { requestLogout } from '@store/auth/auth.actions';
 import { store } from '@store/index';
@@ -14,16 +14,22 @@ import template from './settings.template';
 export class Settings extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: String })
   protected _localeData: LocaleData = null;
 
   @property({ type: Object })
   protected _optionsMap: {
-    [key: string]: {
+    [key in keyof LocaleDataSettings]: {
       icon: string;
       external?: boolean;
     };
   } = {
+    donate: {
+      icon: 'credit_card',
+      external: true,
+    },
     metrics: {
       icon: 'finance',
       external: true,
@@ -37,13 +43,13 @@ export class Settings extends connect(store)(LitElement) {
     this._localeData = app.localeData;
   }
 
-  protected render() {
-    return template.call(this);
-  }
-
   protected _optionClicked(option: string) {
     return () => {
       switch (option) {
+        case 'donate':
+          return store.dispatch(
+            requestModalOpening('https://www.paypal.me/GiorgioGarasto'),
+          );
         case 'metrics':
           return store.dispatch(
             requestModalOpening('https://console.cloud.google.com/apis/api/embeddedassistant.googleapis.com/metrics'),

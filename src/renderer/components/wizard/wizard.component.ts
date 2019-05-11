@@ -16,6 +16,8 @@ import template from './wizard.template';
 export class Wizard extends connect(store)(LitElement) {
   public static styles = [sharedStyles, styles];
 
+  protected render = template;
+
   @property({ type: Number })
   protected _currentStep = 0;
 
@@ -43,10 +45,6 @@ export class Wizard extends connect(store)(LitElement) {
     this._currentStep = wizard.step;
     this._locale = app.locale;
     this._localeData = app.localeData;
-  }
-
-  protected render() {
-    return template.call(this);
   }
 
   protected _nextButtonClicked() {
