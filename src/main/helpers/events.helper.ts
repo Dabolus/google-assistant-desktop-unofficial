@@ -44,7 +44,7 @@ export class BrowserWindowWithEvents extends BrowserWindow {
       })
       .on('chat.requestSendMessage', async (_: Event, text: string) => {
         if (this._assistant) {
-          this.webContents.send('chat.resolveSendMessage');
+          this.webContents.send('chat.resolveSendMessage', text);
           const response = await this._assistant.query(text);
           if (response) {
             this.webContents.send('chat.receiveMessage', response);

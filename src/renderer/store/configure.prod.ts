@@ -1,5 +1,6 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+import { applyMiddleware, compose, createStore, Store } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { attachEventListeners } from '../helpers/events.helper';
 import { RootState } from './root/root.model';
 import { rootReducer } from './root/root.reducer';
 import { rootSaga } from './root/root.saga';
@@ -13,6 +14,7 @@ export const configure = (
     applyMiddleware(sagaMiddleware),
   );
   const store = createStore(rootReducer, initialState, enhancer);
+  attachEventListeners(store);
 
   sagaMiddleware.run(rootSaga);
 
