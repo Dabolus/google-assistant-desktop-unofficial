@@ -6,8 +6,6 @@ import {
   AuthActionType,
   rejectAuthentication,
   rejectLogout,
-  resolveAuthentication,
-  resolveLogout,
 } from './auth.actions';
 
 const authService: Auth = container.get(AuthService);
@@ -17,7 +15,6 @@ function* handleUserAuthentication({
 }: AuthActionAuthenticateRequested) {
   try {
     yield call(authService.authenticate, clientId, clientSecret);
-    yield put(resolveAuthentication());
   } catch (e) {
     yield put(rejectAuthentication(e));
   }
@@ -26,7 +23,6 @@ function* handleUserAuthentication({
 function* handleUserLogout() {
   try {
     yield call(authService.logout);
-    yield put(resolveLogout());
   } catch (e) {
     yield put(rejectLogout(e));
   }

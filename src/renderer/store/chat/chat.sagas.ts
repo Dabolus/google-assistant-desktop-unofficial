@@ -1,7 +1,7 @@
 import { container } from '@helpers/di.helper';
 import { Chat, ChatService } from '@services/chat.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { ChatActionSendMessageRequested, ChatActionType, rejectMessageSend, resolveMessageSend } from './chat.actions';
+import { ChatActionSendMessageRequested, ChatActionType, rejectMessageSend } from './chat.actions';
 
 const chatService: Chat = container.get(ChatService);
 
@@ -10,7 +10,6 @@ function* handleMessageSend({
 }: ChatActionSendMessageRequested) {
   try {
     yield call(chatService.sendMessage, text);
-    yield put(resolveMessageSend(text));
   } catch (e) {
     yield put(rejectMessageSend(e));
   }

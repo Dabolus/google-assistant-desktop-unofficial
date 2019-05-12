@@ -30,8 +30,7 @@ function* handleModalOpening({
   payload: { ref },
 }: AppActionOpenModalRequested) {
   try {
-    const result = yield call(modalsService.open, ref);
-    yield put(resolveModalOpening(result));
+    yield call(modalsService.open, ref);
   } catch (e) {
     yield put(rejectModalOpening(e));
   }
