@@ -72,6 +72,7 @@ export class Wizard extends connect(store)(LitElement) {
 
   protected _localeChanged(e: Event) {
     // For some reason, destructuring doesn't work with HTMLCollectionOf, so we need to cast to any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { selectedOptions: [{ value }] }: any = e.target as HTMLSelectElement;
     store.dispatch(requestLocaleUpdate(value));
   }

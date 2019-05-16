@@ -25,7 +25,10 @@ export class BrowserWindowWithEvents extends BrowserWindow {
       .on('auth.requestAuthentication', async (_: Event, {
         clientId,
         clientSecret,
-      }: any) => {
+      }: {
+        clientId: string;
+        clientSecret: string;
+      }) => {
         try {
           const credentials = await this._authService.getCredentials(clientId, clientSecret);
           this._assistant = new Assistant(credentials);

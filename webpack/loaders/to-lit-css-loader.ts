@@ -1,9 +1,10 @@
 
 import loaderUtils from 'loader-utils';
+import { loader } from 'webpack';
 
 export default function() {}
 
-export function pitch(this: any, remainingRequest: string) {
+export function pitch(this: loader.LoaderContext, remainingRequest: string) {
   this.cacheable && this.cacheable();
 
   return `

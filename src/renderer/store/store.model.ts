@@ -5,8 +5,14 @@ export interface StoreConfig {
   initialState: RootState;
 }
 
-export interface FluxStandardAction<T extends string> extends Action<T> {
-  payload?: { [key: string]: any } | Promise<{ [key: string]: any }> | Error;
+export type FluxStandardActionPayload = { [key: string]: unknown } | Promise<{ [key: string]: unknown }> | Error;
+
+export interface FluxStandardAction<
+  T extends string = string,
+  P extends FluxStandardActionPayload = FluxStandardActionPayload,
+  M = unknown,
+> extends Action<T> {
+  payload?: P;
   error?: true;
-  meta?: any;
+  meta?: M;
 }

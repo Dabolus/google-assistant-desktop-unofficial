@@ -8,7 +8,7 @@ import { StoreConfig } from './store.model';
 
 declare global {
   interface Window {
-    process?: any;
+    process?: NodeJS.Process;
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
 }
