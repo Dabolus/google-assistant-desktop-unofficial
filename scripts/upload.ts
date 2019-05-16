@@ -23,7 +23,7 @@ const getPaths = (platform: string): string[] => {
         resolve(__dirname, `../app/dist/Google Assistant-${version}-mac.zip`),
       ];
     default:
-        throw new Error(`${platform} is not supported`);
+      throw new Error(`${platform} is not supported`);
   }
 };
 

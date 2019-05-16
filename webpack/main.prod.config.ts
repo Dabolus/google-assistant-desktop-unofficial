@@ -20,7 +20,7 @@ const config: Configuration = smartMerge(mainBaseConfig, {
         extractComments: 'all',
         terserOptions: {
           compress: {
-            drop_console: true,
+            drop_console: true, // eslint-disable-line @typescript-eslint/camelcase
           },
         },
       }),

@@ -35,34 +35,34 @@ interface CustomElement {
  */
 export const connect =
   <S>(store: Store<S>) =>
-  <T extends Constructor<CustomElement>>(baseElement: T) =>
-  class extends baseElement {
-    private _oldState: S = store.getState();
-    private _storeUnsubscribe: Unsubscribe;
+    <T extends Constructor<CustomElement>>(baseElement: T) =>
+      class extends baseElement {
+        private _oldState: S = store.getState();
+        private _storeUnsubscribe: Unsubscribe;
 
-    public connectedCallback() {
-      if (super.connectedCallback) {
-        super.connectedCallback();
-      }
+        public connectedCallback() {
+          if (super.connectedCallback) {
+            super.connectedCallback();
+          }
 
-      this._storeUnsubscribe = store.subscribe(() => {
-        const newState = store.getState();
-        this.stateChanged(newState, this._oldState);
-        this._oldState = newState;
-      });
-      this.stateChanged(this._oldState);
-    }
+          this._storeUnsubscribe = store.subscribe(() => {
+            const newState = store.getState();
+            this.stateChanged(newState, this._oldState);
+            this._oldState = newState;
+          });
+          this.stateChanged(this._oldState);
+        }
 
-    public disconnectedCallback() {
-      this._storeUnsubscribe();
+        public disconnectedCallback() {
+          this._storeUnsubscribe();
 
-      if (super.disconnectedCallback) {
-        super.disconnectedCallback();
-      }
-    }
+          if (super.disconnectedCallback) {
+            super.disconnectedCallback();
+          }
+        }
 
-    /**
-     * The `stateChanged(newState, oldState)` method will be called when the state is updated.
-     */
-    public stateChanged(newState: S, oldState?: S) {} // eslint-disable-line @typescript-eslint/no-unused-vars
-  };
+        /**
+         * The `stateChanged(newState, oldState)` method will be called when the state is updated.
+         */
+        public stateChanged(newState: S, oldState?: S) {} // eslint-disable-line @typescript-eslint/no-unused-vars
+      };

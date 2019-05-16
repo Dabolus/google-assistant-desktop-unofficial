@@ -40,8 +40,8 @@ export interface AuthActionAuthenticateRequested extends
   };
 }
 
-export interface AuthActionAuthenticateResolved extends
-  FluxStandardAction<AuthActionType.AUTHENTICATE_RESOLVED> {}
+export type AuthActionAuthenticateResolved =
+  FluxStandardAction<AuthActionType.AUTHENTICATE_RESOLVED>;
 
 export interface AuthActionAuthenticateRejected extends
   FluxStandardAction<AuthActionType.AUTHENTICATE_REJECTED> {
@@ -50,14 +50,14 @@ export interface AuthActionAuthenticateRejected extends
   };
 }
 
-export interface AuthActionClearAuthErrors extends
-  FluxStandardAction<AuthActionType.CLEAR_AUTH_ERRORS> {}
+export type AuthActionClearAuthErrors =
+  FluxStandardAction<AuthActionType.CLEAR_AUTH_ERRORS>;
 
-export interface AuthActionLogoutRequested extends
-  FluxStandardAction<AuthActionType.LOGOUT_REQUESTED> {}
+export type AuthActionLogoutRequested =
+  FluxStandardAction<AuthActionType.LOGOUT_REQUESTED>;
 
-export interface AuthActionLogoutResolved extends
-  FluxStandardAction<AuthActionType.LOGOUT_RESOLVED> {}
+export type AuthActionLogoutResolved =
+  FluxStandardAction<AuthActionType.LOGOUT_RESOLVED>;
 
 export interface AuthActionLogoutRejected extends
   FluxStandardAction<AuthActionType.LOGOUT_REJECTED> {

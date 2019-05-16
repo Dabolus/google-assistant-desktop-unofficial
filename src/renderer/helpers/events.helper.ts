@@ -22,13 +22,13 @@ export const attachEventListeners = (store: Store) => {
     .on('auth.requestLogout', () => {
       store.dispatch(requestLogout());
     })
-    .on('auth.resolveLogout', (_: Event) => {
+    .on('auth.resolveLogout', () => {
       store.dispatch(resolveLogout());
     })
     .on('auth.rejectLogout', (_: Event, error: Error) => {
       store.dispatch(rejectLogout(error));
     })
-    .on('auth.resolveAuthentication', (_: Event) => {
+    .on('auth.resolveAuthentication', () => {
       store.dispatch(resolveAuthentication());
     })
     .on('auth.rejectAuthentication', (_: Event, error: Error) => {

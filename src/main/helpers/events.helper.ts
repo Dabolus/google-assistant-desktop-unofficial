@@ -13,7 +13,7 @@ export class BrowserWindowWithEvents extends BrowserWindow {
   private _storeService: Store = container.get(StoreService);
   private _assistant: Assistant;
 
-  constructor(options?: BrowserWindowConstructorOptions) {
+  public constructor(options?: BrowserWindowConstructorOptions) {
     super(options);
 
     if (this._environmentService.mac) {

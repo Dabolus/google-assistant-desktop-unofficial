@@ -27,6 +27,7 @@ export class AuthService implements Auth {
       clientId || this._storeService.getClientId(),
       clientSecret || this._storeService.getClientSecret(),
     );
+    /* eslint-disable @typescript-eslint/camelcase */
     const { tokens: { refresh_token } } = await this._client.getToken(code);
     const credentials = {
       type: 'authorized_user',
@@ -34,6 +35,7 @@ export class AuthService implements Auth {
       client_secret: clientSecret,
       refresh_token,
     };
+    /* eslint-enable @typescript-eslint/camelcase */
     this._storeService.setCredentials(credentials);
     return credentials;
   }
@@ -55,6 +57,7 @@ export class AuthService implements Auth {
 
       // Generate the url that will be used for the consent dialog.
       const authorizeUrl = oAuth2Client.generateAuthUrl({
+        // eslint-disable-next-line @typescript-eslint/camelcase
         access_type: 'offline',
         scope: 'https://www.googleapis.com/auth/assistant-sdk-prototype',
       });

@@ -9,7 +9,6 @@ import {
   rejectLocaleUpdate,
   rejectModalOpening,
   resolveLocaleUpdate,
-  resolveModalOpening,
 } from './app.actions';
 
 const l10nService: L10n = container.get(L10nService);

@@ -21,7 +21,7 @@ export class Shell extends connect(store)(LitElement) {
   @property({ type: String })
   protected _page = 'chat';
 
-  constructor() {
+  public constructor() {
     super();
     const userLocale = navigator.language.slice(0, 2);
     const locale = L10nService.supportedLocales.find((l) => l === userLocale) || Locale.EN;

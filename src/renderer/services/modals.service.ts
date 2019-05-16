@@ -1,5 +1,5 @@
 import { injectable } from '@helpers/di.helper';
-import { Event, ipcRenderer } from 'electron';
+import { ipcRenderer } from 'electron';
 
 export interface Modals {
   open(ref: string): void;

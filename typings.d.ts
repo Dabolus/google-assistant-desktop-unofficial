@@ -9,7 +9,7 @@ declare module 'script-ext-html-webpack-plugin' {
   }
 
   export default class ScriptExtHtmlWebpackPlugin extends Plugin {
-    constructor(options: ScriptExtHtmlWebpackPluginConfig);
+    public constructor(options: ScriptExtHtmlWebpackPluginConfig);
   }
 }
 
@@ -32,7 +32,7 @@ declare module 'terser-webpack-plugin' {
   }
 
   export default class TerserPlugin extends Plugin {
-    constructor(config?: TerserPluginConfiguration);
+    public constructor(config?: TerserPluginConfiguration);
   }
 }
 
