@@ -1,4 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
 import HtmlPlugin from 'html-webpack-plugin';
 import { resolve } from 'path';
 import { Configuration } from 'webpack';

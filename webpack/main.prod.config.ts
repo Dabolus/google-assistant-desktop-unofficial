@@ -1,4 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
 /// <reference types="../typings" />
 import { resolve } from 'path';
 import TerserPlugin from 'terser-webpack-plugin';

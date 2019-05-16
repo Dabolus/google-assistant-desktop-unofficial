@@ -1,4 +1,4 @@
-// tslint:disable:no-console
+/* eslint-disable no-console */
 
 import FormData from 'form-data';
 import { createReadStream } from 'fs';

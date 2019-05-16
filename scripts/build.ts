@@ -1,4 +1,4 @@
-// tslint:disable:no-console
+/* eslint-disable no-console */
 
 import { build, CliOptions, Configuration, Platform } from 'electron-builder';
 import { copy } from 'fs-extra';

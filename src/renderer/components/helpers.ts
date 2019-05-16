@@ -63,5 +63,5 @@ export const connect =
     /**
      * The `stateChanged(newState, oldState)` method will be called when the state is updated.
      */
-    public stateChanged(newState: S, oldState?: S) {} // tslint:disable-line:no-empty
+    public stateChanged(newState: S, oldState?: S) {} // eslint-disable-line @typescript-eslint/no-unused-vars
   };

@@ -1,6 +1,4 @@
 
-// tslint:disable:no-empty no-unused-expression
-
 import loaderUtils from 'loader-utils';
 
 export default function() {}
