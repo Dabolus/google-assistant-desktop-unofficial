@@ -31,7 +31,7 @@
     "core-js": "^3.0.1",
     "electron-store": "^3.2.0",
     "google-auth-library": "^4.0.0",
-    "nodejs-assistant": "^0.6.4",
+    "nodejs-assistant": "^0.7.1",
     "typedi": "^0.8.0"
   },
   "devDependencies": {
