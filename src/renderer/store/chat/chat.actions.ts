@@ -13,40 +13,28 @@ export enum ChatActionType {
 }
 
 // Action interfaces
-export interface ChatActionUpdateInput extends
-  FluxStandardAction<ChatActionType.UPDATE_INPUT> {
-  payload: {
+export type ChatActionUpdateInput =
+  FluxStandardAction<ChatActionType.UPDATE_INPUT, {
     text: string;
-  };
-}
+  }>;
 
-export interface ChatActionSendMessageRequested extends
-  FluxStandardAction<ChatActionType.SEND_MESSAGE_REQUESTED> {
-  payload: {
+export type ChatActionSendMessageRequested =
+  FluxStandardAction<ChatActionType.SEND_MESSAGE_REQUESTED, {
     text: string;
-  };
-}
+  }>;
 
-export interface ChatActionSendMessageResolved extends
-  FluxStandardAction<ChatActionType.SEND_MESSAGE_RESOLVED> {
-  payload: {
+export type ChatActionSendMessageResolved =
+  FluxStandardAction<ChatActionType.SEND_MESSAGE_RESOLVED, {
     text: string;
-  };
-}
+  }>;
 
-export interface ChatActionSendMessageRejected extends
-  FluxStandardAction<ChatActionType.SEND_MESSAGE_REJECTED> {
-  payload: {
-    error: Error;
-  };
-}
+export type ChatActionSendMessageRejected =
+  FluxStandardAction<ChatActionType.SEND_MESSAGE_REJECTED, Error>;
 
-export interface ChatActionReceiveMessage extends
-  FluxStandardAction<ChatActionType.RECEIVE_MESSAGE> {
-  payload: {
+export type ChatActionReceiveMessage =
+  FluxStandardAction<ChatActionType.RECEIVE_MESSAGE, {
     content: AssistantResponse;
-  };
-}
+  }>;
 
 export type ChatAction =
   | ChatActionUpdateInput
@@ -79,9 +67,8 @@ export const resolveMessageSend = (text: string): ChatActionSendMessageResolved 
 
 export const rejectMessageSend = (error: Error): ChatActionSendMessageRejected => ({
   type: ChatActionType.SEND_MESSAGE_REJECTED,
-  payload: {
-    error,
-  },
+  error: true,
+  payload: error,
 });
 
 export const receiveMessage = (content: AssistantResponse): ChatActionReceiveMessage => ({

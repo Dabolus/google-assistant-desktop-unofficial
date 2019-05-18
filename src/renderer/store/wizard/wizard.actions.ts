@@ -6,12 +6,10 @@ export enum WizardActionType {
 }
 
 // Action interfaces
-export interface WizardActionUpdateStep extends
-  FluxStandardAction<WizardActionType.UPDATE_STEP> {
-  payload: {
+export type WizardActionUpdateStep =
+  FluxStandardAction<WizardActionType.UPDATE_STEP, {
     step: number;
-  };
-}
+  }>;
 
 export type WizardAction = WizardActionUpdateStep;
 

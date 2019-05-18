@@ -5,14 +5,40 @@ export interface StoreConfig {
   initialState: RootState;
 }
 
-export type FluxStandardActionPayload = { [key: string]: unknown } | Promise<{ [key: string]: unknown }> | Error;
+interface FluxStandardNormalActionPayload { [key: string]: unknown };
+type FluxStandardErrorActionPayload = Error;
+export type FluxStandardActionPayload = FluxStandardNormalActionPayload | FluxStandardErrorActionPayload;
 
-export interface FluxStandardAction<
+interface FluxStandardCommonAction<
+  T extends string = string,
+  M = unknown,
+> extends Action<T> {
+  meta?: M;
+}
+
+interface FluxStandardNormalAction<
+  T extends string = string,
+  P extends FluxStandardNormalActionPayload = FluxStandardNormalActionPayload,
+  M = unknown,
+> extends FluxStandardCommonAction<T, M> {
+  payload?: P;
+}
+
+interface FluxStandardErrorAction<
+  T extends string = string,
+  E extends FluxStandardErrorActionPayload = FluxStandardErrorActionPayload,
+  M = unknown,
+> extends FluxStandardCommonAction<T, M> {
+  payload?: E;
+  error: true;
+}
+
+export type FluxStandardAction<
   T extends string = string,
   P extends FluxStandardActionPayload = FluxStandardActionPayload,
   M = unknown,
-> extends Action<T> {
-  payload?: P;
-  error?: true;
-  meta?: M;
-}
+> = P extends FluxStandardErrorActionPayload
+  ? FluxStandardErrorAction<T, P, M>
+  : P extends FluxStandardNormalActionPayload
+    ? FluxStandardNormalAction<T, P, M>
+    : never;

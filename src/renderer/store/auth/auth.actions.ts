@@ -18,37 +18,27 @@ export enum AuthActionType {
 }
 
 // Action interfaces
-export interface AuthActionUpdateClientId extends
-  FluxStandardAction<AuthActionType.UPDATE_CLIENT_ID> {
-  payload: {
+export type AuthActionUpdateClientId =
+  FluxStandardAction<AuthActionType.UPDATE_CLIENT_ID, {
     clientId: string;
-  };
-}
+  }>;
 
-export interface AuthActionUpdateClientSecret extends
-  FluxStandardAction<AuthActionType.UPDATE_CLIENT_SECRET> {
-  payload: {
+export type AuthActionUpdateClientSecret =
+  FluxStandardAction<AuthActionType.UPDATE_CLIENT_SECRET, {
     clientSecret: string;
-  };
-}
+  }>;
 
-export interface AuthActionAuthenticateRequested extends
-  FluxStandardAction<AuthActionType.AUTHENTICATE_REQUESTED> {
-  payload: {
+export type AuthActionAuthenticateRequested =
+  FluxStandardAction<AuthActionType.AUTHENTICATE_REQUESTED, {
     clientId?: string;
     clientSecret?: string;
-  };
-}
+  }>;
 
 export type AuthActionAuthenticateResolved =
   FluxStandardAction<AuthActionType.AUTHENTICATE_RESOLVED>;
 
-export interface AuthActionAuthenticateRejected extends
-  FluxStandardAction<AuthActionType.AUTHENTICATE_REJECTED> {
-  payload: {
-    error: Error;
-  };
-}
+export type AuthActionAuthenticateRejected =
+  FluxStandardAction<AuthActionType.AUTHENTICATE_REJECTED, Error>;
 
 export type AuthActionClearAuthErrors =
   FluxStandardAction<AuthActionType.CLEAR_AUTH_ERRORS>;
@@ -59,12 +49,8 @@ export type AuthActionLogoutRequested =
 export type AuthActionLogoutResolved =
   FluxStandardAction<AuthActionType.LOGOUT_RESOLVED>;
 
-export interface AuthActionLogoutRejected extends
-  FluxStandardAction<AuthActionType.LOGOUT_REJECTED> {
-  payload: {
-    error: Error;
-  };
-}
+export type AuthActionLogoutRejected =
+  FluxStandardAction<AuthActionType.LOGOUT_REJECTED, Error>;
 
 export type AuthAction =
   | AuthActionUpdateClientId
@@ -109,9 +95,8 @@ export const resolveAuthentication = (): AuthActionAuthenticateResolved => ({
 
 export const rejectAuthentication = (error: Error): AuthActionAuthenticateRejected => ({
   type: AuthActionType.AUTHENTICATE_REJECTED,
-  payload: {
-    error,
-  },
+  error: true,
+  payload: error,
 });
 
 export const clearAuthErrors = (): AuthActionClearAuthErrors => ({
@@ -128,7 +113,6 @@ export const resolveLogout = (): AuthActionLogoutResolved => ({
 
 export const rejectLogout = (error: Error): AuthActionLogoutRejected => ({
   type: AuthActionType.LOGOUT_REJECTED,
-  payload: {
-    error,
-  },
+  error: true,
+  payload: error,
 });

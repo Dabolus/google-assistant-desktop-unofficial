@@ -31,7 +31,7 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
     case ChatActionType.SEND_MESSAGE_REJECTED:
       return {
         ...state,
-        error: action.payload.error,
+        error: action.payload,
       };
     case ChatActionType.RECEIVE_MESSAGE:
       // TODO: handle other infos received from the Assistant (e.g. audio)
