@@ -3,7 +3,7 @@ import { Environment, EnvironmentService } from '@services/environment.service';
 import { Modals, ModalsService } from '@services/modals.service';
 import { Store, StoreService } from '@services/store.service';
 import { BrowserWindow, BrowserWindowConstructorOptions, Event, ipcMain, systemPreferences } from 'electron';
-import { Assistant } from 'nodejs-assistant';
+import { Assistant, AssistantQueryOptions, AudioOutEncoding } from 'nodejs-assistant';
 import { container } from './di.helper';
 
 export class BrowserWindowWithEvents extends BrowserWindow {
@@ -45,10 +45,23 @@ export class BrowserWindowWithEvents extends BrowserWindow {
           this.webContents.send('auth.rejectLogout', e);
         }
       })
-      .on('chat.requestSendMessage', async (_: Event, text: string) => {
+      .on('chat.requestSendMessage', async (_: Event, {
+        text,
+        options,
+      }: {
+        text: string;
+        options: AssistantQueryOptions;
+      }) => {
         if (this._assistant) {
           this.webContents.send('chat.resolveSendMessage', text);
-          const response = await this._assistant.query(text);
+          const response = await this._assistant.query(text, {
+            audioOutConfig: {
+              encoding: AudioOutEncoding.LINEAR16,
+              sampleRateHertz: 16000,
+              volumePercentage: 100,  
+            },
+            ...options,
+          });
           if (response) {
             this.webContents.send('chat.receiveMessage', response);
           }

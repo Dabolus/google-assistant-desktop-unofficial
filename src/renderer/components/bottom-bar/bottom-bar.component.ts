@@ -24,6 +24,8 @@ export class BottomBar extends connect(store)(LitElement) {
   @query('input')
   private _inputRef: HTMLInputElement;
 
+  private _conversationState: Buffer = null;
+
   public stateChanged({ app, chat }: RootState) {
     if (this._text !== chat.text) {
       this._text = chat.text;
@@ -32,6 +34,7 @@ export class BottomBar extends connect(store)(LitElement) {
       }
     }
     this._localeData = app.localeData;
+    this._conversationState = chat.conversationState;
   }
 
   protected _inputModified(e: KeyboardEvent) {
@@ -51,7 +54,7 @@ export class BottomBar extends connect(store)(LitElement) {
     if (!this._text) {
       return;
     }
-    store.dispatch(requestMessageSend(this._text));
+    store.dispatch(requestMessageSend(this._text, this._conversationState));
   }
 }
 

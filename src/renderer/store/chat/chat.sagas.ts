@@ -6,10 +6,10 @@ import { ChatActionSendMessageRequested, ChatActionType, rejectMessageSend } fro
 const chatService: Chat = container.get(ChatService);
 
 function* handleMessageSend({
-  payload: { text },
+  payload: { text, conversationState },
 }: ChatActionSendMessageRequested) {
   try {
-    yield call(chatService.sendMessage, text);
+    yield call(chatService.sendMessage, text, { conversationState });
   } catch (e) {
     yield put(rejectMessageSend(e));
   }

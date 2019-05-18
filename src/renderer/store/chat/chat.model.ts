@@ -13,4 +13,5 @@ export interface ChatState {
   text: string;
   error: Error;
   history: Message[];
+  conversationState: Buffer;
 }

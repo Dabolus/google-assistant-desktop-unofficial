@@ -21,6 +21,7 @@ export type ChatActionUpdateInput =
 export type ChatActionSendMessageRequested =
   FluxStandardAction<ChatActionType.SEND_MESSAGE_REQUESTED, {
     text: string;
+    conversationState?: Buffer;
   }>;
 
 export type ChatActionSendMessageResolved =
@@ -51,10 +52,11 @@ export const updateInput = (text: string): ChatActionUpdateInput => ({
   },
 });
 
-export const requestMessageSend = (text: string): ChatActionSendMessageRequested => ({
+export const requestMessageSend = (text: string, conversationState?: Buffer): ChatActionSendMessageRequested => ({
   type: ChatActionType.SEND_MESSAGE_REQUESTED,
   payload: {
     text,
+    conversationState,
   },
 });
 
