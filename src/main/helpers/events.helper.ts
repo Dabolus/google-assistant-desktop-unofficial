@@ -69,6 +69,20 @@ export class BrowserWindowWithEvents extends BrowserWindow {
         }
         this.webContents.send('chat.rejectSendMessage', new Error('Unable to send message'));
       })
+      .on('chat.requestSendAudio', async (_: Event, {
+        audio,
+        options,
+      }: {
+        audio: Buffer;
+        options: AssistantQueryOptions;
+      }) => {
+        if (this._assistant) {
+          this.webContents.send('chat.resolveSendAudio');
+          // TODO: actually send audio to the Assistant;
+          return;
+        }
+        this.webContents.send('chat.rejectSendAudio', new Error('Unable to send audio'));
+      })
       .on('app.requestModalOpening', (_: Event, ref: string) => {
         try {
           const modal = this._modalsService.open(ref);
@@ -82,6 +96,8 @@ export class BrowserWindowWithEvents extends BrowserWindow {
       ipcMain.removeAllListeners('auth.requestAuthentication');
       ipcMain.removeAllListeners('auth.requestLogout');
       ipcMain.removeAllListeners('chat.requestSendMessage');
+      ipcMain.removeAllListeners('chat.requestSendAudio');
+      ipcMain.removeAllListeners('chat.requestModalOpening');
     });
   }
 }
