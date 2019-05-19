@@ -9,6 +9,10 @@ export enum ChatActionType {
   SEND_MESSAGE_RESOLVED = 'SEND_MESSAGE_RESOLVED',
   SEND_MESSAGE_REJECTED = 'SEND_MESSAGE_REJECTED',
 
+  SEND_AUDIO_REQUESTED = 'SEND_AUDIO_REQUESTED',
+  SEND_AUDIO_RESOLVED = 'SEND_AUDIO_RESOLVED',
+  SEND_AUDIO_REJECTED = 'SEND_AUDIO_REJECTED',
+
   RECEIVE_MESSAGE = 'RECEIVE_MESSAGE',
 }
 
@@ -32,6 +36,18 @@ export type ChatActionSendMessageResolved =
 export type ChatActionSendMessageRejected =
   FluxStandardAction<ChatActionType.SEND_MESSAGE_REJECTED, Error>;
 
+export type ChatActionSendAudioRequested =
+  FluxStandardAction<ChatActionType.SEND_AUDIO_REQUESTED, {
+    audio: Buffer;
+    conversationState?: Buffer;
+  }>;
+
+export type ChatActionSendAudioResolved =
+  FluxStandardAction<ChatActionType.SEND_AUDIO_RESOLVED>;
+
+export type ChatActionSendAudioRejected =
+  FluxStandardAction<ChatActionType.SEND_AUDIO_REJECTED, Error>;
+
 export type ChatActionReceiveMessage =
   FluxStandardAction<ChatActionType.RECEIVE_MESSAGE, {
     content: AssistantResponse;
@@ -42,6 +58,9 @@ export type ChatAction =
   | ChatActionSendMessageRequested
   | ChatActionSendMessageResolved
   | ChatActionSendMessageRejected
+  | ChatActionSendAudioRequested
+  | ChatActionSendAudioResolved
+  | ChatActionSendAudioRejected
   | ChatActionReceiveMessage;
 
 // Actions
@@ -69,6 +88,24 @@ export const resolveMessageSend = (text: string): ChatActionSendMessageResolved 
 
 export const rejectMessageSend = (error: Error): ChatActionSendMessageRejected => ({
   type: ChatActionType.SEND_MESSAGE_REJECTED,
+  error: true,
+  payload: error,
+});
+
+export const requestAudioSend = (audio: Buffer, conversationState?: Buffer): ChatActionSendAudioRequested => ({
+  type: ChatActionType.SEND_AUDIO_REQUESTED,
+  payload: {
+    audio,
+    conversationState,
+  },
+});
+
+export const resolveAudioSend = (): ChatActionSendAudioResolved => ({
+  type: ChatActionType.SEND_AUDIO_RESOLVED,
+});
+
+export const rejectAudioSend = (error: Error): ChatActionSendAudioRejected => ({
+  type: ChatActionType.SEND_AUDIO_REJECTED,
   error: true,
   payload: error,
 });
