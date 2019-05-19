@@ -1,7 +1,7 @@
 import { container } from '@helpers/di.helper';
 import { Chat, ChatService } from '@services/chat.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { ChatActionSendMessageRequested, ChatActionType, rejectMessageSend } from './chat.actions';
+import { ChatActionSendMessageRequested, ChatActionType, rejectMessageSend, ChatActionSendAudioRequested, rejectAudioSend } from './chat.actions';
 
 const chatService: Chat = container.get(ChatService);
 
@@ -15,6 +15,17 @@ function* handleMessageSend({
   }
 }
 
+function* handleAudioSend({
+  payload: { audio, conversationState },
+}: ChatActionSendAudioRequested) {
+  try {
+    yield call(chatService.sendAudio, audio, { conversationState });
+  } catch (e) {
+    yield put(rejectAudioSend(e));
+  }
+}
+
 export const chatSagas = [
   takeLatest(ChatActionType.SEND_MESSAGE_REQUESTED, handleMessageSend),
+  takeLatest(ChatActionType.SEND_AUDIO_REQUESTED, handleAudioSend),
 ];
