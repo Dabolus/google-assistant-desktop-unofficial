@@ -12,7 +12,7 @@ export default function template(this: BottomBar) {
       @input="${this._inputModified}"
       @keydown="${this._inputKeyDown}"
       value="${this._text}">
-    <button @click="${this._text ? this._textSubmitted : console.log}">
+    <button @click="${this._text ? this._textSubmitted : this._startRecordingClicked}">
       <img src="assets/${this._text ? 'send' : 'google-mic'}.svg">
       <mwc-ripple></mwc-ripple>
     </button>
