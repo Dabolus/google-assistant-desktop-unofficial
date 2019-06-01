@@ -2,7 +2,7 @@ import { connect } from '@components/helpers';
 import { Message } from '@store/chat/chat.model';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
-import { customElement, LitElement, property } from 'lit-element';
+import { customElement, LitElement, property, query } from 'lit-element';
 
 import sharedStyles from '@components/shared.styles';
 import styles from './chat.styles';
@@ -17,8 +17,20 @@ export class Chat extends connect(store)(LitElement) {
   @property({ type: Array })
   protected _history: Message[] = [];
 
-  public stateChanged({ chat }: RootState) {
+  @query('div')
+  private _containerRef: HTMLDivElement;
+
+  public async stateChanged({ chat }: RootState) {
+    const oldHistoryLength = this._history.length;
+    const newHistoryLength = chat.history.length;
     this._history = chat.history;
+    if (this._containerRef && newHistoryLength !== oldHistoryLength) {
+      await this.updateComplete;
+      this._containerRef.scroll({
+        top: this._containerRef.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }
 }
 
