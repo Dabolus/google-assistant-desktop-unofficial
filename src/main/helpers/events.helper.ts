@@ -56,7 +56,7 @@ export class BrowserWindowWithEvents extends BrowserWindow {
           this.webContents.send('chat.resolveSendMessage', text);
           const response = await this._assistant.query(text, {
             audioOutConfig: {
-              encoding: AudioOutEncoding.LINEAR16,
+              encoding: AudioOutEncoding.MP3,
               sampleRateHertz: 16000,
               volumePercentage: 100,  
             },
