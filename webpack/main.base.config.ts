@@ -15,9 +15,11 @@ const config: Configuration = smartMerge(baseConfig, {
     },
     extensions: ['.json'],
   },
-  externals: [nodeExternals({
-    importType: 'commonjs2',
-  })],
+  externals: [
+    nodeExternals({
+      importType: 'commonjs2',
+    }),
+  ],
 });
 
 export default config;

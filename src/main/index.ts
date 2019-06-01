@@ -11,27 +11,33 @@ const environmentService: Environment = container.get(EnvironmentService);
 let mainWindow: BrowserWindowWithEvents | null;
 
 async function configureDevTools(window: BrowserWindowWithEvents) {
-  const { default: installExtension, REDUX_DEVTOOLS } = await import('electron-devtools-installer');
+  const { default: installExtension, REDUX_DEVTOOLS } = await import(
+    'electron-devtools-installer'
+  );
   await installExtension(REDUX_DEVTOOLS);
   window.webContents.openDevTools();
 }
 
 function createMenu(window: BrowserWindowWithEvents) {
   const menu = Menu.buildFromTemplate([
-    ...(environmentService.mac ? [{
-      label: app.getName(),
-      submenu: [
-        { role: 'about' },
-        { type: 'separator' },
-        { role: 'services' },
-        { type: 'separator' },
-        { role: 'hide' },
-        { role: 'hideothers' },
-        { role: 'unhide' },
-        { type: 'separator' },
-        { role: 'quit' },
-      ],
-    }] as any : []),
+    ...(environmentService.mac
+      ? ([
+          {
+            label: app.getName(),
+            submenu: [
+              { role: 'about' },
+              { type: 'separator' },
+              { role: 'services' },
+              { type: 'separator' },
+              { role: 'hide' },
+              { role: 'hideothers' },
+              { role: 'unhide' },
+              { type: 'separator' },
+              { role: 'quit' },
+            ],
+          },
+        ] as any)
+      : []),
     { role: 'fileMenu' },
     {
       label: 'Edit',
@@ -49,12 +55,14 @@ function createMenu(window: BrowserWindowWithEvents) {
     {
       label: 'View',
       submenu: [
-        ...environmentService.development ? [
-          { role: 'reload' },
-          { role: 'forcereload' },
-          { role: 'toggledevtools' },
-          { type: 'separator' },
-        ] : [],
+        ...(environmentService.development
+          ? [
+              { role: 'reload' },
+              { role: 'forcereload' },
+              { role: 'toggledevtools' },
+              { type: 'separator' },
+            ]
+          : []),
         { role: 'resetzoom' },
         { role: 'zoomin' },
         { role: 'zoomout' },
@@ -77,7 +85,10 @@ function createMenu(window: BrowserWindowWithEvents) {
       submenu: [
         {
           label: 'Contribute',
-          click: () => shell.openExternal('https://github.com/Dabolus/google-assistant-desktop-unofficial'),
+          click: () =>
+            shell.openExternal(
+              'https://github.com/Dabolus/google-assistant-desktop-unofficial',
+            ),
         },
       ],
     },
@@ -98,15 +109,26 @@ function createMainWindow() {
   createMenu(window);
 
   if (environmentService.development) {
-    window.loadURL(`http://localhost:8080#${systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light'}`);
+    window.loadURL(
+      `http://localhost:8080#${
+        systemPreferences.isDarkMode && systemPreferences.isDarkMode()
+          ? 'dark'
+          : 'light'
+      }`,
+    );
     configureDevTools(window);
   } else {
-    window.loadURL(formatUrl({
-      pathname: resolve(__dirname, 'index.html'),
-      protocol: 'file',
-      slashes: true,
-      hash: systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light',
-    }));
+    window.loadURL(
+      formatUrl({
+        pathname: resolve(__dirname, 'index.html'),
+        protocol: 'file',
+        slashes: true,
+        hash:
+          systemPreferences.isDarkMode && systemPreferences.isDarkMode()
+            ? 'dark'
+            : 'light',
+      }),
+    );
   }
 
   window.once('closed', () => {
@@ -117,7 +139,9 @@ function createMainWindow() {
   window.webContents.once('dom-ready', () =>
     window.webContents.send(
       'app.setTheme',
-      systemPreferences.isDarkMode && systemPreferences.isDarkMode() ? 'dark' : 'light',
+      systemPreferences.isDarkMode && systemPreferences.isDarkMode()
+        ? 'dark'
+        : 'light',
     ),
   );
 
@@ -145,10 +169,11 @@ app.on('ready', () => {
 });
 
 if (environmentService.development) {
-  import('electron-watch')
-    .then(({ default: watch }) => watch(
+  import('electron-watch').then(({ default: watch }) =>
+    watch(
       resolve(__dirname, '../../src/main'),
       'start:electron',
       resolve(__dirname, '../../'),
-    ));
+    ),
+  );
 }

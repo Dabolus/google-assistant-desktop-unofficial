@@ -24,7 +24,7 @@ export class Settings extends connect(store)(LitElement) {
     [key in keyof LocaleDataSettings]: {
       icon: string;
       external?: boolean;
-    };
+    }
   } = {
     donate: {
       icon: 'credit_card',
@@ -52,7 +52,9 @@ export class Settings extends connect(store)(LitElement) {
           );
         case 'metrics':
           return store.dispatch(
-            requestModalOpening('https://console.cloud.google.com/apis/api/embeddedassistant.googleapis.com/metrics'),
+            requestModalOpening(
+              'https://console.cloud.google.com/apis/api/embeddedassistant.googleapis.com/metrics',
+            ),
           );
         case 'logout':
           return store.dispatch(requestLogout());

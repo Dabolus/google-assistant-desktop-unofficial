@@ -51,7 +51,7 @@ const en: LocaleData = {
               'Although the software closely resembles the look and feel of the original Google ' +
               'Assistant, it is <strong>not</strong> an official Google product. The software ' +
               'uses Google Assistant APIs to allow users to interact with the Assistant from ' +
-              'devices that otherwise won\'t be able to use it. This means that, unlike the ' +
+              "devices that otherwise won't be able to use it. This means that, unlike the " +
               'official Google products, the software might incur into some limitations applied ' +
               'by Google itself. The authors do their best to provide the most straightforward ' +
               'and easiest possible interaction with the Google Assistant APIs to the end users, ' +
@@ -87,36 +87,36 @@ const en: LocaleData = {
       {
         title: 'Are you ok with this language?',
         text:
-          'I did my best to detect your language, but I\'m not completely sure it\'s the right ' +
+          "I did my best to detect your language, but I'm not completely sure it's the right " +
           'one. Do you wish to change it?',
       },
       {
-        title: 'Perfect! Now let\'s setup a project.',
+        title: "Perfect! Now let's setup a project.",
         text: [
           'A Google Cloud Platform project gives your device access to the Google Assistant API. ' +
-          'The project tracks quota usage and gives you valuable metrics for the requests made ' +
-          'from your device.',
+            'The project tracks quota usage and gives you valuable metrics for the requests made ' +
+            'from your device.',
 
           'In the Cloud Platform Console, <a href="https://console.cloud.google.com/project" target="projects-page">go to the Projects page</a>. ' +
-          'Select an existing project or create a new project.',
+            'Select an existing project or create a new project.',
 
           'After creating the project, you also need to enable the Assistant APIs. Click <a href="https://console.developers.google.com/apis/api/embeddedassistant.googleapis.com/overview" target="enable-api">here</a> ' +
-          'to navigate to the Google API Console and then click <em>Enable</em>.',
+            'to navigate to the Google API Console and then click <em>Enable</em>.',
 
-          'When you\'re done, come back here and press <em>Next</em>, I\'ll be waiting for you.',
+          "When you're done, come back here and press <em>Next</em>, I'll be waiting for you.",
         ],
       },
       {
         title: 'Almost there! Now you just need to authorize me.',
         text: [
           'To be able to get access to the project you just created, I will need an OAuth Client ' +
-          'ID. Click <a href="https://console.developers.google.com/apis/credentials/oauthclient" target="oauth-console">here</a> ' +
-          'to go to the OAuth credentials creation wizard, give the product name you want if ' +
-          'required, set <em>Other</em> as application type, give to the client ID the name you ' +
-          'prefer and then click <em>Create</em>.',
+            'ID. Click <a href="https://console.developers.google.com/apis/credentials/oauthclient" target="oauth-console">here</a> ' +
+            'to go to the OAuth credentials creation wizard, give the product name you want if ' +
+            'required, set <em>Other</em> as application type, give to the client ID the name you ' +
+            'prefer and then click <em>Create</em>.',
 
           'You should now see a dialog with a Client ID and Secret; just copy/paste them down ' +
-          'here:',
+            'here:',
         ],
         idPlaceholder: 'Client ID',
         secretPlaceholder: 'Client Secret',

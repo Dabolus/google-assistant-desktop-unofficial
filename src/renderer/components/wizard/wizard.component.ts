@@ -2,7 +2,11 @@ import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
 import { requestLocaleUpdate } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
-import { requestAuthentication, updateClientId, updateClientSecret } from '@store/auth/auth.actions';
+import {
+  requestAuthentication,
+  updateClientId,
+  updateClientSecret,
+} from '@store/auth/auth.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { updateStep } from '@store/wizard/wizard.actions';
@@ -59,13 +63,19 @@ export class Wizard extends connect(store)(LitElement) {
   }
 
   protected _clientIdModified(e: KeyboardEvent) {
-    const { validity: { valid }, value } = e.target as HTMLInputElement;
+    const {
+      validity: { valid },
+      value,
+    } = e.target as HTMLInputElement;
     this._clientIdValid = valid && !!value;
     store.dispatch(updateClientId(value));
   }
 
   protected _clientSecretModified(e: KeyboardEvent) {
-    const { validity: { valid }, value } = e.target as HTMLInputElement;
+    const {
+      validity: { valid },
+      value,
+    } = e.target as HTMLInputElement;
     this._clientSecretValid = valid && !!value;
     store.dispatch(updateClientSecret(value));
   }
@@ -73,7 +83,9 @@ export class Wizard extends connect(store)(LitElement) {
   protected _localeChanged(e: Event) {
     // For some reason, destructuring doesn't work with HTMLCollectionOf, so we need to cast to any
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { selectedOptions: [{ value }] }: any = e.target as HTMLSelectElement;
+    const {
+      selectedOptions: [{ value }],
+    }: any = e.target as HTMLSelectElement;
     store.dispatch(requestLocaleUpdate(value));
   }
 }

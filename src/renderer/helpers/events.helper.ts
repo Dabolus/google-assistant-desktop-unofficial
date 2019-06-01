@@ -1,4 +1,8 @@
-import { rejectModalOpening, resolveModalOpening, setTheme } from '@store/app/app.actions';
+import {
+  rejectModalOpening,
+  resolveModalOpening,
+  setTheme,
+} from '@store/app/app.actions';
 import {
   rejectAuthentication,
   rejectLogout,
@@ -6,7 +10,13 @@ import {
   resolveAuthentication,
   resolveLogout,
 } from '@store/auth/auth.actions';
-import { receiveMessage, rejectMessageSend, resolveMessageSend, resolveAudioSend, rejectAudioSend } from '@store/chat/chat.actions';
+import {
+  receiveMessage,
+  rejectMessageSend,
+  resolveMessageSend,
+  resolveAudioSend,
+  rejectAudioSend,
+} from '@store/chat/chat.actions';
 import { Event, ipcRenderer } from 'electron';
 import { AssistantResponse } from 'nodejs-assistant';
 import { Store } from 'redux';

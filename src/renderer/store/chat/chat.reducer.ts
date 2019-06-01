@@ -23,11 +23,14 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
       return {
         ...state,
         text: '',
-        history: [...state.history.slice(-50), {
-          type: MessageType.OUT,
-          text: action.payload.text,
-          timestamp: Date.now(),
-        }],
+        history: [
+          ...state.history.slice(-50),
+          {
+            type: MessageType.OUT,
+            text: action.payload.text,
+            timestamp: Date.now(),
+          },
+        ],
       };
     case ChatActionType.SEND_MESSAGE_REJECTED:
       return {
@@ -39,13 +42,18 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
       return {
         ...state,
         conversationState: action.payload.content.conversationState,
-        ...action.payload.content.text ? {
-          history: [...state.history.slice(-50), {
-            type: MessageType.IN,
-            text: action.payload.content.text,
-            timestamp: Date.now(),
-          }],
-        } : {},
+        ...(action.payload.content.text
+          ? {
+              history: [
+                ...state.history.slice(-50),
+                {
+                  type: MessageType.IN,
+                  text: action.payload.content.text,
+                  timestamp: Date.now(),
+                },
+              ],
+            }
+          : {}),
       };
     default:
       return state;

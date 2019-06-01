@@ -6,14 +6,13 @@ import waitOn from 'wait-on';
 // Workaround for Windows
 // See: https://stackoverflow.com/questions/10021373/what-is-the-windows-equivalent-of-process-onsigint-in-node-js
 if (process.platform === 'win32') {
-  import('readline')
-    .then((rl) => {
-      const int = rl.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-      });
-      int.on('SIGINT', () => process.emit('SIGINT' as any));
+  import('readline').then(rl => {
+    const int = rl.createInterface({
+      input: process.stdin,
+      output: process.stdout,
     });
+    int.on('SIGINT', () => process.emit('SIGINT' as any));
+  });
 }
 
 // Make sure we are in the project root directory

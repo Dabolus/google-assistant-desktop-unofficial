@@ -19,11 +19,17 @@ declare module 'terser-webpack-plugin' {
   export interface TerserPluginConfiguration {
     cache?: boolean;
     parallel?: boolean;
-    extractComments?: boolean | 'all' | 'some' | RegExp | ((node: Node, comment: { value: string }) => boolean) | {
-      condition: RegExp;
-      filename(file: string): string;
-      banner(licenseFile: string): string;
-    };
+    extractComments?:
+      | boolean
+      | 'all'
+      | 'some'
+      | RegExp
+      | ((node: Node, comment: { value: string }) => boolean)
+      | {
+          condition: RegExp;
+          filename(file: string): string;
+          banner(licenseFile: string): string;
+        };
     terserOptions?: {
       compress?: {
         drop_console?: boolean;
@@ -52,7 +58,7 @@ declare module 'electron-devtools-installer' {
   export const CYCLEJS_DEVTOOL: DevTool;
   export const MOBX_DEVTOOLS: DevTool;
   export const APOLLO_DEVELOPER_TOOLS: DevTool;
-  export default function (devTool: DevTool): Promise<void>;
+  export default function(devTool: DevTool): Promise<void>;
 }
 
 declare module 'electron-redux';

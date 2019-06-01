@@ -18,7 +18,10 @@ export class AuthService implements Auth {
   private _modalsService: Modals = container.get(ModalsService);
   private _storeService: Store = container.get(StoreService);
 
-  public async getCredentials(clientId?: string, clientSecret?: string): Promise<JWTInput> {
+  public async getCredentials(
+    clientId?: string,
+    clientSecret?: string,
+  ): Promise<JWTInput> {
     const cachedCredentials = this._storeService.getCredentials();
     if (cachedCredentials) {
       return cachedCredentials;
@@ -28,7 +31,9 @@ export class AuthService implements Auth {
       clientSecret || this._storeService.getClientSecret(),
     );
     /* eslint-disable @typescript-eslint/camelcase */
-    const { tokens: { refresh_token } } = await this._client.getToken(code);
+    const {
+      tokens: { refresh_token },
+    } = await this._client.getToken(code);
     const credentials = {
       type: 'authorized_user',
       client_id: clientId,
@@ -40,7 +45,10 @@ export class AuthService implements Auth {
     return credentials;
   }
 
-  public authenticateClient(clientId: string, clientSecret: string): Promise<string> {
+  public authenticateClient(
+    clientId: string,
+    clientSecret: string,
+  ): Promise<string> {
     return new Promise(async (resolve, reject) => {
       if (!clientId || !clientSecret) {
         return reject(`Missing client id or client secret`);
@@ -68,7 +76,9 @@ export class AuthService implements Auth {
           // acquire the code from the querystring, and close the web server.
           const { query } = parseUrl(url);
           const { code } = parseQuerystring(query);
-          res.end('Success! You can now close this window if it does not close automatically.');
+          res.end(
+            'Success! You can now close this window if it does not close automatically.',
+          );
           server.close();
           window.destroy();
 

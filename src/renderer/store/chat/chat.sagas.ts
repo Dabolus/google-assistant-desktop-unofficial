@@ -1,7 +1,14 @@
 import { container } from '@helpers/di.helper';
 import { Chat, ChatService } from '@services/chat.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { ChatActionSendMessageRequested, ChatActionType, rejectMessageSend, ChatActionSendAudioRequested, rejectAudioSend, ChatActionReceiveMessage } from './chat.actions';
+import {
+  ChatActionSendMessageRequested,
+  ChatActionType,
+  rejectMessageSend,
+  ChatActionSendAudioRequested,
+  rejectAudioSend,
+  ChatActionReceiveMessage,
+} from './chat.actions';
 
 const chatService: Chat = container.get(ChatService);
 
@@ -26,9 +33,14 @@ function* handleAudioSend({
 }
 
 function handleAudioReceive({
-  payload: { content: { audio } }
+  payload: {
+    content: { audio },
+  },
 }: ChatActionReceiveMessage) {
-  const arrayBuffer = audio.buffer.slice(audio.byteOffset, audio.byteOffset + audio.byteLength);
+  const arrayBuffer = audio.buffer.slice(
+    audio.byteOffset,
+    audio.byteOffset + audio.byteLength,
+  );
   const audioContext = new AudioContext();
   audioContext.decodeAudioData(arrayBuffer, buffer => {
     const source = audioContext.createBufferSource();

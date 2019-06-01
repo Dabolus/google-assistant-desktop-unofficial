@@ -15,22 +15,21 @@ declare global {
 
 // Sets up a Chrome extension for time travel debugging.
 // See https://github.com/zalmoxisus/redux-devtools-extension for more information.
-const devCompose: typeof compose = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const devCompose: typeof compose =
+  (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-export const configure = (
-  { initialState }: StoreConfig,
-): Store<RootState> => {
+export const configure = ({ initialState }: StoreConfig): Store<RootState> => {
   const sagaMiddleware = createSagaMiddleware();
-  const enhancer = devCompose(
-    applyMiddleware(sagaMiddleware),
-  );
+  const enhancer = devCompose(applyMiddleware(sagaMiddleware));
   const store = createStore(rootReducer, initialState, enhancer);
   attachEventListeners(store);
 
   sagaMiddleware.run(rootSaga);
 
   if (module.hot) {
-    module.hot.accept('./root/root.reducer', () => store.replaceReducer(rootReducer));
+    module.hot.accept('./root/root.reducer', () =>
+      store.replaceReducer(rootReducer),
+    );
   }
 
   return store;

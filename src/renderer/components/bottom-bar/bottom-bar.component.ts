@@ -1,6 +1,10 @@
 import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
-import { requestMessageSend, updateInput, requestAudioSend } from '@store/chat/chat.actions';
+import {
+  requestMessageSend,
+  updateInput,
+  requestAudioSend,
+} from '@store/chat/chat.actions';
 import { store } from '@store/index';
 import { customElement, LitElement, property, query } from 'lit-element';
 
@@ -54,10 +58,26 @@ declare class MediaRecorder extends EventTarget {
   public pause(): void;
   public isTypeSupported(type: string): boolean;
   public requestData(): void;
-  public addEventListener<K extends keyof MediaRecorderEventMap>(type: K, listener: (this: MediaStream, ev: MediaRecorderEventMap[K]) => void, options?: boolean | AddEventListenerOptions): void;
-  public addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-  public removeEventListener<K extends keyof MediaRecorderEventMap>(type: K, listener: (this: MediaStream, ev: MediaRecorderEventMap[K]) => void, options?: boolean | EventListenerOptions): void;
-  public removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  public addEventListener<K extends keyof MediaRecorderEventMap>(
+    type: K,
+    listener: (this: MediaStream, ev: MediaRecorderEventMap[K]) => void,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  public addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  public removeEventListener<K extends keyof MediaRecorderEventMap>(
+    type: K,
+    listener: (this: MediaStream, ev: MediaRecorderEventMap[K]) => void,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  public removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
 }
 
 @customElement('gad-bottom-bar')
@@ -112,7 +132,9 @@ export class BottomBar extends connect(store)(LitElement) {
 
   protected async _startRecordingClicked() {
     if (!this._audioStream) {
-      this._audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this._audioStream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
     }
     const recorder = new MediaRecorder(this._audioStream, {
       mimeType: 'audio/webm;codecs=opus',

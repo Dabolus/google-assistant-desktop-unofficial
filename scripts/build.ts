@@ -8,10 +8,7 @@ const getConfig = (platform: string): CliOptions => {
   const baseConfig: Configuration = {
     appId: 'app.dabolus.google-assistant-desktop-unofficial',
     productName: 'Google Assistant',
-    files: [
-      '**/*.{js,html,css}',
-      'assets/**/*',
-    ],
+    files: ['**/*.{js,html,css}', 'assets/**/*'],
   };
 
   switch (platform) {
@@ -32,12 +29,7 @@ const getConfig = (platform: string): CliOptions => {
           ...baseConfig,
           linux: {
             category: 'Utility',
-            target: [
-              'deb',
-              'rpm',
-              'snap',
-              'AppImage',
-            ],
+            target: ['deb', 'rpm', 'snap', 'AppImage'],
           },
         },
       };
@@ -48,10 +40,7 @@ const getConfig = (platform: string): CliOptions => {
           ...baseConfig,
           mac: {
             category: 'public.app-category.utilities',
-            target: [
-              'dmg',
-              'zip',
-            ],
+            target: ['dmg', 'zip'],
             darkModeSupport: true,
           },
         },
@@ -66,11 +55,10 @@ const [, , p = process.platform] = process.argv;
 // Make sure we are in the app directory
 process.chdir(resolve(__dirname, '../app'));
 
-Promise
-  .all([
-    copy('../package.json', './package.json'),
-    copy('../src/resources', './build'),
-  ])
+Promise.all([
+  copy('../package.json', './package.json'),
+  copy('../src/resources', './build'),
+])
   .then(() => build(getConfig(p)))
   .then(() => {
     console.log('Build successful');

@@ -18,39 +18,53 @@ export enum AuthActionType {
 }
 
 // Action interfaces
-export type AuthActionUpdateClientId =
-  FluxStandardAction<AuthActionType.UPDATE_CLIENT_ID, {
+export type AuthActionUpdateClientId = FluxStandardAction<
+  AuthActionType.UPDATE_CLIENT_ID,
+  {
     clientId: string;
-  }>;
+  }
+>;
 
-export type AuthActionUpdateClientSecret =
-  FluxStandardAction<AuthActionType.UPDATE_CLIENT_SECRET, {
+export type AuthActionUpdateClientSecret = FluxStandardAction<
+  AuthActionType.UPDATE_CLIENT_SECRET,
+  {
     clientSecret: string;
-  }>;
+  }
+>;
 
-export type AuthActionAuthenticateRequested =
-  FluxStandardAction<AuthActionType.AUTHENTICATE_REQUESTED, {
+export type AuthActionAuthenticateRequested = FluxStandardAction<
+  AuthActionType.AUTHENTICATE_REQUESTED,
+  {
     clientId?: string;
     clientSecret?: string;
-  }>;
+  }
+>;
 
-export type AuthActionAuthenticateResolved =
-  FluxStandardAction<AuthActionType.AUTHENTICATE_RESOLVED>;
+export type AuthActionAuthenticateResolved = FluxStandardAction<
+  AuthActionType.AUTHENTICATE_RESOLVED
+>;
 
-export type AuthActionAuthenticateRejected =
-  FluxStandardAction<AuthActionType.AUTHENTICATE_REJECTED, Error>;
+export type AuthActionAuthenticateRejected = FluxStandardAction<
+  AuthActionType.AUTHENTICATE_REJECTED,
+  Error
+>;
 
-export type AuthActionClearAuthErrors =
-  FluxStandardAction<AuthActionType.CLEAR_AUTH_ERRORS>;
+export type AuthActionClearAuthErrors = FluxStandardAction<
+  AuthActionType.CLEAR_AUTH_ERRORS
+>;
 
-export type AuthActionLogoutRequested =
-  FluxStandardAction<AuthActionType.LOGOUT_REQUESTED>;
+export type AuthActionLogoutRequested = FluxStandardAction<
+  AuthActionType.LOGOUT_REQUESTED
+>;
 
-export type AuthActionLogoutResolved =
-  FluxStandardAction<AuthActionType.LOGOUT_RESOLVED>;
+export type AuthActionLogoutResolved = FluxStandardAction<
+  AuthActionType.LOGOUT_RESOLVED
+>;
 
-export type AuthActionLogoutRejected =
-  FluxStandardAction<AuthActionType.LOGOUT_REJECTED, Error>;
+export type AuthActionLogoutRejected = FluxStandardAction<
+  AuthActionType.LOGOUT_REJECTED,
+  Error
+>;
 
 export type AuthAction =
   | AuthActionUpdateClientId
@@ -71,7 +85,9 @@ export const updateClientId = (clientId: string): AuthActionUpdateClientId => ({
   },
 });
 
-export const updateClientSecret = (clientSecret: string): AuthActionUpdateClientSecret => ({
+export const updateClientSecret = (
+  clientSecret: string,
+): AuthActionUpdateClientSecret => ({
   type: AuthActionType.UPDATE_CLIENT_SECRET,
   payload: {
     clientSecret,
@@ -93,7 +109,9 @@ export const resolveAuthentication = (): AuthActionAuthenticateResolved => ({
   type: AuthActionType.AUTHENTICATE_RESOLVED,
 });
 
-export const rejectAuthentication = (error: Error): AuthActionAuthenticateRejected => ({
+export const rejectAuthentication = (
+  error: Error,
+): AuthActionAuthenticateRejected => ({
   type: AuthActionType.AUTHENTICATE_REJECTED,
   error: true,
   payload: error,

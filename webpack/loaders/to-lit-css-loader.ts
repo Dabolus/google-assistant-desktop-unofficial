@@ -1,4 +1,3 @@
-
 import loaderUtils from 'loader-utils';
 import { loader } from 'webpack';
 
@@ -9,7 +8,10 @@ export function pitch(this: loader.LoaderContext, remainingRequest: string) {
 
   return `
     const {css} = require('lit-element');
-    const content = require(${loaderUtils.stringifyRequest(this, `!!${remainingRequest}`)});
+    const content = require(${loaderUtils.stringifyRequest(
+      this,
+      `!!${remainingRequest}`,
+    )});
     const str = typeof content === 'string' ? content : content.toString();
     module.exports = css([str]);
   `;

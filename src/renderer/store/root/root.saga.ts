@@ -4,9 +4,5 @@ import { authSagas } from '../auth/auth.sagas';
 import { chatSagas } from '../chat/chat.sagas';
 
 export function* rootSaga() {
-  yield all([
-    ...appSagas,
-    ...authSagas,
-    ...chatSagas,
-  ]);
+  yield all([...appSagas, ...authSagas, ...chatSagas]);
 }

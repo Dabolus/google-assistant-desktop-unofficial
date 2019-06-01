@@ -16,7 +16,5 @@ module.exports = {
     '@locales/(.*)': '<rootDir>/src/renderer/locales/$1',
   },
   moduleFileExtensions: ['ts', 'js', 'scss', 'sass', 'css', 'ejs', 'html'],
-  testMatch: [
-    '<rootDir>/src/renderer/**/*.spec.ts',
-  ],
+  testMatch: ['<rootDir>/src/renderer/**/*.spec.ts'],
 };

@@ -6,13 +6,9 @@ import { rootReducer } from './root/root.reducer';
 import { rootSaga } from './root/root.saga';
 import { StoreConfig } from './store.model';
 
-export const configure = (
-  { initialState }: StoreConfig,
-): Store<RootState> => {
+export const configure = ({ initialState }: StoreConfig): Store<RootState> => {
   const sagaMiddleware = createSagaMiddleware();
-  const enhancer = compose(
-    applyMiddleware(sagaMiddleware),
-  );
+  const enhancer = compose(applyMiddleware(sagaMiddleware));
   const store = createStore(rootReducer, initialState, enhancer);
   attachEventListeners(store);
 
