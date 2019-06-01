@@ -4,11 +4,14 @@
     "project": "tsconfig.json",
     "ecmaVersion": 2018
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "extends": [
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
   ],
   "env": {
     "browser": true,
@@ -23,10 +26,7 @@
     }
   ],
   "rules": {
-    "@typescript-eslint/indent": [
-      "error",
-      2
-    ],
+    "prettier/prettier": "error",
     "no-console": "error",
     "@typescript-eslint/explicit-function-return-type": "off"
   }
