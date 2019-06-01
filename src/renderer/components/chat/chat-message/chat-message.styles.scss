@@ -15,7 +15,6 @@
   border-radius: var(--gad-border-radius-lg);
   padding: .4rem .7rem;
   font-family: var(--gad-display-font);
-  max-width: 85%;
 
   &:not(.contiguous)::before {
     content: '';
