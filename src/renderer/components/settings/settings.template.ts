@@ -1,6 +1,7 @@
 import { html } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { Settings } from './settings.component';
+import { nothing } from 'lit-html';
 
 export default function template(this: Settings) {
   return html`
@@ -15,7 +16,7 @@ export default function template(this: Settings) {
             <span class="option">${this._localeData?.settings?.[option]?.option}</span>
             <span class="description">${this._localeData?.settings?.[option]?.description}</span>
           </div>
-          ${external ? html`<div class="material-icons-extended">open_in_new</div>` : ''}
+          ${external ? html`<div class="material-icons-extended">open_in_new</div>` : nothing}
           <mwc-ripple></mwc-ripple>
         </li>
       `)}
