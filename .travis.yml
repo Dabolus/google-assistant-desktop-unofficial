@@ -7,7 +7,7 @@ addons:
     packages:
     - rpm
 branches:
-  only: develop
+  only: master
 cache:
   - yarn
   - directories:
