@@ -1,4 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
 /// <reference types="../typings" />
 import CopyPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -52,10 +51,7 @@ const config: Configuration = smartMerge(baseConfig, {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [
-                'node_modules',
-                'src/renderer/styles',
-              ],
+              includePaths: ['node_modules', 'src/renderer/styles'],
             },
           },
         ],

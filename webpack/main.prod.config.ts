@@ -1,4 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
 /// <reference types="../typings" />
 import { resolve } from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -21,7 +20,7 @@ const config: Configuration = smartMerge(mainBaseConfig, {
         extractComments: 'all',
         terserOptions: {
           compress: {
-            drop_console: true,
+            drop_console: true, // eslint-disable-line @typescript-eslint/camelcase
           },
         },
       }),

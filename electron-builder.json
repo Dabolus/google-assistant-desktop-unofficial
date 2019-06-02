@@ -1,0 +1,28 @@
+{
+  "appId": "app.dabolus.google-assistant-desktop-unofficial",
+  "productName": "Google Assistant",
+  "files": [
+    "**/*.{js,html,css}",
+    "assets/**/*"
+  ],
+  "win": {
+    "target": "nsis"
+  },
+  "linux": {
+    "category": "Utility",
+    "target": [
+      "deb",
+      "rpm",
+      "snap",
+      "AppImage"
+    ]
+  },
+  "mac": {
+    "category": "public.app-category.utilities",
+    "target": [
+      "dmg",
+      "zip"
+    ],
+    "darkModeSupport": true
+  }
+}

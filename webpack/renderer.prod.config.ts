@@ -1,4 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
 /// <reference types="../typings" />
 import HtmlPlugin from 'html-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
@@ -23,7 +22,7 @@ const config: Configuration = smartMerge(rendererBaseConfig, {
         extractComments: 'all',
         terserOptions: {
           compress: {
-            drop_console: true,
+            drop_console: true, // eslint-disable-line @typescript-eslint/camelcase
           },
         },
       }),

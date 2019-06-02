@@ -50,7 +50,7 @@ documentation.
   - Specify what has been changed/added/removed
   - Write a short and concise title. Be more specific in the description
   - Do not include issue numbers in the PR title
-  - Be sure to follow all the project coding guidelines. TSLint will definitely 
+  - Be sure to follow all the project coding guidelines. ESLint will definitely 
     give you a big help with this
   - End all files with a newline
   - Add **configuration and bundleable** dependencies as **devDependencies** 

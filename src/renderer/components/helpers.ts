@@ -1,6 +1,7 @@
 import { Store, Unsubscribe } from 'redux';
 
-type Constructor<T> = new(...args: any[]) => T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Constructor<T> = new (...args: any[]) => T;
 
 /**
  * By using this `CustomElement` interface instead of `HTMLElement`, we avoid
@@ -32,9 +33,11 @@ interface CustomElement {
  *      }
  *    }
  */
-export const connect =
-  <S>(store: Store<S>) =>
-  <T extends Constructor<CustomElement>>(baseElement: T) =>
+export const connect = <S>(store: Store<S>) => <
+  T extends Constructor<CustomElement>
+>(
+  baseElement: T,
+) =>
   class extends baseElement {
     private _oldState: S = store.getState();
     private _storeUnsubscribe: Unsubscribe;
@@ -63,5 +66,5 @@ export const connect =
     /**
      * The `stateChanged(newState, oldState)` method will be called when the state is updated.
      */
-    public stateChanged(newState: S, oldState?: S) {} // tslint:disable-line:no-empty
+    public stateChanged(newState: S, oldState?: S) {} // eslint-disable-line @typescript-eslint/no-unused-vars
   };

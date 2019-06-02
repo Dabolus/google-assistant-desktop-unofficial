@@ -6,6 +6,7 @@ export const initialState: ChatState = {
   text: '',
   error: null,
   history: [],
+  conversationState: null,
 };
 
 export const chatReducer: Reducer<ChatState, ChatAction> = (
@@ -22,27 +23,38 @@ export const chatReducer: Reducer<ChatState, ChatAction> = (
       return {
         ...state,
         text: '',
-        history: [...state.history.slice(-50), {
-          type: MessageType.OUT,
-          text: action.payload.text,
-          timestamp: Date.now(),
-        }],
+        history: [
+          ...state.history.slice(-50),
+          {
+            type: MessageType.OUT,
+            text: action.payload.text,
+            timestamp: Date.now(),
+          },
+        ],
       };
     case ChatActionType.SEND_MESSAGE_REJECTED:
       return {
         ...state,
-        error: action.payload.error,
+        error: action.payload,
       };
     case ChatActionType.RECEIVE_MESSAGE:
       // TODO: handle other infos received from the Assistant (e.g. audio)
-      return action.payload.content.text ? {
+      return {
         ...state,
-        history: [...state.history.slice(-50), {
-          type: MessageType.IN,
-          text: action.payload.content.text,
-          timestamp: Date.now(),
-        }],
-      } : state;
+        conversationState: action.payload.content.conversationState,
+        ...(action.payload.content.text
+          ? {
+              history: [
+                ...state.history.slice(-50),
+                {
+                  type: MessageType.IN,
+                  text: action.payload.content.text,
+                  timestamp: Date.now(),
+                },
+              ],
+            }
+          : {}),
+      };
     default:
       return state;
   }

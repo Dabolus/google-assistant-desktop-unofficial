@@ -17,7 +17,8 @@ div {
 
   > gad-chat-message {
     margin-top: 1rem;
-    max-width: 85vw;
+    width: 85%;
+    flex: 0 0 auto;
 
     &[contiguous] {
       margin-top: .3rem;

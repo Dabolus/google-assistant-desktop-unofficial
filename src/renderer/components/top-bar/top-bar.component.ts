@@ -2,7 +2,7 @@ import { connect } from '@components/helpers';
 import { LocaleData } from '@locales/model';
 import { navigate } from '@store/app/app.actions';
 import { store } from '@store/index';
-import { RootState } from '@store/root/root.model';
+import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
 
 import sharedStyles from '@components/shared.styles';

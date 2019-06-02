@@ -27,9 +27,7 @@ export class StoreService implements Store {
     // Same principle as above. Using an unknown extension will
     // generally deter the user from editing the config file manually.
     fileExtension: 'gad',
-    // TODO: current available types are deprecated. Update them
-    // or move them to internal typings
-  } as any);
+  });
 
   public getClientId() {
     return this._store.get('clientId');

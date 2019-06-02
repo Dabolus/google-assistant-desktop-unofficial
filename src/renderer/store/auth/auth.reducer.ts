@@ -32,7 +32,7 @@ export const authReducer: Reducer<AuthState, AuthAction> = (
     case AuthActionType.AUTHENTICATE_REJECTED:
       return {
         ...state,
-        error: action.payload.error,
+        error: action.payload,
       };
     case AuthActionType.CLEAR_AUTH_ERRORS:
       return {
@@ -49,7 +49,7 @@ export const authReducer: Reducer<AuthState, AuthAction> = (
     case AuthActionType.LOGOUT_REJECTED:
       return {
         ...state,
-        error: action.payload.error,
+        error: action.payload,
       };
     default:
       return state;

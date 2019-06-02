@@ -1,4 +1,3 @@
-/* tslint:disable:object-literal-sort-keys */
 /// <reference types="../typings" />
 import { resolve } from 'path';
 import { Configuration } from 'webpack';
@@ -16,9 +15,11 @@ const config: Configuration = smartMerge(baseConfig, {
     },
     extensions: ['.json'],
   },
-  externals: [nodeExternals({
-    importType: 'commonjs2',
-  })],
+  externals: [
+    nodeExternals({
+      importType: 'commonjs2',
+    }),
+  ],
 });
 
 export default config;

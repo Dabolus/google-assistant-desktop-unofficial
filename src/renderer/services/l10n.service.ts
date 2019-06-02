@@ -15,7 +15,9 @@ export class L10nService implements L10n {
       throw new Error('Locale not supported');
     }
 
-    const { default: data } = await import(`@locales/${locale.toLowerCase()}.locale`);
+    const { default: data } = await import(
+      `@locales/${locale.toLowerCase()}.locale`
+    );
     return data;
   }
 }

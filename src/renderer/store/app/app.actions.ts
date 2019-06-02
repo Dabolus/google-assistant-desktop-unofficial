@@ -18,61 +18,57 @@ export enum AppActionType {
 }
 
 // Action interfaces
-export interface AppActionUpdatePage extends
-  FluxStandardAction<AppActionType.UPDATE_PAGE> {
-  payload: {
+export type AppActionUpdatePage = FluxStandardAction<
+  AppActionType.UPDATE_PAGE,
+  {
     page: string;
-  };
-}
+  }
+>;
 
-export interface AppActionUpdateLocaleRequested extends
-  FluxStandardAction<AppActionType.UPDATE_LOCALE_REQUESTED> {
-  payload: {
+export type AppActionUpdateLocaleRequested = FluxStandardAction<
+  AppActionType.UPDATE_LOCALE_REQUESTED,
+  {
     locale: Locale;
-  };
-}
+  }
+>;
 
-export interface AppActionUpdateLocaleResolved extends
-  FluxStandardAction<AppActionType.UPDATE_LOCALE_RESOLVED> {
-  payload: {
+export type AppActionUpdateLocaleResolved = FluxStandardAction<
+  AppActionType.UPDATE_LOCALE_RESOLVED,
+  {
     localeData: LocaleData;
-  };
-}
+  }
+>;
 
-export interface AppActionUpdateLocaleRejected extends
-  FluxStandardAction<AppActionType.UPDATE_LOCALE_REJECTED> {
-  payload: {
-    error: Error;
-  };
-}
+export type AppActionUpdateLocaleRejected = FluxStandardAction<
+  AppActionType.UPDATE_LOCALE_REJECTED,
+  Error
+>;
 
-export interface AppActionSetTheme extends
-  FluxStandardAction<AppActionType.SET_THEME> {
-  payload: {
+export type AppActionSetTheme = FluxStandardAction<
+  AppActionType.SET_THEME,
+  {
     theme: string;
-  };
-}
+  }
+>;
 
-export interface AppActionOpenModalRequested extends
-  FluxStandardAction<AppActionType.OPEN_MODAL_REQUESTED> {
-  payload: {
+export type AppActionOpenModalRequested = FluxStandardAction<
+  AppActionType.OPEN_MODAL_REQUESTED,
+  {
     ref: string;
-  };
-}
+  }
+>;
 
-export interface AppActionOpenModalResolved extends
-  FluxStandardAction<AppActionType.OPEN_MODAL_RESOLVED> {
-  payload: {
+export type AppActionOpenModalResolved = FluxStandardAction<
+  AppActionType.OPEN_MODAL_RESOLVED,
+  {
     result: any;
-  };
-}
+  }
+>;
 
-export interface AppActionOpenModalRejected extends
-  FluxStandardAction<AppActionType.OPEN_MODAL_REJECTED> {
-  payload: {
-    error: Error;
-  };
-}
+export type AppActionOpenModalRejected = FluxStandardAction<
+  AppActionType.OPEN_MODAL_REJECTED,
+  Error
+>;
 
 export type AppAction =
   | AppActionUpdatePage
@@ -94,25 +90,30 @@ export const navigate = (page: string): AppActionUpdatePage => {
   };
 };
 
-export const requestLocaleUpdate = (locale: Locale): AppActionUpdateLocaleRequested => ({
+export const requestLocaleUpdate = (
+  locale: Locale,
+): AppActionUpdateLocaleRequested => ({
   type: AppActionType.UPDATE_LOCALE_REQUESTED,
   payload: {
     locale,
   },
 });
 
-export const resolveLocaleUpdate = (localeData: LocaleData): AppActionUpdateLocaleResolved => ({
+export const resolveLocaleUpdate = (
+  localeData: LocaleData,
+): AppActionUpdateLocaleResolved => ({
   type: AppActionType.UPDATE_LOCALE_RESOLVED,
   payload: {
     localeData,
   },
 });
 
-export const rejectLocaleUpdate = (error: Error): AppActionUpdateLocaleRejected => ({
+export const rejectLocaleUpdate = (
+  error: Error,
+): AppActionUpdateLocaleRejected => ({
   type: AppActionType.UPDATE_LOCALE_REJECTED,
-  payload: {
-    error,
-  },
+  error: true,
+  payload: error,
 });
 
 export const setTheme = (theme: string): AppActionSetTheme => ({
@@ -122,23 +123,28 @@ export const setTheme = (theme: string): AppActionSetTheme => ({
   },
 });
 
-export const requestModalOpening = (ref: string): AppActionOpenModalRequested => ({
+export const requestModalOpening = (
+  ref: string,
+): AppActionOpenModalRequested => ({
   type: AppActionType.OPEN_MODAL_REQUESTED,
   payload: {
     ref,
   },
 });
 
-export const resolveModalOpening = (result: any): AppActionOpenModalResolved => ({
+export const resolveModalOpening = (
+  result: any,
+): AppActionOpenModalResolved => ({
   type: AppActionType.OPEN_MODAL_RESOLVED,
   payload: {
     result,
   },
 });
 
-export const rejectModalOpening = (error: Error): AppActionOpenModalRejected => ({
+export const rejectModalOpening = (
+  error: Error,
+): AppActionOpenModalRejected => ({
   type: AppActionType.OPEN_MODAL_REJECTED,
-  payload: {
-    error,
-  },
+  error: true,
+  payload: error,
 });

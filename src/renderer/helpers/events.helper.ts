@@ -1,4 +1,8 @@
-import { rejectModalOpening, resolveModalOpening, setTheme } from '@store/app/app.actions';
+import {
+  rejectModalOpening,
+  resolveModalOpening,
+  setTheme,
+} from '@store/app/app.actions';
 import {
   rejectAuthentication,
   rejectLogout,
@@ -6,7 +10,13 @@ import {
   resolveAuthentication,
   resolveLogout,
 } from '@store/auth/auth.actions';
-import { receiveMessage, rejectMessageSend, resolveMessageSend } from '@store/chat/chat.actions';
+import {
+  receiveMessage,
+  rejectMessageSend,
+  resolveMessageSend,
+  resolveAudioSend,
+  rejectAudioSend,
+} from '@store/chat/chat.actions';
 import { Event, ipcRenderer } from 'electron';
 import { AssistantResponse } from 'nodejs-assistant';
 import { Store } from 'redux';
@@ -22,13 +32,13 @@ export const attachEventListeners = (store: Store) => {
     .on('auth.requestLogout', () => {
       store.dispatch(requestLogout());
     })
-    .on('auth.resolveLogout', (_: Event) => {
+    .on('auth.resolveLogout', () => {
       store.dispatch(resolveLogout());
     })
     .on('auth.rejectLogout', (_: Event, error: Error) => {
       store.dispatch(rejectLogout(error));
     })
-    .on('auth.resolveAuthentication', (_: Event) => {
+    .on('auth.resolveAuthentication', () => {
       store.dispatch(resolveAuthentication());
     })
     .on('auth.rejectAuthentication', (_: Event, error: Error) => {
@@ -39,6 +49,12 @@ export const attachEventListeners = (store: Store) => {
     })
     .on('chat.rejectSendMessage', (_: Event, error: Error) => {
       store.dispatch(rejectMessageSend(error));
+    })
+    .on('chat.resolveSendAudio', () => {
+      store.dispatch(resolveAudioSend());
+    })
+    .on('chat.rejectSendAudio', (_: Event, error: Error) => {
+      store.dispatch(rejectAudioSend(error));
     })
     .on('app.resolveModalOpening', (_: Event, data: any) => {
       store.dispatch(resolveModalOpening(data));

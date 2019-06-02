@@ -9,7 +9,7 @@ declare module 'script-ext-html-webpack-plugin' {
   }
 
   export default class ScriptExtHtmlWebpackPlugin extends Plugin {
-    constructor(options: ScriptExtHtmlWebpackPluginConfig);
+    public constructor(options: ScriptExtHtmlWebpackPluginConfig);
   }
 }
 
@@ -19,11 +19,17 @@ declare module 'terser-webpack-plugin' {
   export interface TerserPluginConfiguration {
     cache?: boolean;
     parallel?: boolean;
-    extractComments?: boolean | 'all' | 'some' | RegExp | ((node: Node, comment: any) => boolean) | {
-      condition: RegExp;
-      filename(file: string): string;
-      banner(licenseFile: string): string;
-    };
+    extractComments?:
+      | boolean
+      | 'all'
+      | 'some'
+      | RegExp
+      | ((node: Node, comment: { value: string }) => boolean)
+      | {
+          condition: RegExp;
+          filename(file: string): string;
+          banner(licenseFile: string): string;
+        };
     terserOptions?: {
       compress?: {
         drop_console?: boolean;
@@ -32,23 +38,27 @@ declare module 'terser-webpack-plugin' {
   }
 
   export default class TerserPlugin extends Plugin {
-    constructor(config?: TerserPluginConfiguration);
+    public constructor(config?: TerserPluginConfiguration);
   }
 }
 
 declare module 'electron-devtools-installer' {
-  export const EMBER_INSPECTOR: any;
-  export const REACT_DEVELOPER_TOOLS: any;
-  export const BACKBONE_DEBUGGER: any;
-  export const JQUERY_DEBUGGER: any;
-  export const ANGULARJS_BATARANG: any;
-  export const VUEJS_DEVTOOLS: any;
-  export const REDUX_DEVTOOLS: any;
-  export const REACT_PERF: any;
-  export const CYCLEJS_DEVTOOL: any;
-  export const MOBX_DEVTOOLS: any;
-  export const APOLLO_DEVELOPER_TOOLS: any;
-  export default function (devTool: any): Promise<any>;
+  export interface DevTool {
+    id: string;
+    electron: string;
+  }
+  export const EMBER_INSPECTOR: DevTool;
+  export const REACT_DEVELOPER_TOOLS: DevTool;
+  export const BACKBONE_DEBUGGER: DevTool;
+  export const JQUERY_DEBUGGER: DevTool;
+  export const ANGULARJS_BATARANG: DevTool;
+  export const VUEJS_DEVTOOLS: DevTool;
+  export const REDUX_DEVTOOLS: DevTool;
+  export const REACT_PERF: DevTool;
+  export const CYCLEJS_DEVTOOL: DevTool;
+  export const MOBX_DEVTOOLS: DevTool;
+  export const APOLLO_DEVELOPER_TOOLS: DevTool;
+  export default function(devTool: DevTool): Promise<void>;
 }
 
 declare module 'electron-redux';
