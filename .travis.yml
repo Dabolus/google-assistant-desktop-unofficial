@@ -1,26 +1,20 @@
 language: node_js
-
-node_js:
-  - lts/*
-
-os:
-  - linux
-  - windows
-  - osx
-
+node_js: lts/*
+os: osx
+osx_image: xcode9.4
+addons:
+  homebrew:
+    packages:
+    - rpm
 branches:
   only: develop
-
-cache: yarn
-
+cache:
+  - yarn
+  - directories:
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
 script:
   - yarn lint
-  - yarn build
-  - if [ -n "$TRAVIS_TAG" ]; then echo upload; fi
-
-jobs:
-  include:
-    - stage: Publish
-      if: tag is present
-      install: skip
-      script: echo publish
+  - yarn build -lwm
