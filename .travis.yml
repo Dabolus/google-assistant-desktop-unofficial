@@ -4,8 +4,8 @@ node_js:
   - lts/*
 
 os:
-  - windows
   - linux
+  - windows
   - osx
 
 branches:
@@ -13,18 +13,14 @@ branches:
 
 cache: yarn
 
+script:
+  - yarn lint
+  - yarn build
+  - if [ -n "$TRAVIS_TAG" ]; then echo upload; fi
+
 jobs:
   include:
-    - stage: Cache dependencies
-      script: true
-    - stage: Build
-      script: |
-        - yarn build
-        - if [ -n "$TRAVIS_TAG" ]; then echo upload; fi
     - stage: Publish
       if: tag is present
       install: skip
       script: echo publish
-
-script:
-  - yarn build
