@@ -140,10 +140,8 @@ export class BottomBar extends connect(store)(LitElement) {
       mimeType: 'audio/webm;codecs=opus',
       bitsPerSecond: 128000,
     });
-    recorder.addEventListener('dataavailable', async ({ data }) => {
-      const arrayBuffer = await new Response(data).arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      store.dispatch(requestAudioSend(buffer));
+    recorder.addEventListener('dataavailable', ({ data }) => {
+      store.dispatch(requestAudioSend(data));
     });
     recorder.start(500);
     // TODO: stop recording when Assistant tells the user has stopped speaking

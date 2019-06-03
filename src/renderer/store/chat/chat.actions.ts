@@ -47,7 +47,7 @@ export type ChatActionSendMessageRejected = FluxStandardAction<
 export type ChatActionSendAudioRequested = FluxStandardAction<
   ChatActionType.SEND_AUDIO_REQUESTED,
   {
-    audio: Buffer;
+    audio: Blob;
     conversationState?: Buffer;
   }
 >;
@@ -115,7 +115,7 @@ export const rejectMessageSend = (
 });
 
 export const requestAudioSend = (
-  audio: Buffer,
+  audio: Blob,
   conversationState?: Buffer,
 ): ChatActionSendAudioRequested => ({
   type: ChatActionType.SEND_AUDIO_REQUESTED,
