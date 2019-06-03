@@ -1,7 +1,7 @@
 {
   "name": "google-assistant-desktop-unofficial",
   "productName": "Google Assistant",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A desktop version for the Google Assistant (UNOFFICIAL)",
   "main": "main.js",
   "author": "Giorgio Garasto <giorgio@garasto.it>",
