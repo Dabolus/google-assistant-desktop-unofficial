@@ -4,6 +4,7 @@ import { Environment, EnvironmentService } from '@services/environment.service';
 import { app, Menu, shell, systemPreferences } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
+import { autoUpdater } from 'electron-updater';
 
 const environmentService: Environment = container.get(EnvironmentService);
 
@@ -166,6 +167,7 @@ app.on('activate', () => {
 // create main BrowserWindowWithEvents when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
+  autoUpdater.checkForUpdatesAndNotify();
 });
 
 if (environmentService.development) {
