@@ -13,6 +13,8 @@ import {
   Assistant,
   AssistantQueryOptions,
   AudioOutEncoding,
+  AudioConversation,
+  AssistantResponse,
 } from 'nodejs-assistant';
 import { container } from './di.helper';
 
@@ -22,6 +24,7 @@ export class BrowserWindowWithEvents extends BrowserWindow {
   private _modalsService: Modals = container.get(ModalsService);
   private _storeService: Store = container.get(StoreService);
   private _assistant: Assistant;
+  private _audioConversation: AudioConversation;
 
   public constructor(options?: BrowserWindowConstructorOptions) {
     super(options);
@@ -109,15 +112,26 @@ export class BrowserWindowWithEvents extends BrowserWindow {
           _: Event,
           {
             audio,
-            options,
           }: {
             audio: Buffer;
-            options: AssistantQueryOptions;
           },
         ) => {
           if (this._assistant) {
-            this.webContents.send('chat.resolveSendAudio');
-            // TODO: actually send audio to the Assistant
+            if (!this._audioConversation) {
+              this._audioConversation = this._assistant.startAudioConversation();
+              this._audioConversation
+                .on('data', (response: AssistantResponse) => {
+                  this.webContents.send('chat.receiveMessage', response);
+                })
+                .on('end', () => {
+                  this._audioConversation = null;
+                });
+            }
+            this.webContents.send(
+              this._audioConversation.send(audio)
+                ? 'chat.resolveSendAudio'
+                : 'chat.rejectSendAudio',
+            );
             return;
           }
           this.webContents.send(
