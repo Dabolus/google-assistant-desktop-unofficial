@@ -1,6 +1,11 @@
 import { injectable } from '@helpers/di.helper';
 import { ipcRenderer } from 'electron';
-import { AssistantQueryOptions } from 'nodejs-assistant';
+import { AudioOutConfig } from 'nodejs-assistant';
+
+interface AssistantQueryOptions {
+  conversationState?: Uint8Array;
+  audioOutConfig?: AudioOutConfig;
+}
 
 export interface Chat {
   sendMessage(text: string, options?: AssistantQueryOptions): void;
