@@ -15,6 +15,7 @@ import {
   AudioOutEncoding,
   AudioConversation,
   AssistantResponse,
+  TextConversation,
 } from 'nodejs-assistant';
 import { container } from './di.helper';
 
@@ -24,6 +25,7 @@ export class BrowserWindowWithEvents extends BrowserWindow {
   private _modalsService: Modals = container.get(ModalsService);
   private _storeService: Store = container.get(StoreService);
   private _assistant: Assistant;
+  private _textConversation: TextConversation;
   private _audioConversation: AudioConversation;
 
   public constructor(options?: BrowserWindowConstructorOptions) {
@@ -86,18 +88,26 @@ export class BrowserWindowWithEvents extends BrowserWindow {
           },
         ) => {
           if (this._assistant) {
-            this.webContents.send('chat.resolveSendMessage', text);
-            const response = await this._assistant.query(text, {
-              audioOutConfig: {
+            if (!this._textConversation) {
+              this._textConversation = this._assistant.startTextConversation({
                 encoding: AudioOutEncoding.MP3,
                 sampleRateHertz: 16000,
                 volumePercentage: 100,
-              },
-              ...options,
-            });
-            if (response) {
-              this.webContents.send('chat.receiveMessage', response);
+              });
+              this._textConversation
+                .on('data', response => {
+                  this.webContents.send('chat.receiveMessage', response);
+                })
+                .on('end', () => {
+                  this._textConversation = null;
+                });
             }
+            this.webContents.send(
+              this._textConversation.send(text)
+                ? 'chat.resolveSendMessage'
+                : 'chat.rejectSendMessage',
+              text,
+            );
             return;
           }
           this.webContents.send(
