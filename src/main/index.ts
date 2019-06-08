@@ -111,7 +111,7 @@ function createMainWindow() {
 
   if (environmentService.development) {
     window.loadURL(
-      `http://localhost:8080#${
+      `http://localhost:${process.env.PORT || '8080'}#${
         systemPreferences.isDarkMode && systemPreferences.isDarkMode()
           ? 'dark'
           : 'light'
