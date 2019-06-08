@@ -28,7 +28,7 @@ export type ChatActionSendMessageRequested = FluxStandardAction<
   ChatActionType.SEND_MESSAGE_REQUESTED,
   {
     text: string;
-    conversationState?: Buffer;
+    conversationState?: Uint8Array;
   }
 >;
 
@@ -48,7 +48,7 @@ export type ChatActionSendAudioRequested = FluxStandardAction<
   ChatActionType.SEND_AUDIO_REQUESTED,
   {
     audio: Blob;
-    conversationState?: Buffer;
+    conversationState?: Uint8Array;
   }
 >;
 
@@ -88,7 +88,7 @@ export const updateInput = (text: string): ChatActionUpdateInput => ({
 
 export const requestMessageSend = (
   text: string,
-  conversationState?: Buffer,
+  conversationState?: Uint8Array,
 ): ChatActionSendMessageRequested => ({
   type: ChatActionType.SEND_MESSAGE_REQUESTED,
   payload: {
@@ -116,7 +116,7 @@ export const rejectMessageSend = (
 
 export const requestAudioSend = (
   audio: Blob,
-  conversationState?: Buffer,
+  conversationState?: Uint8Array,
 ): ChatActionSendAudioRequested => ({
   type: ChatActionType.SEND_AUDIO_REQUESTED,
   payload: {

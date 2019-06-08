@@ -21,7 +21,7 @@ export class ChatService implements Chat {
     options?: AssistantQueryOptions,
   ): Promise<void> {
     const arrayBuffer = await new Response(data).arrayBuffer();
-    const audio = Buffer.from(arrayBuffer);
+    const audio = new Uint8Array(arrayBuffer);
     ipcRenderer.send('chat.requestSendAudio', {
       audio,
       options,
