@@ -167,7 +167,9 @@ app.on('activate', () => {
 // create main BrowserWindowWithEvents when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
-  autoUpdater.checkForUpdatesAndNotify();
+  if (!environmentService.development) {
+    autoUpdater.checkForUpdatesAndNotify();
+  }
 });
 
 if (environmentService.development) {
