@@ -15,7 +15,6 @@ export type Platform =
 
 export interface Environment {
   mode: Mode;
-  development: boolean;
   platform: Platform;
   mac: boolean;
 }
@@ -24,10 +23,6 @@ export interface Environment {
 export class EnvironmentService implements Environment {
   public get mode(): Mode {
     return process.env.NODE_ENV as Mode;
-  }
-
-  public get development(): boolean {
-    return this.mode !== 'production';
   }
 
   public get platform(): Platform {
