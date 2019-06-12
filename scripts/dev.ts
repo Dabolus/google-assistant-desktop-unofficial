@@ -18,7 +18,7 @@ if (process.platform === 'win32') {
 // Make sure we are in the project root directory
 process.chdir(resolve(__dirname, '..'));
 
-waitOn({ resources: ['http://localhost:8080'] })
+waitOn({ resources: [`http://localhost:${process.env.PORT || '8080'}`] })
   .then(() => copy('./package.json', './node_modules/.build/package.json'))
   .then(() => {
     const child = spawn(

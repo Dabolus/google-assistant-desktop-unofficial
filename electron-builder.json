@@ -23,6 +23,7 @@
       "dmg",
       "zip"
     ],
-    "darkModeSupport": true
+    "darkModeSupport": true,
+    "gatekeeperAssess": false
   }
 }

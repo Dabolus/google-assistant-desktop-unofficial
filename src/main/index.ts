@@ -56,7 +56,7 @@ function createMenu(window: BrowserWindowWithEvents) {
     {
       label: 'View',
       submenu: [
-        ...(environmentService.development
+        ...(process.env.NODE_ENV === 'development'
           ? [
               { role: 'reload' },
               { role: 'forcereload' },
@@ -109,9 +109,9 @@ function createMainWindow() {
   });
   createMenu(window);
 
-  if (environmentService.development) {
+  if (process.env.NODE_ENV === 'development') {
     window.loadURL(
-      `http://localhost:8080#${
+      `http://localhost:${process.env.PORT || '8080'}#${
         systemPreferences.isDarkMode && systemPreferences.isDarkMode()
           ? 'dark'
           : 'light'
@@ -167,10 +167,12 @@ app.on('activate', () => {
 // create main BrowserWindowWithEvents when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
-  autoUpdater.checkForUpdatesAndNotify();
+  if (process.env.NODE_ENV !== 'development') {
+    autoUpdater.checkForUpdatesAndNotify();
+  }
 });
 
-if (environmentService.development) {
+if (process.env.NODE_ENV === 'development') {
   import('electron-watch').then(({ default: watch }) =>
     watch(
       resolve(__dirname, '../../src/main'),

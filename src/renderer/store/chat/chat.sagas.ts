@@ -32,26 +32,46 @@ function* handleAudioSend({
   }
 }
 
-function handleAudioReceive({
+const audioElement = new Audio();
+let mediaSource: MediaSource = null;
+let timeoutHandle: number = null;
+let tempBuffer: Uint8Array[] = [];
+
+function handleMessageReceive({
   payload: {
     content: { audio },
   },
 }: ChatActionReceiveMessage) {
-  const arrayBuffer = audio.buffer.slice(
-    audio.byteOffset,
-    audio.byteOffset + audio.byteLength,
-  );
-  const audioContext = new AudioContext();
-  audioContext.decodeAudioData(arrayBuffer, buffer => {
-    const source = audioContext.createBufferSource();
-    source.buffer = buffer;
-    source.connect(audioContext.destination);
-    source.start();
-  });
+  if (audio && audio.length) {
+    if (!mediaSource) {
+      mediaSource = new MediaSource();
+      audioElement.src = URL.createObjectURL(mediaSource);
+      mediaSource.addEventListener('sourceopen', () => {
+        const sourceBuffer = mediaSource.addSourceBuffer('audio/mpeg');
+        sourceBuffer.addEventListener('updateend', () => {
+          if (tempBuffer.length) {
+            sourceBuffer.appendBuffer(tempBuffer.shift());
+          }
+          if (timeoutHandle) {
+            clearTimeout(timeoutHandle);
+          }
+          // FIXME: detect end of stream instead of using a timeout
+          timeoutHandle = window.setTimeout(() => {
+            mediaSource.endOfStream();
+            mediaSource = null;
+          }, 1500);
+        });
+        sourceBuffer.appendBuffer(audio);
+        audioElement.play();
+      });
+    } else {
+      tempBuffer.push(audio);
+    }
+  }
 }
 
 export const chatSagas = [
   takeLatest(ChatActionType.SEND_MESSAGE_REQUESTED, handleMessageSend),
   takeLatest(ChatActionType.SEND_AUDIO_REQUESTED, handleAudioSend),
-  takeLatest(ChatActionType.RECEIVE_MESSAGE, handleAudioReceive),
+  takeLatest(ChatActionType.RECEIVE_MESSAGE, handleMessageReceive),
 ];

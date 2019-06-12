@@ -24,7 +24,7 @@ export class Settings extends connect(store)(LitElement) {
     [key in keyof LocaleDataSettings]: {
       icon: string;
       external?: boolean;
-    }
+    };
   } = {
     donate: {
       icon: 'credit_card',

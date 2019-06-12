@@ -95,7 +95,7 @@ export class BottomBar extends connect(store)(LitElement) {
   @query('input')
   private _inputRef: HTMLInputElement;
 
-  private _conversationState: Buffer = null;
+  private _conversationState: Uint8Array = null;
 
   private _audioStream: MediaStream = null;
 

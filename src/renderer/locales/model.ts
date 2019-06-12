@@ -63,7 +63,7 @@ export interface LocaleData {
         text: [string, string];
         idPlaceholder: string;
         secretPlaceholder: string;
-      }
+      },
     ];
     actions: {
       authorize: string;
