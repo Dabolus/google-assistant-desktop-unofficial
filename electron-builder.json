@@ -5,6 +5,7 @@
     "**/*.{js,html,css}",
     "assets/**/*"
   ],
+  "afterSign": "../scripts/notarize.js",
   "win": {
     "target": "nsis"
   },
@@ -24,6 +25,9 @@
       "zip"
     ],
     "darkModeSupport": true,
-    "gatekeeperAssess": false
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist"
   }
 }
