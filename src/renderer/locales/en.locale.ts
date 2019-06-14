@@ -100,8 +100,8 @@ const en: LocaleData = {
           'In the Cloud Platform Console, <a href="https://console.cloud.google.com/project" target="projects-page">go to the Projects page</a>. ' +
             'Select an existing project or create a new project.',
 
-          'After creating the project, you also need to enable the Assistant APIs. Click <a href="https://console.developers.google.com/apis/api/embeddedassistant.googleapis.com/overview" target="enable-api">here</a> ' +
-            'to navigate to the Google API Console and then click <em>Enable</em>.',
+          'After creating the project, you need to enable the Assistant API. Click <a href="https://console.developers.google.com/apis/api/embeddedassistant.googleapis.com/overview" target="enable-api">here</a> ' +
+            'to navigate to the Google API Console and then click <em>Enable</em>. Then, do the same with <a href="https://console.developers.google.com/apis/api/people.googleapis.com/overview">the People API</a>.',
 
           "When you're done, come back here and press <em>Next</em>, I'll be waiting for you.",
         ],
