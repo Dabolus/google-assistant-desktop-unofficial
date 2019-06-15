@@ -1,14 +1,21 @@
 import { injectable } from '@helpers/di.helper';
 import ElectronStore from 'electron-store';
-import { JWTInput } from 'google-auth-library';
+
+export interface Credentials {
+  type: string;
+  client_id: string;
+  client_secret: string;
+  access_token: string;
+  refresh_token: string;
+}
 
 export interface Store {
   getClientId(): string;
   setClientId(clientId: string): void;
   getClientSecret(): string;
   setClientSecret(clientSecret: string): void;
-  getCredentials(): JWTInput;
-  setCredentials(credentials: JWTInput): void;
+  getCredentials(): Credentials;
+  setCredentials(credentials: Credentials): void;
   clearAuthData(): void;
 }
 
@@ -49,7 +56,7 @@ export class StoreService implements Store {
     return this._store.get('credentials');
   }
 
-  public setCredentials(credentials: JWTInput) {
+  public setCredentials(credentials: Credentials) {
     return this._store.set('credentials', credentials);
   }
 

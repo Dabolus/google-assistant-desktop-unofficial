@@ -5,10 +5,13 @@ import http from 'http';
 import { parse as parseQuerystring } from 'querystring';
 import { parse as parseUrl } from 'url';
 import { Modals, ModalsService } from './modals.service';
-import { Store, StoreService } from './store.service';
+import { Store, StoreService, Credentials } from './store.service';
 
 export interface Auth {
-  getCredentials(clientId?: string, clientSecret?: string): Promise<JWTInput>;
+  getCredentials(
+    clientId?: string,
+    clientSecret?: string,
+  ): Promise<Credentials>;
   authenticateClient(clientId: string, clientSecret: string): Promise<string>;
 }
 
@@ -21,7 +24,7 @@ export class AuthService implements Auth {
   public async getCredentials(
     clientId?: string,
     clientSecret?: string,
-  ): Promise<JWTInput> {
+  ): Promise<Credentials> {
     const cachedCredentials = this._storeService.getCredentials();
     if (cachedCredentials) {
       return cachedCredentials;
@@ -32,12 +35,13 @@ export class AuthService implements Auth {
     );
     /* eslint-disable @typescript-eslint/camelcase */
     const {
-      tokens: { refresh_token },
+      tokens: { access_token, refresh_token },
     } = await this._client.getToken(code);
-    const credentials = {
+    const credentials: Credentials = {
       type: 'authorized_user',
       client_id: clientId,
       client_secret: clientSecret,
+      access_token,
       refresh_token,
     };
     /* eslint-enable @typescript-eslint/camelcase */
