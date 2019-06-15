@@ -6,8 +6,17 @@ import { parse as parseQuerystring } from 'querystring';
 import { parse as parseUrl } from 'url';
 import { Modals, ModalsService } from './modals.service';
 import { Store, StoreService, Credentials } from './store.service';
+import fetch from 'node-fetch';
+
+export interface UserInfo {
+  name: string;
+  surname: string;
+  displayName: string;
+  picture: string;
+}
 
 export interface Auth {
+  getUserInfo(clientId?: string, clientSecret?: string): Promise<UserInfo>;
   getCredentials(
     clientId?: string,
     clientSecret?: string,
@@ -71,7 +80,8 @@ export class AuthService implements Auth {
       const authorizeUrl = oAuth2Client.generateAuthUrl({
         // eslint-disable-next-line @typescript-eslint/camelcase
         access_type: 'offline',
-        scope: 'https://www.googleapis.com/auth/assistant-sdk-prototype',
+        scope:
+          'profile https://www.googleapis.com/auth/assistant-sdk-prototype',
       });
 
       // Open an http server to accept the oauth callback.
@@ -97,5 +107,39 @@ export class AuthService implements Auth {
           });
         });
     });
+  }
+
+  public async getUserInfo(
+    clientId?: string,
+    clientSecret?: string,
+  ): Promise<UserInfo> {
+    const { access_token: accessToken } = await this.getCredentials(
+      clientId,
+      clientSecret,
+    );
+    const res = await fetch(
+      'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names,person.photos',
+      {
+        headers: {
+          authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+    const {
+      names: [
+        {
+          givenName: name = '',
+          familyName: surname = '',
+          displayName = '',
+        } = {},
+      ] = [],
+      photos: [{ url: picture = '' } = {}] = [],
+    } = await res.json();
+    return {
+      name,
+      surname,
+      displayName,
+      picture,
+    };
   }
 }

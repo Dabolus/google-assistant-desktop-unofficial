@@ -32,6 +32,7 @@
     "electron-store": "^3.2.0",
     "electron-updater": "^4.0.6",
     "google-auth-library": "^4.1.0",
+    "node-fetch": "^2.6.0",
     "nodejs-assistant": "^0.7.1",
     "typedi": "^0.8.0"
   },
@@ -87,7 +88,6 @@
     "lit-html": "^1.1.0",
     "loader-utils": "^1.2.3",
     "mini-css-extract-plugin": "^0.7.0",
-    "node-fetch": "^2.6.0",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
