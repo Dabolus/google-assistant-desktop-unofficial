@@ -1,6 +1,6 @@
 import { container, injectable } from '@helpers/di.helper';
 import { BrowserWindow } from 'electron';
-import { JWTInput, OAuth2Client } from 'google-auth-library';
+import { OAuth2Client } from 'google-auth-library';
 import http from 'http';
 import { parse as parseQuerystring } from 'querystring';
 import { parse as parseUrl } from 'url';
@@ -44,13 +44,12 @@ export class AuthService implements Auth {
     );
     /* eslint-disable @typescript-eslint/camelcase */
     const {
-      tokens: { access_token, refresh_token },
+      tokens: { refresh_token },
     } = await this._client.getToken(code);
     const credentials: Credentials = {
       type: 'authorized_user',
       client_id: clientId,
       client_secret: clientSecret,
-      access_token,
       refresh_token,
     };
     /* eslint-enable @typescript-eslint/camelcase */
@@ -113,15 +112,24 @@ export class AuthService implements Auth {
     clientId?: string,
     clientSecret?: string,
   ): Promise<UserInfo> {
-    const { access_token: accessToken } = await this.getCredentials(
-      clientId,
-      clientSecret,
-    );
+    if (!this._client) {
+      // TODO: Seriosly, improve this
+      const credentials = await this.getCredentials(
+        clientId || this._storeService.getClientId(),
+        clientSecret || this._storeService.getClientSecret(),
+      );
+      await this.authenticateClient(
+        clientId || this._storeService.getClientId(),
+        clientSecret || this._storeService.getClientSecret(),
+      );
+      this._client.setCredentials(credentials);
+    }
+    const { token } = await this._client.getAccessToken();
     const res = await fetch(
       'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names,person.photos',
       {
         headers: {
-          authorization: `Bearer ${accessToken}`,
+          authorization: `Bearer ${token}`,
         },
       },
     );

@@ -61,7 +61,11 @@ export class BrowserWindowWithEvents extends BrowserWindow {
               clientSecret,
             );
             this._assistant = new Assistant(credentials);
-            this.webContents.send('auth.resolveAuthentication');
+            const userInfo = await this._authService.getUserInfo(
+              clientId,
+              clientSecret,
+            );
+            this.webContents.send('auth.resolveAuthentication', userInfo);
           } catch (e) {
             this.webContents.send('auth.rejectAuthentication', e);
           }
