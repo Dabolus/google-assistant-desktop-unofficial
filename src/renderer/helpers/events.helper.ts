@@ -20,6 +20,7 @@ import {
 import { Event, ipcRenderer } from 'electron';
 import { AssistantResponse } from 'nodejs-assistant';
 import { Store } from 'redux';
+import { UserInfo } from '@store/auth/auth.model';
 
 export const attachEventListeners = (store: Store) => {
   ipcRenderer
@@ -38,8 +39,8 @@ export const attachEventListeners = (store: Store) => {
     .on('auth.rejectLogout', (_: Event, error: Error) => {
       store.dispatch(rejectLogout(error));
     })
-    .on('auth.resolveAuthentication', () => {
-      store.dispatch(resolveAuthentication());
+    .on('auth.resolveAuthentication', (_: Event, userInfo: UserInfo) => {
+      store.dispatch(resolveAuthentication(userInfo));
     })
     .on('auth.rejectAuthentication', (_: Event, error: Error) => {
       store.dispatch(rejectAuthentication(error));

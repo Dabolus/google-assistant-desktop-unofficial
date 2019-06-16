@@ -5,6 +5,10 @@ import { AuthState } from './auth.model';
 export const initialState: AuthState = {
   clientId: '',
   clientSecret: '',
+  userPicture: '',
+  userName: '',
+  userSurname: '',
+  userDisplayName: '',
   authenticated: false,
   error: null,
 };
@@ -28,6 +32,10 @@ export const authReducer: Reducer<AuthState, AuthAction> = (
       return {
         ...state,
         authenticated: true,
+        userPicture: action.payload.userInfo.picture,
+        userName: action.payload.userInfo.name,
+        userSurname: action.payload.userInfo.surname,
+        userDisplayName: action.payload.userInfo.displayName,
       };
     case AuthActionType.AUTHENTICATE_REJECTED:
       return {
@@ -44,6 +52,10 @@ export const authReducer: Reducer<AuthState, AuthAction> = (
         ...state,
         clientId: '',
         clientSecret: '',
+        userPicture: '',
+        userName: '',
+        userSurname: '',
+        userDisplayName: '',
         authenticated: false,
       };
     case AuthActionType.LOGOUT_REJECTED:

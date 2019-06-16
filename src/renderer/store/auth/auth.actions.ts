@@ -1,4 +1,5 @@
 import { FluxStandardAction } from '../store.model';
+import { UserInfo } from './auth.model';
 
 // Action types
 export enum AuthActionType {
@@ -41,7 +42,10 @@ export type AuthActionAuthenticateRequested = FluxStandardAction<
 >;
 
 export type AuthActionAuthenticateResolved = FluxStandardAction<
-  AuthActionType.AUTHENTICATE_RESOLVED
+  AuthActionType.AUTHENTICATE_RESOLVED,
+  {
+    userInfo: UserInfo;
+  }
 >;
 
 export type AuthActionAuthenticateRejected = FluxStandardAction<
@@ -105,8 +109,11 @@ export const requestAuthentication = (
   },
 });
 
-export const resolveAuthentication = (): AuthActionAuthenticateResolved => ({
+export const resolveAuthentication = (
+  userInfo: UserInfo,
+): AuthActionAuthenticateResolved => ({
   type: AuthActionType.AUTHENTICATE_RESOLVED,
+  payload: { userInfo },
 });
 
 export const rejectAuthentication = (
