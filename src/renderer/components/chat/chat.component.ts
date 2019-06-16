@@ -17,10 +17,14 @@ export class Chat extends connect(store)(LitElement) {
   @property({ type: Array })
   protected _history: Message[] = [];
 
+  @property({ type: String })
+  protected _userPicture: string = '';
+
   @query('div')
   private _containerRef: HTMLDivElement;
 
-  public async stateChanged({ chat }: RootState) {
+  public async stateChanged({ auth, chat }: RootState) {
+    this._userPicture = auth.userPicture;
     const oldHistoryLength = this._history.length;
     const newHistoryLength = chat.history.length;
     this._history = chat.history;

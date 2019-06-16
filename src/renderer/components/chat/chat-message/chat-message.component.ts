@@ -15,6 +15,9 @@ export class ChatMessage extends LitElement {
   @property({ type: Boolean })
   public contiguous: boolean = false;
 
+  @property({ type: String })
+  public picture: string = '';
+
   protected render = template;
 }
 
