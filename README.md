@@ -9,6 +9,8 @@
 
 A desktop version for the Google Assistant **(UNOFFICIAL)**.
 
+![Google Assistant Desktop](.github/preview.png)
+
 ## Features
 These are the features that I intend to implement. The checked ones are the 
 ones that have already been implemented:
