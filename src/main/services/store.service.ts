@@ -1,5 +1,7 @@
 import { injectable } from '@helpers/di.helper';
 import ElectronStore from 'electron-store';
+import { Credentials as Tokens } from 'google-auth-library';
+export { Credentials as Tokens } from 'google-auth-library';
 
 export interface Credentials {
   type: string;
@@ -15,6 +17,8 @@ export interface Store {
   setClientSecret(clientSecret: string): void;
   getCredentials(): Credentials;
   setCredentials(credentials: Credentials): void;
+  getTokens(): Tokens;
+  setTokens(tokens: Tokens): void;
   clearAuthData(): void;
 }
 
@@ -57,6 +61,14 @@ export class StoreService implements Store {
 
   public setCredentials(credentials: Credentials) {
     return this._store.set('credentials', credentials);
+  }
+
+  public getTokens() {
+    return this._store.get('tokens');
+  }
+
+  public setTokens(tokens: Tokens) {
+    return this._store.set('tokens', tokens);
   }
 
   public clearAuthData() {

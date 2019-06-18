@@ -5,7 +5,7 @@ import http from 'http';
 import { parse as parseQuerystring } from 'querystring';
 import { parse as parseUrl } from 'url';
 import { Modals, ModalsService } from './modals.service';
-import { Store, StoreService, Credentials } from './store.service';
+import { Store, StoreService, Credentials, Tokens } from './store.service';
 import fetch from 'node-fetch';
 
 export interface UserInfo {
@@ -16,12 +16,12 @@ export interface UserInfo {
 }
 
 export interface Auth {
-  getUserInfo(clientId?: string, clientSecret?: string): Promise<UserInfo>;
   getCredentials(
     clientId?: string,
     clientSecret?: string,
   ): Promise<Credentials>;
-  authenticateClient(clientId: string, clientSecret: string): Promise<string>;
+  authenticateClient(clientId: string, clientSecret: string): Promise<Tokens>;
+  getUserInfo(clientId?: string, clientSecret?: string): Promise<UserInfo>;
 }
 
 @injectable()
@@ -38,19 +38,18 @@ export class AuthService implements Auth {
     if (cachedCredentials) {
       return cachedCredentials;
     }
-    const code = await this.authenticateClient(
-      clientId || this._storeService.getClientId(),
-      clientSecret || this._storeService.getClientSecret(),
-    );
+    const id = clientId || this._storeService.getClientId();
+    const secret = clientSecret || this._storeService.getClientSecret();
     /* eslint-disable @typescript-eslint/camelcase */
-    const {
-      tokens: { refresh_token },
-    } = await this._client.getToken(code);
+    const { refresh_token } = await this.authenticateClient(id, secret);
+    // If we got the code, id and secret were definitely valid, so we can save them for later use
+    this._storeService.setClientId(id);
+    this._storeService.setClientSecret(secret);
     const credentials: Credentials = {
       type: 'authorized_user',
       client_id: clientId,
       client_secret: clientSecret,
-      refresh_token,
+      refresh_token: refresh_token,
     };
     /* eslint-enable @typescript-eslint/camelcase */
     this._storeService.setCredentials(credentials);
@@ -60,7 +59,7 @@ export class AuthService implements Auth {
   public authenticateClient(
     clientId: string,
     clientSecret: string,
-  ): Promise<string> {
+  ): Promise<Tokens> {
     return new Promise(async (resolve, reject) => {
       if (!clientId || !clientSecret) {
         return reject(`Missing client id or client secret`);
@@ -72,6 +71,13 @@ export class AuthService implements Auth {
         clientSecret,
         'http://localhost:45515',
       );
+
+      const cachedTokens = this._storeService.getTokens();
+      if (cachedTokens) {
+        this._client = oAuth2Client;
+        this._client.setCredentials(cachedTokens);
+        return resolve(cachedTokens);
+      }
 
       let window: BrowserWindow;
 
@@ -85,7 +91,7 @@ export class AuthService implements Auth {
 
       // Open an http server to accept the oauth callback.
       const server = http
-        .createServer(({ url }, res) => {
+        .createServer(async ({ url }, res) => {
           // acquire the code from the querystring, and close the web server.
           const { query } = parseUrl(url);
           const { code } = parseQuerystring(query);
@@ -96,7 +102,10 @@ export class AuthService implements Auth {
           window.destroy();
 
           this._client = oAuth2Client;
-          resolve(code as string);
+          const { tokens } = await this._client.getToken(code as string);
+          this._storeService.setTokens(tokens);
+          this._client.setCredentials(tokens);
+          resolve(tokens);
         })
         .listen(45515, () => {
           // open the browser to the authorize url to start the workflow
@@ -112,17 +121,13 @@ export class AuthService implements Auth {
     clientId?: string,
     clientSecret?: string,
   ): Promise<UserInfo> {
+    const id = clientId || this._storeService.getClientId();
+    const secret = clientSecret || this._storeService.getClientSecret();
     if (!this._client) {
-      // TODO: Seriosly, improve this
-      const credentials = await this.getCredentials(
-        clientId || this._storeService.getClientId(),
-        clientSecret || this._storeService.getClientSecret(),
-      );
-      await this.authenticateClient(
-        clientId || this._storeService.getClientId(),
-        clientSecret || this._storeService.getClientSecret(),
-      );
-      this._client.setCredentials(credentials);
+      await this.authenticateClient(id, secret);
+      // If the promise didn't reject, id and secret were definitely valid, so we can save them for later use
+      this._storeService.setClientId(id);
+      this._storeService.setClientSecret(secret);
     }
     const { token } = await this._client.getAccessToken();
     const res = await fetch(
