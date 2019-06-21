@@ -1,6 +1,5 @@
 /// <reference types="../typings" />
 import HtmlPlugin from 'html-webpack-plugin';
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import { resolve } from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import { Configuration } from 'webpack';
@@ -26,7 +25,6 @@ const config: Configuration = smartMerge(rendererBaseConfig, {
           },
         },
       }),
-      new OptimizeCssAssetsPlugin(),
     ],
   },
   plugins: [
