@@ -1,4 +1,7 @@
-<h1 align="center">Google Assistant Desktop</h1>
+<h1 align="center">
+  <img src="src/renderer/assets/google-assistant-logo.svg" width="24">&nbsp;
+  Google Assistant Desktop
+</h1>
 <p align="center">
   <a href="https://github.com/Dabolus/google-assistant-desktop-unofficial/releases/latest"><img src="https://img.shields.io/github/downloads/Dabolus/google-assistant-desktop-unofficial/total.svg" alt="Total Downloads"></a>
   <a href="https://codeclimate.com/github/Dabolus/google-assistant-desktop-unofficial/maintainability"><img src="https://api.codeclimate.com/v1/badges/35ab7b4b71652d00211f/maintainability" alt="Maintainability"></a>
