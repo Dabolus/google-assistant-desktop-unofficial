@@ -53,5 +53,6 @@ module.exports = {
     ],
     '@babel/syntax-dynamic-import',
     '@babel/proposal-optional-chaining',
+    'macros',
   ],
 };

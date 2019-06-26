@@ -69,3 +69,10 @@ declare module '*.styles' {
   const content: CSSResult;
   export default content;
 }
+
+declare module '@locales/*' {
+  import { Catalog } from '@lingui/core';
+
+  const content: Catalog;
+  export default content;
+}

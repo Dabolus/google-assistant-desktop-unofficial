@@ -32,6 +32,11 @@ const config: Configuration = smartMerge(baseConfig, {
   module: {
     rules: [
       {
+        test: /\.po$/,
+        exclude: /node_modules/,
+        use: '@lingui/loader',
+      },
+      {
         test: /\.s?[ac]ss$/,
         exclude: /node_modules/,
         use: [
