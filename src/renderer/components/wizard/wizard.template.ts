@@ -55,16 +55,29 @@ export default function template(this: Wizard) {
           <h2>${this._localeData?.wizard?.steps?.[4]?.title}</h2>
           <div>
             <p>${unsafeHTML(this._localeData?.wizard?.steps?.[4]?.text?.[0])}</p>
+            <ul>
+              <li>email</li>
+              <li>profile</li>
+              <li>openid</li>
+              <li>https://www.googleapis.com/auth/assistant-sdk-prototype</li>
+            </ul>
             <p>${unsafeHTML(this._localeData?.wizard?.steps?.[4]?.text?.[1])}</p>
+          </div>
+        </section>
+        <section id="step-5" ?active="${this._currentStep === 5}">
+          <h2>${this._localeData?.wizard?.steps?.[5]?.title}</h2>
+          <div>
+            <p>${unsafeHTML(this._localeData?.wizard?.steps?.[5]?.text?.[0])}</p>
+            <p>${unsafeHTML(this._localeData?.wizard?.steps?.[5]?.text?.[1])}</p>
             <input
               type="text"
-              placeholder="${this._localeData?.wizard?.steps?.[4]?.idPlaceholder}"
+              placeholder="${this._localeData?.wizard?.steps?.[5]?.idPlaceholder}"
               pattern="^\\d{12}-[\\da-z]{32}\\.apps\\.googleusercontent\\.com$"
               @input="${this._clientIdModified}"
               value="${this._clientId}">
             <input
               type="text"
-              placeholder="${this._localeData?.wizard?.steps?.[4]?.secretPlaceholder}"
+              placeholder="${this._localeData?.wizard?.steps?.[5]?.secretPlaceholder}"
               pattern="^[\\w-]{24}$"
               @input="${this._clientSecretModified}"
               value="${this._clientSecret}">
@@ -73,12 +86,12 @@ export default function template(this: Wizard) {
       </div>
       <div class="actions">
         <gad-button
-          @click="${this._currentStep === 4
+          @click="${this._currentStep === 5
             ? this._authorizeButtonClicked
             : this._nextButtonClicked}"
-          ?disabled="${this._currentStep === 4 &&
+          ?disabled="${this._currentStep === 5 &&
             (!this._clientIdValid || !this._clientSecretValid)}">
-          ${this._currentStep >= 4
+          ${this._currentStep >= 5
             ? this._localeData?.wizard?.actions?.authorize
             : this._localeData?.wizard?.actions?.next}
         </gad-button>

@@ -144,6 +144,27 @@
 
 #step-4 {
   > div {
+    > ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0;
+      font-size: .9rem;
+
+      > li {
+        padding: .5rem;
+        border-top: 1px solid var(--gad-divider-color);
+        color: var(--gad-secondary-text-color);
+
+        &:last-child {
+          border-bottom: 1px solid var(--gad-divider-color);
+        }
+      }
+    }
+  }
+}
+
+#step-5 {
+  > div {
     > p:last-of-type {
       margin-bottom: 0;
     }
