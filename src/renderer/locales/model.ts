@@ -61,6 +61,10 @@ export interface LocaleData {
       {
         title: string;
         text: [string, string];
+      },
+      {
+        title: string;
+        text: [string, string];
         idPlaceholder: string;
         secretPlaceholder: string;
       },

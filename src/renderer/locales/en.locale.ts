@@ -107,7 +107,19 @@ const en: LocaleData = {
         ],
       },
       {
-        title: 'Almost there! Now you just need to authorize me.',
+        title: 'Almost there! Now you need to setup permissions correctly.',
+        text: [
+          'To correctly use the required APIs, the OAuth screen needs to be setup properly. ' +
+            'Open <a href="https://console.developers.google.com/apis/credentials/consent">this link</a>, ' +
+            'set <strong>Application name</strong> to whatever you want and add the ' +
+            '<code>https://www.googleapis.com/auth/assistant-sdk-prototype</code> scope to the ' +
+            '<strong>Scopes for Google APIs</strong> section. After adding it, your list should contain ' +
+            'the following scopes:',
+          "When you're done, remember to click the <em>Save</em> button!",
+        ],
+      },
+      {
+        title: 'One last thing! Now you just need to authorize me.',
         text: [
           'To be able to get access to the project you just created, I will need an OAuth Client ' +
             'ID. Click <a href="https://console.developers.google.com/apis/credentials/oauthclient" target="oauth-console">here</a> ' +
