@@ -24,7 +24,9 @@
     "postinstall": "electron-builder install-app-deps",
     "test": "cross-env NODE_ENV=test jest -c jest/base.config.js",
     "test:main": "cross-env NODE_ENV=test jest -c jest/main.config.js",
-    "test:renderer": "cross-env NODE_ENV=test jest -c jest/renderer.config.js"
+    "test:renderer": "cross-env NODE_ENV=test jest -c jest/renderer.config.js",
+    "add-locale": "lingui add-locale",
+    "extract-locales": "lingui extract"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.5.4",
