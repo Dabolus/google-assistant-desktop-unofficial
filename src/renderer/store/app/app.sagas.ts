@@ -1,5 +1,5 @@
 import { container } from '@helpers/di.helper';
-import { L10n, L10nService } from '@services/l10n.service';
+import { I18n, I18nService } from '@services/i18n.service';
 import { Modals, ModalsService } from '@services/modals.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
@@ -11,15 +11,15 @@ import {
   resolveLocaleUpdate,
 } from './app.actions';
 
-const l10nService: L10n = container.get(L10nService);
+const i18nService: I18n = container.get(I18nService);
 const modalsService: Modals = container.get(ModalsService);
 
 function* handleLocaleUpdate({
   payload: { locale },
 }: AppActionUpdateLocaleRequested) {
   try {
-    const data = yield call(l10nService.loadLocale, locale);
-    yield put(resolveLocaleUpdate(data));
+    yield call(i18nService.loadLocale, locale);
+    yield put(resolveLocaleUpdate(locale));
   } catch (e) {
     yield put(rejectLocaleUpdate(e));
   }

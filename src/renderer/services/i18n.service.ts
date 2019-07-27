@@ -3,6 +3,8 @@ import { Locale } from '@store/app/app.model';
 import { setupI18n, I18n as LinguiI18n, Catalog } from '@lingui/core';
 
 export interface I18n {
+  i18n: LinguiI18n;
+
   loadLocale(locale: Locale): Promise<void>;
 }
 
@@ -22,5 +24,6 @@ export class I18nService implements I18n {
     );
 
     this.i18n.load({ [locale]: catalog });
+    this.i18n.activate(locale);
   }
 }
