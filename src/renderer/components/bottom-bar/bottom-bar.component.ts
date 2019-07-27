@@ -1,5 +1,4 @@
 import { connect } from '@components/helpers';
-import { LocaleData } from '@locales/model';
 import {
   requestMessageSend,
   updateInput,
@@ -12,6 +11,8 @@ import sharedStyles from '@components/shared.styles';
 import { RootState } from '@store/root/root.model';
 import styles from './bottom-bar.styles';
 import template from './bottom-bar.template';
+import { I18n, I18nService } from '@services/i18n.service';
+import { container } from '@helpers/di.helper';
 
 declare interface MediaRecorderErrorEvent extends Event {
   name: string;
@@ -89,8 +90,7 @@ export class BottomBar extends connect(store)(LitElement) {
   @property({ type: String })
   protected _text = '';
 
-  @property({ type: String })
-  protected _localeData: LocaleData = null;
+  protected _i18nService: I18n = container.get(I18nService);
 
   @query('input')
   private _inputRef: HTMLInputElement;
@@ -99,14 +99,13 @@ export class BottomBar extends connect(store)(LitElement) {
 
   private _audioStream: MediaStream = null;
 
-  public stateChanged({ app, chat }: RootState) {
+  public stateChanged({ chat }: RootState) {
     if (this._text !== chat.text) {
       this._text = chat.text;
       if (this._inputRef) {
         this._inputRef.value = this._text;
       }
     }
-    this._localeData = app.localeData;
     this._conversationState = chat.conversationState;
   }
 
