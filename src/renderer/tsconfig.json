@@ -1,16 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "..",
     "lib": [
       "dom",
       "esnext"
     ],
     "paths": {
-      "@store/*": ["store/*"],
-      "@components/*": ["components/*"],
-      "@services/*": ["services/*"],
-      "@helpers/*": ["helpers/*"],
+      "@store/*": ["renderer/store/*"],
+      "@components/*": ["renderer/components/*"],
+      "@services/*": ["renderer/services/*"],
+      "@helpers/*": ["renderer/helpers/*"],
       "@locales/*": ["locales/*"]
     }
   },

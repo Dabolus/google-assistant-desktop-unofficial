@@ -19,8 +19,8 @@ export class I18nService implements I18n {
       throw new Error('Locale not supported');
     }
 
-    const catalog: Catalog = await import(
-      `@locales/${locale.toLowerCase()}.locale`
+    const { default: catalog }: { default: Catalog } = await import(
+      `@locales/${locale.toLowerCase()}/messages`
     );
 
     this.i18n.load({ [locale]: catalog });

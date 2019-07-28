@@ -1,5 +1,5 @@
 {
-  "compileNamespace": "es",
+  "compileNamespace": "cjs",
   "format": "po",
   "fallbackLocale": "en",
   "localeDir": "src/locales",

@@ -1,13 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "..",
     "lib": [
       "esnext"
     ],
     "paths": {
-      "@services/*": ["services/*"],
-      "@helpers/*": ["helpers/*"]
+      "@services/*": ["main/services/*"],
+      "@helpers/*": ["main/helpers/*"]
     }
   },
   "include": [
