@@ -18,7 +18,7 @@ function* handleLocaleUpdate({
   payload: { locale },
 }: AppActionUpdateLocaleRequested) {
   try {
-    yield call(i18nService.loadLocale, locale);
+    yield call([i18nService, 'loadLocale'], locale);
     yield put(resolveLocaleUpdate(locale));
   } catch (e) {
     yield put(rejectLocaleUpdate(e));
