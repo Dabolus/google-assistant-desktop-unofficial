@@ -1,10 +1,10 @@
 import { Reducer } from 'redux';
 import { AppAction, AppActionType } from './app.actions';
-import { AppState, Locale } from './app.model';
+import { AppState } from './app.model';
 
 export const initialState: AppState = {
   page: 'chat',
-  locale: Locale.EN,
+  locale: null,
   theme: location.hash.slice(1),
 };
 
