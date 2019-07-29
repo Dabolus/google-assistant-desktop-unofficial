@@ -1,4 +1,4 @@
-import { connect } from '@components/helpers';
+import { connect, localize } from '@components/helpers';
 import {
   requestMessageSend,
   updateInput,
@@ -11,8 +11,9 @@ import sharedStyles from '@components/shared.styles';
 import { RootState } from '@store/root/root.model';
 import styles from './bottom-bar.styles';
 import template from './bottom-bar.template';
-import { I18n, I18nService } from '@services/i18n.service';
+import { I18nService } from '@services/i18n.service';
 import { container } from '@helpers/di.helper';
+import { Locale } from '@store/app/app.model';
 
 declare interface MediaRecorderErrorEvent extends Event {
   name: string;
@@ -82,7 +83,9 @@ declare class MediaRecorder extends EventTarget {
 }
 
 @customElement('gad-bottom-bar')
-export class BottomBar extends connect(store)(LitElement) {
+export class BottomBar extends localize(container.get(I18nService))(
+  connect(store)(LitElement),
+) {
   public static styles = [sharedStyles, styles];
 
   protected render = template;
@@ -90,7 +93,9 @@ export class BottomBar extends connect(store)(LitElement) {
   @property({ type: String })
   protected _text = '';
 
-  protected _i18nService: I18n = container.get(I18nService);
+  // Used only to trigger re-renders
+  @property({ type: String })
+  private _locale: Locale = null;
 
   @query('input')
   private _inputRef: HTMLInputElement;
@@ -99,12 +104,15 @@ export class BottomBar extends connect(store)(LitElement) {
 
   private _audioStream: MediaStream = null;
 
-  public stateChanged({ chat }: RootState) {
+  public stateChanged({ app, chat }: RootState) {
     if (this._text !== chat.text) {
       this._text = chat.text;
       if (this._inputRef) {
         this._inputRef.value = this._text;
       }
+    }
+    if (app.locale !== this._locale) {
+      this._locale = app.locale;
     }
     this._conversationState = chat.conversationState;
   }
