@@ -1,4 +1,6 @@
 import { Store, Unsubscribe } from 'redux';
+import { I18nService } from '@services/i18n.service';
+import { MessageDescriptor, MessageOptions } from '@lingui/core';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor<T> = new (...args: any[]) => T;
@@ -67,4 +69,21 @@ export const connect = <S>(store: Store<S>) => <
      * The `stateChanged(newState, oldState)` method will be called when the state is updated.
      */
     public stateChanged(newState: S, oldState?: S) {} // eslint-disable-line @typescript-eslint/no-unused-vars
+  };
+
+export const localize = (i18nService: I18nService) => <
+  T extends Constructor<CustomElement>
+>(
+  baseElement: T,
+) =>
+  class extends baseElement {
+    public translate(
+      id: string | MessageDescriptor,
+      values?: object,
+      messageOptions?: MessageOptions,
+    ): string {
+      return typeof id === 'string'
+        ? i18nService.i18n._(id, values, messageOptions)
+        : i18nService.i18n._(id);
+    }
   };
