@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2019-07-28 09:40+0200\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/renderer/components/bottom-bar/bottom-bar.template.ts:8
+msgid "bottomBar.placeholder"
+msgstr "Type a message"
+
+#: src/renderer/components/settings/settings.template.ts:10
+msgid "settings.donate.description"
+msgstr "Support this project"
+
+#: src/renderer/components/settings/settings.template.ts:9
+msgid "settings.donate.option"
+msgstr "Donate"
+
+#: src/renderer/components/settings/settings.template.ts:28
+msgid "settings.logout.description"
+msgstr "Disconnect from Google Assistant"
+
+#: src/renderer/components/settings/settings.template.ts:27
+msgid "settings.logout.option"
+msgstr "Logout"
+
+#: src/renderer/components/settings/settings.template.ts:19
+msgid "settings.metrics.description"
+msgstr "Check out API calls latency and failures"
+
+#: src/renderer/components/settings/settings.template.ts:18
+msgid "settings.metrics.option"
+msgstr "Metrics"
+
+#: src/renderer/components/top-bar/top-bar.template.ts:8
+msgid "topBar.assistant"
+msgstr "<img src=\"assets/google-logo.svg\"><div class=\"heading\">Assistant</div>"
+
+#: src/renderer/components/top-bar/top-bar.template.ts:7
+msgid "topBar.settings"
+msgstr "<div class=\"heading\">Settings</div>"
+
+#: src/renderer/components/wizard/wizard.template.ts:93
+msgid "wizard.actions.authorize"
+msgstr "Authorize"
+
+#: src/renderer/components/wizard/wizard.template.ts:94
+msgid "wizard.actions.next"
+msgstr "Next"
+
+#: src/renderer/components/wizard/wizard.template.ts:13
+msgid "wizard.step1.hi"
+msgstr "Hi!"
+
+#: src/renderer/components/wizard/wizard.template.ts:14
+msgid "wizard.step1.welcome"
+msgstr "Welcome to your brand new Google Assistant."
+
+#: src/renderer/components/wizard/wizard.template.ts:30
+msgid "wizard.step2.disclaimer.agreement.text"
+msgstr "By using the software you are fully aware that this is <strong>not</strong> an official Google product and you are taking the full responsibility of the interactions you will have with the Google services. You are also aware that everything this software does is to provide an appealing UI built with Google assets for the Google Assistant APIs, so the authors are not responsible for any possible copyright infringement. By using the Google Assistant APIs, you are also agreeing to the <a href=\"https://developers.google.com/assistant/sdk/terms-of-service\" target=\"assistant-tos\">Google Assistant SDK Terms of Service</a>."
+
+#: src/renderer/components/wizard/wizard.template.ts:28
+msgid "wizard.step2.disclaimer.agreement.title"
+msgstr "Agreement"
+
+#: src/renderer/components/wizard/wizard.template.ts:27
+msgid "wizard.step2.disclaimer.assets.text"
+msgstr "The Google logo (<span class=\"google-logo\">google_logo</span>) and the Google Assistant logo (<span class=\"assistant-logo\">google_assistant</span>) are Google trademarks. The display, body and icon fonts (Product Sans, Google Sans Display, Roboto, Material Icons Extended), as well as most of the assets used by the software are made by Google and are freely available on the web."
+
+#: src/renderer/components/wizard/wizard.template.ts:26
+msgid "wizard.step2.disclaimer.assets.title"
+msgstr "The assets"
+
+#: src/renderer/components/wizard/wizard.template.ts:22
+msgid "wizard.step2.disclaimer.introduction.text"
+msgstr "This text will give you some information on the Google Assistant Desktop (hereinafter referred to as \"the software\"), the developers that are behind it (hereinafter referred to as \"the authors\"), the technologies and the responsibilities involved into its usage and how they can and will affect you. Please, be sure to read this text carefully, as pressing the <em>Next</em> button will be considered as a confirmation that you have read and acknowledged it in its entirety."
+
+#: src/renderer/components/wizard/wizard.template.ts:20
+msgid "wizard.step2.disclaimer.introduction.title"
+msgstr "Introduction"
+
+#: src/renderer/components/wizard/wizard.template.ts:25
+msgid "wizard.step2.disclaimer.software.text"
+msgstr "Although the software closely resembles the look and feel of the original Google Assistant, it is <strong>not</strong> an official Google product. The software uses Google Assistant APIs to allow users to interact with the Assistant from devices that otherwise won't be able to use it. This means that, unlike the official Google products, the software might incur into some limitations applied by Google itself. The authors do their best to provide the most straightforward and easiest possible interaction with the Google Assistant APIs to the end users, but as humans they can make errors. Expect to find some bugs in the product, especially in its initial phase of development. Also, to give full transparency to the end users, the authors decided to make the software open source. This means that the end users are free to browse the source code of the software and to eventually compile the source code and contribute to the development of the software itself. The source code of the software is available <a href=\"https://github.com/Dabolus/google-assistant-desktop-unofficial\" target=\"source-code\">at this link</a>."
+
+#: src/renderer/components/wizard/wizard.template.ts:24
+msgid "wizard.step2.disclaimer.software.title"
+msgstr "The software"
+
+#: src/renderer/components/wizard/wizard.template.ts:18
+msgid "wizard.step2.title"
+msgstr "First of all, read the disclaimer carefully."
+
+#: src/renderer/components/wizard/wizard.template.ts:37
+msgid "wizard.step3.text"
+msgstr "I did my best to detect your language, but I'm not completely sure it's the right one. Do you wish to change it?"
+
+#: src/renderer/components/wizard/wizard.template.ts:35
+msgid "wizard.step3.title"
+msgstr "Are you ok with this language?"
+
+#: src/renderer/components/wizard/wizard.template.ts:46
+msgid "wizard.step4.text.part1"
+msgstr "A Google Cloud Platform project gives your device access to the Google Assistant API. The project tracks quota usage and gives you valuable metrics for the requests made from your device."
+
+#: src/renderer/components/wizard/wizard.template.ts:47
+msgid "wizard.step4.text.part2"
+msgstr "In the Cloud Platform Console, <a href=\"https://console.cloud.google.com/project\" target=\"projects-page\">go to the Projects page</a>. Select an existing project or create a new project."
+
+#: src/renderer/components/wizard/wizard.template.ts:48
+msgid "wizard.step4.text.part3"
+msgstr "After creating the project, you need to enable the Assistant API. Click <a href=\"https://console.developers.google.com/apis/api/embeddedassistant.googleapis.com/overview\" target=\"enable-api\">here</a> to navigate to the Google API Console and then click <em>Enable</em>. Then, do the same with <a href=\"https://console.developers.google.com/apis/api/people.googleapis.com/overview\">the People API</a>."
+
+#: src/renderer/components/wizard/wizard.template.ts:49
+msgid "wizard.step4.text.part4"
+msgstr "When you're done, come back here and press <em>Next</em>, I'll be waiting for you."
+
+#: src/renderer/components/wizard/wizard.template.ts:44
+msgid "wizard.step4.title"
+msgstr "Perfect! Now let's setup a project."
+
+#: src/renderer/components/wizard/wizard.template.ts:55
+msgid "wizard.step5.text.part1"
+msgstr "To correctly use the required APIs, the OAuth screen needs to be setup properly. Open <a href=\"https://console.developers.google.com/apis/credentials/consent\">this link</a>, set <strong>Application name</strong> to whatever you want and add the <code>https://www.googleapis.com/auth/assistant-sdk-prototype</code> scope to the <strong>Scopes for Google APIs</strong> section. After adding it, your list should contain the following scopes:"
+
+#: src/renderer/components/wizard/wizard.template.ts:62
+msgid "wizard.step5.text.part2"
+msgstr "When you're done, remember to click the <em>Save</em> button!"
+
+#: src/renderer/components/wizard/wizard.template.ts:53
+msgid "wizard.step5.title"
+msgstr "Almost there! Now you need to setup permissions correctly."
+
+#: src/renderer/components/wizard/wizard.template.ts:72
+msgid "wizard.step6.idPlaceholder"
+msgstr "Client ID"
+
+#: src/renderer/components/wizard/wizard.template.ts:78
+msgid "wizard.step6.secretPlaceholder"
+msgstr "Client Secret"
+
+#: src/renderer/components/wizard/wizard.template.ts:68
+msgid "wizard.step6.text.part1"
+msgstr "To be able to get access to the project you just created, I will need an OAuth Client ID. Click <a href=\"https://console.developers.google.com/apis/credentials/oauthclient\" target=\"oauth-console\">here</a> to go to the OAuth credentials creation wizard, give the product name you want if required, set <em>Other</em> as application type, give to the client ID the name you prefer and then click <em>Create</em>."
+
+#: src/renderer/components/wizard/wizard.template.ts:69
+msgid "wizard.step6.text.part2"
+msgstr "You should now see a dialog with a Client ID and Secret; just copy/paste them down here:"
+
+#: src/renderer/components/wizard/wizard.template.ts:66
+msgid "wizard.step6.title"
+msgstr "One last thing! Now you just need to authorize me."

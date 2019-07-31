@@ -1,5 +1,6 @@
 import { html } from 'lit-element';
 import { BottomBar } from './bottom-bar.component';
+import { t } from '@lingui/macro';
 
 import '@material/mwc-ripple';
 
@@ -7,7 +8,7 @@ export default function template(this: BottomBar) {
   return html`
     <input
       type="text"
-      placeholder="${this._localeData?.bottomBar?.placeholder}"
+      placeholder="${this.translate(t`bottomBar.placeholder`)}"
       autofocus
       @input="${this._inputModified}"
       @keydown="${this._inputKeyDown}"

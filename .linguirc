@@ -1,0 +1,10 @@
+{
+  "compileNamespace": "cjs",
+  "format": "po",
+  "fallbackLocale": "en",
+  "localeDir": "src/locales",
+  "srcPathDirs": [
+    "src/main",
+    "src/renderer"
+  ]
+}

@@ -1,12 +1,10 @@
 import { Reducer } from 'redux';
 import { AppAction, AppActionType } from './app.actions';
-import { AppState, Locale } from './app.model';
-import defaultLocaleData from '@locales/en.locale';
+import { AppState } from './app.model';
 
 export const initialState: AppState = {
   page: 'chat',
-  locale: Locale.EN,
-  localeData: defaultLocaleData,
+  locale: null,
   theme: location.hash.slice(1),
 };
 
@@ -23,7 +21,7 @@ export const appReducer: Reducer<AppState, AppAction> = (
     case AppActionType.UPDATE_LOCALE_RESOLVED:
       return {
         ...state,
-        localeData: action.payload.localeData,
+        locale: action.payload.locale,
       };
     case AppActionType.SET_THEME:
       return {

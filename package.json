@@ -24,7 +24,9 @@
     "postinstall": "electron-builder install-app-deps",
     "test": "cross-env NODE_ENV=test jest -c jest/base.config.js",
     "test:main": "cross-env NODE_ENV=test jest -c jest/main.config.js",
-    "test:renderer": "cross-env NODE_ENV=test jest -c jest/renderer.config.js"
+    "test:renderer": "cross-env NODE_ENV=test jest -c jest/renderer.config.js",
+    "add-locale": "lingui add-locale",
+    "extract-locales": "lingui extract"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.5.5",
@@ -45,6 +47,10 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-typescript": "^7.3.3",
+    "@lingui/cli": "^2.8.3",
+    "@lingui/core": "^2.8.3",
+    "@lingui/loader": "^2.8.3",
+    "@lingui/macro": "^2.8.3",
     "@material/mwc-ripple": "^0.6.0",
     "@piuccio/ejs-compiled-loader": "^3.0.0",
     "@skatejs/ssr": "^0.19.11",
@@ -52,6 +58,8 @@
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^8.0.0",
     "@types/jest": "^24.0.16",
+    "@types/lingui__core": "^2.7.0",
+    "@types/lingui__macro": "^2.7.3",
     "@types/mini-css-extract-plugin": "^0.8.0",
     "@types/node": "^12.6.8",
     "@types/node-fetch": "^2.5.0",
@@ -65,6 +73,7 @@
     "autoprefixer": "^9.6.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-macros": "^2.6.1",
     "babel-plugin-template-html-minifier": "^3.1.0",
     "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^5.2.0",

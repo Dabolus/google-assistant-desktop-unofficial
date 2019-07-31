@@ -2,24 +2,37 @@ import { html } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { Settings } from './settings.component';
 import { nothing } from 'lit-html';
+import { t } from '@lingui/macro';
 
 export default function template(this: Settings) {
   return html`
     <ul role="list">
-      ${repeat(
-        Object.entries(this._optionsMap),
-        ([option]) => option,
-        ([option, { icon, external }]) => html`
-        <li role="listitem" @click="${this._optionClicked(option)}">
-          <div class="material-icons-extended">${icon}</div>
-          <div class="text">
-            <span class="option">${this._localeData?.settings?.[option]?.option}</span>
-            <span class="description">${this._localeData?.settings?.[option]?.description}</span>
-          </div>
-          ${external ? html`<div class="material-icons-extended">open_in_new</div>` : nothing}
-          <mwc-ripple></mwc-ripple>
-        </li>
-      `)}
+      <li role="listitem" @click="${this._optionClicked('donate')}">
+        <div class="material-icons-extended">credit_card</div>
+        <div class="text">
+          <span class="option">${this.translate(t`settings.donate.option`)}</span>
+          <span class="description">${this.translate(t`settings.donate.description`)}</span>
+        </div>
+        <div class="material-icons-extended">open_in_new</div>
+        <mwc-ripple></mwc-ripple>
+      </li>
+      <li role="listitem" @click="${this._optionClicked('metrics')}">
+        <div class="material-icons-extended">finance</div>
+        <div class="text">
+          <span class="option">${this.translate(t`settings.metrics.option`)}</span>
+          <span class="description">${this.translate(t`settings.metrics.description`)}</span>
+        </div>
+        <div class="material-icons-extended">open_in_new</div>
+        <mwc-ripple></mwc-ripple>
+      </li>
+      <li role="listitem" @click="${this._optionClicked('logout')}">
+        <div class="material-icons-extended">logout</div>
+        <div class="text">
+          <span class="option">${this.translate(t`settings.logout.option`)}</span>
+          <span class="description">${this.translate(t`settings.logout.description`)}</span>
+        </div>
+        <mwc-ripple></mwc-ripple>
+      </li>
     </ul>
   `;
 }

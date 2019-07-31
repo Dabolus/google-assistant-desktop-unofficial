@@ -1,4 +1,3 @@
-import { LocaleData } from '@locales/model';
 import { FluxStandardAction } from '../store.model';
 import { Locale } from './app.model';
 
@@ -35,7 +34,7 @@ export type AppActionUpdateLocaleRequested = FluxStandardAction<
 export type AppActionUpdateLocaleResolved = FluxStandardAction<
   AppActionType.UPDATE_LOCALE_RESOLVED,
   {
-    localeData: LocaleData;
+    locale: Locale;
   }
 >;
 
@@ -100,11 +99,11 @@ export const requestLocaleUpdate = (
 });
 
 export const resolveLocaleUpdate = (
-  localeData: LocaleData,
+  locale: Locale,
 ): AppActionUpdateLocaleResolved => ({
   type: AppActionType.UPDATE_LOCALE_RESOLVED,
   payload: {
-    localeData,
+    locale,
   },
 });
 

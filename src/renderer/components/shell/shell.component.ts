@@ -1,7 +1,7 @@
 import 'core-js/proposals/reflect-metadata';
 
 import { connect } from '@components/helpers';
-import { L10nService } from '@services/l10n.service';
+import { I18nService } from '@services/i18n.service';
 import { navigate, requestLocaleUpdate } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
 import {
@@ -26,9 +26,9 @@ export class Shell extends connect(store)(LitElement) {
 
   public constructor() {
     super();
-    const userLocale = navigator.language.slice(0, 2);
+    const userLocale = navigator.language.slice(0, 2).toUpperCase();
     const locale =
-      L10nService.supportedLocales.find(l => l === userLocale) || Locale.EN;
+      I18nService.supportedLocales.find(l => l === userLocale) || Locale.EN;
     store.dispatch(requestAuthentication());
     store.dispatch(requestLocaleUpdate(locale));
   }

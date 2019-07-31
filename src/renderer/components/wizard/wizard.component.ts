@@ -1,5 +1,4 @@
-import { connect } from '@components/helpers';
-import { LocaleData } from '@locales/model';
+import { connect, localize } from '@components/helpers';
 import { requestLocaleUpdate } from '@store/app/app.actions';
 import { Locale } from '@store/app/app.model';
 import {
@@ -15,9 +14,13 @@ import { customElement, LitElement, property } from 'lit-element';
 import sharedStyles from '@components/shared.styles';
 import styles from './wizard.styles';
 import template from './wizard.template';
+import { I18nService } from '@services/i18n.service';
+import { container } from '@helpers/di.helper';
 
 @customElement('gad-wizard')
-export class Wizard extends connect(store)(LitElement) {
+export class Wizard extends localize(container.get(I18nService))(
+  connect(store)(LitElement),
+) {
   public static styles = [sharedStyles, styles];
 
   protected render = template;
@@ -38,9 +41,6 @@ export class Wizard extends connect(store)(LitElement) {
   protected _clientSecretValid = false;
 
   @property({ type: String })
-  protected _localeData: LocaleData = null;
-
-  @property({ type: String })
   protected _locale: Locale = Locale.EN;
 
   public stateChanged({ app, auth, wizard }: RootState) {
@@ -48,7 +48,6 @@ export class Wizard extends connect(store)(LitElement) {
     this._clientSecret = auth.clientSecret;
     this._currentStep = wizard.step;
     this._locale = app.locale;
-    this._localeData = app.localeData;
   }
 
   protected _nextButtonClicked() {

@@ -17,7 +17,7 @@ const config: Configuration = smartMerge(baseConfig, {
       '@components': resolve(__dirname, '../src/renderer/components/'),
       '@services': resolve(__dirname, '../src/renderer/services/'),
       '@helpers': resolve(__dirname, '../src/renderer/helpers/'),
-      '@locales': resolve(__dirname, '../src/renderer/locales/'),
+      '@locales': resolve(__dirname, '../src/locales/'),
     },
     extensions: ['.scss', '.sass', '.css', '.ejs', '.html'],
   },

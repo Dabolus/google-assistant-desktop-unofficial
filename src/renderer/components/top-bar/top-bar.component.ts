@@ -1,16 +1,20 @@
-import { connect } from '@components/helpers';
-import { LocaleData } from '@locales/model';
+import { connect, localize } from '@components/helpers';
+import { Locale } from '@store/app/app.model';
 import { navigate } from '@store/app/app.actions';
 import { store } from '@store/index';
 import { RootState } from '@store/root/root.model';
 import { customElement, LitElement, property } from 'lit-element';
+import { container } from '@helpers/di.helper';
+import { I18nService } from '@services/i18n.service';
 
 import sharedStyles from '@components/shared.styles';
 import styles from './top-bar.styles';
 import template from './top-bar.template';
 
 @customElement('gad-top-bar')
-export class TopBar extends connect(store)(LitElement) {
+export class TopBar extends localize(container.get(I18nService))(
+  connect(store)(LitElement),
+) {
   public static styles = [sharedStyles, styles];
 
   protected render = template;
@@ -19,11 +23,11 @@ export class TopBar extends connect(store)(LitElement) {
   protected _page = 'chat';
 
   @property({ type: String })
-  protected _localeData: LocaleData = null;
+  protected _locale: Locale = Locale.EN;
 
   public stateChanged({ app }: RootState) {
     this._page = app.page;
-    this._localeData = app.localeData;
+    this._locale = app.locale;
   }
 
   protected _backButtonClicked() {
