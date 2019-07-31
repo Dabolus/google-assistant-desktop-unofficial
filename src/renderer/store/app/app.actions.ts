@@ -1,4 +1,3 @@
-import { LocaleData } from '@locales/model';
 import { FluxStandardAction } from '../store.model';
 import { Locale } from './app.model';
 
