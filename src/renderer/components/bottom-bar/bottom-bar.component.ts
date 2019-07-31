@@ -95,7 +95,7 @@ export class BottomBar extends localize(container.get(I18nService))(
 
   // Used only to trigger re-renders
   @property({ type: String })
-  private _locale: Locale = null;
+  private _locale: Locale = Locale.EN;
 
   @query('input')
   private _inputRef: HTMLInputElement;
