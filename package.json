@@ -33,7 +33,7 @@
     "core-js": "^3.1.4",
     "electron-store": "^4.0.0",
     "electron-updater": "^4.1.2",
-    "google-auth-library": "^5.1.0",
+    "google-auth-library": "^5.1.1",
     "node-fetch": "^2.6.0",
     "nodejs-assistant": "^0.7.1",
     "typedi": "^0.8.0"
@@ -57,7 +57,7 @@
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^8.0.0",
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^24.0.16",
     "@types/lingui__core": "^2.7.0",
     "@types/lingui__macro": "^2.7.3",
     "@types/mini-css-extract-plugin": "^0.8.0",
@@ -80,7 +80,7 @@
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
     "ejs": "^2.6.2",
-    "electron": "^5.0.8",
+    "electron": "^6.0.0",
     "electron-builder": "^21.1.5",
     "electron-devtools-installer": "^2.2.4",
     "electron-notarize": "^0.1.1",
@@ -119,6 +119,6 @@
     "babel-core": "7.0.0-bridge.0"
   },
   "browserslist": [
-    "chrome >= 73"
+    "chrome >= 76"
   ]
 }
