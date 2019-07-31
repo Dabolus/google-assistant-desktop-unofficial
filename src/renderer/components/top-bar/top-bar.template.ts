@@ -1,13 +1,14 @@
 import { html } from 'lit-element';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { TopBar } from './top-bar.component';
+import { t } from '@lingui/macro';
 
 export default function template(this: TopBar) {
   return html`
     <div class="title">${unsafeHTML(
       this._page === 'settings'
-      ? this._localeData?.topBar?.settings
-      : this._localeData?.topBar?.assistant,
+      ? this.translate(t`topBar.settings`)
+      : this.translate(t`topBar.assistant`),
     )}</div>
     <div class="spacer"></div>
     <button

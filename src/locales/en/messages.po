@@ -17,6 +17,14 @@ msgstr ""
 msgid "bottomBar.placeholder"
 msgstr "Type a message"
 
+#: src/renderer/components/top-bar/top-bar.template.ts:8
+msgid "topBar.assistant"
+msgstr "<img src=\"assets/google-logo.svg\"><div class=\"heading\">Assistant</div>"
+
+#: src/renderer/components/top-bar/top-bar.template.ts:7
+msgid "topBar.settings"
+msgstr "<div class=\"heading\">Settings</div>"
+
 #: src/renderer/components/wizard/wizard.template.ts:93
 msgid "wizard.actions.authorize"
 msgstr "Authorize"
