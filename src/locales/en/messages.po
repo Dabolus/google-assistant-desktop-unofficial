@@ -17,6 +17,30 @@ msgstr ""
 msgid "bottomBar.placeholder"
 msgstr "Type a message"
 
+#: src/renderer/components/settings/settings.template.ts:10
+msgid "settings.donate.description"
+msgstr "Support this project"
+
+#: src/renderer/components/settings/settings.template.ts:9
+msgid "settings.donate.option"
+msgstr "Donate"
+
+#: src/renderer/components/settings/settings.template.ts:28
+msgid "settings.logout.description"
+msgstr "Disconnect from Google Assistant"
+
+#: src/renderer/components/settings/settings.template.ts:27
+msgid "settings.logout.option"
+msgstr "Logout"
+
+#: src/renderer/components/settings/settings.template.ts:19
+msgid "settings.metrics.description"
+msgstr "Check out API calls latency and failures"
+
+#: src/renderer/components/settings/settings.template.ts:18
+msgid "settings.metrics.option"
+msgstr "Metrics"
+
 #: src/renderer/components/top-bar/top-bar.template.ts:8
 msgid "topBar.assistant"
 msgstr "<img src=\"assets/google-logo.svg\"><div class=\"heading\">Assistant</div>"
