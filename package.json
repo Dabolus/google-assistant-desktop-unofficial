@@ -29,8 +29,8 @@
     "extract-locales": "lingui extract"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.5.5",
-    "core-js": "^3.1.4",
+    "@babel/runtime-corejs2": "^7.5.5",
+    "core-js": "2",
     "electron-store": "^4.0.0",
     "electron-updater": "^4.1.2",
     "google-auth-library": "^5.1.1",

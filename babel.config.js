@@ -5,7 +5,7 @@ module.exports = {
       {
         loose: true,
         useBuiltIns: 'usage',
-        corejs: 3,
+        corejs: 2,
         ...(process.env.NODE_ENV === 'test'
           ? {}
           : {
@@ -35,7 +35,7 @@ module.exports = {
     [
       '@babel/transform-runtime',
       {
-        corejs: 3,
+        corejs: 2,
         sourceType: 'unambiguous',
       },
     ],

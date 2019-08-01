@@ -1,4 +1,4 @@
-import 'core-js/proposals/reflect-metadata';
+import 'core-js/es7/reflect';
 
 import { connect } from '@components/helpers';
 import { I18nService } from '@services/i18n.service';
