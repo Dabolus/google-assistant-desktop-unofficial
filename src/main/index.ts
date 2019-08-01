@@ -1,7 +1,7 @@
 import { container } from '@helpers/di.helper';
-import { BrowserWindowWithEvents } from '@helpers/events.helper';
+import { getBrowserWindowWithEvents } from '@helpers/events.helper';
 import { Environment, EnvironmentService } from '@services/environment.service';
-import { app, Menu, shell, systemPreferences } from 'electron';
+import { app, Menu, shell, systemPreferences, BrowserWindow } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
 import { autoUpdater } from 'electron-updater';
@@ -9,9 +9,9 @@ import { autoUpdater } from 'electron-updater';
 const environmentService: Environment = container.get(EnvironmentService);
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
-let mainWindow: BrowserWindowWithEvents | null;
+let mainWindow: BrowserWindow | null;
 
-async function configureDevTools(window: BrowserWindowWithEvents) {
+async function configureDevTools(window: BrowserWindow) {
   const { default: installExtension, REDUX_DEVTOOLS } = await import(
     'electron-devtools-installer'
   );
@@ -19,7 +19,7 @@ async function configureDevTools(window: BrowserWindowWithEvents) {
   window.webContents.openDevTools();
 }
 
-function createMenu(window: BrowserWindowWithEvents) {
+function createMenu(window: BrowserWindow) {
   const menu = Menu.buildFromTemplate([
     ...(environmentService.mac
       ? ([
@@ -99,7 +99,7 @@ function createMenu(window: BrowserWindowWithEvents) {
 }
 
 function createMainWindow() {
-  const window = new BrowserWindowWithEvents({
+  const window = getBrowserWindowWithEvents({
     center: true,
     minWidth: 360,
     minHeight: 540,
@@ -164,7 +164,7 @@ app.on('activate', () => {
   }
 });
 
-// create main BrowserWindowWithEvents when electron is ready
+// create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
   if (process.env.NODE_ENV !== 'development') {
