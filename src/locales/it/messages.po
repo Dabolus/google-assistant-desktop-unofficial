@@ -65,7 +65,7 @@ msgstr "By using the software you are fully aware that this is <strong>not</stro
 
 #: src/renderer/components/wizard/wizard.template.ts:28
 msgid "wizard.step2.disclaimer.agreement.title"
-msgstr "Agreement"
+msgstr "Accordo"
 
 #: src/renderer/components/wizard/wizard.template.ts:27
 msgid "wizard.step2.disclaimer.assets.text"
@@ -81,7 +81,7 @@ msgstr "This text will give you some information on the Google Assistant Desktop
 
 #: src/renderer/components/wizard/wizard.template.ts:20
 msgid "wizard.step2.disclaimer.introduction.title"
-msgstr "Introduction"
+msgstr "Introduzione"
 
 #: src/renderer/components/wizard/wizard.template.ts:25
 msgid "wizard.step2.disclaimer.software.text"
@@ -89,7 +89,7 @@ msgstr "Although the software closely resembles the look and feel of the origina
 
 #: src/renderer/components/wizard/wizard.template.ts:24
 msgid "wizard.step2.disclaimer.software.title"
-msgstr "The software"
+msgstr "Il software"
 
 #: src/renderer/components/wizard/wizard.template.ts:18
 msgid "wizard.step2.title"
@@ -97,11 +97,11 @@ msgstr "First of all, read the disclaimer carefully."
 
 #: src/renderer/components/wizard/wizard.template.ts:37
 msgid "wizard.step3.text"
-msgstr "I did my best to detect your language, but I'm not completely sure it's the right one. Do you wish to change it?"
+msgstr "Ho fatto del mio meglio per riconoscere la tua lingua, però non sono del tutto sicuro che sia quella giusta. Vorresti cambiarla?"
 
 #: src/renderer/components/wizard/wizard.template.ts:35
 msgid "wizard.step3.title"
-msgstr "Are you ok with this language?"
+msgstr "Ti va bene questa lingua?"
 
 #: src/renderer/components/wizard/wizard.template.ts:46
 msgid "wizard.step4.text.part1"
@@ -121,7 +121,7 @@ msgstr "When you're done, come back here and press <em>Next</em>, I'll be waitin
 
 #: src/renderer/components/wizard/wizard.template.ts:44
 msgid "wizard.step4.title"
-msgstr "Perfect! Now let's setup a project."
+msgstr "Perfetto! Ora iniziamo un progetto."
 
 #: src/renderer/components/wizard/wizard.template.ts:55
 msgid "wizard.step5.text.part1"
@@ -133,11 +133,11 @@ msgstr "When you're done, remember to click the <em>Save</em> button!"
 
 #: src/renderer/components/wizard/wizard.template.ts:53
 msgid "wizard.step5.title"
-msgstr "Almost there! Now you need to setup permissions correctly."
+msgstr "Quasi finito! Ora devi impostare correttamente i permessi."
 
 #: src/renderer/components/wizard/wizard.template.ts:72
 msgid "wizard.step6.idPlaceholder"
-msgstr "Client ID"
+msgstr "ID del client"
 
 #: src/renderer/components/wizard/wizard.template.ts:78
 msgid "wizard.step6.secretPlaceholder"
