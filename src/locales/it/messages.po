@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2019-08-01 14:02+0200\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: it\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/renderer/components/bottom-bar/bottom-bar.template.ts:8
+msgid "bottomBar.placeholder"
+msgstr ""
+
+#: src/renderer/components/settings/settings.template.ts:10
+msgid "settings.donate.description"
+msgstr ""
+
+#: src/renderer/components/settings/settings.template.ts:9
+msgid "settings.donate.option"
+msgstr ""
+
+#: src/renderer/components/settings/settings.template.ts:28
+msgid "settings.logout.description"
+msgstr ""
+
+#: src/renderer/components/settings/settings.template.ts:27
+msgid "settings.logout.option"
+msgstr ""
+
+#: src/renderer/components/settings/settings.template.ts:19
+msgid "settings.metrics.description"
+msgstr ""
+
+#: src/renderer/components/settings/settings.template.ts:18
+msgid "settings.metrics.option"
+msgstr ""
+
+#: src/renderer/components/top-bar/top-bar.template.ts:8
+msgid "topBar.assistant"
+msgstr ""
+
+#: src/renderer/components/top-bar/top-bar.template.ts:7
+msgid "topBar.settings"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:93
+msgid "wizard.actions.authorize"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:94
+msgid "wizard.actions.next"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:13
+msgid "wizard.step1.hi"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:14
+msgid "wizard.step1.welcome"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:30
+msgid "wizard.step2.disclaimer.agreement.text"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:28
+msgid "wizard.step2.disclaimer.agreement.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:27
+msgid "wizard.step2.disclaimer.assets.text"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:26
+msgid "wizard.step2.disclaimer.assets.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:22
+msgid "wizard.step2.disclaimer.introduction.text"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:20
+msgid "wizard.step2.disclaimer.introduction.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:25
+msgid "wizard.step2.disclaimer.software.text"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:24
+msgid "wizard.step2.disclaimer.software.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:18
+msgid "wizard.step2.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:37
+msgid "wizard.step3.text"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:35
+msgid "wizard.step3.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:46
+msgid "wizard.step4.text.part1"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:47
+msgid "wizard.step4.text.part2"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:48
+msgid "wizard.step4.text.part3"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:49
+msgid "wizard.step4.text.part4"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:44
+msgid "wizard.step4.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:55
+msgid "wizard.step5.text.part1"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:62
+msgid "wizard.step5.text.part2"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:53
+msgid "wizard.step5.title"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:72
+msgid "wizard.step6.idPlaceholder"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:78
+msgid "wizard.step6.secretPlaceholder"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:68
+msgid "wizard.step6.text.part1"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:69
+msgid "wizard.step6.text.part2"
+msgstr ""
+
+#: src/renderer/components/wizard/wizard.template.ts:66
+msgid "wizard.step6.title"
+msgstr ""
