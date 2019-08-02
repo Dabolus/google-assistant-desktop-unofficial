@@ -1,17 +1,11 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2019-07-28 09:40+0200\n"
-"Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
-"Language: en-US\n"
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Google Assistant Desktop\n"
+"Language: en-us\n"
 
 #: src/renderer/components/bottom-bar/bottom-bar.template.ts:8
 msgid "bottomBar.placeholder"
@@ -160,3 +154,4 @@ msgstr "You should now see a dialog with a Client ID and Secret; just copy/paste
 #: src/renderer/components/wizard/wizard.template.ts:66
 msgid "wizard.step6.title"
 msgstr "One last thing! Now you just need to authorize me."
+
