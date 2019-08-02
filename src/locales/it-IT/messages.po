@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: Google Assistant Desktop\n"
-"Language: it-IT\n"
+"Language: it\n"
 
 #: src/renderer/components/bottom-bar/bottom-bar.template.ts:8
 msgid "bottomBar.placeholder"
@@ -69,11 +69,11 @@ msgstr "Accordo"
 
 #: src/renderer/components/wizard/wizard.template.ts:27
 msgid "wizard.step2.disclaimer.assets.text"
-msgstr "The Google logo (<span class=\"google-logo\">google_logo</span>) and the Google Assistant logo (<span class=\"assistant-logo\">google_assistant</span>) are Google trademarks. The display, body and icon fonts (Product Sans, Google Sans Display, Roboto, Material Icons Extended), as well as most of the assets used by the software are made by Google and are freely available on the web."
+msgstr "Il logo Google (<span class=\"google-logo\">google_logo</span>) e il logo dell'Assistente Google (<span class=\"assistant-logo\">google_assistant</span>) sono marchi registrati di Google. I font per i titoli, per i contenuti testuali e per le icone (Product Sans, Google Sans Display, Roboto, Material Icons Extended), così come la maggior parte degli asset utilizzati dal software sono stati creati da Google e sono disponibili gratuitamente sul web."
 
 #: src/renderer/components/wizard/wizard.template.ts:26
 msgid "wizard.step2.disclaimer.assets.title"
-msgstr "The assets"
+msgstr "Gli asset"
 
 #: src/renderer/components/wizard/wizard.template.ts:22
 msgid "wizard.step2.disclaimer.introduction.text"
@@ -93,7 +93,7 @@ msgstr "Il software"
 
 #: src/renderer/components/wizard/wizard.template.ts:18
 msgid "wizard.step2.title"
-msgstr "First of all, read the disclaimer carefully."
+msgstr "Prima di tutto, leggi attentamente il disclaimer."
 
 #: src/renderer/components/wizard/wizard.template.ts:37
 msgid "wizard.step3.text"
@@ -105,11 +105,11 @@ msgstr "Ti va bene questa lingua?"
 
 #: src/renderer/components/wizard/wizard.template.ts:46
 msgid "wizard.step4.text.part1"
-msgstr "A Google Cloud Platform project gives your device access to the Google Assistant API. The project tracks quota usage and gives you valuable metrics for the requests made from your device."
+msgstr "Un progetto di Google Cloud Platform permette al tuo dispositivo di accedere alle API dell'Assistente Google. Il progetto tiene traccia dell'utilizzo delle quote e ti fornisce delle utili metriche per le richieste fatte dal tuo dispositivo."
 
 #: src/renderer/components/wizard/wizard.template.ts:47
 msgid "wizard.step4.text.part2"
-msgstr "In the Cloud Platform Console, <a href=\"https://console.cloud.google.com/project\" target=\"projects-page\">go to the Projects page</a>. Select an existing project or create a new project."
+msgstr "Nella Console di Cloud Platform, <a href=\"https://console.cloud.google.com/project\" target=\"projects-page\">vai alla pagina dei Progetti</a>. Seleziona un progetto esistente oppure crea un nuovo progetto."
 
 #: src/renderer/components/wizard/wizard.template.ts:48
 msgid "wizard.step4.text.part3"
@@ -117,11 +117,11 @@ msgstr "After creating the project, you need to enable the Assistant API. Click 
 
 #: src/renderer/components/wizard/wizard.template.ts:49
 msgid "wizard.step4.text.part4"
-msgstr "When you're done, come back here and press <em>Next</em>, I'll be waiting for you."
+msgstr "Quando hai finito, torna qui e premi <em>Avanti</em>, "
 
 #: src/renderer/components/wizard/wizard.template.ts:44
 msgid "wizard.step4.title"
-msgstr "Perfetto! Ora iniziamo un progetto."
+msgstr "Perfetto! Ora creiamo un progetto."
 
 #: src/renderer/components/wizard/wizard.template.ts:55
 msgid "wizard.step5.text.part1"
@@ -129,7 +129,7 @@ msgstr "To correctly use the required APIs, the OAuth screen needs to be setup p
 
 #: src/renderer/components/wizard/wizard.template.ts:62
 msgid "wizard.step5.text.part2"
-msgstr "When you're done, remember to click the <em>Save</em> button!"
+msgstr "Quando hai finito, ricordati di premere il pulsante <em>Salva</em>!"
 
 #: src/renderer/components/wizard/wizard.template.ts:53
 msgid "wizard.step5.title"
@@ -137,21 +137,21 @@ msgstr "Quasi finito! Ora devi impostare correttamente i permessi."
 
 #: src/renderer/components/wizard/wizard.template.ts:72
 msgid "wizard.step6.idPlaceholder"
-msgstr "ID del client"
+msgstr "ID client"
 
 #: src/renderer/components/wizard/wizard.template.ts:78
 msgid "wizard.step6.secretPlaceholder"
-msgstr "Client Secret"
+msgstr "Client secret"
 
 #: src/renderer/components/wizard/wizard.template.ts:68
 msgid "wizard.step6.text.part1"
-msgstr "To be able to get access to the project you just created, I will need an OAuth Client ID. Click <a href=\"https://console.developers.google.com/apis/credentials/oauthclient\" target=\"oauth-console\">here</a> to go to the OAuth credentials creation wizard, give the product name you want if required, set <em>Other</em> as application type, give to the client ID the name you prefer and then click <em>Create</em>."
+msgstr "Per poter accedere al progetto che hai appena creato, avrò bisogno di un Client ID OAuth."
 
 #: src/renderer/components/wizard/wizard.template.ts:69
 msgid "wizard.step6.text.part2"
-msgstr "You should now see a dialog with a Client ID and Secret; just copy/paste them down here:"
+msgstr "Ora dovresti vedere una finestra di dialogo con ID client e Client secret; devi soltanto copiarli e incollarli qui sotto:"
 
 #: src/renderer/components/wizard/wizard.template.ts:66
 msgid "wizard.step6.title"
-msgstr "One last thing! Now you just need to authorize me."
+msgstr "Un'ultima cosa! Ora non ti resta che autorizzarmi."
 
