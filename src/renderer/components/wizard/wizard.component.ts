@@ -41,7 +41,7 @@ export class Wizard extends localize(container.get(I18nService))(
   protected _clientSecretValid = false;
 
   @property({ type: String })
-  protected _locale: Locale = Locale.EN;
+  protected _locale: Locale = Locale.EN_US;
 
   public stateChanged({ app, auth, wizard }: RootState) {
     this._clientId = auth.clientId;

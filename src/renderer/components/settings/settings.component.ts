@@ -21,7 +21,7 @@ export class Settings extends localize(container.get(I18nService))(
   protected render = template;
 
   @property({ type: String })
-  protected _locale: Locale = Locale.EN;
+  protected _locale: Locale = Locale.EN_US;
 
   @property({ type: Object })
   protected _optionsMap: {

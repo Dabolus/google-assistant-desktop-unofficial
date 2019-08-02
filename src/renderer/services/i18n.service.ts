@@ -10,7 +10,7 @@ export interface I18n {
 
 @injectable()
 export class I18nService implements I18n {
-  public static supportedLocales = [Locale.EN];
+  public static supportedLocales = [Locale.EN_US];
 
   public i18n: LinguiI18n = setupI18n();
 
@@ -20,7 +20,7 @@ export class I18nService implements I18n {
     }
 
     const { default: catalog }: { default: Catalog } = await import(
-      `@locales/${locale.toLowerCase()}/messages`
+      `@locales/${locale}/messages`
     );
 
     this.i18n.load({ [locale]: catalog });

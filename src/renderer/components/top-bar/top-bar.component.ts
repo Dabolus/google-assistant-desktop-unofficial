@@ -23,7 +23,7 @@ export class TopBar extends localize(container.get(I18nService))(
   protected _page = 'chat';
 
   @property({ type: String })
-  protected _locale: Locale = Locale.EN;
+  protected _locale: Locale = Locale.EN_US;
 
   public stateChanged({ app }: RootState) {
     this._page = app.page;
