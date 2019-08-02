@@ -8,7 +8,7 @@ export default function template(this: BottomBar) {
   return html`
     <input
       type="text"
-      placeholder="${this.translate(t`bottomBar.placeholder`)}"
+      placeholder="${this.localize(t`bottomBar.placeholder`)}"
       autofocus
       @input="${this._inputModified}"
       @keydown="${this._inputKeyDown}"

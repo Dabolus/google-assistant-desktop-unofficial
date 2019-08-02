@@ -77,7 +77,7 @@ export const localize = (i18nService: I18nService) => <
   baseElement: T,
 ) =>
   class extends baseElement {
-    public translate(
+    public localize(
       id: string | MessageDescriptor,
       values?: object,
       messageOptions?: MessageOptions,

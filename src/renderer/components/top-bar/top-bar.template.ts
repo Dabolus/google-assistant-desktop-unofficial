@@ -7,8 +7,8 @@ export default function template(this: TopBar) {
   return html`
     <div class="title">${unsafeHTML(
       this._page === 'settings'
-      ? this.translate(t`topBar.settings`)
-      : this.translate(t`topBar.assistant`),
+      ? this.localize(t`topBar.settings`)
+      : this.localize(t`topBar.assistant`),
     )}</div>
     <div class="spacer"></div>
     <button
