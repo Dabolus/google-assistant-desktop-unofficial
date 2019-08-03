@@ -79,7 +79,7 @@
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
     "ejs": "^2.6.2",
-    "electron": "^6.0.0",
+    "electron": "6.0.0",
     "electron-builder": "^21.2.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-notarize": "^0.1.1",
