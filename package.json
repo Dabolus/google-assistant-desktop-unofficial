@@ -18,7 +18,6 @@
     "build:electron": "ts-node scripts/prepare-build && cd app && electron-builder -c ../electron-builder.json",
     "build:main": "webpack --config webpack/main.prod.config.ts",
     "build:renderer": "webpack --config webpack/renderer.prod.config.ts",
-    "upload": "ts-node scripts/upload",
     "lint": "eslint --ext .ts --ext .js .",
     "format": "eslint --ext .ts --ext .js . --fix",
     "postinstall": "electron-builder install-app-deps",
