@@ -16,7 +16,7 @@
     height: 5px;
     content: '';
     pointer-events: none;
-    box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, .38);
+    box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.38);
   }
 }
 
@@ -25,11 +25,11 @@
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 
   img {
     height: 80%;
-    margin: .275rem .5rem 0 0;
+    margin: 0.275rem 0.5rem 0 0;
     flex: 0 0 auto;
   }
 
@@ -51,8 +51,7 @@ button {
   background: none;
   cursor: pointer;
   border-radius: 50%;
-  display: block;
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;

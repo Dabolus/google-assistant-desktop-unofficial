@@ -15,8 +15,8 @@
   --gad-display-font: 'Google Sans Display';
   --gad-logo-font: 'Product Sans';
   --gad-icon-font: 'Material Icons Extended';
-  --gad-border-radius-sm: .25rem;
-  --gad-border-radius-md: .5rem;
+  --gad-border-radius-sm: 0.25rem;
+  --gad-border-radius-md: 0.5rem;
   --gad-border-radius-lg: 1rem;
 
   // Variables (different for each theme)
@@ -25,11 +25,11 @@
   --gad-background-color: #fafafa;
   --gad-card-color: #fff;
   --gad-bars-color: #fff;
-  --gad-primary-opacity: .87;
-  --gad-secondary-opacity: .6;
-  --gad-disabled-opacity: .38;
-  --gad-divider-opacity: .12;
-  --gad-backdrop-opacity: .54;
+  --gad-primary-opacity: 0.87;
+  --gad-secondary-opacity: 0.6;
+  --gad-disabled-opacity: 0.38;
+  --gad-divider-opacity: 0.12;
+  --gad-backdrop-opacity: 0.54;
   --gad-primary-text-color: rgba(0, 0, 0, var(--gad-primary-opacity));
   --gad-secondary-text-color: rgba(0, 0, 0, var(--gad-secondary-opacity));
   --gad-disabled-text-color: rgba(0, 0, 0, var(--gad-disabled-opacity));
@@ -39,17 +39,17 @@
   --gad-error-text-color: #b00020;
 }
 
-:host([theme=dark]) {
+:host([theme='dark']) {
   --gad-primary-color: #000;
   --gad-accent-color: #1a73e8;
   --gad-background-color: #303030;
   --gad-card-color: #424242;
   --gad-bars-color: #212121;
   --gad-primary-opacity: 1;
-  --gad-secondary-opacity: .7;
-  --gad-disabled-opacity: .5;
-  --gad-divider-opacity: .12;
-  --gad-backdrop-opacity: .54;
+  --gad-secondary-opacity: 0.7;
+  --gad-disabled-opacity: 0.5;
+  --gad-divider-opacity: 0.12;
+  --gad-backdrop-opacity: 0.54;
   --gad-primary-text-color: rgba(255, 255, 255, var(--gad-primary-opacity));
   --gad-secondary-text-color: rgba(255, 255, 255, var(--gad-secondary-opacity));
   --gad-disabled-text-color: rgba(255, 255, 255, var(--gad-disabled-opacity));
@@ -85,11 +85,11 @@ gad-wizard {
   height: 100%;
   z-index: -1;
   opacity: 0;
-  transition: .3s opacity ease-out, .3s z-index step-end;
+  transition: 0.3s opacity ease-out, 0.3s z-index step-end;
 
   &[shown] {
     z-index: 10;
     opacity: 1;
-    transition: .3s opacity ease-in, .3s z-index step-start;
+    transition: 0.3s opacity ease-in, 0.3s z-index step-start;
   }
 }

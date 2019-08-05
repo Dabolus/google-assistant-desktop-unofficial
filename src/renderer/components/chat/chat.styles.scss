@@ -21,14 +21,14 @@ div {
     flex: 0 0 auto;
 
     &[contiguous] {
-      margin-top: .3rem;
+      margin-top: 0.3rem;
     }
 
-    &[type=IN] {
+    &[type='IN'] {
       align-self: flex-start;
     }
-  
-    &[type=OUT] {
+
+    &[type='OUT'] {
       align-self: flex-end;
     }
   }

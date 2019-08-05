@@ -1,4 +1,4 @@
-import { html } from 'lit-element';
+import { html } from 'lit-element';
 import { Button } from './button.component';
 
 import '@material/mwc-ripple';

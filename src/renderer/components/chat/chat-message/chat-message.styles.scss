@@ -7,13 +7,14 @@
   width: var(--gad-border-radius-lg);
   height: var(--gad-border-radius-lg);
   object-fit: cover;
-  margin: calc(var(--gad-border-radius-lg) / 2) calc(var(--gad-border-radius-lg) / 8);
+  margin: calc(var(--gad-border-radius-lg) / 2)
+    calc(var(--gad-border-radius-lg) / 8);
 }
 
 .bubble {
   position: relative;
   border-radius: var(--gad-border-radius-lg);
-  padding: .4rem .7rem;
+  padding: 0.4rem 0.7rem;
   font-family: var(--gad-display-font);
 
   &:not(.contiguous)::before {
@@ -21,12 +22,12 @@
     position: absolute;
     width: 0;
     height: 0;
-    top: calc(var(--gad-border-radius-lg) * -.5);
+    top: calc(var(--gad-border-radius-lg) * -0.5);
     border: calc(var(--gad-border-radius-lg) / 4) solid;
   }
 }
 
-:host([type=IN]) {
+:host([type='IN']) {
   align-items: flex-start;
 
   > .pic {
@@ -37,30 +38,32 @@
     border: 1px solid var(--gad-divider-color);
     background: var(--gad-background-color);
     color: var(--gad-primary-text-color);
-  
+
     &:not(.contiguous) {
       border-top-left-radius: 0;
 
       &::before {
         left: -1px;
-        border-color: transparent transparent var(--gad-divider-color) var(--gad-divider-color);
+        border-color: transparent transparent var(--gad-divider-color)
+          var(--gad-divider-color);
       }
-    
+
       &::after {
         content: '';
         position: absolute;
         width: 0;
         height: 0;
-        top: calc((var(--gad-border-radius-lg) * -.5) + 1.5px);
+        top: calc((var(--gad-border-radius-lg) * -0.5) + 1.5px);
         left: 0;
         border: calc((var(--gad-border-radius-lg) / 4) - 1px) solid;
-        border-color: transparent transparent var(--gad-background-color) var(--gad-background-color);
+        border-color: transparent transparent var(--gad-background-color)
+          var(--gad-background-color);
       }
     }
   }
 }
 
-:host([type=OUT]) {
+:host([type='OUT']) {
   align-items: flex-end;
 
   > .pic {
@@ -71,13 +74,14 @@
   > .bubble {
     background: var(--gad-divider-color);
     color: var(--gad-secondary-text-color);
-    
-    &:not(.contiguous){
+
+    &:not(.contiguous) {
       border-top-right-radius: 0;
 
       &::before {
         right: 0;
-        border-color: transparent var(--gad-divider-color) var(--gad-divider-color) transparent;
+        border-color: transparent var(--gad-divider-color)
+          var(--gad-divider-color) transparent;
       }
     }
   }
