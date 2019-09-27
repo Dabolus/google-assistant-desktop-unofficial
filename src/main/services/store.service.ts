@@ -22,10 +22,16 @@ export interface Store {
   clearAuthData(): void;
 }
 
+export interface StoreData {
+  clientId: string;
+  clientSecret: string;
+  credentials: Credentials;
+  tokens: Tokens;
+}
+
 @injectable()
 export class StoreService implements Store {
-  // TODO: write store interface
-  private _store = new ElectronStore<any>({
+  private _store = new ElectronStore<StoreData>({
     // NOTE: we encrypt the store to make the JSON file unreadable.
     // Of course the user can still find the encryption key in the
     // source code and use it to decrypt the store, but at least
