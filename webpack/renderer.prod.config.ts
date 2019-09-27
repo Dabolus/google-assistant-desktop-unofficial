@@ -16,8 +16,6 @@ const config: Configuration = smartMerge(rendererBaseConfig, {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true,
-        parallel: true,
         extractComments: 'all',
         terserOptions: {
           compress: {
