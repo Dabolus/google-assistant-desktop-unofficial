@@ -1,7 +1,7 @@
 import { container } from '@helpers/di.helper';
 import { getBrowserWindowWithEvents } from '@helpers/events.helper';
 import { Environment, EnvironmentService } from '@services/environment.service';
-import { app, Menu, shell, systemPreferences, BrowserWindow } from 'electron';
+import { app, Menu, shell, nativeTheme, BrowserWindow } from 'electron';
 import { resolve } from 'path';
 import { format as formatUrl } from 'url';
 import { autoUpdater } from 'electron-updater';
@@ -24,7 +24,7 @@ function createMenu(window: BrowserWindow) {
     ...(environmentService.mac
       ? ([
           {
-            label: app.getName(),
+            label: app.name,
             submenu: [
               { role: 'about' },
               { type: 'separator' },
@@ -108,15 +108,10 @@ function createMainWindow() {
     },
   });
   createMenu(window);
+  const theme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light';
 
   if (process.env.NODE_ENV === 'development') {
-    window.loadURL(
-      `http://localhost:${process.env.PORT || '8080'}#${
-        systemPreferences.isDarkMode && systemPreferences.isDarkMode()
-          ? 'dark'
-          : 'light'
-      }`,
-    );
+    window.loadURL(`http://localhost:${process.env.PORT || '8080'}#${theme}`);
     configureDevTools(window);
   } else {
     window.loadURL(
@@ -124,10 +119,7 @@ function createMainWindow() {
         pathname: resolve(__dirname, 'index.html'),
         protocol: 'file',
         slashes: true,
-        hash:
-          systemPreferences.isDarkMode && systemPreferences.isDarkMode()
-            ? 'dark'
-            : 'light',
+        hash: theme,
       }),
     );
   }
@@ -138,12 +130,7 @@ function createMainWindow() {
 
   // Set app theme based on system wide theme
   window.webContents.once('dom-ready', () =>
-    window.webContents.send(
-      'app.setTheme',
-      systemPreferences.isDarkMode && systemPreferences.isDarkMode()
-        ? 'dark'
-        : 'light',
-    ),
+    window.webContents.send('app.setTheme', theme),
   );
 
   return window;

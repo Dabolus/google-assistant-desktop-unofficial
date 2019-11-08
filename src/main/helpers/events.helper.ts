@@ -1,5 +1,4 @@
 import { Auth, AuthService } from '@services/auth.service';
-import { Environment, EnvironmentService } from '@services/environment.service';
 import { Modals, ModalsService } from '@services/modals.service';
 import { Store, StoreService } from '@services/store.service';
 import {
@@ -7,7 +6,7 @@ import {
   BrowserWindowConstructorOptions,
   Event,
   ipcMain,
-  systemPreferences,
+  nativeTheme,
 } from 'electron';
 import {
   Assistant,
@@ -20,7 +19,6 @@ import {
 import { container } from './di.helper';
 
 const _authService: Auth = container.get(AuthService);
-const _environmentService: Environment = container.get(EnvironmentService);
 const _modalsService: Modals = container.get(ModalsService);
 const _storeService: Store = container.get(StoreService);
 let _assistant: Assistant;
@@ -32,16 +30,12 @@ export const getBrowserWindowWithEvents = (
 ) => {
   const browserWindow = new BrowserWindow(options);
 
-  if (_environmentService.mac) {
-    systemPreferences.subscribeNotification(
-      'AppleInterfaceThemeChangedNotification',
-      () =>
-        browserWindow.webContents.send(
-          'app.setTheme',
-          systemPreferences.isDarkMode() ? 'dark' : 'light',
-        ),
-    );
-  }
+  nativeTheme.on('updated', () =>
+    browserWindow.webContents.send(
+      'app.setTheme',
+      nativeTheme.shouldUseDarkColors ? 'dark' : 'light',
+    ),
+  );
 
   ipcMain
     .on(
