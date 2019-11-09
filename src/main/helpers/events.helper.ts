@@ -17,6 +17,11 @@ import {
   TextConversation,
 } from 'nodejs-assistant';
 import { container } from './di.helper';
+import {
+  supportedLocales,
+  mapLocaleToAssistantLanguage,
+  Locale,
+} from './i18n.helper';
 
 const _authService: Auth = container.get(AuthService);
 const _modalsService: Modals = container.get(ModalsService);
@@ -24,6 +29,7 @@ const _storeService: Store = container.get(StoreService);
 let _assistant: Assistant;
 let _textConversation: TextConversation;
 let _audioConversation: AudioConversation;
+let _currentLocale: Locale = Locale.EN_US;
 
 export const getBrowserWindowWithEvents = (
   options?: BrowserWindowConstructorOptions,
@@ -55,7 +61,11 @@ export const getBrowserWindowWithEvents = (
             clientId,
             clientSecret,
           );
-          _assistant = new Assistant(credentials);
+          _assistant = new Assistant(credentials, {
+            deviceId: 'deviceId',
+            deviceModelId: 'deviceModelId',
+            locale: mapLocaleToAssistantLanguage(_currentLocale),
+          });
           const userInfo = await _authService.getUserInfo(
             clientId,
             clientSecret,
@@ -161,7 +171,21 @@ export const getBrowserWindowWithEvents = (
       } catch (e) {
         browserWindow.webContents.send('app.rejectModalOpening', e);
       }
-    });
+    })
+    .on(
+      'i18n.requestLocaleUpdate',
+      (_: Event, { locale }: { locale: Locale }) => {
+        if (!supportedLocales.includes(locale)) {
+          throw new Error('Locale not supported');
+        }
+
+        _currentLocale = locale;
+
+        if (_assistant) {
+          _assistant.locale = mapLocaleToAssistantLanguage(locale);
+        }
+      },
+    );
 
   browserWindow.once('closed', () => {
     ipcMain.removeAllListeners('auth.requestAuthentication');
