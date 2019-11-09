@@ -14,7 +14,7 @@ function* handleUserAuthentication({
   payload: { clientId, clientSecret },
 }: AuthActionAuthenticateRequested) {
   try {
-    yield call(authService.authenticate, clientId, clientSecret);
+    yield call([authService, 'authenticate'], clientId, clientSecret);
   } catch (e) {
     yield put(rejectAuthentication(e));
   }
@@ -22,7 +22,7 @@ function* handleUserAuthentication({
 
 function* handleUserLogout() {
   try {
-    yield call(authService.logout);
+    yield call([authService, 'logout']);
   } catch (e) {
     yield put(rejectLogout(e));
   }

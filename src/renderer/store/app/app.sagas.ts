@@ -29,7 +29,7 @@ function* handleModalOpening({
   payload: { ref },
 }: AppActionOpenModalRequested) {
   try {
-    yield call(modalsService.open, ref);
+    yield call([modalsService, 'open'], ref);
   } catch (e) {
     yield put(rejectModalOpening(e));
   }

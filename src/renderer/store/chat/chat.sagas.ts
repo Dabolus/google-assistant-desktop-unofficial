@@ -16,7 +16,7 @@ function* handleMessageSend({
   payload: { text, conversationState },
 }: ChatActionSendMessageRequested) {
   try {
-    yield call(chatService.sendMessage, text, { conversationState });
+    yield call([chatService, 'sendMessage'], text, { conversationState });
   } catch (e) {
     yield put(rejectMessageSend(e));
   }
@@ -26,7 +26,7 @@ function* handleAudioSend({
   payload: { audio, conversationState },
 }: ChatActionSendAudioRequested) {
   try {
-    yield call(chatService.sendAudio, audio, { conversationState });
+    yield call([chatService, 'sendAudio'], audio, { conversationState });
   } catch (e) {
     yield put(rejectAudioSend(e));
   }
