@@ -1,11 +1,13 @@
 import { injectable } from '@helpers/di.helper';
 import { Locale } from '@store/app/app.model';
 import { setupI18n, I18n as LinguiI18n, Catalog } from '@lingui/core';
+import { ipcRenderer } from 'electron';
 
 export interface I18n {
   i18n: LinguiI18n;
 
   loadLocale(locale: Locale): Promise<void>;
+  updateLocale(locale: Locale): Promise<void>;
 }
 
 @injectable()
@@ -24,6 +26,13 @@ export class I18nService implements I18n {
     );
 
     this.i18n.load({ [locale]: catalog });
+  }
+
+  public async updateLocale(locale: Locale) {
+    if (!this.i18n.availableLanguages.includes(locale)) {
+      await this.loadLocale(locale);
+    }
     this.i18n.activate(locale);
+    ipcRenderer.send('i18n.requestLocaleUpdate', { locale });
   }
 }
