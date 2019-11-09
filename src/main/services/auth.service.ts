@@ -60,7 +60,7 @@ export class AuthService implements Auth {
     clientId: string,
     clientSecret: string,
   ): Promise<Tokens> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       if (!clientId || !clientSecret) {
         return reject(`Missing client id or client secret`);
       }
@@ -73,7 +73,7 @@ export class AuthService implements Auth {
       );
 
       const cachedTokens = this._storeService.getTokens();
-      if (cachedTokens) {
+      if (cachedTokens && cachedTokens.expiry_date > Date.now()) {
         this._client = oAuth2Client;
         this._client.setCredentials(cachedTokens);
         return resolve(cachedTokens);
