@@ -15,7 +15,10 @@ const config: Configuration = {
       {
         test: /\.po$/,
         exclude: /node_modules/,
-        use: '@lingui/loader',
+        use: [
+          resolve(__dirname, 'loaders/i18n-postprocess-loader.ts'),
+          '@lingui/loader',
+        ],
       },
       {
         test: /\.[tj]s$/,
