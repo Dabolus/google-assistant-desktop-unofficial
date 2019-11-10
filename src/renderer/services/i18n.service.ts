@@ -8,6 +8,7 @@ export interface I18n {
 
   loadLocale(locale: Locale): Promise<void>;
   updateLocale(locale: Locale): Promise<void>;
+  getCurrentLocale(): Promise<Locale>;
 }
 
 @injectable()
@@ -33,6 +34,19 @@ export class I18nService implements I18n {
       await this.loadLocale(locale);
     }
     this.i18n.activate(locale);
-    ipcRenderer.send('i18n.requestLocaleUpdate', { locale });
+    ipcRenderer.send('i18n.requestLocaleUpdate', locale);
+  }
+
+  public getCurrentLocale() {
+    return new Promise<Locale>((resolve, reject) => {
+      ipcRenderer
+        .once('i18n.resolveCurrentLocale', (_: Event, locale: Locale) =>
+          resolve(locale),
+        )
+        .once('i18n.rejectCurrentLocale', (_: Event, error: Error) =>
+          reject(error),
+        )
+        .send('i18n.requestCurrentLocale');
+    });
   }
 }

@@ -29,7 +29,6 @@ const _storeService: Store = container.get(StoreService);
 let _assistant: Assistant;
 let _textConversation: TextConversation;
 let _audioConversation: AudioConversation;
-let _currentLocale: Locale = Locale.EN_US;
 
 export const getBrowserWindowWithEvents = (
   options?: BrowserWindowConstructorOptions,
@@ -64,7 +63,9 @@ export const getBrowserWindowWithEvents = (
           _assistant = new Assistant(credentials, {
             deviceId: 'deviceId',
             deviceModelId: 'deviceModelId',
-            locale: mapLocaleToAssistantLanguage(_currentLocale),
+            locale: mapLocaleToAssistantLanguage(
+              _storeService.getLocale() || Locale.EN_US,
+            ),
           });
           const userInfo = await _authService.getUserInfo(
             clientId,
@@ -172,20 +173,25 @@ export const getBrowserWindowWithEvents = (
         browserWindow.webContents.send('app.rejectModalOpening', e);
       }
     })
-    .on(
-      'i18n.requestLocaleUpdate',
-      (_: Event, { locale }: { locale: Locale }) => {
-        if (!supportedLocales.includes(locale)) {
-          throw new Error('Locale not supported');
-        }
+    .on('i18n.requestCurrentLocale', () => {
+      try {
+        const locale = _storeService.getLocale();
+        browserWindow.webContents.send('i18n.resolveCurrentLocale', locale);
+      } catch (e) {
+        browserWindow.webContents.send('i18n.rejectCurrentLocale', e);
+      }
+    })
+    .on('i18n.requestLocaleUpdate', (_: Event, locale: Locale) => {
+      if (!supportedLocales.includes(locale)) {
+        throw new Error('Locale not supported');
+      }
 
-        _currentLocale = locale;
+      _storeService.setLocale(locale);
 
-        if (_assistant) {
-          _assistant.locale = mapLocaleToAssistantLanguage(locale);
-        }
-      },
-    );
+      if (_assistant) {
+        _assistant.locale = mapLocaleToAssistantLanguage(locale);
+      }
+    });
 
   browserWindow.once('closed', () => {
     ipcMain.removeAllListeners('auth.requestAuthentication');
@@ -193,6 +199,8 @@ export const getBrowserWindowWithEvents = (
     ipcMain.removeAllListeners('chat.requestSendMessage');
     ipcMain.removeAllListeners('chat.requestSendAudio');
     ipcMain.removeAllListeners('chat.requestModalOpening');
+    ipcMain.removeAllListeners('i18n.requestCurrentLocale');
+    ipcMain.removeAllListeners('i18n.requestLocaleUpdate');
   });
 
   return browserWindow;

@@ -1,6 +1,7 @@
 import { injectable } from '@helpers/di.helper';
 import ElectronStore from 'electron-store';
 import { Credentials as Tokens } from 'google-auth-library';
+import { Locale } from '@helpers/i18n.helper';
 export { Credentials as Tokens } from 'google-auth-library';
 
 export interface Credentials {
@@ -11,6 +12,8 @@ export interface Credentials {
 }
 
 export interface Store {
+  getLocale(): Locale;
+  setLocale(locale: Locale): void;
   getClientId(): string;
   setClientId(clientId: string): void;
   getClientSecret(): string;
@@ -23,6 +26,7 @@ export interface Store {
 }
 
 export interface StoreData {
+  locale: Locale;
   clientId: string;
   clientSecret: string;
   credentials: Credentials;
@@ -44,6 +48,14 @@ export class StoreService implements Store {
     // generally deter the user from editing the config file manually.
     fileExtension: 'gad',
   });
+
+  public getLocale() {
+    return this._store.get('locale');
+  }
+
+  public setLocale(locale: Locale) {
+    return this._store.set('locale', locale);
+  }
 
   public getClientId() {
     return this._store.get('clientId');
