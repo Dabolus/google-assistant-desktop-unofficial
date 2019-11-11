@@ -64,6 +64,7 @@ declare module 'electron-devtools-installer' {
 declare module 'electron-redux';
 declare module 'html-webpack-plugin';
 declare module 'remark-html';
+declare module 'remark-external-links';
 
 declare module '*.styles' {
   import { CSSResult } from 'lit-element';

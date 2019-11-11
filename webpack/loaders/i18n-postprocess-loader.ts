@@ -1,5 +1,6 @@
 import remark from 'remark';
 import html from 'remark-html';
+import externalLinks from 'remark-external-links';
 
 const parser = remark()
   .data('settings', {
@@ -8,6 +9,7 @@ const parser = remark()
     pedantic: true,
     gfm: true,
   })
+  .use(externalLinks)
   .use(html);
 
 const shortCodes: { [key: string]: string } = {
