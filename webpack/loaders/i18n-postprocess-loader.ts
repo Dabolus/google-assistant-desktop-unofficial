@@ -30,7 +30,16 @@ const mapMessage = async (key: string, value: string) => {
     case 'topBar.settings':
       return getHeader(value);
     default:
-      const { contents } = await parser.process(value);
+      const { contents } = await parser.process(
+        `${value}\n\n` +
+          '[assistant-tos]: https://developers.google.com/assistant/sdk/terms-of-service\n' +
+          '[source-code]: https://github.com/Dabolus/google-assistant-desktop-unofficial\n' +
+          '[projects-page]: https://console.cloud.google.com/project\n' +
+          '[assistant-api]: https://console.developers.google.com/apis/api/embeddedassistant.googleapis.com/overview\n' +
+          '[people-api]: https://console.developers.google.com/apis/api/people.googleapis.com/overview\n' +
+          '[oauth-consent]: https://console.developers.google.com/apis/credentials/consent\n' +
+          '[oauth-console]: https://console.developers.google.com/apis/credentials/oauthclient\n',
+      );
       const contentsString = contents
         .toString()
         .replace(/(?:google-logo|assistant-logo)/g, getShortCode);
