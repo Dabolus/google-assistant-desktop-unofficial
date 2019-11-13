@@ -23,7 +23,7 @@ ones that have already been implemented:
 - [ ] Rich responses
 - [ ] Continuous conversations
 - [ ] Hotword detection (OK Google, Hey Google, custom hotwords)
-- [ ] Assistant language switching
+- [x] Assistant language switching
 - [x] Dark theme
 - [x] Automatic theme switching based on system theme
 - [ ] Manual theme swtiching through settings
