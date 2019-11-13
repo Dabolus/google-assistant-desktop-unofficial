@@ -18,7 +18,7 @@ export class Chat extends connect(store)(LitElement) {
   protected _history: Message[] = [];
 
   @property({ type: String })
-  protected _userPicture: string = '';
+  protected _userPicture = '';
 
   @query('div')
   private _containerRef: HTMLDivElement;

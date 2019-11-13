@@ -35,7 +35,7 @@ function* handleAudioSend({
 const audioElement = new Audio();
 let mediaSource: MediaSource = null;
 let timeoutHandle: number = null;
-let tempBuffer: Uint8Array[] = [];
+const tempBuffer: Uint8Array[] = [];
 
 function handleMessageReceive({
   payload: {

@@ -13,10 +13,10 @@ export class ChatMessage extends LitElement {
   public type: MessageType = MessageType.OUT;
 
   @property({ type: Boolean })
-  public contiguous: boolean = false;
+  public contiguous = false;
 
   @property({ type: String })
-  public picture: string = '';
+  public picture = '';
 
   protected render = template;
 }

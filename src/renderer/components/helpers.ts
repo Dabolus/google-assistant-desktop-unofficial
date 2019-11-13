@@ -68,7 +68,8 @@ export const connect = <S>(store: Store<S>) => <
     /**
      * The `stateChanged(newState, oldState)` method will be called when the state is updated.
      */
-    public stateChanged(newState: S, oldState?: S) {} // eslint-disable-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    public stateChanged(newState: S, oldState?: S) {}
   };
 
 export const localize = (i18nService: I18nService) => <
