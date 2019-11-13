@@ -13,7 +13,7 @@ export interface I18n {
 
 @injectable()
 export class I18nService implements I18n {
-  public static supportedLocales = [Locale.EN_US];
+  public static supportedLocales = [Locale.EN_US, Locale.IT_IT];
 
   public i18n: LinguiI18n = setupI18n();
 

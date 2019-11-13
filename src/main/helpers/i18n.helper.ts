@@ -17,7 +17,7 @@ export enum Locale {
   PT_BR = 'pt-BR',
 }
 
-export const supportedLocales = [Locale.EN_US];
+export const supportedLocales = [Locale.EN_US, Locale.IT_IT];
 
 const mapLocaleToAssistantLanguageMap: {
   [key in Locale]: AssistantLanguage;
