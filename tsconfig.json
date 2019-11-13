@@ -14,7 +14,8 @@
       "esnext"
     ],
     "target": "es2019",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
   "include": [
     "typings.d.ts",
