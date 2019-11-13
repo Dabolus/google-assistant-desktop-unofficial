@@ -97,7 +97,7 @@ msgstr "Prima di tutto, leggi attentamente il disclaimer."
 
 #: src/renderer/components/wizard/wizard.template.ts:37
 msgid "wizard.step3.text"
-msgstr "Ho fatto del mio meglio per riconoscere la tua lingua, però non sono del tutto sicuro che sia quella giusta. Vorresti cambiarla?"
+msgstr "Ho fatto del mio meglio per riconoscere la tua lingua, ma non sono del tutto sicuro che sia quella giusta. Vorresti cambiarla?"
 
 #: src/renderer/components/wizard/wizard.template.ts:35
 msgid "wizard.step3.title"
