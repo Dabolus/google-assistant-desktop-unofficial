@@ -15,6 +15,7 @@
     ],
     "target": "es2019",
     "resolveJsonModule": true,
+    "module": "commonjs",
     "moduleResolution": "node"
   },
   "include": [
