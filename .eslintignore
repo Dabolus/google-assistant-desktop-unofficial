@@ -2,5 +2,3 @@
 node_modules/
 /app/
 coverage/
-# TODO: stop ignoring templates as soon as we manage to correctly parse optional chaining operators
-*.template.ts
