@@ -94,7 +94,6 @@ export const getBrowserWindowWithEvents = (
         _: Event,
         {
           text,
-          options,
         }: {
           text: string;
           options: AssistantQueryOptions;

@@ -60,7 +60,7 @@ export type AppActionOpenModalRequested = FluxStandardAction<
 export type AppActionOpenModalResolved = FluxStandardAction<
   AppActionType.OPEN_MODAL_RESOLVED,
   {
-    result: any;
+    result: unknown;
   }
 >;
 
@@ -132,7 +132,7 @@ export const requestModalOpening = (
 });
 
 export const resolveModalOpening = (
-  result: any,
+  result: unknown,
 ): AppActionOpenModalResolved => ({
   type: AppActionType.OPEN_MODAL_RESOLVED,
   payload: {

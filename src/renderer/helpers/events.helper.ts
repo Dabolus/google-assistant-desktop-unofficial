@@ -57,7 +57,7 @@ export const attachEventListeners = (store: Store) => {
     .on('chat.rejectSendAudio', (_: Event, error: Error) => {
       store.dispatch(rejectAudioSend(error));
     })
-    .on('app.resolveModalOpening', (_: Event, data: any) => {
+    .on('app.resolveModalOpening', (_: Event, data: unknown) => {
       store.dispatch(resolveModalOpening(data));
     })
     .on('app.rejectModalOpening', (_: Event, error: Error) => {

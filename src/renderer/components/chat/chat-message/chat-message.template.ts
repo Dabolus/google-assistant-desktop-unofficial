@@ -1,4 +1,3 @@
-import { MessageType } from '@store/chat/chat.model';
 import { html } from 'lit-element';
 import { ChatMessage } from './chat-message.component';
 import { nothing } from 'lit-html';

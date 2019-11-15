@@ -65,6 +65,7 @@ declare class MediaRecorder extends EventTarget {
     listener: (this: MediaStream, ev: MediaRecorderEventMap[K]) => void,
     options?: boolean | AddEventListenerOptions,
   ): void;
+  // eslint-disable-next-line no-dupe-class-members
   public addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
@@ -75,6 +76,7 @@ declare class MediaRecorder extends EventTarget {
     listener: (this: MediaStream, ev: MediaRecorderEventMap[K]) => void,
     options?: boolean | EventListenerOptions,
   ): void;
+  // eslint-disable-next-line no-dupe-class-members
   public removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,

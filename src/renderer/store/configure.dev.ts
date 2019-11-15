@@ -9,6 +9,8 @@ import { StoreConfig } from './store.model';
 declare global {
   interface Window {
     process?: NodeJS.Process;
+    // ESLint seems to be buggy, as it considers compose to be undefined
+    // eslint-disable-next-line no-undef
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
 }
