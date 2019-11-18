@@ -3,6 +3,7 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { Wizard } from './wizard.component';
 import { t } from '@lingui/macro';
 import { Locale } from '@store/app/app.model';
+import { nothing } from 'lit-html';
 
 import '@components/button/button.component';
 
@@ -145,7 +146,14 @@ export default function template(this: Wizard) {
           </div>
         </section>
       </div>
-      <div class="actions">
+      <div class="actions ${this._currentStep === 0 ? 'centered' : ''}">
+        ${this._currentStep > 0
+          ? html`
+              <gad-button @click="${this._previousButtonClicked}">
+                ${this.localize(t`wizard.actions.previous`)}
+              </gad-button>
+            `
+          : nothing}
         <gad-button
           @click="${this._currentStep === 5
             ? this._authorizeButtonClicked
@@ -153,7 +161,7 @@ export default function template(this: Wizard) {
           ?disabled="${this._currentStep === 5 &&
             (!this._clientIdValid || !this._clientSecretValid)}"
         >
-          ${this._currentStep >= 5
+          ${this._currentStep === 5
             ? this.localize(t`wizard.actions.authorize`)
             : this.localize(t`wizard.actions.next`)}
         </gad-button>

@@ -50,6 +50,10 @@ export class Wizard extends localize(container.get(I18nService))(
     this._locale = app.locale;
   }
 
+  protected _previousButtonClicked() {
+    store.dispatch(updateStep(this._currentStep - 1));
+  }
+
   protected _nextButtonClicked() {
     store.dispatch(updateStep(this._currentStep + 1));
   }
@@ -81,7 +85,6 @@ export class Wizard extends localize(container.get(I18nService))(
 
   protected _localeChanged(e: Event) {
     // For some reason, destructuring doesn't work with HTMLCollectionOf, so we need to cast to any
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const {
       selectedOptions: [{ value }],
     }: any = e.target as HTMLSelectElement;
