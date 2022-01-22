@@ -34,7 +34,7 @@
     "electron-store": "^5.1.0",
     "electron-updater": "^4.2.0",
     "google-auth-library": "^5.5.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "nodejs-assistant": "^0.7.1",
     "typedi": "^0.8.0"
   },
