@@ -11,6 +11,9 @@
     "version": "0.1.0"
   },
   "tauri": {
+    "pattern": {
+      "use": "brownfield"
+    },
     "allowlist": {
       "all": true
     },
