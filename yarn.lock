@@ -12,6 +12,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lit-labs/router@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "@lit-labs/router@npm:0.0.2"
+  dependencies:
+    lit: ^2.1.0
+  checksum: 2312910ff7cd032bad1f35589387287b2bd595a8fee1381bac9fd3730debd732a2e220ab7377c7446e5d5935fa6f0d550b54a0d3f7fc32edc35b7b95642e1967
+  languageName: node
+  linkType: hard
+
 "@lit/reactive-element@npm:^1.3.0":
   version: 1.3.2
   resolution: "@lit/reactive-element@npm:1.3.2"
@@ -1047,7 +1056,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lit@npm:^2.2.4":
+"lit@npm:^2.1.0, lit@npm:^2.2.4":
   version: 2.2.4
   resolution: "lit@npm:2.2.4"
   dependencies:
@@ -1680,12 +1689,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tauri-app@workspace:."
   dependencies:
+    "@lit-labs/router": ^0.0.2
     "@tauri-apps/api": ^1.0.0-rc.5
     "@tauri-apps/cli": ^1.0.0-rc.10
     lit: ^2.2.4
     rollup-plugin-postcss-lit: ^2.0.0
     sass: ^1.51.0
     typescript: ^4.5.4
+    urlpattern-polyfill: ^4.0.3
     vite: ^2.9.9
   languageName: unknown
   linkType: soft
@@ -1756,6 +1767,13 @@ __metadata:
   dependencies:
     imurmurhash: ^0.1.4
   checksum: 5b6876a645da08d505dedb970d1571f6cebdf87044cb6b740c8dbb24f0d6e1dc8bdbf46825fd09f994d7cf50760e6f6e063cfa197d51c5902c00a861702eb75a
+  languageName: node
+  linkType: hard
+
+"urlpattern-polyfill@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "urlpattern-polyfill@npm:4.0.3"
+  checksum: 96ac2aea49a7b17a9ff41b2ccccdaf5e58a18c33c494cf663bea853c1ac2e70fd26a147b33b83ff7c6b77f9e34ee48409d21dbc1f2a2ad5cd9509cf3d5cb148e
   languageName: node
   linkType: hard
 
