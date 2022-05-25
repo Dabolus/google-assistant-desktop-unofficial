@@ -3,8 +3,8 @@ import { customElement } from 'lit/decorators.js';
 import { Router } from '@lit-labs/router';
 import styles from './styles.scss';
 import template, {
-  homeRouteTemplate,
-  setupRouteTemplate,
+  chatRouteTemplate,
+  wizardRouteTemplate,
   settingsRouteTemplate,
 } from './template';
 
@@ -14,11 +14,11 @@ export class Shell extends LitElement {
   protected _router = new Router(this, [
     {
       path: '/',
-      render: homeRouteTemplate,
+      render: chatRouteTemplate,
     },
     {
-      path: '/setup',
-      render: setupRouteTemplate,
+      path: '/wizard',
+      render: wizardRouteTemplate,
     },
     {
       path: '/settings',

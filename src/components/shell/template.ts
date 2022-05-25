@@ -1,8 +1,10 @@
 import { html } from 'lit';
 import type { Shell } from './index';
 
-export const homeRouteTemplate = () => html`Home`;
-export const setupRouteTemplate = () => html`Setup`;
+import '../chat';
+
+export const chatRouteTemplate = () => html`<gad-chat></gad-chat>`;
+export const wizardRouteTemplate = () => html`Wizard`;
 export const settingsRouteTemplate = () => html`Settings`;
 
 export default function template(this: Shell) {

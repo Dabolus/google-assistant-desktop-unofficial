@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@lit-labs/router": "^0.0.2",
+    "@lit/localize": "^0.11.2",
     "@tauri-apps/api": "^1.0.0-rc.5",
     "lit": "^2.2.4",
     "urlpattern-polyfill": "^4.0.3"
   },
   "devDependencies": {
+    "@lit/localize-tools": "^0.6.3",
     "@tauri-apps/cli": "^1.0.0-rc.10",
     "rollup-plugin-postcss-lit": "^2.0.0",
     "sass": "^1.51.0",
